@@ -1,7 +1,6 @@
 http://www.infoq.com/br/presentations/modularizacao-java-OSGI
 http://www.devmedia.com.br/introducao-ao-osgi/30035
 http://www.devmedia.com.br/modularidade-em-java-java-magazine-85/18495
-http://celodemelo.wordpress.com/2009/11/12/osgi-modularizando-sua-aplicacao/
 https://code.google.com/p/exemplos/wiki/equinox
 https://www.youtube.com/watch?v=IQAfRpcjIr8
 http://www.vogella.com/tutorials/OSGi/article.html
@@ -9,3 +8,8 @@ https://wiki.eclipse.org/Tutorial:_Building_your_first_OSGi_Remote_Service
 http://www.javaworld.com/article/2077837/java-se/hello--osgi--part-1--bundles-for-beginners.html
 http://docs.spring.io/osgi/docs/current/reference/html/index.html
 http://pt.slideshare.net/regismachado/modularidade-na-web-com-java-osgi-no-eclipse-virgo
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+http://devblog.virtage.com/2012/08/osgi-with-equinox-for-beginners-overview/
+http://celodemelo.wordpress.com/2009/11/12/osgi-modularizando-sua-aplicacao/
+Configuração: http://stackoverflow.com/questions/17478544/java-jar-org-eclipse-osgi-3-9-0-v20130529-1710-jar-consolelog-unable-to-ac
