@@ -1,0 +1,10 @@
+Apresentação do Tema
+
+Projeto de TCC terá como área o desenvolvimento de software utilizando a plataforma JAVA especificando a tecnologia OSGi, que é uma especificação da plataforma JAVA, implementada pelo framework EQUINOX.
+
+Será abordado através do OSGi a modularização de software desenvolvendo um exemplo de como ficaria um software sob esse aspecto.
+
+Justificativa
+
+Como justificativa temos a experiência profissional de ter trabalhado com um software não modularizado, percebendo os problemas e dificuldades de manutenção e implementação de novas funcionalidades no sistema de maneira mais organizada utilizando a modularização OSGi.
+Como relevância acadêmica podemos destacar o aprendizado e utilização de uma tecnologia que não foi lecionada na faculdade, o OSGi. Na área profissional a modularização está se tornando um padrão de desenvolvimento de softwares modulares em JAVA que facilita a expansão e manutenção do software.
