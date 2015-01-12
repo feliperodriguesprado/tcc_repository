@@ -1,0 +1,14 @@
+Objetivo geral:
+
+Desenvolver um software modularizado usando a especificação OSGi da plataforma Java.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Objetivo específico:
+
+-> Desenvolver um software separados em modulos, possibilitando uma melhor separação e organização do software.
+-> Desenvolver um software que possibilite a criação de modulos para cada setor de um empresa.
+-> Resolver o problema de parar todo o sistema que está em funcionamento em uma empresa para alguma manutenção, trazendo a solução 
+de parar somente o módulo especifico que será realizado a manutenção, permanecendo o restante do sistema em funcionamento. 
+-> Disponibilizar uma interface definida para que a empresa que implante o sistema possa criar novos módulos personalizados 
+caso tenha a necessidade ou interesse.
