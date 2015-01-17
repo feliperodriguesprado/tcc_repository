@@ -1,0 +1,8 @@
+- Definir se será usado JSON ou XML.
+- Criar a partir do JSON ou XML uma classe de mapeamento.
+- JAXB para transformar objeto Java em JSON e XML.
+- Utilizar Jersey (framework) REST no web service.
+- Utilizar Jquery.
+- Definir banco de dados: SQL (Hibernate) ou NoSQL (MongoDB).
+- Para criação de serviços, verificar se pode ser criados módulos como serviços.
+- Pesquisar WSDL - contrato de comunicação dos serviços no web service.
