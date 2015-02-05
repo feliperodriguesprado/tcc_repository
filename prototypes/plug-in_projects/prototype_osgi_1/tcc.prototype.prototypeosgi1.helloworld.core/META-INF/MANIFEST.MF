@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core Plug-in
+Bundle-SymbolicName: tcc.prototype.prototypeosgi1.helloworld.core
+Bundle-Version: 1.0.0
+Bundle-Activator: tcc.prototype.prototypeosgi1.helloworld.core.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.3.3"
+Export-Package: tcc.prototype.prototypeosgi1.helloworld.core.service
