@@ -1,8 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Hello World
-Bundle-SymbolicName: tcc.prototype.prototypeosgi1.helloworld
+Bundle-Name: Ui Plug-in
+Bundle-SymbolicName: tcc.prototype.prototypeosgi1.helloworld.ui
 Bundle-Version: 1.0.0
-Bundle-Activator: tcc.prototype.prototypeosgi1.helloworld.Activator
+Bundle-Activator: tcc.prototype.prototypeosgi1.helloworld.ui.Activator
+Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.osgi.framework;version="1.3.0"
+Import-Package: javax.swing,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.3.3",
+ tcc.prototype.prototypeosgi1.helloworld.core.service
