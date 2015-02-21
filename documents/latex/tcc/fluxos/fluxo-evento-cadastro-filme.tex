@@ -1,0 +1,22 @@
+\begin{fluxoDeEventos}
+  \addTitle{Cadastrar filme}
+  \addrow{Ator principal}{Administrador}
+  %\addrow{Ator secundário}{Sistema de cartão}
+  \addrow{Pré-requisitos}{Estar logado no sistema}
+
+  \startBasicFlow{Ator} {Sistema}
+  \addItemOne{Seleciona menu cadastro}
+  \addItemOne{Clica na opção cadastrar filme}
+  \addItemTwo{Abre interface de cadastro de filme}
+  \addItemOne{Preenche formulário}
+  \addItemOne{Clica no botão salvar}
+  \addItemTwo{Salva e informa sucesso no cadastro}
+
+  \startAlternativeFlow{Fluxo alternativo 1}
+  \addItemOne{No item 5, formulário não preenchido}
+  \addItemTwo{Exibe mensagem de necessidade de preenchimento de formulário}
+
+  \startAlternativeFlow{Fluxo alternativo 2}
+  \addItemOne{No item 6, inserido filme já cadastrado}
+  \addItemTwo{Informa mensagem de filme já cadastrado}
+\end{fluxoDeEventos}

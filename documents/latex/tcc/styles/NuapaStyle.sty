@@ -1,0 +1,368 @@
+%Modelo do latex para uso no TCC da Univás.
+
+\usepackage[brazil]{babel}      % Linguagem do documento
+\usepackage[utf8]{inputenc}     % Reconhece acento e cedilha
+\usepackage[T1]{fontenc}
+\usepackage[alf]{abntex2cite}   % Citações padrão ABNT
+\usepackage{color}              % Controle das cores
+\usepackage{listings}           % Listagem de códigos
+\usepackage{graphicx}           % Incluir imagens
+\usepackage[pdftex,top=3cm,bottom=2cm,left=3.0cm,right=2.0cm]{geometry}
+
+
+
+%copiado do abntex2 para alinhar o capítulo quando ele não possuir número
+%http://hstuart.dk/2007/05/21/styling-the-chapter/
+\makechapterstyle{nuapa}{%
+  \renewcommand{\chapterheadstart}{} 
+
+%comentei pois estava dando erro
+%  \newlength{\chapternamenumlength}
+
+  % tamanhos de fontes de chapter e part	
+   \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+     \setlength\beforechapskip{\baselineskip}
+     \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}
+   }{%else
+     \setlength{\beforechapskip}{0pt}
+     \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
+   }
+  
+  \renewcommand{\chapnumfont}{\chaptitlefont}
+  \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  
+  % tamanhos de fontes de section, subsection e subsubsection
+  \setsecheadstyle{\ABNTEXsectionfont\ABNTEXsectionfontsize\ABNTEXsectionupperifneeded}
+  \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\ABNTEXsubsectionupperifneeded}
+  \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\ABNTEXsubsubsectionupperifneeded}
+  
+  % impressao do numero do capitulo
+  \renewcommand{\chapternamenum}{}
+  
+  % impressao do nome do capitulo
+  \renewcommand{\printchaptername}{%
+   \chaptitlefont
+   \ifthenelse{\boolean{abntex@apendiceousecao}}{\appendixname}{}%
+  }
+    
+  % impressao do titulo do capitulo
+  \def\printchaptertitle##1{%
+    \chaptitlefont%
+    \ifthenelse{\boolean{abntex@innonumchapter}}{\ABNTEXchapterupperifneeded{##1}}{%tirei o \centering
+    % else
+	    \settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+	    \parbox[t]{\columnwidth-\chapternamenumlength}{\ABNTEXchapterupperifneeded{##1}}%
+	}    
+  }
+       
+  % impressao do numero do capitulo     	
+  \renewcommand{\printchapternum}{%
+     \setboolean{abntex@innonumchapter}{false}
+     \chapnumfont%
+     \space\thechapter\space%
+     \ifthenelse{\boolean{abntex@apendiceousecao}}{%
+       --\space%
+     }{} % else
+  }
+  \renewcommand{\afterchapternum}{}
+  
+  % impressao do capitulo nao numerado
+  \renewcommand\printchapternonum{%
+     \setboolean{abntex@innonumchapter}{true}%
+    }
+}
+
+\chapterstyle{nuapa}
+
+
+
+%outra forma de rotacionar figuras
+%\usepackage{rotating}
+%\begin{sidewaysfigure}
+%a figura  vem aqui
+%\end{sidewaysfigure}
+
+%possui fonte bold para typewriter, usado no lstlisting
+\usepackage[lighttt]{lmodern}
+
+%mesclar celulas na tabela: http://en.wikibooks.org/wiki/LaTeX/Tables
+\usepackage{multirow} %fazer spanning na tabela
+
+% usado por abntex2-fichacatalografica.tex
+\usepackage{lastpage}
+
+%espacamento entre linhas
+%\SingleSpacing
+\OnehalfSpacing
+%ajuste fino no espacamento, pois o 1,5 do word esta diferente do 1,5 do latex
+\linespread{1.43}
+%\DoubleSpacing
+
+%O espaçamento entre um parágrafo e outro pode ser controlado por meio do comando:
+%\setlength{\parskip}{0.1cm} % tente também \onelineskip
+\setlength\afterchapskip{4em} 
+
+
+%formatação da linha do rodapé
+%\setfootnoterule[2pt]{\textwidth}% default height is 0.4pt
+%\renewcommand\footnoterule{\kern 0.1cm \rule{\textwidth}{0.4pt} \kern 0.1cm}
+%\renewcommand\footnoterule{\kern 0.1cm \hrule{\textwidth} \kern 0.1cm}
+
+
+%\renewcommand{\figurename}{Imagem}    %renomear o nome padrão da figura 
+
+%Figure: to make all caption labels small and bold:
+\usepackage[font=footnotesize,labelfont=bf,labelsep=endash,justification=centerlast]{caption}
+
+%para controlar Table of Contents, List of Figures and List of Tables
+\usepackage{tocloft}
+
+%no vertical space when figure is in another chapter.
+\renewcommand{\insertchapterspace}{}
+
+% fonte padrão Times
+\renewcommand{\rmdefault}{ptm}
+
+%Configuração de fonte e tamanho de chapter, section e subsection
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXsectionfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXsubsectionfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+
+\renewcommand{\ABNTEXchapterfontsize}{\large}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+\renewcommand{\tocheadstart}{\ABNTEXchapterfont}
+
+%tamanho do tab do parágrafo
+\setlength{\parindent}{1.25cm}
+% Indenta o primeiro parágrafo de cada seção. 
+\usepackage{indentfirst}
+
+
+%inicio da configuracao do toc
+%http://tex.stackexchange.com/questions/50471/question-about-indent-lengths-in-toc
+%Configuração de identação do toc
+\usepackage{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\settocdepth{subsection}
+
+%Espacamento de identação do toc
+%\cftsetindents{chapter}{0.0in}{0.6in}
+%\cftsetindents{section}{0.0in}{0.6in}
+%\cftsetindents{subsection}{0.0in}{0.6in}
+%\cftsetindents{subsubsection}{0.0in}{0.6in}
+%\cftsetindents{paragraph}{0.0in}{0.6in}
+
+%fonte negrito do toc
+%\renewcommand*{\cftdot}{\bfseries.}
+
+%http://tex.stackexchange.com/questions/122588/how-to-make-bold-all-of-the-toc-by-default
+%\addtodef*{\cftsectionfont}{}{\bfseries}
+%\addtodef*{\cftsubsectionfont}{}{\bfseries}
+%\addtodef*{\cftsubsubsectionfont}{}{\bfseries}
+
+%\addtodef*{\cftsectionpagefont}{}{\bfseries}
+%\addtodef*{\cftsubsectionpagefont}{}{\bfseries}
+%\addtodef*{\cftsubsubsectionpagefont}{}{\bfseries}
+
+%espaco entre os pontos no toc
+\makeatletter \renewcommand{\cftchapterdotsep}{1}\makeatother
+\makeatletter \renewcommand{\cftsectiondotsep}{1}\makeatother
+\makeatletter \renewcommand{\cftsubsectiondotsep}{1}\makeatother
+\makeatletter \renewcommand{\cftsubsubsectiondotsep}{1}\makeatother
+
+
+%http://tex.stackexchange.com/questions/75621/remove-bibliography-entry-from-toc-or-change-the-way-it-is-displayed
+%Modificar o título das referências para maiúscula
+\renewcommand{\bibsection}{%
+\chapter*{REFERÊNCIAS}
+\bibmark
+\ifnobibintoc\else
+\phantomsection
+\fi
+\prebibhook}
+\bibintoc
+
+%fim da configuracao do toc
+
+%Configuração de cabeçalhos
+
+%Cabeçalho de páginas de início de capítulo
+%Retirado do abntex2.cls para retirar o numero de página da primeira página de cada capítulo
+\makepagestyle{abntchapfirst}
+\makeoddfoot{abntchapfirst}{}{}{}
+
+%Cabeçalho de páginas comuns
+\makepagestyle{abntheadings} %%cabeçalhos
+\makeevenfoot{abntheadings} {} {} {\fontfamily{ptm}\ABNTEXfontereduzida\thepage} %%pagina par
+\makeoddfoot{abntheadings} {} {} {\fontfamily{ptm}\ABNTEXfontereduzida\thepage} %pagina ímpar ou com oneside
+%\makeevenhead{meuestilo} {} {} {\bfseries\fontfamily{ptm}\thepage} %%pagina par
+
+%mostra numeração das páginas
+%\pagestyle{meuestilo}%nao precisa mais pois os estilos usam os nomes do abntex2
+
+
+%check better: http://tex.stackexchange.com/questions/53338/reducing-spacing-after-headings
+%configuracao do espacamento antes e depois de sections, sub e subsub.
+\usepackage{titlesec}
+
+%\titlespacing\chapter{0pt}{5em plus 4pt minus 2pt}{5em plus 2pt minus 2pt}
+\titlespacing\section{0pt}{3em plus 4pt minus 2pt}{2em plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{3em plus 4pt minus 2pt}{2em plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{3em plus 4pt minus 2pt}{2em plus 2pt minus 2pt}
+
+
+%alinha a assinatura para a esquerda
+%\renewcommand{\ABNTEXcsign}[1] {\begingroup\par\centering\ABNTEXsign{#1}\par\endgroup}
+%\renewcommand{\ABNTEXcsign}[1]{\begingroup\par\raggedright\ABNTEXsign{#1}\par\endgroup}  
+
+
+% Comandos de dados
+\providecommand{\imprimircurso}{}
+\newcommand{\curso}[1]{\renewcommand{\imprimircurso}{#1}}
+\newcommand{\dataDaAprovacao}[1]{\def\imprimirDataDaAprovacao{#1}}
+\newcommand{\autorCitacao}[1]{\def\imprimirAutorCitacao{#1}}
+\newcommand{\autorCitacaoMaiuscula}[1]{\def\imprimirAutorCitacaoMaiuscula{#1}}
+
+\newcommand{\autorUm}[1]{\def\imprimirAutorUm{#1}}
+\newcommand{\autorDois}[1]{\def\imprimirAutorDois{#1}}
+
+\newcommand{\palavraChaveUm}[1]{\def\imprimirPalavraChaveUm{#1}}
+\newcommand{\palavraChaveDois}[1]{\def\imprimirPalavraChaveDois{#1}}
+\newcommand{\palavraChaveTres}[1]{\def\imprimirPalavraChaveTres{#1}}
+
+\newcommand{\keyWordOne}[1]{\def\imprimirKeyWordOne{#1}}
+\newcommand{\keyWordTwo}[1]{\def\imprimirKeyWordTwo{#1}}
+\newcommand{\keyWordThree}[1]{\def\imprimirKeyWordThree{#1}}
+
+\newcommand{\avaliadorLabelUm}[1]{\def\imprimirAvaliadorLabelUm{#1}}
+\newcommand{\avaliadorLabelDois}[1]{\def\imprimirAvaliadorLabelDois{#1}}
+\avaliadorLabelUm{Avaliador}
+\avaliadorLabelDois{Avaliador}
+
+\newcommand{\avaliadorUm}[1]{\def\imprimirAvaliadorUm{#1}}
+\newcommand{\avaliadorDois}[1]{\def\imprimirAvaliadorDois{#1}}
+
+
+\usepackage{styles/EventFlowStyle}
+
+\addto\captionsbrazil{
+  \renewcommand{\listfigurename}{Lista de Figuras}
+  \renewcommand{\listadesiglasname}{Lista de Siglas e Abreviaturas}
+}
+
+% Novo list of (listings) para QUADROS
+
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+%\usepackage{floatrow} % floatfoot do quadro %comentado pois dá erro de \newfloat already defined
+
+%\DeclareNewFloatType{quadro}{
+%  placement=loq,
+%  fileext=loq,
+%  widthin=chapter
+%%  , name=\quadroname
+%}
+
+%\DeclareNewFloatType{Quadro}%
+%{placement=loq,fileext=loq,widthin=chapter} 
+
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+
+\usepackage{caption}
+
+\DeclareCaptionLabelFormat{dash}{#1~--~#2}
+
+\captionsetup[Quadro]{
+         listformat=empty,
+         tablename=\textbf{Quadro},
+         justification=centerlast,
+%         labelsep=period,
+         labelformat=dash,
+         position=above,
+         skip=\onelineskip,
+         width=\linewidth,
+         labelfont={small,bf},
+         font={small}
+         }
+
+\captionsetup[floatfoot]{format=default,justification=centerfirst}
+
+%FIM de % Novo list of (listings) para QUADROS
+
+
+\input{editaveis/00_Dados}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={\imprimirPalavraChaveUm. \imprimirPalavraChaveDois. \imprimirPalavraChaveTres.}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        	% color of links to bibliography
+    	filecolor=magenta,          % color of file links
+		urlcolor=black,
+		bookmarksdepth=3 
+}
+\makeatother
+
+\renewcommand*{\lstlistlistingname}{Lista de Códigos}
+\renewcommand{\lstlistingname}{Código}
+
+\renewcommand{\anexosname}{ANEXOS}
+
+%http://tex.stackexchange.com/questions/126654/lstlistoflistings-isnt-showing-the-lstlistingname
+%mostra o texto da variavel lstlistingname antes do número do código
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+  \begingroup%
+  \let\oldnumberline\numberline%
+  \renewcommand{\numberline}{\lstlistingname~\oldnumberline}%
+  \oldlstlistoflistings%
+  \endgroup}
+
+%http://tex.stackexchange.com/questions/11637/lstlistoflistings-font
+%\makeatletter
+%\renewcommand*{\l@lstlisting}[2]{\@dottedtocline{1}{1.5em}{2.3em}{\lstlistingname~\fontfamily{ptm}#1}{\fontfamily{ptm}#2}}
+%\makeatother
+
+
+%\captionsetup[lstlistoflistings]{\lstlistingname \lstname Code \arabic{lstlisting} :}
+
+%\newcommand{\listingcaption}[1]%
+%{%
+%\refstepcounter{lstlisting}\hfill%
+%Listing \thelstlisting -- #1\hfill%\hfill%
+%}%
+
+%verificar
+
+%\newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+
+%alinhar as assinaturas na esquerda
+\usepackage{ragged2e}
+\renewcommand{\ABNTEXsign}[1]{%
+  \parbox[t]{\ABNTEXsignwidth}{\SingleSpacing\vspace*{\ABNTEXsignskip}\raggedright%
+  \rule{\ABNTEXsignwidth}{\ABNTEXsignthickness}\\%
+  \nopagebreak #1\par}%
+}
+
