@@ -1,0 +1,15 @@
+0]JAVAty
+Parte pre-projeto
+
+
+	Java é uma linguagem de programação e uma plataforma de desenvolvimento lançada em 1996 pela Sun Microsystems com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – WEB – Mobile). Qualquer dispositivo que possua a JVM é capaz de executar o software desenvolvido em java (SOBRAL; CLARO, 2008). 
+	O objetivo da linguagem Java é uma plataforma para o desenvolvimento de sistemas de médio a grande porte. Uma das muitas vantagens de se utilizar a plataforma Java é a grande quantidade de bibliotecas gratuitas que podem ser utilizadas em diversos projetos. Como cada linguagem é apropriada para uma determinada área, a utilização da Java é melhor para o desenvolvimento de aplicações que tenham tendência a crescer (CAELUM, 2015).
+	Para se desenvolver em Java é necessário instalar um Kit de desenvolvimento, o JDK - Java Development Kit, o qual pode ser obtido no própio site da Oracle - empresa mantenedora da plataforma. Ele é composto de compilador, máquina virtual, bibliotecas e utilitários.(CAELUM, 2015).
+	E assim essa linguagem demostra ser de imprescindível utilidade para nosso projeto, pois além de várias vantagens propiciadas citadas anteriormente temos ainda a facilidade da manutenção e alteração do código e o seu uso em diversas plataformas.
+
+Referencias
+
+CAELUM. Apostila java e orientação a objetos. 2015. Disponível em:
+<http://www.caelum.com.br/apostila-java-orientacao-objetos/> Acesso em: 08 mar. 2015.
+
+CLARO, D. B., SOBRAL, J. B. M. Programação em Java. Santa Catarina: Copyleft Pearson Education, 2008. 

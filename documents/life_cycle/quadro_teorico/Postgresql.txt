@@ -1,0 +1,22 @@
+BANCO POSTGRESQL
+
+	Segundo Neto (2003 apud Souza et al,2012,p. 2), o PostgreSQL é um SGBDR – Sistema Gerenciador de
+Banco de Dados Relacional que está baseado nos padrões SQL ANSI-92, 96 e 99,possui alta
+performance, de fácil administração e utilização em projetos por especialistas Database
+Administrator (DBA) e Projetistas de Sistemas.
+	PostgreSQL teve origem em um projeto chamado de POSTGRES na Universidade Berkeley, na Califórnia (EUA), em 1986. Sua equipe fundadora foi orientada pelo professor Michael Stonebraker com o apoio
+de diversos órgãos, entre eles o Army Research Office (ARO) e o National Science
+Foundation (NSF). Atualmente, o SGBD encontra-se em
+sua versão 9.4 estável, contendo todas as principais características que um SGBD
+pode disponibilizar.(MILANI,2008).
+	Seu código é livre e há um grupo responsável pela sua validação.
+Grandes empresas como a Fujitsu, NTT Goup, Skype, Hub.org, Red Hat e SRA são
+financiadoras do PostgreSQL que, além disso, recebe doações. É utilizado por multinacionais,
+órgãos governamentais e universidades. Recebeu vários prêmios como melhor sistema de
+banco de dados Open Source.(Souza et al; 2011).
+
+MILANI, André. PostgreSQL - Guia do Programador. Novatec. 2008.
+
+SOUZA, A. C.; AMARAL, H. R.; LIZARDO, L. E. O. PostgreSQL: uma alternativa para
+sistemas gerenciadores de banco de dados de código aberto. In: Anais do Congresso
+Nacional Universidade, EAD e Software Livre. 2012.

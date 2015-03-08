@@ -1,0 +1,12 @@
+	Segundo Bauer e King(2005, p.19) Hibernate é um framework de persistência que possui como propósito fornecer uma visão orientada a objetos sobre um banco de dados relacionais existente, ou seja, persistir e gerenciar objetos de Java para as tabelas dos bancos de dados relacionais. Para se realizar essa conversão de dados é utilizado arquivos XML que contém as configurações para se fazer o mapeamento dos dados contidos da classe em Java para as colunas do SGBD.
+	Utilizar-se dos benefícios oferecidos pelo Hibernate para o desenvolvimento de uma aplicação que utilize banco de dados relacional e linguagem orientada a objetos é de grande estima, pois segundo Durham e Johnson(1996, pg.34) no desenvolvimento de software, um framework é uma estrutura de suporte definida em que um outro projeto de software pode ser
+organizado e desenvolvido. Tipicamente, um framework pode incluir programas de apoio,
+bibliotecas de código, linguagens de script e outros softwares para ajudar a desenvolver e
+juntar diferentes componentes do seu projeto.
+
+BAUER, Christian; KING, Gavin. Hibernate in action. Greenwitch: Manning Publications,
+2005.
+DURHAM, A; JOHNSON R. A Framework for Run-time Systems and its Visual
+Programming Language. In: OBJECT-ORIENTED PROGRAMMING SYSTEMS,
+LANGUAGES, AND APPLICATIONS. San Jose, CA, October 1996 Proceedings...
+OOPSLA 1996 p. 20-25.
