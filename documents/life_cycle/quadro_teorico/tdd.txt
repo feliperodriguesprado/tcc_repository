@@ -1,0 +1,19 @@
+Dentre as atividades de um processo de desenvolvimento, as atividades de testes têm
+uma importância fundamental para a garantia de qualidade do software que está sendo
+desenvolvido, a qual é aplicada no decorrer de todo o projeto. 
+	Automatizar os testes de um software é a atividade de submeter o código desenvolvido para outro software testá-lo e assim obter o apontamento de erros no código e indicação da falhas para futura correção.
+	Qualidade do software e fácil manutenção e evolução são uma das vantagens que se conquista testando um software (VAZ, 2003).
+	Teste é a atividade do ciclo de desenvolvimento de Software na qual pode ser
+observada maior distância entre a teoria (técnicas de teste propostas) e a prática
+(aplicação destas técnicas) (MYE, 1979).
+	Se a produtividade for medida
+através do número de linhas de código final escritos por dia,o rendimento será menos produtivo. Todavia, se produtividade for a quantidade
+de linhas de código final sem defeitos escritos por dia, provavelmente o rendimento
+será mais produtivo ao usar testes automatizados (ANICHE, 2012).
+	Para facilitar a execução das rotinas dos testes automatizados foram criados frameworks como o JUnit, que através da instalação de seu plugin na ferramenta de desenvolvimento Eclipse, disponibiliza uma infra-estrutura para se realizar os testes do código (VAZ, 2003).
+
+MYERS, Glenford John. The Art of Software Testing. 1979 
+
+VAZ, Rodrigo Cardoso. JUnit - Framework para testes em Java.Palmas: Centro Universitário de Palmas, 2003.
+
+ANICHE, Mauricio. Test-Driven Development. Teste e Design no Mundo Real. Casa do Código. 2012.
