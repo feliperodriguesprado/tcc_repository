@@ -1,0 +1,49 @@
+
+\chapter{QUADRO METODOLÓGICO}
+\label{cap:quadroMetodologico}
+
+\par Conteúdo do quadro metodológico. Perceba a forma que se coloca uma palavra entre aspas: o \LaTeX~oferece muita ``facilitade de formatação''.
+
+Exemplo de código Java:
+
+\begin{lstlisting} [style=custom_Java,caption={[Métodos da classe \texttt{FilmeBean}]{Métodos da classe \texttt{FilmeBean}. \textbf{Fonte:} Elaborado pelos autores.}}, label=fig:metodosclassebean] 	
+	public FilmeBean(){  
+       //...
+   	}	
+   	
+	public void saveMovie(){
+		setListActorSelected();		
+		if(this.movieDAO.saveMovieGraph(this.movieTo)){
+			FacesContext.getCurrentInstance().addMessage(null, 
+			   new FacesMessage("Filme cadastrado com sucesso!")); 
+		}else{
+			//...
+		}		
+		this.limpaCampos();
+	}
+\end{lstlisting}
+
+\par Agora será mostrado o exemplo do uso de fluxo de eventos apresentado no Quadro~\ref{quad:fluxo_evento_cadastro_filme}.
+
+\begin{quadro}[h!]
+  \input{./fluxos/fluxo-evento-cadastro-filme}
+  \caption[Fluxo de eventos para cadastro de filme]
+           {Fluxo de eventos para cadastro de filme. \textbf{Fonte:} Elaborado pelos autores}
+  \label{quad:fluxo_evento_cadastro_filme}
+\end{quadro}
+
+\par Outro exemplo é ilustrado na Figura~\ref{fig:bluesky}. Neste caso um código XML foi embutido dentro de um ambiente de figura, para que este código seja incluído no índice de figuras adequadamente.
+ 
+\begin{figure}[ht!]
+  \begin{lstlisting} [style=custom_XML]
+	...
+	<context-param>
+		<param-name>primefaces.THEME<\param-name>
+		<param-value>bluesky<\param-value>
+	<\context-param>
+	...
+  \end{lstlisting}
+  \caption[Incluindo o tema \textit{BlueSky} ao contexto do projeto]
+          {Incluíndo o tema \textit{BlueSky} ao contexto do projeto. \textbf{Fonte:} Elaborado pelos autores.}
+  \label{fig:bluesky}
+\end{figure}

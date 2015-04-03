@@ -1,0 +1,75 @@
+
+\usepackage{booktabs}
+
+%http://www.tex.ac.uk/cgi-bin/texfaq2html?label=errmissitem
+\newcounter{tablecell}
+
+\newcommand*{\numbercell}{%
+  \stepcounter{tablecell}%
+  \thetablecell. % **
+}
+
+\newcommand\addrow[2]{  \multicolumn{1}{|l|}{\textbf{#1}} & \multicolumn{1}{|l|}{ #2}\\ \hline}
+
+\newenvironment{fluxoDeEventos}{
+\begin{small}
+  \begin{tabular}{|c|c|}
+    \hline
+  }
+  {\hline\end{tabular}
+   \end{small}}
+
+\newcommand\startBasicFlowDefault{ 
+  \hline 
+  \multicolumn{2}{|c|}{\setcounter{tablecell}{0} \textbf{Fluxo Principal}} 
+  \\
+  \hline 
+  \textbf{Ator} & \textbf{Sistema} \\
+  \hline 
+}
+
+\newcommand\startBasicFlow[2]{ 
+  \hline 
+  \multicolumn{2}{|c|}{\setcounter{tablecell}{0} \textbf{Fluxo Principal}} 
+  \\
+  \hline 
+  \textbf{#1} & \textbf{#2} \\
+  \hline 
+}
+
+\newcommand\startAlternativeFlow[1]{ 
+  \hline 
+  \multicolumn{2}{|c|}{\setcounter{tablecell}{0} \textbf{#1}} 
+  \\
+  \hline 
+}
+
+\newcommand\startErrorFlow[1]{ 
+  \hline 
+  \multicolumn{2}{|c|}{\setcounter{tablecell}{0} \textbf{#1}} \\
+  \hline 
+}
+
+\newcommand\addItemOne[1]{ 
+  \numbercell
+  \begin{minipage}[t]{7cm}
+    #1
+    \vspace{1.3ex}
+  \end{minipage}
+  & \\
+  \hline
+}
+
+\newcommand\addItemTwo[1]{ 
+  & \numbercell
+  \begin{minipage}[t]{7cm}
+    #1
+    \vspace{1.3ex}
+  \end{minipage}
+  \\
+  \hline
+}
+
+\newcommand\addHeading[2]{\textbf{#1} & \textbf{#2}\\ \hline}
+
+\newcommand\addTitle[1]{\multicolumn{2}{|c|}{\textbf{#1}} \\ \hline}

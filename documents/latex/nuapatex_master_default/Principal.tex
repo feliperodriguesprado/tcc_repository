@@ -1,0 +1,51 @@
+%Documento principal do latex para uso no TCC da Univás.
+
+\documentclass[a4paper, 12pt, chapter=TITLE, oneside, english, brazil]{abntex2}
+
+\usepackage{styles/CodeStyle}      %Formatação de códigos e listagens
+\usepackage{styles/EventFlowStyle} %Estilo para o quadro de fluxo de eventos
+\usepackage{styles/NuapaStyle}     %Estilo exigido pela Univás
+
+%Início do documento
+\begin{document}
+
+\pretextual %Início dos Elementos Pré-Textuais
+
+\include{fixos/01_Capa}
+\input{fixos/02_FolhaRosto}
+\input{fixos/03_FichaCatalografica}
+\input{fixos/04_FolhaAprovacao}
+\input{editaveis/05_Dedicatoria}
+\input{editaveis/06_Agradecimentos}
+\input{editaveis/07_Epigrafe}
+\input{editaveis/08_Resumo}
+\input{editaveis/09_Abstract}
+\input{fixos/0A_ListasAutomaticas}
+\input{editaveis/0B_Siglas}
+\input{fixos/0C_Sumario}
+
+
+\textual %Início dos Elementos Textuais
+
+\input{editaveis/10_Introducao}
+\input{editaveis/11_QuadroTeorico}
+\input{editaveis/12_QuadroMetodologico}
+\input{editaveis/13_Resultados}
+\input{editaveis/14_Conclusao}
+
+
+\postextual %Início dos Elementos Pós-Textuais
+
+%\citeoption{abnt-etal-cite=2}
+\citeoption{ABNT-final}
+
+\bibliography{nuapatex-options, biblio}			            % insere as REFERENCIAS (arquivo biblio.bib)
+%\bibliography{biblio}			            % insere as REFERENCIAS (arquivo biblio.bib)
+\addcontentsline{toc}{chapter}{REFERÊNCIAS} % adiciona o título no sumário
+
+\input{editaveis/20_Apendices}
+\input{editaveis/30_Anexos}
+
+\printindex
+
+\end{document}

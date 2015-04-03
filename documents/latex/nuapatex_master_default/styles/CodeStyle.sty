@@ -1,0 +1,86 @@
+
+\usepackage{color}              % Controle das cores
+\usepackage{listings}           % Listagem de códigos
+
+\definecolor{blue}{RGB}{41,5,195}
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{purple}{rgb}{0.5,0,0.5}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+%configuração de estilo básico de listagem
+%\lstset{
+%  basicstyle=\ttfamily,
+%  columns=fullflexible,
+%  showstringspaces=false,
+%  commentstyle=\color{gray}\upshape
+%}
+
+%%http://stackoverflow.com/questions/1965702/how-to-mark-line-breaking-of-long-lines
+%\lstset{
+%    breaklines     = true,
+%    numbers        = left
+%%,    stepnumber     = 5,
+%}
+
+
+\lstdefinestyle{custom_Java}{
+ language=Java,
+ captionpos=t,
+ tabsize=2,
+ frame=lines,
+ keywordstyle=\color{javapurple}\bfseries,
+ commentstyle=\color{darkgreen},
+ stringstyle=\color{blue},
+ numbers=left,
+ numberstyle=\tiny\color{gray},
+ numbersep=15pt,
+ breaklines=true,
+ lineskip=-1pt, %specifies additional space between lines in listings. default 0pt
+ showstringspaces=false,
+ basicstyle=\footnotesize\ttfamily,
+ keywords=[2]{label,@Author,@SuppressWarnings,@Override,@Entity,@Table,@Column,@Id,@GeneratedValue,@SequenceGenerator,@Temporal,@OneToMany,@ManyToOne,@JoinColumn,@Transient,@Embeddable,@EmbeddedId,@NotNull,@OrderBy,@ManagedBean,@SessionScoped},
+ keywordstyle=[2]\color{gray}\bfseries,
+ morekeywords={},
+ xleftmargin=13pt, %afasta a margem esquerda
+ numbersep=5pt
+ %,framexleftmargin=17pt
+}
+
+\lstdefinestyle{custom_SQL}{
+ language=SQL,
+ frame=ltrb,
+ framesep=4pt,
+ basicstyle=\footnotesize,
+ keywordstyle=\ttfamily\color{green},
+ identifierstyle=\ttfamily\color{blue}\bfseries, 
+ commentstyle=\color{brown},
+ stringstyle=\ttfamily,
+ showstringspaces=true
+}
+
+%ver site: http://tex.stackexchange.com/questions/10255/xml-syntax-highlighting
+%lstdefinelanguage
+\lstdefinestyle{custom_XML}
+{
+  captionpos=t,
+  tabsize=2,
+  basicstyle=\footnotesize\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape,
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{blue},
+  identifierstyle=\color{darkgreen},
+  keywordstyle=\color{purple},
+  morekeywords={xmlns, version, type, name, value, transaction}% list your attributes here
+}
