@@ -1,2 +1,36 @@
 Arquivo de rascunho para o quadro metodológico:
 
+===============================================================================================================================================================
+Tipo de pesquisa
+
+Pela necessidade de se desenvolver uma solução para os problemas descritos nos capítulos anteriores, e não sendo nosso objetivo implantar o software em nenhuma empresa durante o seu desenvolvimento, escolhemos a pesquisa de forma aplicada como o tipo de pesquisa que mais nos agregaria vantagens e mostraria melhor os resultados obtidos.
+
+Pois Appolinário (2004,p. 152) salienta que pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
+
+Correções: Isso é objetivo. Ea definição?
+
+Solução: tem um material nas referencias que tem as definições todas, utilizar ele e adequar texto.
+Utilizar livro baixado "Como Elaborar Projetos de Pesquisa"
+===============================================================================================================================================================
+
+Contexto de pesquisa
+
+Houve um grande avanço nas últimas décadas na quantidade de softwares comerciais desenvolvidos, mas pela pressão do prazo de entrega cada vez mais curto e até pela falta de conhecimento dos desenvolvedores, os softwares acabaram tomando um rumo em que a qualidade deles acabaram decaindo, não em questão de usabilidade do usuário, mas no sentido de se fazer uma engenharia de software correta. 
+
+Isso provém do irônico (Não se usa essa palavra num TCC!) contexto quando as empresas poupam seus esforços e recursos no desenvolvimento do software almejando mais lucros, todavia culminam com um custo de manutenção desse software muitas vezes mais dispendioso do que o acumulado da parte do desenvolvimento.
+
+Nesse contexto surgiu a modularização utilizando o OSGi como uma solução já estabelecida e firmada no mercado de específicas aplicações (como SO's de servidores e aparelhos mobile, além de softwares como o Eclipse IDE). Iremos trazer as metodologias, engenharias, técnicas e tecnologias para o âmbito de softwares comerciais para prover uma base para a facilitação na manutenção e expansão de um software.
+
+Correção: Mas quem vai se beneficiar? Melhorar texto(ficou confuso mesmo)
+
+Solução: usar o texto do site: http://www.osgi.org/Technology/WhyOSGi
+e deixar o texto mais claro
+
+===============================================================================================================================================================
+
+Procedimentos
+
+- Descrever e definir o funcionamento de um sistema modularizado.
+- Analisar a atividade e desempenho de diferentes tipos de bancos de dados, para escolha de um que apresente maior desempenho para a função a ser desempenhada.
+- Desenvolver um software para criação, mapeamento e inserção de procedimentos básicos de um banco de dados e de um projeto em Java.
+- Demonstrar a performance de desenvolvimento utilizando o software desenvolvido, na utilização do dia a dia.
