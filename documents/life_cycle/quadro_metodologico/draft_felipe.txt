@@ -1,17 +1,23 @@
 Arquivo de rascunho para o quadro metodológico:
 
-===============================================================================================================================================================
+=================================================================================================================================================================
 Tipo de pesquisa
 
+Pesquisa é um processo desenvolvido com o objetivo de obter respostas para indagações propostas, através de conhecimentos existentes e a utilização de métodos, técnicas e procedimentos científicos. Uma pesquisa se faz necessária quando não existem repostas suficientes que satisfaçam a resolução de problemas (GIL, 2002).
+
+Dentre os vários tipos de pesquisa, a pesquisa realizada é do tipo aplicada. É utilizada quando se desenvolve um produto real, com uma finalidade prática que pode ser aplicado em determinado contexto. De acordo com Appolinário (2004,p. 152) pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
+
+Aplicando esse conceito, através desta pesquisa será desenvolvido um aplicativo modularizado com o objetivo de facilitar o desenvolvimento e manutenção do software e a aplicação do mesmo em empresas de diferentes ramos.
+
+Referências:
+APPOLINÁRIO, Fabio. Dicionário de metodologia: um guia para a produção do conhecimento científico. São Paulo: Atlas, 2004.
+GIL, Antônio Carlos. Como elaborar projetos de pesquisa. São Paulo: Atlas, 2002.
+
+---------------------------------------------------------------------Removido------------------------------------------------------------------------------------
 Pela necessidade de se desenvolver uma solução para os problemas descritos nos capítulos anteriores, e não sendo nosso objetivo implantar o software em nenhuma empresa durante o seu desenvolvimento, escolhemos a pesquisa de forma aplicada como o tipo de pesquisa que mais nos agregaria vantagens e mostraria melhor os resultados obtidos.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Pois Appolinário (2004,p. 152) salienta que pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
-
-Correções: Isso é objetivo. Ea definição?
-
-Solução: tem um material nas referencias que tem as definições todas, utilizar ele e adequar texto.
-Utilizar livro baixado "Como Elaborar Projetos de Pesquisa"
-===============================================================================================================================================================
+=================================================================================================================================================================
 
 Contexto de pesquisa
 
