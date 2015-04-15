@@ -7,7 +7,7 @@ Tipo de pesquisa
 
 Para atingir os objetivos deste projeto, a pesquisa realizada é do tipo aplicada. É utilizada quando se desenvolve um produto real, com uma finalidade prática, que pode ser aplicado em determinado contexto. Conforme aponta Appolinário (2004,p. 152), pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
 
-Pesquisa é um processo desenvolvido com o objetivo de obter respostas para indagações propostas, através de conhecimentos existentes e a utilização de métodos, técnicas e procedimentos científicos. Uma pesquisa se faz necessária quando não existem repostas suficientes que satisfaçam a resolução de problemas (GIL, 2002)
+Pesquisa é um processo desenvolvido com o objetivo de obter respostas para indagações propostas, através de conhecimentos existentes e a utilização de métodos, técnicas e procedimentos científicos. Uma pesquisa se faz necessária quando não existem repostas suficientes que satisfaçam a resolução de problemas (GIL, 2002).
 
 Aplicando esses conceitos e utilizando a pesquisa de forma aplicada por agregar maiores vantagens e mostrar melhor os resultados obtidos, será desenvolvido um software modularizado com o objetivo de facilitar sua manutenção e aplicação em empresas de diferentes ramos.
 
@@ -27,11 +27,13 @@ Pela necessidade de se desenvolver uma solução para os problemas descritos nos
 
 Contexto de pesquisa
 
-Existe diversos tipos de softwares e aplicativos que são executados em empresas, industrias, na web, nos computadores pessoais e dispositivos móveis. Com isso seu desenvolvimento cresce cada vez mais, criando uma competitividade de mercado, pois quanto melhor for o software, maior será sua aceitação.
+Cada vez mais softwares são utilizados em empresas, industrias, computadores pessoais, web e dispositivos móveis. São desenvolvidos através de práticas e tecnologias existentes que auxiliam na sua criação, porém, a não utilização de tais ferramentas torna o seu desenvolvimento e manutenção um processo desgastante e trabalhoso.
 
-Esta pesquisa irá expor a utilização do framework OSGi, que possibilita o desenvolvimento do software em módulos, oferecendo melhor organização na sua estrutura, vantagens na manutenção e maior facilidade na expansão do mesmo, já que é construído em módulos.
+Esta pesquisa irá demonstrar a utilização do framework OSGi, que possibilita o desenvolvimento do software em módulos, oferecendo melhor organização na sua estrutura, vantagens na manutenção e maior facilidade na expansão do mesmo, já que é construído em módulos.
 
-O objetivo desse projeto é trazer as metodologias, engenharias, técnicas e tecnologias para o âmbito de softwares comerciais e prover uma base para a facilitação na manutenção e expansão de um software.
+Softwares modularizados oferecem maior flexibilidade para atender empresas de diferentes áreas. Através do OSGi, os módulos podem ser desenvolvidos de forma independente, sendo assim, o software pode disponibilizar módulos específicos para cada empresa. Dessa maneira será desenvolvido um software que pode ser adotado por empresas de diferentes segmentos no mercado, bastando apenas que exista um módulo que atenda a necessidade específica da área.
+
+O objetivo desse projeto é trazer as metodologias, engenharias, técnicas e tecnologias para o âmbito de softwares comerciais e prover uma base para a facilitação na manutenção e expansão do mesmo.
 
 ----------------------------------------------------------------------------Removido----------------------------------------------------------------------------
 Houve um grande avanço nas últimas décadas na quantidade de softwares comerciais desenvolvidos, mas pela pressão do prazo de entrega cada vez mais curto e até pela falta de conhecimento dos desenvolvedores, os softwares acabaram tomando um rumo em que a qualidade deles acabaram decaindo, não em questão de usabilidade do usuário, mas no sentido de se fazer uma engenharia de software correta. 
