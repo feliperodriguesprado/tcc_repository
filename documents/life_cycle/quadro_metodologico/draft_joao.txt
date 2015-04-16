@@ -1,0 +1,30 @@
+PARTICIPANTES{
+
+Participam deste projeto os acadêmicos do curso de bacharelado em Sistemas de Informação pela Universidade do Vale do Sapucaí - UNIVAS os alunos Felipe Rodrigues do Prado e João Paulo Nakajima Pereira sob a orientação do professor Márcio Emílio Cruz Vono de Azevedo.
+Felipe Rodrigues do Prado no ano de 2010 formou-se em técnico em informática pelo Serviço Nacional de Aprendizagem Comercial (SENAC) e atualmente é estagiário no ICC - Inatel Competence Center, atuando como desenvolvedor de software para soluções empresariais.
+João Paulo Nakajima Pereira exerce a profissão de analista de suporte na empresa Automação e cia, na qual se presta serviços de atendimento ao cliente e suporte em softwares de automação de empresas.	
+Márcio Emílio Cruz Vono de Azevedo é bacharel em Engenharia Elétrica na modalidade eletrônica pelo Instituto Nacional de Telecomunicações - INATEL , Mestre em Ciência da Computação pela Universidade Federal de Itajubá - UNIFEI, é professor nas instituições de ensino INATEL na disciplina de orientação a objetos e na UNIVAS nas disciplinas de engenharia de software, linguagem de programação e sistemas distribuídos. É diretor de desenvolvimento de software na empresa TM Tecnologia da Informação Ltda.	
+O interesse dos participantes nesta pesquisa são conhecer e demonstrar a potencialidade de um sistema modularizado de atingir novas áreas empresariais, analisando os benefícios e desafios que poderão ser encontrados, além de obtermos mais conhecimentos sobre essa nova prática de modularizar o software, permitindo assim, como consequência final o alcance de maior vantagem competitiva para as empresas, pois estas usufruiriam de menor custo(tanto financeiro quanto de tempo) de manutenção do software, propiciando maior confiabilidade e disponibilidade do mesmo.
+	
+	}
+	
+INSTRUMENTOS{	
+Para desenvolver esta pesquisa será necessária a realização de reuniões entre os participantes, para a obtenção e organização das informações, divisão das tarefas e desenvolvimento do software, pois segundo KIOSKEA (2014) "As reuniões são um meio para partilhar, num grupo de pessoas, um mesmo nível de conhecimento sobre um assunto ou um problema e para tomar decisões colectivamente. Além disso, decisões tomadas coletivamente, com representantes das diferentes entidades interessadas, serão mais facilmente aceitas por todos".
+Os dados serão obtidos a partir de revisões, pesquisas bibliográficas e reuniões online com pessoas que possuem conhecimentos e experiências profundas desse tema. Após realizado isso será possível analisar e organizar as informações.
+As reuniões entre os participantes possui o objetivo de definir a linha de raciocínio a ser seguida, pois o tema apresenta alto nível de complexidade e uma área de aplicação muito abrangente.(Também de) Tomar decisões quanto ao desenvolvimento do software e da utilização e forma de apresentação das tecnologias e metodologias que serão abordadas no projeto.
+	}
+PROCEDIMENTOS{
+A ideia deste trabalho é elaborar um software modularizado que permita a fácil manutenção e expansão, auxiliando no suporte e futura ampliação do mesmo. Desta forma para a elaboração deste projeto, tornou-se necessário a distribuição deste em vários procedimentos citados a seguir.
+-Definir o software a ser desenvolvido para demonstrar as funcionalidades e vantagens de um software modularizado;
+-Levantar dos requisitos;
+-Modelar e elaborar o banco de dados;
+-Mapear o banco de dados seguindo a metodologia objeto-relacional;
+-Fazer o design e criar as interfaces de interação com o usuário;
+-Implementar a lógica do negócio;
+-Estruturar e ligar funcionalmente os módulos do sistema;
+-Documentar o projeto.
+Após a conclusão desses procedimentos deve ser feita a análise para a verificação do funcionamento e desempenho tecnologia no âmbito de aplicações empresariais, averiguando os benefícios e o ponderando a utilização dessa nova forma de se desenvolver softwares.
+}
+REFERÊNCIAS{
+KIOSKEA. Condução de reunião. 2014. Disponível em http://pt.kioskea.net/contents/579-conducao-de-reuniao. Acesso em 16 de abril, 2015.
+}
