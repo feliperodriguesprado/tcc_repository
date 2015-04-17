@@ -1,13 +1,13 @@
 Arquivo de rascunho para o quadro metodológico:
 
-Neste capítulo serão abordados os métodos definidos para conduzir a pesquisa. Serão apresentados o tipo de pesquisa, contexto da pesquisa, participantes, orçamento, cronograma, instrumentos e procedimentos para o desenvolvimento do projeto.
+Neste capítulo serão abordados os caminhos definidos para conduzir a pesquisa. Serão apresentados o tipo de pesquisa, seu contexto, bem como os participantes, o orçamento, o cronograma, os instrumentos e os procedimentos para o desenvolvimento da pesquisa.
 
 ================================================================================================================================================================
 Tipo de pesquisa
 
-Para atingir os objetivos deste projeto, a pesquisa realizada é do tipo aplicada. É utilizada quando se desenvolve um produto real, com uma finalidade prática, que pode ser aplicado em determinado contexto. Conforme aponta Appolinário (2004,p. 152), pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
-
 Pesquisa é um processo desenvolvido com o objetivo de obter respostas para indagações propostas, através de conhecimentos existentes e a utilização de métodos, técnicas e procedimentos científicos. Uma pesquisa se faz necessária quando não existem repostas suficientes que satisfaçam a resolução de problemas (GIL, 2002).
+
+Para atingir os objetivos desta pesquisa, será desenvolvida uma pesquisa de abordagem aplicada, a qual é utilizada quando se desenvolve um produto real, com uma finalidade prática, que pode ser aplicado em determinado contexto. Conforme aponta Appolinário (2004,p. 152), pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas".
 
 Aplicando esses conceitos e utilizando a pesquisa de forma aplicada por agregar maiores vantagens e mostrar melhor os resultados obtidos, será desenvolvido um software modularizado com o objetivo de facilitar sua manutenção e aplicação em empresas de diferentes ramos.
 
@@ -21,13 +21,12 @@ CERVO, Amado L.; BERVIAN,  Pedro A., Metodologia Científica, 5ªed., São Paulo
 
 ----------------------------------------------------------------------------Removido----------------------------------------------------------------------------
 Pela necessidade de se desenvolver uma solução para os problemas descritos nos capítulos anteriores, e não sendo nosso objetivo implantar o software em nenhuma empresa durante o seu desenvolvimento, escolhemos a pesquisa de forma aplicada como o tipo de pesquisa que mais nos agregaria vantagens e mostraria melhor os resultados obtidos.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ================================================================================================================================================================
 
 Contexto de pesquisa
 
-Cada vez mais softwares são utilizados em empresas, industrias, computadores pessoais, web e dispositivos móveis. São desenvolvidos através de práticas e tecnologias existentes que auxiliam na sua criação, porém, a não utilização de tais ferramentas torna o seu desenvolvimento e manutenção um processo desgastante e trabalhoso.
+Cada vez mais softwares são utilizados em empresas, industrias, computadores pessoais, web e dispositivos móveis. Estes são desenvolvidos por meio de práticas e tecnologias existentes que auxiliam na sua criação, porém a não utilização de tais ferramentas torna o seu desenvolvimento e manutenção um processo desgastante e trabalhoso.
 
 Esta pesquisa demonstrará a utilização do framework OSGi, que possibilita o desenvolvimento do software em módulos, oferecendo melhor organização na sua estrutura, vantagens na manutenção e maior facilidade na expansão do mesmo, já que é construído em módulos.
 
@@ -41,17 +40,9 @@ Houve um grande avanço nas últimas décadas na quantidade de softwares comerci
 Isso provém do irônico (Não se usa essa palavra num TCC!) contexto quando as empresas poupam seus esforços e recursos no desenvolvimento do software almejando mais lucros, todavia culminam com um custo de manutenção desse software muitas vezes mais dispendioso do que o acumulado da parte do desenvolvimento.
 
 Nesse contexto surgiu a modularização utilizando o OSGi como uma solução já estabelecida e firmada no mercado de específicas aplicações (como SO's de servidores e aparelhos mobile, além de softwares como o Eclipse IDE). Iremos trazer as metodologias, engenharias, técnicas e tecnologias para o âmbito de softwares comerciais para prover uma base para a facilitação na manutenção e expansão de um software.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--------------------------------------------------------------------------Comentários--------------------------------------------------------------------------
 Correção: Mas quem vai se beneficiar? Melhorar texto(ficou confuso mesmo)
-Solução: usar o texto do site: http://www.osgi.org/Technology/WhyOSGi
-e deixar o texto mais claro
+Solução: usar o texto do site: http://www.osgi.org/Technology/WhyOSGi e deixar o texto mais claro
 
 ===============================================================================================================================================================
-
-Procedimentos
-
-- Descrever e definir o funcionamento de um sistema modularizado.
-- Analisar a atividade e desempenho de diferentes tipos de bancos de dados, para escolha de um que apresente maior desempenho para a função a ser desempenhada.
-- Desenvolver um software para criação, mapeamento e inserção de procedimentos básicos de um banco de dados e de um projeto em Java.
-- Demonstrar a performance de desenvolvimento utilizando o software desenvolvido, na utilização do dia a dia.
