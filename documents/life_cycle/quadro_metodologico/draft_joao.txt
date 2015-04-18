@@ -1,5 +1,5 @@
 PARTICIPANTES{
-
+teste
 Participam deste projeto os acadêmicos do curso de bacharelado em Sistemas de Informação da Universidade do Vale do Sapucaí - UNIVAS, os alunos Felipe Rodrigues do Prado e João Paulo Nakajima Pereira sob a orientação do professor Márcio Emílio Cruz Vono de Azevedo.
 Felipe Rodrigues do Prado no ano de 2010 formou-se em técnico em informática pelo Serviço Nacional de Aprendizagem Comercial (SENAC) e atualmente é estagiário no ICC - Inatel Competence Center, atuando como desenvolvedor de software para soluções empresariais.
 João Paulo Nakajima Pereira exerce a profissão de analista de suporte na empresa Automação e Cia, a qual presta serviços de atendimento ao cliente e suporte em softwares de automação de empresas.
