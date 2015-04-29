@@ -1,0 +1,99 @@
+<quadro_teorico>
+
+	Para que se possa desenvolver qualquer solução, é necessário o uso de algumas ferramentas, teorias e tecnologias. Abaixo serão apresentadas algumas delas usadas no desenvolvimento desta pesquisa, bem como sua utilidade.
+
+	<java>
+
+	A linguagem de programação Java é composta por coleções de classes existentes nas bibliotecas de classe Java, conhecidas como Java APIs. Classes são partes que consistem uma aplicação Java, sendo que essas classes são compostas por outras partes chamadas métodos, que são responsáveis por realizar tarefas e retornar informações. É possível criar classes para formar uma aplicação Java e também utilizar as coleções de classes do Java API. Portanto, para se desenvolver uma aplicação utilizando essa linguagem, é preciso entender como criar classes próprias que irão compor a aplicação e como trabalhar utilizando as classes do Java API.
+	Java foi lançada em 1996 pela Sun Microsystems<nota_rodape></nota_rodape> com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – Web – Mobile). Qualquer dispositivo que possua a JVM<nota_rodape></nota_rodape> é capaz de executar o software desenvolvido em Java (SOBRAL; CLARO, 2008).
+	O objetivo da linguagem Java é uma plataforma para o desenvolvimento de sistemas de médio a grande porte. Uma das muitas vantagens de se utilizar a plataforma Java é a grande quantidade de bibliotecas gratuitas que podem ser utilizadas em diversos tipos de projetos. Como cada linguagem é apropriada para uma determinada área, a utilização de Java é melhor para o desenvolvimento de aplicações que tenham tendência a crescer (CAELUM, 2015).
+	Para desenvolver aplicações em Java é necessário instalar um Kit de desenvolvimento, o Java Development Kit - JDK, o qual pode ser obtido no próprio site da Oracle – empresa mantenedora da plataforma. Ele é composto de compilador, máquina virtual, bibliotecas e utilitários.(CAELUM, 2015).
+	E assim essa linguagem demonstra ser de imprescindível utilidade para nosso projeto, pois além de várias vantagens propiciadas ao projeto citadas anteriormente temos ainda a facilidade da manutenção e alteração do código e o seu uso em diversas plataformas.
+
+		<referencias>
+		</referencias>
+
+		<nota_rodape>
+		Fabricante de computadores, semicondutores e software adquirida pela Oracle Corporation em 2009.
+		JVM – Java Virtual Machine.
+		</nota_rodape>
+
+	</java>
+
+	<osgi>
+
+	Modularização é o desenvolvimento de software de maneira desacoplada, separando o software em partes independentes ou bundles, ou seja, é o particionamento do software em partes menores, com o objetivo de gerenciar e controlar melhor o desenvolvimento e manutenção do código.
+	Knoernschild (2012) afirma que para que uma aplicação seja modularizada, qualquer módulo dela deve ser instalável, gerenciável, reutilizável, combinável, não guardar estado e oferecer uma interface clara.
+	A tecnologia Open Services Gateway iniciative – OSGi é um conjunto de especificações o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente compostas de componentes distintos e reutilizáveis (OSGI ALLIANCE, 2015).
+	De acordo com OSGi Alliance (2015) os utilizadores dessa tecnologia obtém como benefício a redução da complexidade do desenvolvimento de modo em geral, como por exemplo: aumento da reutilização de módulos, incremento da facilidade de codificação e teste, gerenciamento total dos módulos, sem a necessidade de reiniciar a aplicação, aumento do gerenciamento da implantação e detecção antecipada de bugs. Possui como uma de suas aplicações mais populares a IDE Eclipse e o framework Spring.
+	A especificação teve início em março de 1999 pela OSGi Alliance. Seus principais desafios na época não era desenvolver uma solução para a execução de diferentes versões de um mesmo projeto na mesma aplicação, mas sim de elaborar uma maneira que diferentes componentes que não se conhecem possam ser agrupados dinamicamente sob o mesmo projeto (OSGI ALLIANCE, 2015).
+	Segundo Gama (2008) a OSGi Alliance surgiu a partir do desinteresse da Sun Microsystems<nota_rodape></nota_rodape> em manter o projeto, mesmo esse projeto possibilitando que diferentes deploys fossem hospedados de maneira simples, isolada e segura numa única JVM<nota_rodape></nota_rodape>.
+	
+	O OSGi está estruturado da seguinte maneira ilustrada a seguir:
+
+		<figura>Figura 1</figura>
+
+	Segundo OSGI ALLIANCE (2015) “a camada de serviços conecta pacotes de uma forma dinâmica, permitindo melhor reutilização de código, utilizando-se de objetos isolados por interfaces para isolar o módulo que usará o serviço das classes que o implementam.”
+	Os bundles (como os módulos são chamados no contexto da OSGi) consomem ou disponibilizam serviços. Eles estão organizados de uma maneira que formam a tríade consumidor, fornecedor e registro dos serviços, na qual pode-se consumir serviços ou disponibilizá-los. Para a liberação de um novo serviço, deve-se registrá-lo em um catálogo, onde este teria visibilidade por parte de bundles externos que consumiriam esses serviços disponibilizados (OSGI ALLIANCE, 2015).
+	OSGI ALLIANCE (2015) diz que a API<nota_rodape></nota_rodape> disponibilizada permite o fácil gerenciamento (instalação, inicialização, parada e atualização) dos pacotes, bem como possibilita enumerar os pacotes e utilizar de seus serviços.
+	A especificação OSGi requer uma implementação de referência, sendo assim diversas implementações foram criadas, dentre elas podemos destacar Equinox (Projeto Eclipse) e Felix (Apache) (MADEIRA, 2009).
+	Segundo LUCENA (2010) “OSGi é uma especificação, ou seja, documenta e atribui funções precisas a tais serviços, mas não os implementa. Equinox, por outro lado, é uma implementação desta especificação”.
+	Um aspecto importante é que um bundle pode ser executado em qualquer implementação de OSGi. Ou seja, um bundle desenvolvido e testado em uma implementação pode ser executado em qualquer outra implementação de OSGi (LUCENA, 2010).
+	Segundo Gama (2008) “existe uma curva de aprendizado que não vale a pena e nem faz sentido se você está desenvolvendo aplicações que não precisam das vantagens do OSGi”.
+
+		<referencias>
+		</referencias>
+
+		<nota_rodape>
+		Fabricante de computadores, semicondutores e software adquirida pela Oracle Corporation em 2009.
+		JVM – Java Virtual Machine.
+		API – Abreviação para Application Programming Interface.
+		</nota_rodape>
+
+	</osgi>
+
+	<hibernate>
+
+	Segundo Bauer e King (2005, p.19), Hibernate é um framework de persistência que possui como propósito fornecer uma visão orientada a objetos sobre banco de dados relacionais, ou seja, permite persistir e gerenciar objetos de Java para as tabelas dos bancos de dados relacionais de forma simplificada. Para se realizar essa conversão de dados é utilizado arquivos XML<nota_rodape></nota_rodape> que contém as configurações para se fazer o mapeamento dos dados contidos da classe em Java para as colunas do Sistema Gerenciador de Banco de Dados ou SGBD.
+	Utilizar-se dos benefícios oferecidos pelo Hibernate para o desenvolvimento de uma aplicação que utilize banco de dados relacional e linguagem orientada a objetos é de grande estima, pois segundo Durham e Johnson (1996, pg.34) no desenvolvimento de software, um framework é uma estrutura de suporte definida em que um outro projeto de software pode ser organizado e desenvolvido. Tipicamente, um framework pode incluir programas de apoio, bibliotecas de código, linguagens de script e outros softwares para ajudar a desenvolver e juntar diferentes componentes do seu projeto.
+
+		<referencias>
+		</referencias>
+
+		<nota_rodape>
+		XML – Abreviação para Extensible Markup Language.
+		</nota_rodape>
+
+	</hibernate>
+
+	<postgresql>
+
+	Segundo Neto (2003 apud Souza et al,2012,p. 2), o PostgreSQL é um SGBDR - Sistema Gerenciador de Banco de Dados Relacional que está baseado nos padrões SQL<nota_rodape></nota_rodape> ANSI-92, 96 e 99, possui alta performance, de fácil administração e utilização em projetos por especialistas Database Administrators (DBAs) e Projetistas de Sistemas.
+	PostgreSQL teve origem em um projeto chamado de POSTGRES na Universidade Berkeley, na Califórnia (EUA), em 1986. Sua equipe fundadora foi orientada pelo professor Michael Stonebraker com o apoio de diversos órgãos, entre eles o Army Research Office (ARO) e o National Science Foundation (NSF). Atualmente, o SGBD encontra-se em sua versão 9.4 estável, contendo todas as principais características que um SGBD pode disponibilizar (MILANI,2008).
+	Seu código é livre e há um grupo responsável pela sua validação. Grandes empresas como a Fujitsu, NTT Group, Skype, Hub.org, Red Hat e SRA são financiadoras do PostgreSQL que, além disso, recebe doações. É utilizado por multinacionais, órgãos governamentais e universidades. Recebeu vários prêmios como melhor sistema de banco de dados Open Source (Souza et al; 2011).
+
+		<referencias>
+		</referencias>
+
+		<nota_rodape>
+		SQL – Abreviação para Structured Query Language.
+		</nota_rodape>
+		
+	</postgresql>
+
+	<tdd>
+
+	Test-Driven Development ou em português desenvolvimento guiado por testes é o significado da abreviação TDD. É sem dúvida uma das práticas mais populares utilizadas no desenvolvimento de software, que traz uma ideia bem simples: escrever os testes antes mesmo de escrever o código de produção (ANICHE, 2014).
+	Automatizar os testes de um software é a atividade de submeter o código desenvolvido para outro software testá-lo e assim obter o apontamento de erros no código e indicação das falhas para futura correção.
+	Qualidade do software, fácil manutenção e evolução são uma das vantagens que se conquista testando um software (VAZ, 2003). 
+	Teste é a atividade do ciclo de desenvolvimento de software na qual pode ser observada maior distância entre a teoria (técnicas de teste propostas) e a prática (aplicação destas técnicas) (MYERS, 2004).
+	Conforme ANICHE (2012), quando a produtividade é medida através do número de linhas de código escrito por dia, o rendimento será menos produtivo. Todavia, se produtividade for a quantidade de linhas de código final sem defeitos escritos por dia, provavelmente o rendimento será mais produtivo ao usar testes automatizados.
+	Segundo VAZ (2003), para facilitar a execução das rotinas dos testes automatizados foram criados frameworks como o JUnit, que através da instalação de seu plug-in na ferramenta de desenvolvimento Eclipse, disponibiliza uma infraestrutura para se realizar os testes do código.
+	Dentre as atividades de um processo de desenvolvimento, as atividades de testes têm uma importância fundamental para a garantia de qualidade do software que está sendo desenvolvido, a qual é aplicada no decorrer de todo o projeto.
+
+		<referencias>
+		</referencias>
+
+	</tdd>
+
+</quadro_teorico>

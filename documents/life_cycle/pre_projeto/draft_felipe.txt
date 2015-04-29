@@ -1,0 +1,7 @@
+<justificativa>
+
+	Escolhemos demonstrar a modularização de software devido a vários problemas existentes quando um software em produção necessita ser atualizado para resolução de um problema ou para que seja aplicado uma nova funcionalidade. Exemplificaremos através do desenvolvimento de uma aplicação como funcionaria o desenvolvimento e funcionamento de um software modularizado.
+	Ao trabalharmos com uma aplicação não modularizada, percebemos os problemas e dificuldades que são apresentadas quando é necessário realizar uma manutenção ou aplicar uma nova funcionalidade no software. Dessa maneira a utilizaçãoPois Appolinário(2004,p. 152) salienta que pesquisas aplicadas têm o objetivo de "resolver problemas ou necessidades concretas e imediatas". da modularização facilita a expansão e manutenção do software.
+	O conceito de modularização ainda é pouco conhecido e não muito realizado no desenvolvimento de software, além de não ter sido uma tecnologia abordada em nosso curso, o que também nos despertou interesse de sua aplicação.
+
+</justificativa>
