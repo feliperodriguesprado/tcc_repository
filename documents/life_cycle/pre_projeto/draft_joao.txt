@@ -1,0 +1,52 @@
+<Introdução>
+
+	O desenvolvimento de um software não envolve apenas lógica de programação, linhas de códigos e design. Para se desenvolver um software, é necessário preocupar-se com planejamento, engenharia, metodologia e qual tecnologia será utilizada. Esses fatores influenciam na manutenção, atualização e expansão do software, gerando mudanças no desenvolvimento. Dessa maneira, saber qual tecnologia utilizar e como planejar o desenvolvimento, é fundamental para que o software se torne flexível a essas mudanças. Pensando dessa maneira, apresentamos como solução o desenvolvimento do software em módulos, utilizando a especificação OSGi, que vem da expressão open services gateway initiative, construída pela tecnologia Java.
+	O OSGi possibilita o desenvolvimento de software em módulos, disponibilizando o gerenciamento de tais módulos e facilidades na manutenção e expansão da aplicação. 
+	Segundo Knoernschild (2012), um módulo de software deve ser instalável, gerenciável (parar, reiniciar e ser desinstalado sem derrubar a aplicação), reutilizável (utilizar em outros sistemas), combinável (combinar com outros módulos), não guardar estado e oferecer uma interface clara.
+	Muitos softwares são desenvolvidos de maneira semelhante a modularização, divididos em partes, tendo cada parte uma responsabilidade. Porém não são realmente modularizados, ou seja, não atendem o conceito de modularização como descrito acima. Podemos citar dois exemplos de projetos de softwares que foram desenvolvidos utilizando a especificação OSGi e atendendo a definição de modularização, que são, IDE Eclipse, ferramenta de desenvolvimento de softwares e o GlassFish, servidor de aplicações JEE.
+	O uso da modularização ,com certeza ,traz grandes benefícios para o desenvolvimento e manutenção de um software. Poder parar parte de uma aplicação para fazer uma manutenção ou poder instalar novas funcionalidades, garantindo que todas as outras partes restantes continuem funcionando normalmente seria uma característica notável da aplicação.
+	Portanto com a especificação OSGi sendo um padrão de desenvolvimento de aplicativos modulares em Java, que oferece benefícios no desenvolvimento, manutenção e atualização do software, nos despertou um grande interesse em aprofundarmos nossos estudos nessa especificação, decidindo desenvolver um software que exemplifique uma aplicação funcionando em módulos.
+</Introdução>
+
+
+<Objetivos>
+
+
+
+	<Objetivo_geral>
+	
+		Desenvolver um software modularizado usando a especificação OSGi da plataforma Java e demonstrá-la através da implementação Equinox.
+		
+	</Objetivo_geral>
+
+
+
+
+
+	<Objetivos_específicos>
+
+		Para atingir o objetivo geral apresentamos os seguintes objetivos específicos:
+		Demonstrar o funcionamento da modularização usando a especificação OSGi.
+		Desenvolver um software separados em módulos, possibilitando uma melhor separação e organização.
+		Demonstrar como resolver um erro encontrado no sistema, de forma que não seja necessário parar toda aplicação que está sendo executada no momento, ou seja, para resolver o erro basta apenas parar o módulo que está com problema, realizar a correção e iniciá-lo novamente e o restante da aplicação continue seu funcionamento e não sofra efeitos colaterais.
+		Disponibilizar uma interface definida para que a empresa que implante o sistema possa criar módulos personalizados caso tenha a necessidade ou interesse.
+		
+	</Objetivos_específicos>
+
+</Objetivos>
+
+
+6  Referências
+
+
+
+APPOLINÁRIO, F. Dicionário de metodologia científica: um guia para a produção 
+do conhecimento científico. São Paulo: Atlas, 2004.
+
+BRITO, R. W. Bancos de Dados NoSQL x SGBDs Relacionais: Análise Comparativa. 2010.
+
+CAELUM. Apostila java e orientação a objetos. 2013.
+
+CLARO, D. B., SOBRAL, J. B. M. Programação em Java. Santa Catarina: Copyleft Pearson Education, 2008. 
+
+KNOERNSCHILD, Kirk. Java application architecture: modularity patterns with examples using OSGi. 2012.
