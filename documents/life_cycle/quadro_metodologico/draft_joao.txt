@@ -11,6 +11,9 @@
 	Para desenvolver esta pesquisa será necessária a realização de reuniões entre os participantes, para a obtenção e organização das informações, divisão das tarefas e desenvolvimento do software, pois segundo KIOSKEA (2014) as reuniões são um meio para partilhar, num grupo de pessoas, um mesmo nível de conhecimento sobre um assunto ou um problema e para tomar decisões colectivamente. Além disso, decisões tomadas coletivamente, com representantes das diferentes entidades interessadas, serão mais facilmente aceitas por todos.
 	Os dados serão obtidos a partir de revisões, pesquisas bibliográficas e reuniões online com pessoas que possuem conhecimentos e experiências profundas desse tema. Após aplicados estes instrumentos será possível analisar e organizar as informações.
 	As reuniões entre os participantes possui o objetivo de definir a linha de raciocínio a ser seguida, pois o tema apresenta alto nível de complexidade e uma área de aplicação muito abrangente. Além de tomar decisões quanto ao desenvolvimento do software e da utilização e forma de apresentação das tecnologias e metodologias que serão abordadas no projeto.
+	<referecias>
+		KIOSKEA. Condução de reunião. 2014. Disponível em http://pt.kioskea.net/contents/579-conducao-de-reuniao. Acesso em 16 de abril, 2015.
+	</referecias>
 </INSTRUMENTOS>
 <PROCEDIMENTOS>
 	A ideia deste trabalho é elaborar um software modularizado que permita a fácil manutenção e expansão, auxiliando no suporte e futura ampliação do mesmo. Desta forma, para o desenvolvimento desta pesquisa, tornou-se necessário a distribuição deste em vários procedimentos citados a seguir.
@@ -36,6 +39,3 @@
 	
 	Estas etapas tem em vista a serem seguidas minuciosamente, sabendo que poderão sofrer alterações por influências não controlados pelos membros da equipe de pesquisa.
 </CRONOGRAMA>
-<REFERÊNCIAS>
-	KIOSKEA. Condução de reunião. 2014. Disponível em http://pt.kioskea.net/contents/579-conducao-de-reuniao. Acesso em 16 de abril, 2015.
-</REFERÊNCIAS>
