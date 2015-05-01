@@ -1,4 +1,4 @@
-http://www.osgi.org/Main/HomePage
+﻿http://www.osgi.org/Main/HomePage
 http://www.devmedia.com.br/introducao-ao-osgi/30035
 http://www.devmedia.com.br/modularidade-em-java-java-magazine-85/18495
 http://www.devmedia.com.br/introducao-ao-spring-framework/26212
@@ -12,6 +12,10 @@ http://docs.spring.io/osgi/docs/current/reference/html/index.html
 http://pt.slideshare.net/regismachado/modularidade-na-web-com-java-osgi-no-eclipse-virgo
 http://pt.wikipedia.org/wiki/OSGi
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Integração entre OSGI, mósdulos, serviços, spring, JDBC e tudo mais
+https://www.eclipsecon.org/2008/sub/attachments/Spring_DM_formerly_called_SpringOSGi.pdf
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 http://devblog.virtage.com/2012/08/osgi-with-equinox-for-beginners-overview/
 http://celodemelo.wordpress.com/2009/11/12/osgi-modularizando-sua-aplicacao/
