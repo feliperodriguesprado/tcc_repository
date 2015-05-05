@@ -3,12 +3,11 @@
 	Para que se possa desenvolver qualquer solução, é necessário o uso de algumas ferramentas, teorias e tecnologias. Abaixo serão apresentadas algumas delas usadas no desenvolvimento desta pesquisa, bem como sua utilidade.
 
 	<java>
-
 		A linguagem de programação Java é composta por coleções de classes existentes nas bibliotecas de classe Java, conhecidas como Java APIs<nota_rodape></nota_rodape>. Classes são partes que consistem uma aplicação Java, compostas por outras partes chamadas métodos, que são responsáveis por realizar tarefas e retornar informações. É possível criar classes para formar uma aplicação Java e também utilizar as coleções de classes do Java API. Portanto, para se desenvolver uma aplicação utilizando essa linguagem, é preciso entender como criar classes próprias que irão compor a aplicação e como trabalhar utilizando as classes do Java API (DEITEL, 2010).
-		Java foi lançada em 1996 pela Sun Microsystems<nota_rodape></nota_rodape> com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – Web – Mobile). Qualquer dispositivo que possua a JVM<nota_rodape></nota_rodape> é capaz de executar o software desenvolvido em Java (CLARO; SOBRAL, 2008).
+		Java foi lançada em 1996 pela Sun Microsystems<nota_rodape></nota_rodape> com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – Web – Mobile). Qualquer dispositivo que possua a JVM<nota_rodape></nota_rodape> é capaz de executar um software desenvolvido em Java (CLARO; SOBRAL, 2008).
 		O objetivo da linguagem Java é uma plataforma para o desenvolvimento de sistemas de médio a grande porte. Uma das muitas vantagens de se utilizar a plataforma Java é a grande quantidade de bibliotecas gratuitas que podem ser utilizadas em diversos tipos de projetos. Como cada linguagem é apropriada para uma determinada área, a utilização de Java é melhor para o desenvolvimento de aplicações que tenham tendência a crescer (CAELUM, 2015).
 		Para desenvolver aplicações em Java é necessário instalar um Kit de desenvolvimento, o Java Development Kit - JDK, o qual pode ser obtido no próprio site da Oracle – empresa mantenedora da plataforma. Ele é composto de compilador, máquina virtual, bibliotecas e utilitários.(CAELUM, 2015).
-		E assim essa linguagem demonstra ser de imprescindível utilidade para nosso projeto, pois além de várias vantagens propiciadas ao projeto citadas anteriormente temos ainda a facilidade da manutenção e alteração do código e o seu uso em diversas plataformas.
+		Essa linguagem demonstra ser de imprescindível utilidade para nosso projeto, pois além das vantagens citadas anteriormente, oferece a especificação OSGi, tecnologia utilizada para o desenvolvimento de software modular.
 
 		<referencias>
 			CLARO, Daniela Barreiro; SOBRAL, João Bosco Mangueira. Programação em Java. Santa Catarina: Copyleft Pearson Education, 2008.
@@ -65,7 +64,7 @@
 
 	<hibernate>
 
-		Segundo Bauer e King (2005), Hibernate é um framework de persistência que possui como propósito fornecer uma visão orientada a objetos sobre banco de dados relacionais, ou seja, permite persistir e gerenciar objetos de Java para as tabelas dos bancos de dados relacionais de forma simplificada. Para se realizar essa conversão de dados é utilizado arquivos XML<nota_rodape></nota_rodape> que contém as configurações para se fazer o mapeamento dos dados contidos da classe em Java para as colunas do Sistema Gerenciador de Banco de Dados ou SGBD.
+		Segundo Bauer e King (2005), Hibernate é um framework de persistência que possui como propósito fornecer uma visão orientada a objetos sobre banco de dados relacionais, ou seja, permite persistir e gerenciar objetos da programação Java para tabelas existentes no banco de dados relacional, de forma simplificada. Para realizar essa conversão de dados, é necessário utilizar arquivos de extensão XML<nota_rodape></nota_rodape>, que contém configurações necessárias para fazer o mapeamento de classes em Java para as colunas de uma tabela do Sistema Gerenciador de Banco de Dados ou SGBD. Além dos arquivos XMLs, as classes são mapeadas através de anotações definidas e entendidas pelo framework.
 		Utilizar-se dos benefícios oferecidos pelo Hibernate para o desenvolvimento de uma aplicação que utilize banco de dados relacional e linguagem orientada a objetos é de grande estima, pois segundo Durham e Johnson (1996) no desenvolvimento de software, um framework é uma estrutura de suporte definida em que um outro projeto de software pode ser organizado e desenvolvido. Tipicamente, um framework pode incluir programas de apoio, bibliotecas de código, linguagens de script e outros softwares para ajudar a desenvolver e juntar diferentes componentes do seu projeto.
 		
 		<referencias>
@@ -101,7 +100,7 @@
 	<tdd>
 
 		Test-Driven Development ou em português desenvolvimento guiado por testes é o significado da abreviação TDD. É sem dúvida uma das práticas mais populares utilizadas no desenvolvimento de software, que traz uma ideia bem simples: escrever os testes antes mesmo de escrever o código de produção (ANICHE, 2014).
-		Automatizar os testes de um software é a atividade de submeter o código desenvolvido para outro software testá-lo e assim obter o apontamento de erros no código e indicação das falhas para futura correção.
+		Automatizar os testes de um software é a atividade de submeter o código desenvolvido para outro software testá-lo, e assim obter o apontamento de erros no código e indicação das falhas para futura correção.
 		Qualidade do software, fácil manutenção e evolução são uma das vantagens que se conquista testando um software (VAZ, 2003). 
 		Teste é a atividade do ciclo de desenvolvimento de software na qual pode ser observada maior distância entre a teoria (técnicas de teste propostas) e a prática (aplicação destas técnicas) (MYERS, 2004).
 		Conforme ANICHE (2012), quando a produtividade é medida através do número de linhas de código escrito por dia, o rendimento será menos produtivo. Todavia, se produtividade for a quantidade de linhas de código final sem defeitos escritos por dia, provavelmente o rendimento será mais produtivo ao usar testes automatizados.
