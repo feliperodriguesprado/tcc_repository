@@ -1,3 +1,10 @@
+<introducao>
+
+	Segundo Fernandes (2009), um sistema modular possui algumas propriedades. Deve ser autocontido, o módulo pode ser incluído, retirado, instalado ou desinstalado. Outra propriedade é ter alta coesão, um módulo deve cumprir apenas sua finalidade, ou seja, deve fazer somente as funções que lhe foram atribuídas. O baixo acoplamento é outra propriedade muito importante, pois o módulo não precisa se preocupar com implementações de outros módulos que interagem com ele, além de permitir alterar um módulo sem a necessidade de atualizar outros.
+
+</introducao>
+
+
 <justificativa>
 
 	Diante dos vários segmentos e constantes mudanças empresariais, novos softwares são desenvolvidos e precisam estar preparados para acompanhar as modificações que ocorrem nos processos de uma empresa. Dessa forma o desenvolvimento separado em módulos seria uma solução para atender empresas de diferentes setores ao invés de criar um software para cada segmento. Além disso a utilização de módulos em um sistema torna mais flexível sua manutenção, pois é realizada nos módulos, não afetando o restante da aplicação.

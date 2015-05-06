@@ -27,10 +27,9 @@
 
 		Grandes aplicações enfrentam um problema conhecido no seu desenvolvimento, a complexidade. Uma maneira de resolver esse problema é quebrar o sistema em partes menores, ou módulos. Devido a sua flexibilidade, a linguagem de programação Java permitiu construir sobre sua plataforma um poderoso sistema de módulos, o OSGi, que oferece suporte à construção de sistemas modulares (Fernandes, 2009).
 		
-		Knoernschild (2012) afirma que para que uma aplicação seja modularizada, qualquer módulo dela deve ser instalável, gerenciável, reutilizável, combinável, não guardar estado e oferecer uma interface clara.
+		Knoernschild (2012) afirma que para que uma aplicação seja modularizada, qualquer módulo dela deve ser instalável, gerenciável, reutilizável, combinável, não guardar estado e oferecer uma interface clara. <obs>colocar a parte da introdução</obs>
 		
 		A tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formada por componentes distintos e reutilizáveis (OSGI ALLIANCE, 2015).
-		
 		
 		De acordo com OSGi Alliance (2015), os utilizadores dessa tecnologia obtém como benefício a redução da complexidade do desenvolvimento de modo em geral, como por exemplo: aumento da reutilização de módulos, incremento da facilidade de codificação e teste, gerenciamento total dos módulos, sem a necessidade de reiniciar a aplicação, aumento do gerenciamento da implantação e detecção antecipada de bugs. Possui como uma de suas aplicações mais populares a IDE<nota_rodape></nota_rodape> Eclipse e o framework Spring.
 		
@@ -49,6 +48,14 @@
 		Segundo Lucena (2010, s.p), “OSGi é uma especificação, ou seja, documenta e atribui funções precisas a tais serviços, mas não os implementa. Equinox, por outro lado, é uma implementação desta especificação”.
 		Um aspecto importante é que um bundle pode ser executado em qualquer implementação de OSGi<nota_rodape></nota_rodape>. Ou seja, um bundle desenvolvido e testado em uma implementação pode ser executado em qualquer outra implementação de OSGi<nota_rodape></nota_rodape> (LUCENA, 2010).
 		Segundo Gama (2008) “existe uma curva de aprendizado que não vale a pena e nem faz sentido se você está desenvolvendo aplicações que não precisam das vantagens do OSGi<nota_rodape></nota_rodape>”.
+		
+		O OSGi especifica um conceito de versionamento de componentes, em que os módulos podem trabalhar com versões diferentes, seguindo uma consistente estrutura de numeração, utilizando três segmentos de números e um segmento alfanumérico, são eles, major, minor, micro e qualifier, respectivamente. Exemplo, "1.2.3.beta_1". Esses segmentos também podem ser omitidos, formando por exemplo a versão "1.2". Esse versionamento se torna necessário para resolver o problema de incompatibilidade de versões entre módulos (FERNANDES, 2009).
+		
+		A OSGi Alliance, responsável pela plataforma OSGi trabalha na especificação de uma infraestrutura que possa distribuir e realizar a comunicação de aplicações e serviços baseados em componentes de forma transparente. Dessa forma, explorar a tecnologia OSGi no ambiente de IoT.
+		
+		<figura>Imagem do OSGi IoT</figura>
+		
+		
 
 		<referencias>
 			GAMA, Kiev. Uma visão geral sobre a plataforma OSGi. 2008. Disponível em https://kievgama.wordpress.com/2008/11/24/um-pouco-de-osgi-em-portugues/. Acesso em 09 de março, 2015.
