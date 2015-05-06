@@ -25,11 +25,17 @@
 
 	<osgi>
 
-		Modularização é o desenvolvimento de software de maneira desacoplada, separando o software em partes independentes ou bundles, ou seja, é o particionamento do software em partes menores, com o objetivo de gerenciar e controlar melhor o desenvolvimento e manutenção do código.
+		Grandes aplicações enfrentam um problema conhecido no seu desenvolvimento, a complexidade. Uma maneira de resolver esse problema é quebrar o sistema em partes menores, ou módulos. Devido a sua flexibilidade, a linguagem de programação Java permitiu construir sobre sua plataforma um poderoso sistema de módulos, o OSGi, que oferece suporte à construção de sistemas modulares (Fernandes, 2009).
+		
 		Knoernschild (2012) afirma que para que uma aplicação seja modularizada, qualquer módulo dela deve ser instalável, gerenciável, reutilizável, combinável, não guardar estado e oferecer uma interface clara.
-		A tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente compostas de componentes distintos e reutilizáveis (OSGI ALLIANCE, 2015).
+		
+		A tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formada por componentes distintos e reutilizáveis (OSGI ALLIANCE, 2015).
+		
+		
 		De acordo com OSGi Alliance (2015), os utilizadores dessa tecnologia obtém como benefício a redução da complexidade do desenvolvimento de modo em geral, como por exemplo: aumento da reutilização de módulos, incremento da facilidade de codificação e teste, gerenciamento total dos módulos, sem a necessidade de reiniciar a aplicação, aumento do gerenciamento da implantação e detecção antecipada de bugs. Possui como uma de suas aplicações mais populares a IDE<nota_rodape></nota_rodape> Eclipse e o framework Spring.
+		
 		A especificação teve início em março de 1999 pela OSGi Alliance. Seus principais desafios na época não era desenvolver uma solução para a execução de diferentes versões de um mesmo projeto na mesma aplicação, mas sim de elaborar uma maneira que diferentes componentes que não se conhecem possam ser agrupados dinamicamente sob o mesmo projeto (OSGI ALLIANCE, 2015).
+		
 		Segundo Gama (2008) a OSGi Alliance surgiu a partir do desinteresse da Sun Microsystems<nota_rodape></nota_rodape> em manter o projeto, mesmo esse projeto possibilitando que diferentes deploys fossem hospedados de maneira simples, isolada e segura numa única JVM<nota_rodape></nota_rodape>.
 	
 		O OSGi está estruturado da seguinte maneira ilustrada a seguir:
@@ -60,6 +66,10 @@
 			OSGi - Open Services Gateway initiative.
 		</nota_rodape>
 
+		<removido>
+			Modularização é o desenvolvimento de software de maneira desacoplada, separando o software em partes independentes ou bundles, ou seja, é o particionamento do software em partes menores, com o objetivo de gerenciar e controlar melhor o desenvolvimento e manutenção do código.
+		</removido>
+		
 	</osgi>
 
 	<hibernate>
