@@ -27,37 +27,89 @@
 
 		Grandes aplicações enfrentam um problema conhecido no seu desenvolvimento, a complexidade. Uma maneira de resolver esse problema é quebrar o sistema em partes menores, ou módulos. Devido a sua flexibilidade, a linguagem de programação Java permitiu construir sobre sua plataforma um poderoso sistema de módulos, o OSGi, que oferece suporte à construção de sistemas modulares (Fernandes, 2009).
 		
-		Knoernschild (2012) afirma que para que uma aplicação seja modularizada, qualquer módulo dela deve ser instalável, gerenciável, reutilizável, combinável, não guardar estado e oferecer uma interface clara. <obs>colocar a parte da introdução</obs>
-		
-		A tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formada por componentes distintos e reutilizáveis (OSGI ALLIANCE, 2015).
-		
-		De acordo com OSGi Alliance (2015), os utilizadores dessa tecnologia obtém como benefício a redução da complexidade do desenvolvimento de modo em geral, como por exemplo: aumento da reutilização de módulos, incremento da facilidade de codificação e teste, gerenciamento total dos módulos, sem a necessidade de reiniciar a aplicação, aumento do gerenciamento da implantação e detecção antecipada de bugs. Possui como uma de suas aplicações mais populares a IDE<nota_rodape></nota_rodape> Eclipse e o framework Spring.
+		Segundo a Osgi Alliance (2015), a tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formada por componentes distintos e reutilizáveis.
 		
 		A especificação teve início em março de 1999 pela OSGi Alliance. Seus principais desafios na época não era desenvolver uma solução para a execução de diferentes versões de um mesmo projeto na mesma aplicação, mas sim de elaborar uma maneira que diferentes componentes que não se conhecem possam ser agrupados dinamicamente sob o mesmo projeto (OSGI ALLIANCE, 2015).
 		
-		Segundo Gama (2008) a OSGi Alliance surgiu a partir do desinteresse da Sun Microsystems<nota_rodape></nota_rodape> em manter o projeto, mesmo esse projeto possibilitando que diferentes deploys fossem hospedados de maneira simples, isolada e segura numa única JVM<nota_rodape></nota_rodape>.
-	
-		O OSGi está estruturado da seguinte maneira ilustrada a seguir:
-
-		<figura>Figura 1</figura>
-
-		Segundo OSGI Alliance (2015, s.p), “a camada de serviços conecta pacotes de uma forma dinâmica, permitindo melhor reutilização de código, utilizando-se de objetos isolados por interfaces para isolar o módulo que usará o serviço das classes que o implementam.”
-		Os bundles (como os módulos são chamados no contexto da OSGi<nota_rodape></nota_rodape>) consomem ou disponibilizam serviços. Eles estão organizados de uma maneira que formam a tríade consumidor, fornecedor e registro dos serviços, na qual pode-se consumir serviços ou disponibilizá-los. Para a liberação de um novo serviço, deve-se registrá-lo em um catálogo, onde este teria visibilidade por parte de bundles externos que consumiriam esses serviços disponibilizados (OSGI ALLIANCE, 2015).
+		Segundo Knoernschild (2012), para que uma aplicação seja modularizada, seus módulos devem ser instaláveis, gerenciáveis (parar, reiniciar e ser desinstalado sem interromper o restante da aplicação), reutilizáveis (utilizar em outros sistemas), combináveis (combinar com outros módulos), não guardar estado e oferecer uma interface clara.
+		
 		OSGi Alliance (2015) diz que a API<nota_rodape></nota_rodape> disponibilizada permite o fácil gerenciamento (instalação, inicialização, parada e atualização) dos pacotes, bem como possibilita enumerar os pacotes e utilizar de seus serviços.
-		A especificação OSGi requer uma implementação de referência, sendo assim diversas implementações foram criadas, dentre elas podemos destacar Equinox (Projeto Eclipse) e Felix (Apache) (MADEIRA, 2009).
-		Segundo Lucena (2010, s.p), “OSGi é uma especificação, ou seja, documenta e atribui funções precisas a tais serviços, mas não os implementa. Equinox, por outro lado, é uma implementação desta especificação”.
+		
+		De acordo com OSGi Alliance (2015), os utilizadores dessa tecnologia obtém como benefício a redução da complexidade do desenvolvimento de modo em geral, como por exemplo, aumento da reutilização de módulos, incremento da facilidade de codificação e teste, gerenciamento total dos módulos, sem a necessidade de reiniciar a aplicação, aumento do gerenciamento da implantação e detecção antecipada de bugs. Possui como uma de suas aplicações mais populares a IDE<nota_rodape></nota_rodape> Eclipse e o framework Spring.
+		
+		Os bundles (como os módulos são chamados no contexto da OSGi<nota_rodape></nota_rodape>) consomem ou disponibilizam serviços. Eles estão organizados de uma maneira que formam a tríade consumidor, fornecedor e registro de serviços, na qual pode-se consumir serviços ou disponibilizá-los. Para a liberação de um novo serviço, deve-se registrá-lo em um catálogo, onde este teria visibilidade por parte de bundles externos que consumiriam esses serviços disponibilizados (OSGI ALLIANCE, 2015).
+		
+		Bartlett (2009) afirma que um bundle pode passar por vários estados em seu ciclo de vida. A seguir é explicado cada uma desses estados e suas funções:
+	
+		> Installed - O bundle é instalado com êxito;
+		
+		> Resolved - Avalia se o bundle está pronto para ser iniciado ou parado, validando informações como bundles,pacotes e versões destes, tais como até a versão do java necessária para executar o bundle;
+	
+		> Starting - Estado de transição, em que nenhum bundle vai se encontrar nele, apenas é executado o ativador e logo em seguida, o bundle é passado para o estado descrito a seguir;
+	
+		> Active - Nesse estado o bundle está validado e ativo, somente esperando alguma requisição para ser utilizado;
+	
+		> Stopping - Parecido com o estado Starting, porém nele é executado o interruptor do bundle e este é transferido para o estado Resolved novamente;
+	
+		> Uninstalled - Quando se ocorre a desinstalação do bundle, não se pode transitá-lo para nenhum outro estado e este não é mais representado no framework. Se este for reinstalado, ele assume o papel de um novo bundle.
+		
+		<imagem>estados_bundle_dentro_container_OSGi</imagem>
+		
+		Quando um bundle é instalado, ele fica armazenado em um meio persistente do framework e continua lá até ser explicitamente desinstalado(Fernandes, 2009).
+		
 		Um aspecto importante é que um bundle pode ser executado em qualquer implementação de OSGi<nota_rodape></nota_rodape>. Ou seja, um bundle desenvolvido e testado em uma implementação pode ser executado em qualquer outra implementação de OSGi<nota_rodape></nota_rodape> (LUCENA, 2010).
-		Segundo Gama (2008) “existe uma curva de aprendizado que não vale a pena e nem faz sentido se você está desenvolvendo aplicações que não precisam das vantagens do OSGi<nota_rodape></nota_rodape>”.
 		
-		O OSGi especifica um conceito de versionamento de componentes, em que os módulos podem trabalhar com versões diferentes, seguindo uma consistente estrutura de numeração, utilizando três segmentos de números e um segmento alfanumérico, são eles, major, minor, micro e qualifier, respectivamente. Exemplo, "1.2.3.beta_1". Esses segmentos também podem ser omitidos, formando por exemplo a versão "1.2". Esse versionamento se torna necessário para resolver o problema de incompatibilidade de versões entre módulos (FERNANDES, 2009).
+		O framework é o centro da especificação da plataforma OSGi, fornecendo um ambiente seguro para distribuição e gerenciamento dos bundles(Fernandes, 2009).
 		
-		A OSGi Alliance, responsável pela plataforma OSGi trabalha na especificação de uma infraestrutura que possa distribuir e realizar a comunicação de aplicações e serviços baseados em componentes de forma transparente. Dessa forma, explorar a tecnologia OSGi no ambiente de IoT.
+		Fernandes (2009) afirma que o framework possui a arquitetura dividida nas camadas conforme a imagem abaixo.
+		
+		<imagem>layering_osgi</imagem>
+		
+		> Module Layer - Define o conceito de módulo, esclarecendo como um bundle pode importar e exportar código.
+		
+		> Lifecycle Layer - Define como os bundles são dinamicamente instalados e gerenciados no framework.
+		
+		> Service Layer - Oferece um modelo de desenvolvimento flexível que utiliza o conceito de SOA (Service-Oriented Architecture), publish-find-bind. Responsável por conectar os bundles de maneira dinâmica.
+		
+		Segundo Bartlett (2009), a OSGi Alliance apenas define uma especificação do framework, por isso existem várias implementações do framework nos dias atuais, mas as quatro a seguir merecem destaque por serem as principais e por terem seu código livre.
+
+		> Equinox é o framework mais usado atualmente, sua grande popularidade provém de fazer parte do gerenciador de plugins do Eclipse. Pode ser encontrado em muitos outros softwares, como os da IBM Lotus Notes e WebSphere Application Server. Encontra-se sob a licença EPL (Eclipse Public License) e implementa a versão 4.1 das especificações OSGi.
+
+		> Knopflerfish é uma implementação bem madura e popular da versão 4.1 da especificação. É  desenvolvido e mantido pela empresa sueca Makewave AB, a qual oferece seu produto tanto em uma versão gratuita sob a licença BSD quanto uma versão comercial com suporte oferecido pela empresa.
+
+		> Felix é a implementação mantida pela Apache Software Foundation, se encontra na versão 4.1 e possui foco na compactação e facilidade de incorporação do bundle na aplicação. Está sob a licença Apache 2.0.
+
+		> Concierge é uma implementação bem compacta e altamente otimizada da especificação versão 3. É mais usado para plataformas com recursos limitados, como por exemplo aplicações móveis e embarcadas. Se encontra sob a licença BSD.
+		
+		O OSGi especifica um conceito de versionamento de componentes, em que os módulos podem trabalhar com versões diferentes, seguindo uma consistente estrutura de numeração, utilizando três segmentos de números e um segmento alfanumérico, são eles, major, minor, micro e qualifier, respectivamente. Exemplo, "1.2.3.beta_1". Esses segmentos também podem ser omitidos, formando por exemplo a versão "1.2". Isso se torna necessário para resolver o problema de incompatibilidade de versões entre módulos (FERNANDES, 2009).
+		
+		A OSGi Alliance, responsável pela plataforma OSGi trabalha na especificação de uma infraestrutura, que possa distribuir e realizar a comunicação de aplicações e serviços baseados em componentes de forma transparente. Dessa forma, explorar a tecnologia OSGi no ambiente de IoT.
 		
 		<figura>Imagem do OSGi IoT</figura>
 		
+		<terminar_IoT></terminar_IoT>
 		
+		Segundo Gama (2008) “existe uma curva de aprendizado que não vale a pena e nem faz sentido se você está desenvolvendo aplicações que não precisam das vantagens do OSGi<nota_rodape></nota_rodape>”.
+		
+		<verificar>
+		
+			Segundo Gama (2008) a OSGi Alliance surgiu a partir do desinteresse da Sun Microsystems<nota_rodape></nota_rodape> em manter o projeto, mesmo esse projeto possibilitando que diferentes deploys fossem hospedados de maneira simples, isolada e segura numa única JVM<nota_rodape></nota_rodape>.
+	
+			O OSGi está estruturado da seguinte maneira ilustrada a seguir:
+
+			<figura>Figura 1</figura>
+
+			Segundo OSGI Alliance (2015, s.p), “a camada de serviços conecta pacotes de uma forma dinâmica, permitindo melhor reutilização de código, utilizando-se de objetos isolados por interfaces para isolar o módulo que usará o serviço das classes que o implementam.”
+			
+			A especificação OSGi requer uma implementação de referência, sendo assim diversas implementações foram criadas, dentre elas podemos destacar Equinox (Projeto Eclipse) e Felix (Apache) (MADEIRA, 2009).
+			
+			Segundo Lucena (2010, s.p), “OSGi é uma especificação, ou seja, documenta e atribui funções precisas a tais serviços, mas não os implementa. Equinox, por outro lado, é uma implementação desta especificação”.
+			
+		</verificar>
 
 		<referencias>
+			BARTLETT, Neil. OSGi In Practice. 2009.
+			FERNANDES, Leonardo. OSGi e os benefícios de uma Arquitetura Modular. 37.ed. 2009. p. 27-35.
 			GAMA, Kiev. Uma visão geral sobre a plataforma OSGi. 2008. Disponível em https://kievgama.wordpress.com/2008/11/24/um-pouco-de-osgi-em-portugues/. Acesso em 09 de março, 2015.
 			KNOERNSCHILD, Kirk. Java application architecture: modularity patterns with examples using OSGi. Crawfordsville: Pearson Education, 2012.
 			LUCENA, Fábio Nogueira de. Introdução ao Equinox. 2010. Disponível em https://code.google.com/p/exemplos/wiki/equinox. Acesso em 09 de março, 2015.
