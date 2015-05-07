@@ -1,22 +1,7 @@
-<introducao>
-
-	Segundo Fernandes (2009), um sistema modular possui algumas propriedades. Deve ser autocontido, o módulo pode ser incluído, retirado, instalado ou desinstalado. Outra propriedade é ter alta coesão, um módulo deve cumprir apenas sua finalidade, ou seja, deve fazer somente as funções que lhe foram atribuídas. O baixo acoplamento é outra propriedade muito importante, pois o módulo não precisa se preocupar com implementações de outros módulos que interagem com ele, além de permitir alterar um módulo sem a necessidade de atualizar outros.
-
-</introducao>
-
-
 <justificativa>
 
-	Diante dos vários segmentos e constantes mudanças empresariais, novos softwares são desenvolvidos e precisam estar preparados para acompanhar as modificações que ocorrem nos processos de uma empresa. Dessa forma o desenvolvimento separado em módulos seria uma solução para atender empresas de diferentes setores ao invés de criar um software para cada segmento. Além disso a utilização de módulos em um sistema torna mais flexível sua manutenção, pois é realizada nos módulos, não afetando o restante da aplicação.
+	Diante dos vários segmentos e constantes mudanças empresariais, novos softwares são desenvolvidos e precisam estar preparados para acompanhar as modificações que ocorrem nos processos de uma empresa. Dessa forma o desenvolvimento separado em módulos seria uma solução para atender empresas de diferentes setores em vez de criar um software para cada segmento. Além disso a utilização de módulos em um sistema torna mais flexível sua manutenção, pois é realizada nos módulos, não afetando o restante da aplicação.
 	O trabalho terá relevância na visão acadêmica diante da aprendizagem da tecnologia OSGi. Agregar conceitos sobre o desenvolvimento de software de forma modularizada. E ainda, por ser pouco utilizada no mercado devido à sua complexidade de aprendizagem, reunir informações e disponibilizar uma documentação com práticas de programação e vantagens que essa tecnologia pode oferecer.
 	Desenvolvedores de softwares procuram sempre a utilização de novas práticas e tecnologias produtivas. O modelo de desenvolvimento modular através da tecnologia OSGi oferece diversos benefícios que ajudam na expansão e manutenção de uma aplicação. Isto também se torna útil para as empresas, pois para novas funcionalidades seriam criados módulos, e a manutenção do sistema seria realizada somente no módulo específico, sem a necessidade de parar o restante do sistema.
-
-	<removido>
-		Escolhemos demonstrar a modularização de software devido a vários problemas existentes quando um software em produção necessita ser atualizado para resolução de um problema ou para que seja aplicado uma nova funcionalidade. Exemplificaremos através do desenvolvimento de uma aplicação como funcionaria o desenvolvimento e funcionamento de um software modularizado.
-		
-		Ao trabalharmos com uma aplicação não modularizada, percebemos os problemas e dificuldades que são apresentadas quando é necessário realizar uma manutenção ou aplicar uma nova funcionalidade no software. Dessa maneira a utilização da modularização facilita a expansão e manutenção do software.
-	
-		O conceito de modularização ainda é pouco conhecido e não muito realizado no desenvolvimento de software, além de não ter sido uma tecnologia abordada em nosso curso, o que também nos despertou interesse de sua aplicação.
-	</removido>
 	
 </justificativa>

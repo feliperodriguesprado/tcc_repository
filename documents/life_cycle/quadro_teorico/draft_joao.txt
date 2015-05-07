@@ -60,27 +60,12 @@
 	</referencias>
 </HyperText_Markup_Language_(HTML)>
 <JavaScript>
-	JavaScript é uma linguagem de programação criada pela Netscape em parceria com a
-	Sun Microsystems. Sua primeira versão, definida como JavaScript 1.0, foi lançada em 1995 e
-	implementada em março de 1996 no navegador Netscape Navigator 2.0 (Silva, 2010).
-	Segundo Silva (2010), o JavaScript tem como finalidade fornecer funcionalidades para
-	adicionar interatividades avançadas à uma página web. É desenvolvido para ser executada no
-	lado do cliente, ou seja, é interpretada pelo navegador do usuário. Os navegadores possuem
-	funcionalidades integradas para realizar a interpretação e o funcionamento da linguagem
-	JavaScript.
-	Conforme Mozilla Developer Network (2015), JavaScript é baseado na linguagem de
-	programação ECMAScript, o qual é padronizado pela Ecma International na especificação
-	ECMA-262 e ECMA-402.
-	Entre suas características está ser uma linguagem leve para a execução, interpretada, assíncrona e baseada em objetos com funções de primeira
-	classe. Funções de primeira
-	classe são funções que podem ser passadas como argumentos, retornadas de outras funções, atribuídas a variáveis ou armazenadas em
-	estrutura de dados. Além de ser executada nos navegadores, o JavaScript é utilizada em outros
-	ambientes, como por exemplo, node.js ou Apache CouchDB (Mozilla Developer Network,
-	2015).
-	De acordo com Caelum (2015), JavaScript é responsável por aplicar qualquer tipo de
-	funcionalidade dinâmica em páginas web. É uma linguagem poderosa, que possibilita ótimos
-	resultados. Podemos citar o Gmail, Google Maps e Google Docs como exemplos de
-	aplicações web desenvolvidas utilizando JavaScript.
+	JavaScript é uma linguagem de programação criada pela Netscape em parceria com a Sun Microsystems. Sua primeira versão, definida como JavaScript 1.0, foi lançada em 1995 e	implementada em março de 1996 no navegador Netscape Navigator 2.0 (Silva, 2010).
+	Segundo Silva (2010), o JavaScript tem como finalidade fornecer funcionalidades para adicionar interatividades avançadas à uma página web. É desenvolvido para ser executada no	lado do cliente, ou seja, é interpretada pelo navegador do usuário. Os navegadores possuem
+	funcionalidades integradas para realizar a interpretação e o funcionamento da linguagem	JavaScript.
+	Conforme Mozilla Developer Network (2015), JavaScript é baseado na linguagem de	programação ECMAScript, o qual é padronizado pela Ecma International na especificação ECMA-262 e ECMA-402.
+	Entre suas características está ser uma linguagem leve para a execução, interpretada, assíncrona e baseada em objetos com funções de primeira classe. Funções de primeira classe são funções que podem ser passadas como argumentos, retornadas de outras funções, atribuídas a variáveis ou armazenadas em	estrutura de dados. Além de ser executada nos navegadores, o JavaScript é utilizada em outros ambientes, como por exemplo, node.js ou Apache CouchDB (Mozilla Developer Network, 2015).
+	De acordo com Caelum (2015), JavaScript é responsável por aplicar qualquer tipo de funcionalidade dinâmica em páginas web. É uma linguagem poderosa, que possibilita ótimos	resultados. Podemos citar o Gmail, Google Maps e Google Docs como exemplos de aplicações web desenvolvidas utilizando JavaScript.
 	<referencias>
 		CAELUM. Apostila Desenvolvimento Web com HTML, CSS e JavaScript. 2015. Disponível em https://www.caelum.com.br/apostila-html-css-javascript/javascript-einteratividade-na-web/. Acesso em 08 de março, 2015.
 		Mozilla Developer Network. JavaScript language resources. 2014. Disponível em https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources. Acesso em 08 de março, 2015.

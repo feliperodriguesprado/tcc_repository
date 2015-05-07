@@ -3,10 +3,10 @@
 	Para que se possa desenvolver qualquer solução, é necessário o uso de algumas ferramentas, teorias e tecnologias. Abaixo serão apresentadas algumas delas usadas no desenvolvimento desta pesquisa, bem como sua utilidade.
 
 	<java>
-		A linguagem de programação Java é composta por coleções de classes existentes nas bibliotecas de classe Java, conhecidas como Java APIs<nota_rodape></nota_rodape>. Classes são partes que consistem uma aplicação Java, compostas por outras partes chamadas métodos, que são responsáveis por realizar tarefas e retornar informações. É possível criar classes para formar uma aplicação Java e também utilizar as coleções de classes do Java API. Portanto, para se desenvolver uma aplicação utilizando essa linguagem, é preciso entender como criar classes próprias que irão compor a aplicação e como trabalhar utilizando as classes do Java API (DEITEL, 2010).
-		Java foi lançada em 1996 pela Sun Microsystems<nota_rodape></nota_rodape> com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – Web – Mobile). Qualquer dispositivo que possua a JVM<nota_rodape></nota_rodape> é capaz de executar um software desenvolvido em Java (CLARO; SOBRAL, 2008).
+		A linguagem de programação Java é composta por coleções de classes existentes nas bibliotecas de classe Java, conhecidas como Java APIs. Classes são partes que consistem uma aplicação Java, compostas por outras partes chamadas métodos, que são responsáveis por realizar tarefas e retornar informações. É possível criar classes para formar uma aplicação Java e também utilizar as coleções de classes do Java API. Portanto, para se desenvolver uma aplicação utilizando essa linguagem, é preciso entender como criar classes próprias que irão compor a aplicação e como trabalhar utilizando as classes do Java API (DEITEL, 2010).
+		Java foi lançada em 1996 pela Sun Microsystems com a finalidade de desenvolver aplicativos para diferentes plataformas (Windows – Linux – Web – Mobile). Qualquer dispositivo que possua a JVM é capaz de executar um software desenvolvido em Java (CLARO; SOBRAL, 2008).
 		O objetivo da linguagem Java é uma plataforma para o desenvolvimento de sistemas de médio a grande porte. Uma das muitas vantagens de se utilizar a plataforma Java é a grande quantidade de bibliotecas gratuitas que podem ser utilizadas em diversos tipos de projetos. Como cada linguagem é apropriada para uma determinada área, a utilização de Java é melhor para o desenvolvimento de aplicações que tenham tendência a crescer (CAELUM, 2015).
-		Para desenvolver aplicações em Java é necessário instalar um Kit de desenvolvimento, o Java Development Kit - JDK, o qual pode ser obtido no próprio site da Oracle – empresa mantenedora da plataforma. Ele é composto de compilador, máquina virtual, bibliotecas e utilitários.(CAELUM, 2015).
+		Para desenvolver aplicações em Java é necessário instalar um Kit de desenvolvimento, o Java Development Kit – JDK, o qual pode ser obtido no próprio site da Oracle – empresa mantenedora da plataforma. Ele é composto de compilador, máquina virtual, bibliotecas e utilitários.(CAELUM, 2015).
 		Essa linguagem demonstra ser de imprescindível utilidade para nosso projeto, pois além das vantagens citadas anteriormente, oferece a especificação OSGi, tecnologia utilizada para o desenvolvimento de software modular.
 
 		<referencias>
@@ -27,7 +27,7 @@
 
 		Grandes aplicações enfrentam um problema conhecido no seu desenvolvimento, a complexidade. Uma maneira de resolver esse problema é quebrar o sistema em partes menores, ou módulos. Devido a sua flexibilidade, a linguagem de programação Java permitiu construir sobre sua plataforma um poderoso sistema de módulos, o OSGi, que oferece suporte à construção de sistemas modulares (Fernandes, 2009).
 		
-		Segundo a Osgi Alliance (2015), a tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formada por componentes distintos e reutilizáveis.
+		Segundo a Osgi Alliance (2015), a tecnologia Open Services Gateway initiative – OSGi é um conjunto de especificações, o qual segue um modelo de desenvolvimento em que as aplicações são dinamicamente formadas por componentes distintos e reutilizáveis.
 		
 		A especificação teve início em março de 1999 pela OSGi Alliance. Seus principais desafios na época não era desenvolver uma solução para a execução de diferentes versões de um mesmo projeto na mesma aplicação, mas sim de elaborar uma maneira que diferentes componentes que não se conhecem possam ser agrupados dinamicamente sob o mesmo projeto (OSGI ALLIANCE, 2015).
 		
@@ -43,7 +43,7 @@
 	
 		> Installed - O bundle é instalado com êxito;
 		
-		> Resolved - Avalia se o bundle está pronto para ser iniciado ou parado, validando informações como bundles,pacotes e versões destes, tais como até a versão do java necessária para executar o bundle;
+		> Resolved - Avalia se o bundle está pronto para ser iniciado ou parado, validando informações como bundles, pacotes e versões destes, tais como até a versão do java necessária para executar o bundle;
 	
 		> Starting - Estado de transição, em que nenhum bundle vai se encontrar nele, apenas é executado o ativador e logo em seguida, o bundle é passado para o estado descrito a seguir;
 	
