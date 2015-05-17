@@ -1,0 +1,69 @@
+<apresentação>
+	Primeiramente boa noite á todos aqui presentes. Este projeto para qualificação foi desenvolvido pelos alunos Felipe Rodrigues do Prado e João Paulo Nakajima Pereira, sob orientação do Mestre Márcio Emílio Cruz Vono de Azevedo. Iremos apresentar sobre o tema MODULARIZAÇÃO DE SOFTWARES.
+</apresentação>
+<Introdução>
+	<complexidade_dos_softwares>
+		Desde o surgimento dos primeiros computadores pessoais em 1970 e sua utilização em aplicações empresariais(o que antes era mais restrito aos cientistas e militares) os softwares passaram a participar cada vez mais dos ambientes empresariais, automatizando e gerenciando as mais variadas tarefas possíveis. Com isso houve um grande aumento na complexidade dessas tarefas, impossibilitando apenas uma pessoa conhecer tudo sobre algum software.
+		<!--> mostrar imagem do avião</!-->
+			Esse avião demonstra bem isso: nos dias atuais lidamos com algo tão complexo que mesmo um grupo de pessoas não conseguiriam entender e dar manutenção dele
+		Os módulos são as unidades ou partes do software que fornecem ou consomem serviços. Esses módulos devem atender alguns requisitos como poder instalar, parar, reiniciar, desinstalar, combinar com outros softwares e ser reutilizado sem ter que reiniciar ou parar toda a aplicação.
+		Um exemplo disso módulo é o módulo Aria<!-->imagem módulo Aria</!-->, ele é apenas um módulo da ISS(espação espacial internacional). Existem 16 países que ajudaram a construir a Estação espacial internacional, só que pra isso foi preciso definir bem as interfaces e o funcionamento de cada módulo, pois uma vez no espaço não é possível fazer alterações ou modificações e para o acoplamento do módulo não pode parar o funcionamento do restante.
+		Existem alguns trabalhos na área desenvolvidos, como Fernandes, em 2009 , ele dá uma visão geral sobre OSGi e em 2010, Mayworm explica sobre o OSGi no contexto de sistemas distribuídos.
+	</complexidade_dos_softwares>
+</Introdução>
+<objetivo_geral>
+	
+</objetivo_geral>
+<objetivos_especificos>
+
+</objetivos_especificos>
+<justificativa>
+	<motivação>
+		O que nos motivou a desenvolver sobre esse tema foi uma experiência profissional que tivemos em que notamos os problemas enfrentados pelos clientes e pela empresa prestadora do suporte e pesquisando por uma solução para esses problemas.
+	</motivação>
+	<academica>
+		<agregar_conhecimento>
+			Esse tema não nos foi mostrado na faculdade, assim o estudo dele nos agrega novos conhecimentos, o que é sempre bom para quem lida com TI, se manter sempre atualizado para poder atender o mercado de trabalho.
+		</agregar_conhecimento>
+		<documentação>
+			Montar a parte teórica desse projeto foi um desafio para nós, porque não encontramos muito material acadêmico para seguir, esperamos deixar assim , para quem se interessar, a documentação desse projeto.
+		</documentação>
+	</academica>
+	<social>
+		Quando acontece algum problema no software de uma empresa, se afeta todo o sistema para se reparar ou realizar a atualização do software, como por exemplo um supermercado, se acontece algum problema na parte de emissão de notas fiscais, tem que se parar todo o sistema, os terminais do sistema tem que parar, os caixas ficam sem atualizar os preços, não passa mais cartão nesse tempo, e vários outros problemas. Isso afeta tanto a imagem da supermercado quanto os clientes que ficam estressados na fila esperando o sistema voltar a funcionar.
+	</social>
+</justificativa>
+<quadro_teorico>
+	<spring>
+	
+	</spring>
+	<maven>
+		
+	</maven>
+	<postgres_hibernate>
+		Utilizaremos o banco de dados PostGresql e o framework Hibernate para mapeamento objeto-relacional.
+	</postgres_hibernate>
+	<html_css_javascript>
+		Para fazer as telas do usuário usaremos essas linguagens, HTML, CSS e Javascript.
+	</html_css_javascript>
+	
+</quadro_teorico>
+<metodologia>
+	<tipo_de_pesquisa>
+		Escolhemos o tipo de pesquisa aplicada porque temos um problema e iremos desenvolver um software que se propõe para resolver, mas que não vai ser aplicado na prática em nenhuma empresa específica, mas isso não impede se alguma quiser usar ele também.
+	</tipo_de_pesquisa>
+	<contexto_de_pesquisa>
+		O contexto em poderíamos pesquisar pode ser qualquer um desses aqui<!--> mostrar imagem do OSGi IOt</!-->
+		mas iremos focar na parte de aplicações comerciais por que é uma área em que temos mais contato e experiência sobre os problemas enfrentados.
+	</contexto_de_pesquisa>
+	<procedimentos>
+		Aqui descrevemos os procedimentos que iremos seguir para poder finalizar o projeto:
+		primeiro escolhemos um tipo de software em que melhor se mostraria a modularização, a partir daí temos que levantar os requisitos que essa aplicação precisa, fazer e modelar o banco de dados, fazer a interface do usuário, implementar a lógica do negócio. Lembrando que o desenvolvimento tem que ser orientados á serviços e conectando os módulos da aplicação, iremos deixar uma documentação como base para quem se interessar sobre esse tema. Ao final iremos fazer a análise sobre a utilização dessa tecnologia nas empresas, levando em conta a curva de aprendizado e quais as vantagens podem ser alcançadas e as ferramentas que melhor auxiliam no uso dessa tecnologia.
+	</procedimentos>
+</metodologia>
+<cronograma>
+	Esse é o cronograma em que já cumprimos nesse 1º semestre e o que iremos seguir nesse próximo semestre.
+</cronograma>
+<referencias>
+	Aqui descrevemos as referências usadas nessa apresentação.
+</referencias>
