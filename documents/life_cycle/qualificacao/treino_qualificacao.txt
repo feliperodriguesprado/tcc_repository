@@ -3,19 +3,39 @@
 </apresentação>
 <Introdução>
 	<complexidade_dos_softwares>
-		Desde o surgimento dos primeiros computadores pessoais em 1970 e sua utilização em aplicações empresariais(o que antes era mais restrito aos cientistas e militares) os softwares passaram a participar cada vez mais dos ambientes empresariais, automatizando e gerenciando as mais variadas tarefas possíveis. Com isso houve um grande aumento na complexidade dessas tarefas, impossibilitando apenas uma pessoa conhecer tudo sobre algum software.
-		<!--> mostrar imagem do avião</!-->
-			Esse avião demonstra bem isso: nos dias atuais lidamos com algo tão complexo que mesmo um grupo de pessoas não conseguiriam entender e dar manutenção dele
+			<!--> cada vez  mais a utilização de softwares para empresas ou para fins pessoais têm aumentado  alem disso as empresas demandam cada vez softwares mais complexos, que possam atendê-la nos mais ambitos(na web, smartphone)
+			
+			Desde o surgimento dos primeiros computadores pessoais em 1970 e sua utilização em aplicações empresariais(o que antes era mais restrito aos cientistas e militares) os softwares passaram a participar cada vez mais dos ambientes empresariais, automatizando e gerenciando as mais variadas tarefas possíveis. Com isso houve um grande aumento na complexidade dessas tarefas, impossibilitando apenas uma pessoa conhecer tudo sobre algum software.
+			</!-->
+		
+		Cada vez mais os softwares tem sido utilizados tanto para fins empresariais como para a sociedade em geral. 
+		
+		Vendo do lado empresarial, os softwares sofrem várias mudanças devido a regras de negócios impostas pela própria empresa, governo, ou tipo de ramo em que ela atua.
+		
+		Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia, pois com certeza irá atingir um nível de complexidade.
+
+		Com isso, quando um software se torna complexo, fica cada vez mais difícil controlar seu desenvolvimento.
+		
+		Dessa maneira, separar o software em partes ou módulos traria alguns benefícios para o seu desenvolvimento.
+		
+		Existem vários software que são separados por partes, por exemplo, separar o software em pacotes jars não é um software modular.
+		
+		Em um sistema modular, os módulos tem algumas características.
+		
 		Os módulos são as unidades ou partes do software que fornecem ou consomem serviços. Esses módulos devem atender alguns requisitos como poder instalar, parar, reiniciar, desinstalar, combinar com outros softwares e ser reutilizado sem ter que reiniciar ou parar toda a aplicação.
+		
 		Um exemplo disso módulo é o módulo Aria<!-->imagem módulo Aria</!-->, ele é apenas um módulo da ISS(espação espacial internacional). Existem 16 países que ajudaram a construir a Estação espacial internacional, só que pra isso foi preciso definir bem as interfaces e o funcionamento de cada módulo, pois uma vez no espaço não é possível fazer alterações ou modificações e para o acoplamento do módulo não pode parar o funcionamento do restante.
+		
 		Existem alguns trabalhos na área desenvolvidos, como Fernandes, em 2009 , ele dá uma visão geral sobre OSGi e em 2010, Mayworm explica sobre o OSGi no contexto de sistemas distribuídos.
 	</complexidade_dos_softwares>
 </Introdução>
 <objetivo_geral>
-	
+	O objetivo deste projeto é demonstrar o funcionamento de um sistema modularizado usando a tecnologia OSGi
 </objetivo_geral>
 <objetivos_especificos>
-
+	Como objetivos específicos temos que pesquisar as ferramentas e práticas que melhor ajudariam para o desenvolvimento desse tipo de sistema.
+	Vamos desenvolver uma aplicação para exemplificar e demonstrar o funcionamento da modularização.
+	Por fim iremos analisar a viabilidade da utilização dessa tecnologia nas aplicações comerciais.
 </objetivos_especificos>
 <justificativa>
 	<motivação>
@@ -35,10 +55,10 @@
 </justificativa>
 <quadro_teorico>
 	<spring>
-	
+		
 	</spring>
 	<maven>
-		
+		O maven oferece como prinicipal vantagem o controle de dependencias de terceiros, isso significa que quando você for reutilizar um módulo, você não terá que se preocupar com as dependencias dele pois o maven faz essa parte de identificação e download necessários para a aplicação
 	</maven>
 	<postgres_hibernate>
 		Utilizaremos o banco de dados PostGresql e o framework Hibernate para mapeamento objeto-relacional.
