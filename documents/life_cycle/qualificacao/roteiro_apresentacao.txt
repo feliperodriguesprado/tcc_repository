@@ -1,0 +1,17 @@
+Cada vez mais os softwares tem sido utilizados tanto para fins empresariais como para a sociedade em geral.
+
+Vendo do lado empresarial, os softwares sofrem várias mudanças devido a regras de negócios impostas pela própria empresa, governo, ou tipo de ramo em que ela atua.
+
+Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia, pois com certeza irá atingir um nível de complexidade.
+
+Com isso, quando um software se torna complexo, fica cada vez mais difícil controlar seu desenvolvimento.
+
+Dessa maneira, separar o software em partes ou módulos traria alguns benefícios para o seu desenvolvimento.
+
+Existem vários software que são separados por partes, por exemplo, separar o software em pacotes jars não é um software modular.
+
+Em um sistema modular, os módulos tem algumas características.
+
+***Descrever as características dos módulos***
+
+Um exemplo disso módulo é o módulo Aria, ele é apenas um módulo da ISS(espação espacial internacional). Existem 16 países que ajudaram a construir a Estação espacial internacional, só que pra isso foi preciso definir bem as interfaces e o funcionamento de cada módulo, pois uma vez no espaço não é possível fazer alterações ou modificações e para o acoplamento do módulo não pode parar o funcionamento do restante.
