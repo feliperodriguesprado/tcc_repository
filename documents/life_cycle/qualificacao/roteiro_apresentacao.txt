@@ -12,6 +12,26 @@ Existem vários software que são separados por partes, por exemplo, separar o s
 
 Em um sistema modular, os módulos tem algumas características.
 
-***Descrever as características dos módulos***
+- Instalável: o módulo tem que instalar;
+- Gerenciável: o módulo deve parar, reiniciar, e ser desinstalado sem interromper o restante da aplicação;
+- Reutilizável: utilizar em outros sistemas;
+- Combinável: combinar com outros módulos;
+- Não guardar estado: ***pesquisar sobre isso***
+- Inteface clara: o módulo de ter um interface bem definida para fazer a comunicação.
 
-Um exemplo disso módulo é o módulo Aria, ele é apenas um módulo da ISS(espação espacial internacional). Existem 16 países que ajudaram a construir a Estação espacial internacional, só que pra isso foi preciso definir bem as interfaces e o funcionamento de cada módulo, pois uma vez no espaço não é possível fazer alterações ou modificações e para o acoplamento do módulo não pode parar o funcionamento do restante.
+***Mostrar e fazer analogia a imagem do módulo Zarya e da ISS (Estação Espacial Internacional)***
+
+
+Granularidade:
+
+Quanto maior a granularidade, menos dependência, mais fácil o uso e mais difícil o reuso.
+Quanto menor a granularidade, mais dependência, mais difícil de usar e mais fácil o reuso.
+
+
+Colocar um tópico antes do OSGi sobre modularização
+
+- Granularidade: quando você divide o software em partes, surge o conceito de granularidade... ***define granularidade explicando o uso e reuso***
+
+- Design de camadas: o modelo mais comum no nosso meio de desenvolvimento é utilizando o design em camadas *** mostrar a granularidade ***.
+
+- Design modular: o design modular proproe da seguinte maneira o desenvolvimento... ***mostra a imagem explicando***
