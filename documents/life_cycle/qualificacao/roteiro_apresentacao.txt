@@ -1,3 +1,6 @@
+
+
+
 Cada vez mais os softwares tem sido utilizados tanto para fins empresariais como para a sociedade em geral.
 
 Vendo do lado empresarial, os softwares sofrem várias mudanças devido a regras de negócios impostas pela própria empresa, governo, ou tipo de ramo em que ela atua.
@@ -16,7 +19,7 @@ Em um sistema modular, os módulos tem algumas características.
 - Gerenciável: o módulo deve parar, reiniciar, e ser desinstalado sem interromper o restante da aplicação;
 - Reutilizável: utilizar em outros sistemas;
 - Combinável: combinar com outros módulos;
-- Não guardar estado: ***pesquisar sobre isso***
+- Não guardar estado: ***pesquisar sobre isso*** posição 772 do livro.
 - Inteface clara: o módulo de ter um interface bem definida para fazer a comunicação.
 
 ***Mostrar e fazer analogia a imagem do módulo Zarya e da ISS (Estação Espacial Internacional)***
