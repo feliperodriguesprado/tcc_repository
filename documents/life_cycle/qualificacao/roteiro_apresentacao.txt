@@ -1,40 +1,107 @@
+***OBJETIVO GERAL***
+
+Demonstrar o modelo de desenvolvimento modular para aplicações empresariais, utilizando o conjunto de especificações OSGi.
 
 
+***OBJETIVO ESPECIFÍCO***
 
-Cada vez mais os softwares tem sido utilizados tanto para fins empresariais como para a sociedade em geral.
+Iremos pesquisar práticas, ferramentas e frameworks que auxiliam no desenvimento modular.
 
-Vendo do lado empresarial, os softwares sofrem várias mudanças devido a regras de negócios impostas pela própria empresa, governo, ou tipo de ramo em que ela atua.
+Iremos desenvolver uma aplicação que demonstre de forma simples e prática a modularização de software.
 
-Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia, pois com certeza irá atingir um nível de complexidade.
-
-Com isso, quando um software se torna complexo, fica cada vez mais difícil controlar seu desenvolvimento.
-
-Dessa maneira, separar o software em partes ou módulos traria alguns benefícios para o seu desenvolvimento.
-
-Existem vários software que são separados por partes, por exemplo, separar o software em pacotes jars não é um software modular.
-
-Em um sistema modular, os módulos tem algumas características.
-
-- Instalável: o módulo tem que instalar;
-- Gerenciável: o módulo deve parar, reiniciar, e ser desinstalado sem interromper o restante da aplicação;
-- Reutilizável: utilizar em outros sistemas;
-- Combinável: combinar com outros módulos;
-- Não guardar estado: ***pesquisar sobre isso*** posição 772 do livro.
-- Inteface clara: o módulo de ter um interface bem definida para fazer a comunicação.
-
-***Mostrar e fazer analogia a imagem do módulo Zarya e da ISS (Estação Espacial Internacional)***
+E por fim, faremos uma conclusão sobre o desenvolvimento modular para aplicações empresariais.
 
 
-Granularidade:
+***JUSTIFICATIVA***
 
-Quanto maior a granularidade, menos dependência, mais fácil o uso e mais difícil o reuso.
-Quanto menor a granularidade, mais dependência, mais difícil de usar e mais fácil o reuso.
+Motivação: o que nos motivou a pesquisar o tema OSGi foi uma experiência profissional que ambos tivemos de trabalhar com um sistema não modularizado, onde a manutenção e a atualização do sistema se tornava trabalhoso.
+
+Conhecimento: Esse tema irá nos agregar mais conhecimento, além de ser um conteúdo não aprendido no curso.
+
+Documentação: Devido a dificuldade que estamos enfrentando para conseguir materiais, deixaremos como base uma documentação que servirá de base para estudos e outros TCCs.
+
+Consumidores e empresas: falar sobre exemplos de uma empresa qualquer com os setores de vendas, logísticas e financeiro.
 
 
-Colocar um tópico antes do OSGi sobre modularização
+***INTRODUÇÃO***
 
-- Granularidade: quando você divide o software em partes, surge o conceito de granularidade... ***define granularidade explicando o uso e reuso***
+Sabemos que os software estão cada vez mais complexos, devido as regras de negócios, governo, ou tipo de ramo em que a empresa atua.
 
-- Design de camadas: o modelo mais comum no nosso meio de desenvolvimento é utilizando o design em camadas *** mostrar a granularidade ***.
+Quanto mais complexo é o software, mais difícil se torna controlar o seu desenvolvimento.
 
-- Design modular: o design modular proproe da seguinte maneira o desenvolvimento... ***mostra a imagem explicando***
+Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia para auxiliar o desenvolvimento.
+
+Uma solução para ajudar a gerenciar a complexidade das aplicações seria separar o software em partes ou módulos, o que traria alguns benefícios para o seu desenvolvimento.
+
+Fazer analogia ao satélite.
+
+Citar os dois trabalhos na área.
+
+
+***QUADRO TEÓRICO***
+
+[MODULARIZAÇÃO]
+
+- Design de camadas: é comum o desenvolvimento de aplicações utilizando o design de camadas, onde são criadas camadas para dividir funcionalmente as partes do sistema, citar alguns alguns exemplos (camada de apresentação, controle e acesso a dados).
+
+- Design modular: já a modularização propõe um design modular, onde as partes da aplicação ficam organizadas em módulos e se comunicam através de serviços.
+
+- Módulos: Como podemos definir os módulos, o que seria um módulo? Um sistema pode ser separado por partes (jars), mas será que eles atendem ao conceito de módulos. Um módulo deve atender as seguintes características
+
+	- Instalável: o módulo tem que instalar;
+	- Gerenciável: o módulo deve parar, reiniciar, e ser desinstalado sem interromper o restante da aplicação;
+	- Reutilizável: utilizar em outros sistemas;
+	- Combinável: combinar com outros módulos sem gerar conflito;
+	- Não guardar estado: o módulo deve ter somente uma instância.
+	- Inteface clara: o módulo de ter um interface bem definida para fazer a comunicação.
+
+
+- Granularidade: ao desenvolvermos um software pensando de forma modularizada, temos uma preocupação da granularidade, que influência no uso e reuso dos módulos, explicar dando exemplo de um módulo de vendas já com checagem de estoque (maior granularidade) e um módulo de vendas e outro de estoque (menor granularidade). Quanto maior a granularidade, menos dependência, mais fácil o uso e mais difícil o reuso. Quanto menor a granularidade, mais dependência, mais difícil de usar e mais fácil o reuso.
+
+- Mudanças: o desenvolvimento modular nos dá uma visão diferente do impacto nas mudanças no sofware. ***Explicar imagem***
+
+
+[OSGi] ***procurar se é uma especificação Java***
+
+A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a plataforma Java que oferece suporte ao desenvolvimento modularizado.
+
+É mantido pela OSGi Alliance, que é um consórcio formado por várias empresas, entre elas, está Eclipse, IBM, ORACLE, LG, entre várias outras.
+
+- Bundles: Em OSGi os módulos são denominados como bundles. Esses bundles tem um ciclo de vida com os seguintes estados: installed, resolved, starting, active, stopping e uninstall. ***explicar imagem***
+
+- Arquitetura: As camadas do OSGi são dispostas da seguinte maneira ***explicar imagem*** ver apresentação da tiazinha
+
+- Versionamento: Dizer que o OSGi tem uma vantagem muito interessante, que é o versionamento, onde pode se ter um ou mais módulos iguais sendo executados juntos porém em versões diferentes. Dar exemplo do módulo financeiro, rh e vendas. Onde o rh precisa de uma nova funcionalidade do financeiro, mas o vendas está estável com essa versão do módulo, então pode criar outra versão do módulo financeiro com as novas funcionalidades e deixar as duas em funcionamento.
+
+- Implementações: Como o OSGi é um conjunto de especificações, existem algumas implementações, como por exemplo apache felix, equinox, knopflerfish, entre outras.
+
+***Explicar o restante das tecnologias***
+
+***METODOLOGIA***
+
+[TIPO DE PESQUISA]
+
+Nossa pesquisa será do tipo aplicada, pois iremos de demonstrar um modelo de desenvolvimento através de um produto que pode ser aplicado em algum contexto.
+
+
+[CONTEXTO DE PESQUISA]
+
+Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
+
+
+[PROCEDIMENTOS]
+
+- Definir o software que exemplifique a modularização e seu funcionamento de forma simples;
+- Prototypes;
+- Levantar os requisitos;
+- Modelar e mapear o banco de dados com JPA;
+- Estruturar os módulos;
+- Implementar a lógica de negócio;
+- Criar as telas do sistema;
+- Documentar.
+
+[INSTRUMENTOS]
+
+- Pesquisas: livros, documentações e artigos.
+- Reuniões: reuniões entre os membros da equipe e o orientador. Além do Filipe Portes.
+- Pelestras: estamos assistindo algumas palestras online.
