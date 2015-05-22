@@ -25,7 +25,7 @@ Consumidores e empresas: falar sobre exemplos de uma empresa qualquer com os set
 
 ***INTRODUÇÃO*** (FELIPE)
 
-Sabemos que os software estão cada vez mais complexos, devido as regras de negócios, governo, ou tipo de ramo em que a empresa atua.
+Sabemos que os software empresarias estão cada vez mais complexos, devido as regras de negócios, governo, ou tipo de ramo em que a empresa atua.
 
 Quanto mais complexo é o software, mais difícil se torna controlar o seu desenvolvimento.
 
@@ -62,7 +62,7 @@ Citar os dois trabalhos na área. (JOÃO PAULO)
 
 - Granularidade: ao desenvolvermos um software pensando de forma modularizada, temos uma preocupação da granularidade, que influência no uso e reuso dos módulos, explicar dando exemplo de um módulo de vendas já com checagem de estoque (maior granularidade) e um módulo de vendas e outro de estoque (menor granularidade). Quanto maior a granularidade, menos dependência, mais fácil o uso e mais difícil o reuso. Quanto menor a granularidade, mais dependência, mais difícil de usar e mais fácil o reuso.
 
-- Mudanças: o desenvolvimento modular nos dá uma visão diferente do impacto nas mudanças no sofware. ***Explicar imagem***
+- Mudanças: o desenvolvimento modular nos dá uma visão diferente do impacto nas mudanças no software. ***Explicar imagem***
 
 
 [OSGi] ***procurar se é uma especificação Java***
@@ -120,4 +120,4 @@ Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
 
 - Pesquisas: livros, documentações e artigos.
 - Reuniões: reuniões entre os membros da equipe e o orientador. Além do Filipe Portes.
-- Pelestras: estamos assistindo algumas palestras online.
+- Palestras: estamos assistindo algumas palestras online.
