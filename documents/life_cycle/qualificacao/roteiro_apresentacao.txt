@@ -5,7 +5,7 @@ Demonstrar o modelo de desenvolvimento modular para aplicações empresariais, u
 
 ***OBJETIVO ESPECIFÍCO***
 
-Iremos pesquisar práticas, ferramentas e frameworks que auxiliam no desenvimento modular.
+Iremos pesquisar práticas, ferramentas e frameworks que auxiliam no desenvolvimento modular.
 
 Iremos desenvolver uma aplicação que demonstre de forma simples e prática a modularização de software.
 
@@ -69,7 +69,14 @@ A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a p
 
 - Bundles: Em OSGi os módulos são denominados como bundles. Esses bundles tem um ciclo de vida com os seguintes estados: installed, resolved, starting, active, stopping e uninstall. ***explicar imagem***
 
-- Arquitetura: As camadas do OSGi são dispostas da seguinte maneira ***explicar imagem*** ver apresentação da tiazinha
+- Arquitetura: As camadas do OSGi são dispostas da seguinte maneira ***explicar imagem***
+	
+	- Execution Environment = Camada de implementação (Felix) do OSGi que está rodando sobre a plataforma Java;
+	- Modules = A camada que gerencia os códigos que são exportados e importados de cada módulo;
+	- Life Cycle = Camada que gerencia os estados dos módulos;
+	- Services = Camada onde fica registrado os serviços dos módulos e faz o gerenciamento;
+	- Bundle = são os módulos que são desenvolvidos, estão presentes em todos as camadas;
+	- Security = A camada que gerencia os aspectos de segurança.
 
 - Versionamento: Dizer que o OSGi tem uma vantagem muito interessante, que é o versionamento, onde pode se ter um ou mais módulos iguais sendo executados juntos porém em versões diferentes. Dar exemplo do módulo financeiro, rh e vendas. Onde o rh precisa de uma nova funcionalidade do financeiro, mas o vendas está estável com essa versão do módulo, então pode criar outra versão do módulo financeiro com as novas funcionalidades e deixar as duas em funcionamento.
 
