@@ -1,9 +1,9 @@
-***OBJETIVO GERAL***
+***OBJETIVO GERAL*** (FELIPE)
 
 Demonstrar o modelo de desenvolvimento modular para aplicações empresariais, utilizando o conjunto de especificações OSGi.
 
 
-***OBJETIVO ESPECIFÍCO***
+***OBJETIVO ESPECIFÍCO*** (FELIPE)
 
 Iremos pesquisar práticas, ferramentas e frameworks que auxiliam no desenvolvimento modular.
 
@@ -12,7 +12,7 @@ Iremos desenvolver uma aplicação que demonstre de forma simples e prática a m
 E por fim, faremos uma conclusão sobre o desenvolvimento modular para aplicações empresariais.
 
 
-***JUSTIFICATIVA***
+***JUSTIFICATIVA*** (JOÃO PAULO)
 
 Motivação: o que nos motivou a pesquisar o tema OSGi foi uma experiência profissional que ambos tivemos de trabalhar com um sistema não modularizado, onde a manutenção e a atualização do sistema se tornava trabalhoso.
 
@@ -23,7 +23,7 @@ Documentação: Devido a dificuldade que estamos enfrentando para conseguir mate
 Consumidores e empresas: falar sobre exemplos de uma empresa qualquer com os setores de vendas, logísticas e financeiro.
 
 
-***INTRODUÇÃO***
+***INTRODUÇÃO*** (FELIPE)
 
 Sabemos que os software estão cada vez mais complexos, devido as regras de negócios, governo, ou tipo de ramo em que a empresa atua.
 
@@ -35,17 +35,21 @@ Uma solução para ajudar a gerenciar a complexidade das aplicações seria sepa
 
 Fazer analogia ao satélite.
 
-Citar os dois trabalhos na área.
+
+Citar os dois trabalhos na área. (JOÃO PAULO)
 
 
 ***QUADRO TEÓRICO***
 
 [MODULARIZAÇÃO]
 
+(FELIPE)
 - Design de camadas: é comum o desenvolvimento de aplicações utilizando o design de camadas, onde são criadas camadas para dividir funcionalmente as partes do sistema, citar alguns alguns exemplos (camada de apresentação, controle e acesso a dados).
 
 - Design modular: já a modularização propõe um design modular, onde as partes da aplicação ficam organizadas em módulos e se comunicam através de serviços.
 
+
+(JOÃO PAULO)
 - Módulos: Como podemos definir os módulos, o que seria um módulo? Um sistema pode ser separado por partes (jars), mas será que eles atendem ao conceito de módulos. Um módulo deve atender as seguintes características
 
 	- Instalável: o módulo tem que instalar;
@@ -63,10 +67,12 @@ Citar os dois trabalhos na área.
 
 [OSGi] ***procurar se é uma especificação Java***
 
+(FELIPE)
 A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a plataforma Java que oferece suporte ao desenvolvimento modularizado.
 
 É mantido pela OSGi Alliance, que é um consórcio formado por várias empresas, entre elas, está Eclipse, IBM, ORACLE, LG, entre várias outras.
 
+(JOÃO PAULO)
 - Bundles: Em OSGi os módulos são denominados como bundles. Esses bundles tem um ciclo de vida com os seguintes estados: installed, resolved, starting, active, stopping e uninstall. ***explicar imagem***
 
 - Arquitetura: As camadas do OSGi são dispostas da seguinte maneira ***explicar imagem***
@@ -78,6 +84,7 @@ A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a p
 	- Bundle = são os módulos que são desenvolvidos, estão presentes em todos as camadas;
 	- Security = A camada que gerencia os aspectos de segurança.
 
+(FELIPE)
 - Versionamento: Dizer que o OSGi tem uma vantagem muito interessante, que é o versionamento, onde pode se ter um ou mais módulos iguais sendo executados juntos porém em versões diferentes. Dar exemplo do módulo financeiro, rh e vendas. Onde o rh precisa de uma nova funcionalidade do financeiro, mas o vendas está estável com essa versão do módulo, então pode criar outra versão do módulo financeiro com as novas funcionalidades e deixar as duas em funcionamento.
 
 - Implementações: Como o OSGi é um conjunto de especificações, existem algumas implementações, como por exemplo apache felix, equinox, knopflerfish, entre outras.
@@ -86,6 +93,7 @@ A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a p
 
 ***METODOLOGIA***
 
+(JOÃO PAULO)
 [TIPO DE PESQUISA]
 
 Nossa pesquisa será do tipo aplicada, pois iremos de demonstrar um modelo de desenvolvimento através de um produto que pode ser aplicado em algum contexto.
@@ -95,7 +103,7 @@ Nossa pesquisa será do tipo aplicada, pois iremos de demonstrar um modelo de de
 
 Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
 
-
+(FELIPE)
 [PROCEDIMENTOS]
 
 - Definir o software que exemplifique a modularização e seu funcionamento de forma simples;
@@ -107,6 +115,7 @@ Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
 - Criar as telas do sistema;
 - Documentar.
 
+(JOÃO PAULO)
 [INSTRUMENTOS]
 
 - Pesquisas: livros, documentações e artigos.
