@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tcc.prototypes.web.application.standard.module2.resources;
+package tcc.prototypes.web.application.standard.module1.resources;
 
 import java.io.IOException;
 import java.io.PrintWriter;
