@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import tcc.prototypes.osgi.bundle.service.standard.module3.api.GetMessage;
+import tcc.prototypes.osgi.bundle.standard.bundles.control.BundlesControl;
 
 /**
  *
@@ -20,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Service1", urlPatterns = {"/Service1"})
 public class Service1 extends HttpServlet {
-
+    
+    private GetMessage serviceGetMessage;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,18 +36,30 @@ public class Service1 extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String message;
+        
         try {
+            serviceGetMessage = (GetMessage) BundlesControl.getInstance().getBundleService(GetMessage.class);
+            message = serviceGetMessage.getMessage();
+        } catch (Exception e) {
+            message = e.getMessage();
+        }
+        
+        try {
+
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Service module 1</title>");            
+            out.println("<title>Service module 1</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Service example module 1</h1>");
             out.println("<div>Date: " + new Date().toString() + "</div>");
+            out.println("<div>Service \"GetMessage\" of module 3: " + message + "</div>");
             out.println("</body>");
             out.println("</html>");
         } finally {

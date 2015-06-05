@@ -17,6 +17,8 @@
     <modules>
         <module>web.application.standard.module1</module>
         <module>web.application.standard.module2</module>
+        <module>osgi.bundle.service.standard.module3</module>
+        <module>osgi.bundle.standard.bundles.control</module>
     </modules>
     
     <build>
@@ -27,6 +29,7 @@
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>2.5.4</version>
+                    <extensions>true</extensions>
                     <executions>
                         <execution>
                             <id>bundle-manifest</id>
@@ -65,6 +68,20 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
             </plugins>
         </pluginManagement>
         
