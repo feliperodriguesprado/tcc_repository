@@ -1,7 +1,0 @@
-<justificativa>
-
-	Diante dos vários segmentos e constantes mudanças empresariais, novos softwares são desenvolvidos e precisam estar preparados para acompanhar as modificações que ocorrem nos processos de uma empresa. Dessa forma o desenvolvimento separado em módulos seria uma solução para atender empresas de diferentes setores em vez de criar um software para cada segmento. Além disso a utilização de módulos em um sistema torna mais flexível sua manutenção, pois é realizada nos módulos, não afetando o restante da aplicação.
-	O trabalho terá relevância na visão acadêmica diante da aprendizagem da tecnologia OSGi. Agregar conceitos sobre o desenvolvimento de software de forma modularizada. E ainda, por ser pouco utilizada no mercado devido à sua complexidade de aprendizagem, reunir informações e disponibilizar uma documentação com práticas de programação e vantagens que essa tecnologia pode oferecer.
-	Desenvolvedores de softwares procuram sempre a utilização de novas práticas e tecnologias produtivas. O modelo de desenvolvimento modular através da tecnologia OSGi oferece diversos benefícios que ajudam na expansão e manutenção de uma aplicação. Isto também se torna útil para as empresas, pois para novas funcionalidades seriam criados módulos, e a manutenção do sistema seria realizada somente no módulo específico, sem a necessidade de parar o restante do sistema.
-	
-</justificativa>
