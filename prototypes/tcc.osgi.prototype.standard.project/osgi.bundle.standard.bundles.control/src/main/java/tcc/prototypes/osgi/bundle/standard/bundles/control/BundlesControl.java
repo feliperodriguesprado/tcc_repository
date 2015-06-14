@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2015
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package tcc.prototypes.osgi.bundle.standard.bundles.control;
 
@@ -12,8 +23,10 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 
 /**
+ * Classe responsável por controlar a obtenção de
+ * {@link Bundle}, {@link BundleContext} e serviços dos módulos.
  *
- * @author felipeprado
+ * @author Felipe Rodrigues do Prado
  */
 public class BundlesControl {
 
@@ -26,19 +39,30 @@ public class BundlesControl {
         return INSTANCE;
     }
 
+    /**
+     * Método que obtem uma referênca do {@link Bundle} para classe informada
+     * como parâmetro. É retornado um {@link  Bundle} associado à classe
+     * informada, caso o bundle obtido seja null, é lançado uma exceção do tipo
+     * {@link Exception}.
+     *
+     * @param classFromBundle
+     * @return {@link Bundle} referente ao módulo.
+     * @throws Exception
+     */
     public Bundle getBundle(Class<?> classFromBundle) throws Exception {
 
         Bundle bundle = FrameworkUtil.getBundle(classFromBundle);
 
         if (bundle != null) {
-            
-            // TODO: Log
-            System.out.println(String.format("[Sucess: %s] Bundle found: %s", new Date().toString(), bundle.getSymbolicName()));
-            
+
+            // TODO: escrever em log
+            System.out.println(String.format("[Info: %s] Bundle found: %s", new Date().toString(), bundle.getSymbolicName()));
+
             return bundle;
-        
+
         } else {
-            System.out.println(String.format("[Error: %s] Bundle not found. Cause: bundle is null.", new Date().toString()));
+            // TODO: escreve em log.
+            System.out.println(String.format("[Warning: %s] Bundle not found. Cause: bundle is null.", new Date().toString()));
             throw new Exception();
         }
     }
@@ -46,16 +70,17 @@ public class BundlesControl {
     public BundleContext getBundleContext(Class<?> classFromBundle) throws Exception {
 
         try {
-            
+
             BundleContext bundleContext = getBundle(classFromBundle).getBundleContext();
-            
-            // TODO: Log
-            System.out.println(String.format("[Sucess: %s] Bundle context found: %s", new Date().toString(), bundleContext.toString()));
-            
+
+            // TODO: escrever em log
+            System.out.println(String.format("[Info: %s] Bundle context found: %s", new Date().toString(), bundleContext.toString()));
+
             return bundleContext;
-            
+
         } catch (Exception e) {
-            System.out.println(String.format("[Error: %s] Bundle context not found.", new Date().toString()));
+            // TODO: escrever em log
+            System.out.println(String.format("[Warning: %s] Bundle context not found.", new Date().toString()));
             throw new Exception(String.format("Bundle context not found."));
         }
     }
@@ -73,12 +98,12 @@ public class BundlesControl {
             bundleService = bundleContext.getService(serviceReference);
 
             // TODO: Log
-            System.out.println(String.format("[Sucess: %s] Bundle service found: %s", new Date().toString(), bundleService.toString()));
+            System.out.println(String.format("[Info: %s] Bundle service found: %s", new Date().toString(), bundleService.toString()));
 
             return bundleService;
 
         } catch (Exception e) {
-            System.out.println(String.format("[Error: %s] Service not found. Cause: %s", new Date().toString(), e.getMessage()));
+            System.out.println(String.format("[Warning: %s] Service not found. Cause: %s", new Date().toString(), e.getMessage()));
             throw new Exception(String.format("Service not found. Cause: %s", e.getMessage()));
         }
 
