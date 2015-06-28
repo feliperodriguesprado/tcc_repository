@@ -19,6 +19,7 @@
         <module>web.application.standard.module2</module>
         <module>osgi.bundle.service.standard.module3</module>
         <module>osgi.bundle.standard.bundles.control</module>
+        <module>web.application.standard.module4</module>
     </modules>
     
     <build>
