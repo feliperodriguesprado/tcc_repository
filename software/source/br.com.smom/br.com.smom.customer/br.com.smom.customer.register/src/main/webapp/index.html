@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Módulo de clientes</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div id="div_chart" style="float: left; margin: 10px;"></div>
+        <span id="span_chart" style="float: right; margin: 10px;"></span>
+        <div id="div_pie_chart" style="float: left; margin: 10px;"></div>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="../../scripts/plugins/numeraljs/numeral.min.js"></script>
+        <script type="text/javascript" src="../../scripts/plugins/numeraljs/languages.min.js"></script>
+        <script type="text/javascript" src="../../scripts/charts/Charts.min.js"></script>
+        <script>
+            var chart,
+                line,
+                position,
+                label;
+            
+            
+            // Chart 1
+            chart = new Chart();
+            
+            chart.htmlElement = "span_chart";
+            chart.chartTitle = "Chart prototype 1";
+            chart.chartType = "LineChart";
+            chart.curveType = true;
+            chart.pointSize = 2;
+            chart.hAxisFormat = "decimal";
+            chart.vAxisFormat = "decimal";
+            chart.hValuePointFormat = "0,0.000000";
+            chart.vValuePointFormat = "0,0.000000";
+            chart.hAxisIsLabel = false;
+            chart.hAxisTitle = "Axis X";
+            chart.vAxisTitle = "Axis Y";
+            chart.hGridlinesCount = 5;
+            chart.vGridlinesCount = 5;
+            chart.hMaxValue = 100;
+            chart.hMinValue = 0;
+            chart.vMaxValue = 100;
+            chart.vMinValue = 0;
+            chart.height = 500;
+            chart.width = 600;
+            
+            line = new Line("Line 1");
+            line.addPosition(new Position(10.3, 32));
+            line.addPosition(new Position(26, 29));
+            line.addPosition(new Position(59.666999, 35.894));
+            line.addPosition(new Position(78, 31.8));
+            
+            chart.addLine(line);
+            
+            line = new Line("Line 2");
+            line.addPosition(new Position(5, 45));
+            line.addPosition(new Position(79, 63));
+            
+            chart.addLine(line);
+            
+            window.charts.addChart(chart);
+            
+            
+            // Chart 2
+            chart = new Chart();
+            
+            chart.htmlElement = "div_chart";
+            chart.chartTitle = "Total de vendas de produtos por mês";
+            chart.chartType = "AreaChart";
+            chart.curveType = false;
+            chart.pointSize = 2;
+            chart.vAxisFormat = "currency";
+            chart.vValuePointFormat = "R$ 0,0.00";
+            chart.hAxisIsLabel = true;
+            chart.hAxisTitle = "Meses";
+            chart.vAxisTitle = "Vendas";
+            chart.vGridlinesCount = 6;
+            chart.vMaxValue = 1000;
+            chart.vMinValue = 0;
+            chart.height = 500;
+            chart.width = 600;
+            
+            chart.addLabel(new window.Label("jan/2015"));
+            chart.addLabel(new window.Label("fev/2015"));
+            chart.addLabel(new window.Label("mar/2015"));
+            chart.addLabel(new window.Label("abr/2015"));
+            chart.addLabel(new window.Label("mai/2015"));
+            chart.addLabel(new window.Label("jun/2015"));
+            chart.addLabel(new window.Label("jul/2015"));
+            
+            
+            line = new Line("Desktops");
+            line.addPosition(new Position(undefined, 100));
+            line.addPosition(new Position(undefined, 150));
+            line.addPosition(new Position(undefined, 0));
+            line.addPosition(new Position(undefined, 500));
+            line.addPosition(new Position(undefined, 50));
+            line.addPosition(new Position(undefined, 400));
+            line.addPosition(new Position(undefined, 500));
+            
+            chart.addLine(line);
+            
+            line = new Line("Notebooks");
+            line.addPosition(new Position(undefined, 300));
+            line.addPosition(new Position(undefined, 500));
+            line.addPosition(new Position(undefined, 900));
+            line.addPosition(new Position(undefined, 150));
+            line.addPosition(new Position(undefined, 300));
+            line.addPosition(new Position(undefined, 433));
+            line.addPosition(new Position(undefined, 1500.35));
+            
+            chart.addLine(line);
+            
+            line = new Line("Celular");
+            line.addPosition(new Position(undefined, 168));
+            line.addPosition(new Position(undefined, 198.45));
+            line.addPosition(new Position(undefined, 359));
+            line.addPosition(new Position(undefined, 520));
+            line.addPosition(new Position(undefined, 600));
+            line.addPosition(new Position(undefined, 789));
+            line.addPosition(new Position(undefined, 160.78));
+            
+            chart.addLine(line);
+            
+            line = new Line("Impressoras");
+            line.addPosition(new Position(undefined, 800));
+            line.addPosition(new Position(undefined, 600));
+            line.addPosition(new Position(undefined, 630.546));
+            line.addPosition(new Position(undefined, 429));
+            line.addPosition(new Position(undefined, 694));
+            line.addPosition(new Position(undefined, 800));
+            line.addPosition(new Position(undefined, 300));
+            
+            chart.addLine(line);
+            
+            window.charts.addChart(chart);
+            
+            
+            // Chart 3
+            chart = new Chart();
+            line = new Line("Despesas");
+            
+            chart.htmlElement = "div_pie_chart";
+            chart.chartTitle = "Despesas por categoria";
+            chart.chartType = "PieChart";
+            chart.curveType = false;
+            chart.pieChartIs3D = false;
+            chart.pointSize = 2;
+            chart.vAxisFormat = "currency";
+            chart.vValuePointFormat = "R$ 0,0.00";
+            chart.hAxisIsLabel = true;
+            chart.hAxisTitle = "Meses";
+            chart.vAxisTitle = "Vendas";
+            chart.vGridlinesCount = 6;
+            chart.vMaxValue = 1000;
+            chart.vMinValue = 0;
+            chart.height = 500;
+            chart.width = 600;
+            
+            chart.addLabel(new window.Label("Outras despesas"));
+            line.addPosition(new Position(undefined, 69.80));
+            
+            chart.addLabel(new window.Label("Educação"));
+            line.addPosition(new Position(undefined, 958.81));
+            
+            chart.addLabel(new window.Label("Serviço bancário"));
+            line.addPosition(new Position(undefined, 5.31));
+            
+            chart.addLabel(new window.Label("Telefone"));
+            line.addPosition(new Position(undefined, 25.00));
+            
+            chart.addLabel(new window.Label("Transporte"));
+            line.addPosition(new Position(undefined, 233.55));
+            
+            chart.addLabel(new window.Label("Lazer"));
+            line.addPosition(new Position(undefined, 119.40));
+            
+            chart.addLabel(new window.Label("Alimentação"));
+            line.addPosition(new Position(undefined, 15.60));
+            
+            chart.addLine(line);
+            
+            window.charts.addChart(chart);
+            
+            window.charts.generateCharts();
+        </script>
+        
+    </body>
+</html>
