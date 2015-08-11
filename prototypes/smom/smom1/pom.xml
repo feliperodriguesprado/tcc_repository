@@ -15,6 +15,7 @@
     <modules>
         <module>osgi.bundle.module1</module>
         <module>web.bundle.module2</module>
+        <module>ejb.bundle.module3</module>
     </modules>
     
     <build>
@@ -22,7 +23,7 @@
         
         <plugins>
             
-            <!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
@@ -30,7 +31,7 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
-            </plugin>-->
+            </plugin>
             
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -49,6 +50,7 @@
                 <configuration>
                     <supportedProjectTypes>
                         <supportedProjectTypes>war</supportedProjectTypes>
+                        <supportedProjectTypes>ejb</supportedProjectTypes>
                         <supportedProjectTypes>bundle</supportedProjectTypes>
                     </supportedProjectTypes>
                     <instructions>
@@ -83,6 +85,23 @@
                         <manifestFile>
                             ${project.build.outputDirectory}/META-INF/MANIFEST.MF
                         </manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                    <archive>
+                        <manifestFile>
+                            ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                        </manifestFile>
+                        <manifestEntries>
+                            <Export-EJB>ALL</Export-EJB>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>

@@ -2,39 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>smom1</artifactId>
-        <groupId>prototypes</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+    <artifactId>smom1</artifactId>
+    <groupId>prototypes</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 
     <groupId>prototypes</groupId>
-    <artifactId>web.bundle.module2</artifactId>
+    <artifactId>ejb.bundle.module3</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>ejb</packaging>
 
-    <name>Web Bundle Module2</name>
+    <name>EJB bundle module 3</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <dependencies>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>ejb.bundle.module3</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>osgi.bundle.module1</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
@@ -44,7 +29,7 @@
         
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
+            <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>

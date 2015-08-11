@@ -5,3 +5,4 @@ tcc.osgi.prototype.standard.project/osgi.bundle.service.standard.module3/target/
 tcc.osgi.prototype.standard.project/osgi.bundle.service.standard.module4/target/
 smom/smom1/osgi.bundle.module1/target
 smom/smom1/web.bundle.module2/target
+smom/smom1/ejb.bundle.module3/target
