@@ -23,7 +23,7 @@
         
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>ejb.bundle.module3</artifactId>
+            <artifactId>osgi.bundle.module3.base</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -41,7 +41,6 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>
-        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

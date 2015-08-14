@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package prototypes.web.bundle.module2.servlets;
 
 import java.io.IOException;
@@ -12,13 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import prototypes.ejb.bundle.module3.api.GeneratorId;
 import prototypes.osgi.bundle.module1.controller.BundlesControl;
+import prototypes.osgi.bundle.module3.base.api.IGeneratorId;
 
-/**
- *
- * @author Felipe
- */
 @WebServlet(name = "Servlet1", urlPatterns = {"/Servlet1"})
 public class Servlet1 extends HttpServlet {
 
@@ -30,7 +21,7 @@ public class Servlet1 extends HttpServlet {
         String msg = "";
         
         try {
-            GeneratorId generatorId = (GeneratorId) bundlesControl.getBundleService(GeneratorId.class);
+            IGeneratorId generatorId = (IGeneratorId) bundlesControl.getBundleService(IGeneratorId.class);
             msg += generatorId.getIdUser();
         } catch (Exception e) {
             System.out.println("Error.");

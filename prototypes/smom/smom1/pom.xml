@@ -16,7 +16,9 @@
         <module>osgi.bundle.module1</module>
         <module>web.bundle.module2</module>
         <module>ejb.bundle.module3</module>
-    </modules>
+        <module>ejb.bundle.module4</module>
+    <module>osgi.bundle.module3.base</module>
+  </modules>
     
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -52,6 +54,7 @@
                         <supportedProjectTypes>war</supportedProjectTypes>
                         <supportedProjectTypes>ejb</supportedProjectTypes>
                         <supportedProjectTypes>bundle</supportedProjectTypes>
+                        <supportedProjectTypes>jar</supportedProjectTypes>
                     </supportedProjectTypes>
                     <instructions>
                         <_include>osgi.properties</_include>
