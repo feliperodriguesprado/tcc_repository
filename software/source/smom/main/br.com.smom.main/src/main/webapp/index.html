@@ -1,16 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<!--
+Copyright 2015 Smom - Software Module Management.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="pt-BR" ng-app="app">
     <head>
         <meta charset="utf-8">
-        <title>Bundle Main</title>
-        <link rel="stylesheet" href="resource/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="resource/bootstrap/css/bootstrap-theme.min.css">
+        <title>Module Main</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/modules/main/resources/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/modules/main/resources/plugins/bootstrap/css/bootstrap-theme.min.css">
+
+        <!-- Start Bootstrap CSS -->
+        <link rel="stylesheet" href="/modules/main/resources/plugins/startbootstrap/css/sb-admin.css">
+        <link rel="stylesheet" href="/modules/main/resources/plugins/startbootstrap/css/plugins/morris.css">
+        <link rel="stylesheet" href="/modules/main/resources/plugins/startbootstrap/font-awesome/css/font-awesome.min.css">
     </head>
+
     <body>
-        <div class="container">
-            Module Main (br.com.smom.main)
+
+        <div id="wrapper">
+
+            <div id="common"></div>
+
+            <div id="page-wrapper">
+                <div ng-view ></div>
+            </div>
+
         </div>
-        <script type="text/javascript" src="resource/jquery/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="resource/bootstrap/js/bootstrap.min.js"></script>
+
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="/modules/main/resources/plugins/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="/modules/main/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Start Bootstrap -->
+        <script type="text/javascript" src="/modules/main/resources/plugins/startbootstrap/js/plugins/morris/raphael.min.js"></script>
+        <script type="text/javascript" src="/modules/main/resources/plugins/startbootstrap/js/plugins/morris/morris.min.js"></script>
+<!--        <script type="text/javascript" src="/modules/main/resources/plugins/startbootstrap/js/plugins/morris/morris-data.js"></script>-->
+
+        <!-- AngularJS -->
+        <script type="text/javascript" src="/modules/main/resources/plugins/angularjs/angular.min.js"></script>
+        <script type="text/javascript" src="/modules/main/resources/plugins/angularjs/angular-route.min.js"></script>
+        <script type="text/javascript" src="/modules/main/resources/plugins/angularjs/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/modules/main/resources/shared/js/commonControl.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
     </body>
 </html>
