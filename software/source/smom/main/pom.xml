@@ -11,7 +11,8 @@
     <artifactId>main</artifactId>
     <name>Module Main</name>
     <packaging>pom</packaging>
-  <modules>
-    <module>br.com.smom.main</module>
-  </modules>
+    
+    <modules>
+        <module>br.com.smom.main</module>
+    </modules>
 </project>

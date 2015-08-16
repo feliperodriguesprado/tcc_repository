@@ -20,9 +20,13 @@ app.config(['$routeProvider', function ($routeProvider) {
         'use strict';
 
         $routeProvider.
+                when('/', {
+                    controller: 'controller',
+                    templateUrl: '_dashboard.html'
+                }).
                 when('/dashboard', {
                     controller: 'controller',
-                    templateUrl: '_partial.html'
+                    templateUrl: '_dashboard.html'
                 }).
                 otherwise({
                     redirectTo: '/'
@@ -31,7 +35,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('controller', function ($scope) {
 
-    $scope.name = "Dashboard";
+    console.log("Start controller app module Main");
 
 });
-
