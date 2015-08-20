@@ -23,6 +23,8 @@
         <dependencies>
             
             <!-- Modules Smom -->
+            
+            <!-- Bundle Data Source Exported -->
             <dependency>
                 <groupId>br.com.smom.datasource</groupId>
                 <artifactId>br.com.smom.datasource.exported</artifactId>
@@ -30,6 +32,7 @@
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Bundle Control Service Provider -->
             <dependency>
                 <groupId>br.com.smom.control</groupId>
                 <artifactId>br.com.smom.control.serviceprovided</artifactId>
@@ -37,7 +40,11 @@
                 <scope>provided</scope>
             </dependency>
             
+            
+            
             <!-- Dependencies -->
+            
+            <!-- DBCP pooling -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
@@ -45,6 +52,7 @@
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Driver PostgreSQL -->
             <dependency>
                 <groupId>postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -52,6 +60,7 @@
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Java EE 7 Web -->
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
@@ -59,6 +68,7 @@
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Java EE 7 -->
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
@@ -66,6 +76,7 @@
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Especificação OSGi -->
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
@@ -77,92 +88,120 @@
     </dependencyManagement>
     
     <build>
+        
         <finalName>${project.artifactId}</finalName>
+        
+        <pluginManagement>
+            <plugins>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.5.4</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <supportedProjectTypes>
+                            <supportedProjectTypes>bundle</supportedProjectTypes>
+                            <supportedProjectTypes>ejb</supportedProjectTypes>
+                            <supportedProjectTypes>jar</supportedProjectTypes>
+                            <supportedProjectTypes>war</supportedProjectTypes>
+                        </supportedProjectTypes>
+                        <instructions>
+                            <_include>osgi.properties</_include>
+                        </instructions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>bundle-manifest</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>manifest</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>bundle-install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>install</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <ejbVersion>3.1</ejbVersion>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                            <manifestEntries>
+                                <Export-EJB>ALL</Export-EJB>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                            <manifestEntries>
+                                <Bundle-ClassPath>WEB-INF/classes/</Bundle-ClassPath>
+                            </manifestEntries>
+                        </archive>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+                
+            </plugins>
+        </pluginManagement>
+        
         <plugins>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
             </plugin>
             
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.5.4</version>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>bundle-manifest</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>manifest</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <supportedProjectTypes>
-                        <supportedProjectTypes>war</supportedProjectTypes>
-                        <supportedProjectTypes>ejb</supportedProjectTypes>
-                        <supportedProjectTypes>bundle</supportedProjectTypes>
-                        <supportedProjectTypes>jar</supportedProjectTypes>
-                    </supportedProjectTypes>
-                    <instructions>
-                        <_include>osgi.properties</_include>
-                    </instructions>
-                </configuration>
             </plugin>
             
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <archive>
-                        <manifestFile>
-                            ${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                        </manifestFile>
-                        <manifestEntries>
-                            <Bundle-ClassPath>WEB-INF/classes/</Bundle-ClassPath>
-                        </manifestEntries>
-                    </archive>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <archive>
-                        <manifestFile>
-                            ${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                        </manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                    <archive>
-                        <manifestFile>
-                            ${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                        </manifestFile>
-                        <manifestEntries>
-                            <Export-EJB>ALL</Export-EJB>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
         </plugins>
+        
     </build>
     
 </project>
