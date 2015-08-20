@@ -15,7 +15,66 @@
     <modules>
         <module>main</module>
         <module>customer</module>
+        <module>datasource</module>
+        <module>control</module>
     </modules>
+    
+    <dependencyManagement>
+        <dependencies>
+            
+            <!-- Modules Smom -->
+            <dependency>
+                <groupId>br.com.smom.datasource</groupId>
+                <artifactId>br.com.smom.datasource.exported</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>br.com.smom.control</groupId>
+                <artifactId>br.com.smom.control.serviceprovided</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Dependencies -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>2.1.1</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.1-901-1.jdbc4</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>4.3.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
     
     <build>
         <finalName>${project.artifactId}</finalName>

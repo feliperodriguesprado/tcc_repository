@@ -12,3 +12,6 @@
 /prototypes/smom/smom1/ejb.bundle.module4/target/
 /prototypes/smom/smom1/osgi.bundle.module3.base/target/
 /software/source/smom/customer/br.com.smom.customer.register/target/
+/software/source/smom/datasource/br.com.smom.datasource.exported/target/
+/software/source/smom/datasource/br.com.smom.datasource.core/target/
+/software/source/smom/control/br.com.smom.control.serviceprovided/target/

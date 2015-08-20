@@ -35,6 +35,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('controller', function ($scope) {
 
-    console.log("Start controller app module Main");
+    console.log("Start controller app module");
 
 });
