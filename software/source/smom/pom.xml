@@ -5,7 +5,7 @@
     <groupId>br.com.smom</groupId>
     <artifactId>smom</artifactId>
     <name>Smom - Software Module Management</name>
-    <version>1.0.0</version>
+    <version>none</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -13,37 +13,52 @@
     </properties>
     
     <modules>
+        <module>log</module>
         <module>main</module>
         <module>customer</module>
-        <module>datasource</module>
-        <module>control</module>
     </modules>
     
     <dependencyManagement>
         <dependencies>
-            
-            <!-- Modules Smom -->
-            
-            <!-- Bundle Data Source Exported -->
+            <!-- Log API -->
             <dependency>
-                <groupId>br.com.smom.datasource</groupId>
-                <artifactId>br.com.smom.datasource.exported</artifactId>
+                <groupId>br.com.smom.log</groupId>
+                <artifactId>br.com.smom.log.api</artifactId>
                 <version>1.0.0</version>
                 <scope>provided</scope>
             </dependency>
             
-            <!-- Bundle Control Service Provider -->
+            <!-- Main Data Source API -->
             <dependency>
-                <groupId>br.com.smom.control</groupId>
-                <artifactId>br.com.smom.control.serviceprovided</artifactId>
+                <groupId>br.com.smom.main.datasource</groupId>
+                <artifactId>br.com.smom.main.datasource.api</artifactId>
                 <version>1.0.0</version>
                 <scope>provided</scope>
             </dependency>
             
+            <!-- Main Util API -->
+            <dependency>
+                <groupId>br.com.smom.main.util</groupId>
+                <artifactId>br.com.smom.main.util.api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Log4j -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.3</version>
+                <scope>provided</scope>
+            </dependency>
             
-            
-            <!-- Dependencies -->
-            
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.3</version>
+                <scope>provided</scope>
+            </dependency>
+
             <!-- DBCP pooling -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -76,7 +91,7 @@
                 <scope>provided</scope>
             </dependency>
             
-            <!-- Especificação OSGi -->
+            <!-- Specification OSGi -->
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
@@ -89,7 +104,7 @@
     
     <build>
         
-        <finalName>${project.artifactId}</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         
         <pluginManagement>
             <plugins>
@@ -184,7 +199,7 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-                
+
             </plugins>
         </pluginManagement>
         

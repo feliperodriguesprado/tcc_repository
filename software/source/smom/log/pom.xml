@@ -8,15 +8,13 @@
         <version>none</version>
     </parent>
     
-    <groupId>br.com.smom.main</groupId>
-    <artifactId>main</artifactId>
-    <name>Main</name>
+    <groupId>br.com.smom.log</groupId>
+    <artifactId>log</artifactId>
+    <name>Log</name>
     <packaging>pom</packaging>
     
     <modules>
-        <module>web_resources/view/v1/br.com.smom.main.webresources.view</module>
-        <module>util/api/v1/br.com.smom.main.util.api</module>
-        <module>datasource/api/v1/br.com.smom.main.datasource.api</module>
-        <module>datasource/core/v1/br.com.smom.main.datasource.core</module>
+        <module>api/v1/br.com.smom.log.api</module>
+        <module>core/v1/br.com.smom.log.core</module>
     </modules>
 </project>
