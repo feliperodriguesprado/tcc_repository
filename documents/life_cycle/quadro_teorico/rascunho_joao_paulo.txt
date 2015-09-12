@@ -1,0 +1,43 @@
+JAVA EE
+O Java EE (Java Enterprise Edition) consiste de uma série de especificações bem detalhadas, fornecendo toda uma infraestrutura para o desenvolvedor utilizar. Os serviços dessa infraestrutura compreendem web services, gerenciamento de threads, gerenciamento de conexões HTTP, gerenciamento da sessão web, etc. A Sun Corporation criou essa especificação para que diminuir os custos dos projetos que utilizam Java, pois utilizando Java EE não teria a necessidade de se desenvolver novamente as funcionalidades citadas anteriormente. Porém Java EE é apenas um conjunto de especificações, sendo necessário utilizar uma implementação dessas especificações, nessa pesquisa utilizou a implementação padrão fornecida pela Oracle, o GlassFish Server Open Source (CAELUM, 2015).
+
+CAELUM. Apostila Java para Desenvolvimento Web. 2015. Disponível em https://www.caelum.com.br/apostila-java-web/. Acesso em 08 de agosto, 2015.
+
+JAVA WEB
+
+o que é java web - é uma série de especificações para se usar utilizando java para atender clientes atrves da internet(http)
+quem cuida - oracle
+para que serve - botar ordem na casa
+principais características e vantagens - Utilizando Java Web é possível desenvolver uma aplicação web que pode ser utilizada em diferentes dispositivos.
+
+EJB
+
+http://www.oracle.com/technetwork/java/javaee/ejb/index.html
+
+Enterprise JavaBeans (EJB) é a arquitetura de componentes do lado do servidor para a plataforma Java Enterprise Edition (Java EE). Nela são encapsulado as lógicas de negócio de uma aplicação, ou seja, os objetivos da aplicação são implementados nessa parte do projeto. Utilizá-la permite o desenvolvimento rápido e simplificado de aplicativos transacionais, distribuídos, seguros e portáteis baseados na tecnologia Java (ORACLE, 2015).
+
+ORACLE. Apostila Java para Desenvolvimento Web. 2015. Disponível em http://www.oracle.com/technetwork/java/javaee/ejb/index.html. Acesso em 10 de agosto, 2015.
+
+
+CDI
+
+A Injeção de Dependência e Contextos (CDI), especificada por JSR-299, é parte integrante do Java EE e fornece uma arquitetura que 
+permite aos componentes do Java EE, como os servlets, enterprise beans e JavaBeans, existirem dentro do ciclo de vida de uma aplicação 
+com escopos bem definidos. O CDI é uma API para injeção de dependências e contextos (NETBEANS, 2015). A injeção de dependências é executada através do 
+uso de anotações, uma das mais conhecidas é a anotação @Inject como vemos uma demonstração de seu uso na imagem XXX.XX.
+(colocar imagem em que usa CDI no código)
+
+
+NETBEANS. Trabalhando com Injeção e Qualificadores no CDI. 2015. Disponível em https://netbeans.org/kb/docs/javaee/cdi-inject_pt_BR.html. Acesso em 09 de agosto, 2015.
+
+
+
+ 
+MANIFEST.MF
+do artigo
+A única diferença entre um bundle JAR e um arquivo JAR tradicional é uma pequena quantidade de metadados adicionado ao arquivo manifest.mf. Então, caso deseje-se usar um bundle JAR fora de um contêiner OSGi, não haverá nenhum problema.
+e colocar o quadro do vogella, editando os dados a serem colocados
+
+
+MODULARIZAÇÃO
+
