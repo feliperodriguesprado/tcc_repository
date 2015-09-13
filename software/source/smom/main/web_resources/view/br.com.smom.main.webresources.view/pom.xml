@@ -6,7 +6,7 @@
         <artifactId>main</artifactId>
         <groupId>br.com.smom.main</groupId>
         <version>none</version>
-        <relativePath>../../../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <groupId>br.com.smom.main</groupId>
