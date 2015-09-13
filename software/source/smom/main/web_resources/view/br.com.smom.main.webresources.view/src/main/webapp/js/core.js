@@ -46,7 +46,11 @@ function mountSideBar(modules) {
                 $('#side-menu').append(elementModule);
             } else if (module.type === "group") {
                 elementGroup = generateElementGroup(module);
-                $('#side-menu').append(elementGroup);
+                
+                if (elementGroup !== null) {
+                    $('#side-menu').append(elementGroup);                
+                }
+                
             }
         });
     }
@@ -58,15 +62,21 @@ function generateElementModule(module) {
 
     var liTag, aTag, iTag;
 
-    liTag = $('<li></li>');
-    aTag = $('<a href="' + module.contextPath + '"></a>');
+    if (module.active) {
+        liTag = $('<li></li>');
+        liTag.click(function () {
+            alert("Redirect to module " + module.symbolicName);
+        });
+        aTag = $('<a href="' + module.contextPath + '"></a>');
+    } else {
+        liTag = $('<li class="disabled" title="Módulo indisponível no momento"></li>');
+        aTag = $('<a onclick="return false;" href="' + module.contextPath + '"></a>');
+    }
+
     iTag = $('<i class="' + module.icon + '"></i>');
     liTag.append(aTag);
     aTag.append(iTag);
     aTag.append(' ' + module.name);
-    liTag.click(function () {
-        alert("Redirect to module " + module.symbolicName);
-    });
     return liTag;
 }
 
@@ -74,24 +84,29 @@ function generateElementGroup(group) {
 
     var liTag, aTag, iTag, spanTag, ulTag, elementModule;
 
-    liTag = $('<li></li>');
-    aTag = $('<a href="' + group.contextPath + '"></a>');
-    iTag = $('<i class="' + group.icon + '"></i>');
-    spanTag = $('<span class="fa arrow"></span>');
-    ulTag = $('<ul class="nav nav-second-level"></ul>');
+    if (group.active) {
+        liTag = $('<li></li>');
+        aTag = $('<a href="' + group.contextPath + '"></a>');
+        iTag = $('<i class="' + group.icon + '"></i>');
+        spanTag = $('<span class="fa arrow"></span>');
+        ulTag = $('<ul class="nav nav-second-level"></ul>');
 
-    liTag.append(aTag);
-    aTag.append(iTag);
-    aTag.append(' ' + group.name);
-    aTag.append(spanTag);
+        liTag.append(aTag);
+        aTag.append(iTag);
+        aTag.append(' ' + group.name);
+        aTag.append(spanTag);
 
-    group.moduleList.forEach(function (module) {
-        elementModule = generateElementModule(module);
-        ulTag.append(elementModule);
-    });
+        group.moduleList.forEach(function (module) {
+            elementModule = generateElementModule(module);
+            ulTag.append(elementModule);
+        });
 
-    liTag.append(ulTag);
-    return liTag;
+        liTag.append(ulTag);
+        return liTag;
+    } else {
+        return null;
+    }
+
 }
 
 function loadScripts() {

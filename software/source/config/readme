@@ -1,0 +1,19 @@
+
+Configurações para funcionamento do software com o servidor de aplicação Glassfish
+
+---------------------------------------------------------------------------------------------------------------
+Copiar os jars da pasta "lib" para pasta "{pasta glassfish}/glassfish/modules/autostart" do Glassfish;
+
+---------------------------------------------------------------------------------------------------------------
+Copiar a página 404.html da pasta pages para "{pasta glassfish}/glassfish/domains/{nome domain}/docroot" do 
+Glassfish. Renomear o arquivo index.html dessa pasta. Em seguida, através do console web do Glassfish entrar em 
+Configurations > server-config > Virtual Servers > server e adicionar a seguinte propriedade:
+
+	Name: send-error_1
+	Value: code=404 path=${com.sun.aas.instanceRoot}/docroot/404.html reason=Resource_not_found
+	Description: 404 Error Page
+
+Referência: http://stackoverflow.com/questions/3751566/how-to-change-default-error-pagestatus-404-not-found-in-glassfish-3-0-1-comm
+
+---------------------------------------------------------------------------------------------------------------
+

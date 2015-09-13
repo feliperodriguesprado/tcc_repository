@@ -11,8 +11,9 @@
                 Total por conta
             </div>
             <!-- /.panel-heading -->
+
             <div class="panel-body">
-                <div class="table-responsive" style="float: left; width: 50%;">
+                <div class="table-responsive" style="float: left; width: 65%;">
                     <table class="table table-striped">
                         <thead>
                             <tr >
@@ -22,21 +23,67 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Dinhheiro</td>
-                                <td style="text-align: right">R$ 500,00</td>
+                                <td>Carteira</td>
+                                <td style="text-align: right">R$ 750,00</td>
                             </tr>
                             <tr>
                                 <td>Itaú</td>
-                                <td style="text-align: right">R$ 1000,00</td>
+                                <td style="text-align: right">R$ 1.150,00</td>
                             </tr>
                             <tr>
                                 <td>Poupança</td>
-                                <td style="text-align: right">R$ 1500,00</td>
+                                <td style="text-align: right">R$ 1.300,00</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <!-- /.table-responsive -->
+
+                <div style="margin: 5px;  width: 30%; float: right; text-align: center;">
+                    <canvas id="chartTotalByAccount" width="200" height="200" ></canvas>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Total por forma de pagamento
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="panel-body">
+                <div class="table-responsive" style="float: left; width: 65%;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr >
+                                <th>Nome</th>
+                                <th style="text-align: right">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dinheiro</td>
+                                <td style="text-align: right">R$ 380,00</td>
+                            </tr>
+                            <tr>
+                                <td>Cartão de débito</td>
+                                <td style="text-align: right">R$ 670,00</td>
+                            </tr>
+                            <tr>
+                                <td>Cartão de crédito</td>
+                                <td style="text-align: right">R$ 1.200,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+
+                <div style="margin: 5px;  width: 30%; float: right; text-align: center;">
+                    <canvas id="chartTotalByPayment" width="200" height="200" ></canvas>
+                </div>
+                
             </div>
             <!-- /.panel-body -->
         </div>
