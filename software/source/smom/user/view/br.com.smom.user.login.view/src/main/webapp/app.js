@@ -1,4 +1,4 @@
-/*
+/* 
  * Copyright 2015 Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.log.api.service;
+var app = window.angular.module('app', ['ngRoute', 'ngResource', 'angular-md5']);
 
-public interface Log {
+app.controller('loginCtrl', function ($scope, notification, messages, md5) {
 
-    public void info(String message);
+    $scope.submit = function (user) {
+        user.password = md5.createHash($scope.password);
+        console.log(user);
+        notification.warning("Indisponível");
+    };
 
-    public void error(String message);
-
-}
+});

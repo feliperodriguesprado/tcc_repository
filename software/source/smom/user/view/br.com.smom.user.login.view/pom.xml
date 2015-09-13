@@ -3,23 +3,29 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <artifactId>log</artifactId>
-        <groupId>br.com.smom.log</groupId>
+        <artifactId>user</artifactId>
+        <groupId>br.com.smom.user</groupId>
         <version>none</version>
-        <relativePath>../../../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>br.com.smom.log</groupId>
-    <artifactId>br.com.smom.log.api</artifactId>
+    <groupId>br.com.smom.user</groupId>
+    <artifactId>br.com.smom.user.view</artifactId>
     <version>1.0.0</version>
-    <name>Log API ${project.version}</name>
-    <packaging>bundle</packaging>
+    <name>Login View ${project.version}</name>
+    <packaging>war</packaging>
 
     <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    
     <dependencies>
+        <dependency>
+            <groupId>br.com.smom.log</groupId>
+            <artifactId>br.com.smom.log.api</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>br.com.smom.main.util</groupId>
             <artifactId>br.com.smom.main.util.api</artifactId>
@@ -28,6 +34,11 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
         </dependency>
     </dependencies>
 

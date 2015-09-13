@@ -1,0 +1,47 @@
+[
+    {
+        "type": "module",
+        "symbolicName": "br.com.smom.home.view",
+        "active": "true",
+        "name": "Início",
+        "contextPath": "/modules/home/#/",
+        "icon": "fa fa-home"
+    }, {
+        "type": "group",
+        "symbolicName": "br.com.smom.customer",
+        "active": "true",
+        "name": "Clientes",
+        "contextPath": "#",
+        "icon": "fa fa-users",
+        "moduleList": [{
+                "type": "module",
+                "symbolicName": "br.com.smom.customer.register",
+                "active": "true",
+                "name": "Cadastro",
+                "contextPath": "/modules/customer/register/#/",
+                "icon": "fa fa-pencil-square-o"
+            }]
+    }, {
+        "type": "group",
+        "symbolicName": "br.com.smom.financial",
+        "active": "true",
+        "name": "Financeiro",
+        "contextPath": "#",
+        "icon": "glyphicon glyphicon-piggy-bank",
+        "moduleList": [{
+                "type": "group",
+                "symbolicName": "br.com.smom.financial.throws",
+                "active": "true",
+                "name": "Lançamentos",
+                "contextPath": "/modules/financial/throws/#/",
+                "icon": "fa fa-money fa-1x"
+            }, {
+                "type": "group",
+                "symbolicName": "br.com.smom.financial.reports",
+                "active": "true",
+                "name": "Relatórios",
+                "contextPath": "/modules/financial/reports/#/",
+                "icon": "fa fa-line-chart"
+            }]
+    }
+]

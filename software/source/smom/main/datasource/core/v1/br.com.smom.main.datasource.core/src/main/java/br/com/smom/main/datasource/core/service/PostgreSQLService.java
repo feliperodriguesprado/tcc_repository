@@ -34,12 +34,13 @@ public class PostgreSQLService implements PostgreSQL {
     @Override
     public Connection getConnection() throws Exception {
         try {
-            System.out.println(postgreSQLDataSource.toString());
+            logService = (Log) ServiceProvider.getBundleService(Log.class);
+            logService.info(postgreSQLDataSource.toString());
             return postgreSQLDataSource.getConnection();
         } catch (SQLException e) {
             logService = (Log) ServiceProvider.getBundleService(Log.class);
             if (logService != null) {
-                logService.log4j(this.getClass()).error("Error get connection PostgreSQL", e);
+                logService.error("Error get connection PostgreSQL");
             }
             throw e;
         }

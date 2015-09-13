@@ -3,24 +3,24 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>br.com.smom.main</groupId>
         <artifactId>main</artifactId>
+        <groupId>br.com.smom.main</groupId>
         <version>none</version>
         <relativePath>../../../../pom.xml</relativePath>
     </parent>
 
-    <groupId>br.com.smom.main.datasource</groupId>
-    <artifactId>br.com.smom.main.datasource.core</artifactId>
+    <groupId>br.com.smom.main</groupId>
+    <artifactId>br.com.smom.main.webresources.view</artifactId>
     <version>1.0.0</version>
-    <name>Main Data Source Core ${project.version}</name>
-    <packaging>ejb</packaging>
+    <name>Main Web Resources View ${project.version}</name>
+    <packaging>war</packaging>
 
     <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    
     <dependencies>
-        
         <dependency>
             <groupId>br.com.smom.main.datasource</groupId>
             <artifactId>br.com.smom.main.datasource.api</artifactId>
@@ -37,20 +37,14 @@
         </dependency>
         
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <artifactId>javaee-web-api</artifactId>
         </dependency>
-        
     </dependencies>
 
 </project>

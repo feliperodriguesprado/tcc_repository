@@ -1,4 +1,4 @@
-/*
+/* 
  * Copyright 2015 Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.log.api.service;
 
-public interface Log {
-
-    public void info(String message);
-
-    public void error(String message);
-
-}
+var messages = {
+    SUCCESS: {code: 0, description: "Sucesso"},
+    INFO: {code: 1000, description: "Aviso"},
+    WARN: {code: 2000, description: "Aviso"},
+    ERROR: {code: 3000, description: "Error"}
+};

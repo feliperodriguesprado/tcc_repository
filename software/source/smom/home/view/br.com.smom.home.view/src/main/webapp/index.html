@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+Copyright 2015 Smom - Software Module Management.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Smom</title>
+
+        <!-- Startbootstrap -->
+        <link href="/modules/main/webresources/plugins/startbootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/modules/main/webresources/plugins/startbootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+        <link href="/modules/main/webresources/plugins/startbootstrap/dist/css/timeline.css" rel="stylesheet">
+        <link href="/modules/main/webresources/plugins/startbootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="/modules/main/webresources/plugins/startbootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Smom</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a></li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                        </ul>
+                        <!-- Modules -->
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div ng-app="app">
+                <div id="page-wrapper" ng-view=""></div>
+                <!-- /#page-wrapper -->
+            </div>
+        </div>
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="/modules/main/webresources/plugins/jquery/jquery.min.js"></script>
+
+        <!-- AngularJS -->
+        <script type="text/javascript" src="/modules/main/webresources/plugins/angularjs/angular.min.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/plugins/angularjs/angular-route.min.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/plugins/angularjs/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/plugins/angularjs/ngMask.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/plugins/angularjs/angular-md5.min.js"></script>
+
+        <!-- Toastr -->
+        <script type="text/javascript" src="/modules/main/webresources/plugins/toastr/toastr.js"></script>
+
+        <!-- Startbootstrap -->
+        <script type="text/javascript" src="/modules/main/webresources/plugins/startbootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Smom -->
+        <script type="text/javascript" src="/modules/main/webresources/js/core.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/js/messages/pt_br.js"></script>
+        <script type="text/javascript" src="/modules/main/webresources/js/services.js"></script>
+
+    </body>
+</html>
