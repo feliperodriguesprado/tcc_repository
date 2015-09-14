@@ -16,7 +16,7 @@
 
 var messages = {
     SUCCESS: {code: 0, description: "Sucesso"},
-    INFO: {code: 1000, description: "Aviso"},
+    INFO: {code: 1000, description: "Informação"},
     WARN: {code: 2000, description: "Aviso"},
-    ERROR: {code: 3000, description: "Error"}
+    ERROR: {code: 3000, description: "Erro"}
 };

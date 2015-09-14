@@ -30,11 +30,11 @@
         "icon": "glyphicon glyphicon-piggy-bank",
         "moduleList": [{
                 "type": "group",
-                "symbolicName": "br.com.smom.financial.throws",
+                "symbolicName": "br.com.smom.financial.releases",
                 "active": true,
                 "name": "Lançamentos",
-                "contextPath": "/modules/financial/throws/#/",
-                "icon": "fa fa-money fa-1x"
+                "contextPath": "/modules/financial/releases/#/",
+                "icon": "fa fa-money"
             }, {
                 "type": "group",
                 "symbolicName": "br.com.smom.financial.reports",
@@ -42,6 +42,21 @@
                 "name": "Relatórios",
                 "contextPath": "/modules/financial/reports/#/",
                 "icon": "fa fa-line-chart"
+            }]
+    }, {
+        "type": "group",
+        "symbolicName": "br.com.smom.user",
+        "active": true,
+        "name": "Usuários",
+        "contextPath": "#",
+        "icon": "fa fa-user",
+        "moduleList": [{
+                "type": "group",
+                "symbolicName": "br.com.smom.user.register",
+                "active": true,
+                "name": "Cadastro",
+                "contextPath": "/modules/user/register/#/",
+                "icon": "fa fa-pencil"
             }]
     }
 ]

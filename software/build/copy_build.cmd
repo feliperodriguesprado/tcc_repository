@@ -21,4 +21,3 @@ copy ..\source\smom\main\web_resources\view\br.com.smom.main.webresources.view\t
 copy ..\source\smom\user\view\br.com.smom.user.login.view\target\br.com.smom.user.view-1.0.0.war .
 
 @echo Arquivos copiados...
-pause
