@@ -1,4 +1,6 @@
-﻿
+﻿--drop schema public cascade;
+--create schema public;
+--create database smom;
 
 CREATE SEQUENCE smom.public.seq_accounts_id;
 
@@ -78,10 +80,9 @@ CREATE TABLE smom.public.phones (
                 id INTEGER NOT NULL DEFAULT nextval('smom.public.seq_phones_id'),
                 number VARCHAR(15) NOT NULL,
                 people_id INTEGER NOT NULL,
-				UNIQUE(people_id, number),
-                CONSTRAINT pk_phones_id PRIMARY KEY (id)
+                CONSTRAINT pk_phones_id PRIMARY KEY (id),
+		CONSTRAINT uk_phones_people_id_number UNIQUE (people_id, number)
 );
-
 
 ALTER SEQUENCE smom.public.seq_phones_id OWNED BY smom.public.phones.id;
 
@@ -91,9 +92,10 @@ CREATE TABLE smom.public.users (
                 id INTEGER NOT NULL DEFAULT nextval('smom.public.seq_users_id'),
                 name VARCHAR(100) NOT NULL,
                 password VARCHAR(45) NOT NULL,
-                username VARCHAR(45) NOT NULL UNIQUE,
+                username VARCHAR(45) NOT NULL,
                 active BOOLEAN NOT NULL,
-                CONSTRAINT pk_users PRIMARY KEY (id)
+                CONSTRAINT pk_users PRIMARY KEY (id),
+		CONSTRAINT uk_users_username UNIQUE (username)
 );
 
 
@@ -111,7 +113,8 @@ CREATE TABLE smom.public.view_modules (
                 icon VARCHAR(50) NOT NULL,
                 position INTEGER NOT NULL,
                 parent INTEGER,
-                CONSTRAINT pk_view_modules_id PRIMARY KEY (id)
+                CONSTRAINT pk_view_modules_id PRIMARY KEY (id),
+		CONSTRAINT uk_view_modules_symbolic_name UNIQUE (symbolic_name)
 );
 
 

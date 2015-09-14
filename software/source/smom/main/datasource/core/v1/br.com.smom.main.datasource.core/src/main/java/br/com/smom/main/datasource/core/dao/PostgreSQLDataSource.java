@@ -25,7 +25,7 @@ public class PostgreSQLDataSource extends BasicDataSource {
         super.setDriverClassName("org.postgresql.Driver");
         super.setUrl("jdbc:postgresql://localhost:5432/smom");
         super.setUsername("postgres");
-        super.setPassword("postgres");
+        super.setPassword("Pa$$w0rd");
         super.setDefaultAutoCommit(Boolean.FALSE);
         super.setInitialSize(10);
     }
