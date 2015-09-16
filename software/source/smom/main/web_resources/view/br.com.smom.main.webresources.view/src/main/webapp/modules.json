@@ -16,7 +16,7 @@
         "moduleList": [{
                 "type": "module",
                 "symbolicName": "br.com.smom.customer.register",
-                "active": true,
+                "active": false,
                 "name": "Cadastro",
                 "contextPath": "/modules/customer/register/#/",
                 "icon": "fa fa-pencil-square-o"

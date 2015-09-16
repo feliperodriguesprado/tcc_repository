@@ -14,6 +14,8 @@
     <packaging>pom</packaging>
     
     <modules>
-        <module>view/v1/br.com.smom.customer.register.view</module>
+        <module>api/v1/br.com.smom.customer.api</module>
+        <module>view/br.com.smom.customer.register.view</module>
+        <module>core/v1/br.com.smom.customer.core</module>
     </modules>
 </project>

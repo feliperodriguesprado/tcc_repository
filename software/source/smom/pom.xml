@@ -22,6 +22,14 @@
     
     <dependencyManagement>
         <dependencies>
+            <!-- Customer API -->
+            <dependency>
+                <groupId>br.com.smom.customer</groupId>
+                <artifactId>br.com.smom.customer.api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
             <!-- Log API -->
             <dependency>
                 <groupId>br.com.smom.log</groupId>

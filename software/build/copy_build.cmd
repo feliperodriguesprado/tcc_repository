@@ -20,4 +20,10 @@ copy ..\source\smom\main\web_resources\view\br.com.smom.main.webresources.view\t
 
 copy ..\source\smom\user\view\br.com.smom.user.login.view\target\br.com.smom.user.view-1.0.0.war .
 
+copy ..\source\smom\customer\api\v1\br.com.smom.customer.api\target\br.com.smom.customer.api-1.0.0.jar .
+
+copy ..\source\smom\customer\core\v1\br.com.smom.customer.core\target\br.com.smom.customer.core-1.0.0.jar .
+
+copy ..\source\smom\customer\view\br.com.smom.customer.register.view\target\br.com.smom.customer.register.view-1.0.0.war .
+
 @echo Arquivos copiados...

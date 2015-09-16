@@ -6,7 +6,7 @@
         <groupId>br.com.smom.customer</groupId>
         <artifactId>customer</artifactId>
         <version>none</version>
-        <relativePath>../../../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <groupId>br.com.smom.customer</groupId>

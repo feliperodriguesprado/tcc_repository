@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.log.core.initialize;
+package br.com.smom.customer.core.initialize;
 
 import br.com.smom.main.util.api.service.InternalLog;
 import org.osgi.framework.BundleActivator;

@@ -21,19 +21,19 @@ app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.
                 when('/', {
-                    controller: 'controller',
-                    templateUrl: '_searchCustomer.html'
+                    controller: 'SearchCustomerCtrl',
+                    templateUrl: 'partials/_searchCustomer.html'
                 }).
                 when('/dashboard', {
-                    controller: 'controller',
-                    templateUrl: '_searchCustomer.html'
+                    controller: 'SearchCustomerCtrl',
+                    templateUrl: 'partials/_searchCustomer.html'
                 }).
                 otherwise({
                     redirectTo: '/'
                 });
     }]);
 
-app.controller('controller', function ($scope) {
+app.controller('SearchCustomerCtrl', function ($scope) {
 
     console.log("Start controller app module Customer Register");
 
