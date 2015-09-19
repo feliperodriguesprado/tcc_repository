@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>br.com.smom.main</groupId>
+        <artifactId>main</artifactId>
+        <version>none</version>
+        <relativePath>../../../../pom.xml</relativePath>
+    </parent>
+
+    <groupId>br.com.smom.main</groupId>
+    <artifactId>br.com.smom.main.util.core</artifactId>
+    <version>1.0.0</version>
+    <name>Main Util Core ${project.version}</name>
+    <packaging>ejb</packaging>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        
+        <dependency>
+            <groupId>br.com.smom.log</groupId>
+            <artifactId>br.com.smom.log.api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>br.com.smom.main.util</groupId>
+            <artifactId>br.com.smom.main.util.api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

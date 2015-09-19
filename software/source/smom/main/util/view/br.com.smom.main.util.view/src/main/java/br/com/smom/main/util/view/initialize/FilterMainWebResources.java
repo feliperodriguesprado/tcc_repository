@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.webresources.view.initialize;
+package br.com.smom.main.util.view.initialize;
 
 import java.io.IOException;
 import javax.servlet.Filter;

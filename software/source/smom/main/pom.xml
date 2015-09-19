@@ -17,6 +17,7 @@
         <module>util/api/v1/br.com.smom.main.util.api</module>
         <module>datasource/api/v1/br.com.smom.main.datasource.api</module>
         <module>datasource/core/v1/br.com.smom.main.datasource.core</module>
-        <module>web_resources/view/br.com.smom.main.webresources.view</module>
+        <module>util/view/br.com.smom.main.util.view</module>
+        <module>util/core/v1/br.com.smom.main.util.core</module>
     </modules>
 </project>

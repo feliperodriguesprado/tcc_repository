@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>br.com.smom.main</groupId>
-    <artifactId>br.com.smom.main.webresources.view</artifactId>
+    <artifactId>br.com.smom.main.util.view</artifactId>
     <version>1.0.0</version>
-    <name>Main Web Resources View ${project.version}</name>
+    <name>Main Util View ${project.version}</name>
     <packaging>war</packaging>
 
     <properties>
