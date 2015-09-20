@@ -13,12 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.log.api.service;
+package br.com.smom.main.datasource.api.services;
 
-public interface Log {
+import br.com.smom.main.datasource.api.exceptions.DataSourceException;
+import java.sql.Connection;
 
-    public void info(String message);
+public interface PostgreSQL {
 
-    public void error(String message);
-
+    public Connection getConnection() throws DataSourceException;
+    
+    public void commit(Connection connection) throws DataSourceException;
+    
+    public void rollback(Connection connection) throws DataSourceException;
+    
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.util.api.service;
+package br.com.smom.main.util.api.services;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;

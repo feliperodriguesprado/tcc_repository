@@ -40,7 +40,7 @@
             
             <!-- Main Data Source API -->
             <dependency>
-                <groupId>br.com.smom.main.datasource</groupId>
+                <groupId>br.com.smom.main</groupId>
                 <artifactId>br.com.smom.main.datasource.api</artifactId>
                 <version>1.0.0</version>
                 <scope>provided</scope>
@@ -48,9 +48,31 @@
             
             <!-- Main Util API -->
             <dependency>
-                <groupId>br.com.smom.main.util</groupId>
+                <groupId>br.com.smom.main</groupId>
                 <artifactId>br.com.smom.main.util.api</artifactId>
                 <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.6.2</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.6.2</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.6.2</version>
                 <scope>provided</scope>
             </dependency>
 

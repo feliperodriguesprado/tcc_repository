@@ -1,6 +1,6 @@
 package br.com.smom.customer.api.initialize;
 
-import br.com.smom.main.util.api.service.InternalLog;
+import br.com.smom.main.util.api.services.InternalLog;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 

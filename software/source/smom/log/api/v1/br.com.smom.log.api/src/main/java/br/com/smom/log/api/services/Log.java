@@ -13,16 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.datasource.api.service;
+package br.com.smom.log.api.services;
 
-import java.sql.Connection;
+public interface Log {
 
-public interface PostgreSQL {
+    public void debug(String message);
 
-    public Connection getConnection() throws Exception;
-    
-    public void commit(Connection connection) throws Exception;
-    
-    public void rollback(Connection connection) throws Exception;
-    
+    public void debug(String message, Throwable cause);
+
+    public void info(String message);
+
+    public void warn(String message);
+
+    public void warn(String message, Throwable cause);
+
+    public void error(String message);
+
+    public void error(String message, Throwable cause);
+
+    public void fatal(String message);
+
+    public void fatal(String message, Throwable cause);
+
 }

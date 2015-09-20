@@ -29,14 +29,14 @@
         "contextPath": "#",
         "icon": "glyphicon glyphicon-piggy-bank",
         "moduleList": [{
-                "type": "group",
+                "type": "module",
                 "symbolicName": "br.com.smom.financial.releases",
                 "active": true,
                 "name": "Lançamentos",
                 "contextPath": "/modules/financial/releases/#/",
                 "icon": "fa fa-money"
             }, {
-                "type": "group",
+                "type": "module",
                 "symbolicName": "br.com.smom.financial.reports",
                 "active": true,
                 "name": "Relatórios",
@@ -51,7 +51,7 @@
         "contextPath": "#",
         "icon": "fa fa-user",
         "moduleList": [{
-                "type": "group",
+                "type": "module",
                 "symbolicName": "br.com.smom.user.register",
                 "active": true,
                 "name": "Cadastro",
