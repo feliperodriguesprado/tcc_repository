@@ -18,10 +18,6 @@ package br.com.smom.main.util.view.resources;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-/**
- *
- * @author Felipe
- */
 @javax.ws.rs.ApplicationPath("resources")
 public class ApplicationConfig extends Application {
 

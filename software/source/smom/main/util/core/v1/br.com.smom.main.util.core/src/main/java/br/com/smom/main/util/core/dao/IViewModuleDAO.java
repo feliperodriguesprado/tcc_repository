@@ -16,7 +16,7 @@
 package br.com.smom.main.util.core.dao;
 
 import br.com.smom.main.util.api.exceptions.UtilException;
-import br.com.smom.main.util.api.models.ViewModuleModel;
+import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import java.sql.Connection;
 import java.util.List;
 
@@ -24,6 +24,6 @@ public interface IViewModuleDAO {
 
     public void setConnection(Connection connection);
     
-    public List<ViewModuleModel> getViewModuleListAll() throws UtilException;
+    public List<ViewModuleEntity> getViewModuleListAll() throws UtilException;
 
 }

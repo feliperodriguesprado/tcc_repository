@@ -13,28 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.util.view.resources;
+package br.com.smom.main.util.api.model.to;
 
-import br.com.smom.main.util.api.models.ViewModuleModel;
+import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "viewModuleList")
-public class ViewModuleList {
+public class ViewModuleListTO {
 
-    private List<ViewModuleModel> viewModuleModelList = new ArrayList<>();
+    @XmlElement(name = "moduleList")
+    private List<ViewModuleEntity> viewModuleEntityList = new ArrayList<>();
 
-    public List<ViewModuleModel> getViewModuleModelList() {
-        return viewModuleModelList;
+    public List<ViewModuleEntity> getViewModuleEntityList() {
+        return viewModuleEntityList;
     }
 
-    public void addViewModuleModelList(ViewModuleModel viewModuleModel) {
-        this.viewModuleModelList.add(viewModuleModel);
+    public void addViewModuleEntityList(ViewModuleEntity viewModuleModel) {
+        this.viewModuleEntityList.add(viewModuleModel);
     }
 
-    public void setViewModuleModelList(List<ViewModuleModel> viewModuleModelList) {
-        this.viewModuleModelList = viewModuleModelList;
+    public void setViewModuleEntityList(List<ViewModuleEntity> viewModuleEntityList) {
+        this.viewModuleEntityList = viewModuleEntityList;
     }
 
 }

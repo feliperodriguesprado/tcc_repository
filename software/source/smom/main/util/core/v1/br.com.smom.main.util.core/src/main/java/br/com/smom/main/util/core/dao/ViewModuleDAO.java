@@ -19,7 +19,7 @@ import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
 import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.exceptions.UtilException;
-import br.com.smom.main.util.api.models.ViewModuleModel;
+import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,22 +35,23 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
     private ResultSet resultSet;
 
     @Override
-    public List<ViewModuleModel> getViewModuleListAll() throws UtilException {
+    public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
 
         query = "select "
                 + "* "
-                + "from view_modules";
+                + "from view_modules v "
+                + "order by v.position";
         resultSet = executeQuery(query);
         return fillViewModuleModelList();
     }
 
-    private List<ViewModuleModel> fillViewModuleModelList() throws UtilException {
+    private List<ViewModuleEntity> fillViewModuleModelList() throws UtilException {
 
         try {
-            List<ViewModuleModel> viewModuleModelList = new ArrayList<>();
+            List<ViewModuleEntity> viewModuleModelList = new ArrayList<>();
 
             while (resultSet.next()) {
-                ViewModuleModel viewModuleModel = new ViewModuleModel(
+                ViewModuleEntity viewModuleModel = new ViewModuleEntity(
                         resultSet.getInt("id"),
                         resultSet.getInt("type"),
                         resultSet.getString("symbolic_name"),
@@ -65,9 +66,9 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
             return viewModuleModelList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_FILL_MODEL_RESULTSET.toString(), e);
+                logService.error(Messages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new UtilException(Messages.ERROR_FILL_MODEL_RESULTSET, e);
+            throw new UtilException(Messages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

@@ -13,12 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.util.api.models;
+package br.com.smom.main.util.api.model.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "viewModule")
-public class ViewModuleModel {
+@XmlType(propOrder = {"id", "type", "symbolicName", "active", "name", "contextPath", "icon", "position", "parent", "viewModuleModelList"})
+public class ViewModuleEntity {
 
     private int id;
     private int type;
@@ -29,11 +34,13 @@ public class ViewModuleModel {
     private String icon;
     private int position;
     private int parent;
+    @XmlElement(name = "childrenList")
+    private List<ViewModuleEntity> viewModuleModelList = new ArrayList<>();
 
-    public ViewModuleModel() {
+    public ViewModuleEntity() {
     }
 
-    public ViewModuleModel(int id, int type, String symbolicName, boolean active, String name, String contextPath, String icon, int position, int parent) {
+    public ViewModuleEntity(int id, int type, String symbolicName, boolean active, String name, String contextPath, String icon, int position, int parent) {
         this.id = id;
         this.type = type;
         this.symbolicName = symbolicName;
@@ -115,6 +122,18 @@ public class ViewModuleModel {
 
     public void setParent(int parent) {
         this.parent = parent;
+    }
+
+    public List<ViewModuleEntity> getViewModuleModelList() {
+        return viewModuleModelList;
+    }
+
+    public void addViewModuleModelList(ViewModuleEntity viewModuleModel) {
+        this.viewModuleModelList.add(viewModuleModel);
+    }
+
+    public void setViewModuleModelList(List<ViewModuleEntity> viewModuleModelList) {
+        this.viewModuleModelList = viewModuleModelList;
     }
 
 }

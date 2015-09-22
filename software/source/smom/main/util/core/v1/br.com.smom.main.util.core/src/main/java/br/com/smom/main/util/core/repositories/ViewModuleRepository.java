@@ -19,7 +19,7 @@ import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.services.PostgreSQL;
 import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.exceptions.UtilException;
-import br.com.smom.main.util.api.models.ViewModuleModel;
+import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import br.com.smom.main.util.core.dao.IViewModuleDAO;
 import java.sql.Connection;
@@ -36,9 +36,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
     private IViewModuleDAO viewModuleDAO;
 
     @Override
-    public List<ViewModuleModel> getVielModuleListAll() throws UtilException {
+    public List<ViewModuleEntity> getVielModuleListAll() throws UtilException {
 
-        List<ViewModuleModel> viewModuleList;
+        List<ViewModuleEntity> viewModuleList;
         Connection connection;
 
         if (posgreSQLService != null) {

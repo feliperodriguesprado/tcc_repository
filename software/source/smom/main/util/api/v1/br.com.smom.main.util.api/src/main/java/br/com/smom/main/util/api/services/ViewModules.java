@@ -16,11 +16,11 @@
 package br.com.smom.main.util.api.services;
 
 import br.com.smom.main.util.api.exceptions.UtilException;
-import br.com.smom.main.util.api.models.ViewModuleModel;
+import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import java.util.List;
 
 public interface ViewModules {
 
-    public List<ViewModuleModel> getViewModuleListActive() throws UtilException;
+    public List<ViewModuleEntity> getViewModuleListAll() throws UtilException;
 
 }

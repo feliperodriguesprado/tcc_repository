@@ -20,21 +20,19 @@ public enum Messages {
     INFO(0, ""),
     INFO_INITIALIZED_REQUEST_REST(0, ""),
     INFO_FINISH_REQUEST_REST(0, ""),
-    INFO_SUCCESS_USER_FOUND(0, ""),
     WARN(0, ""),
     ERROR(0, ""),
     ERROR_GET_CONNECTION_POSTGRES(0, ""),
     ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES(0, ""),
     ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES(0, ""),
     ERROR_EXECUTE_QUERY_POSTGRES(0, ""),
-    ERROR_FILL_MODEL_RESULTSET(0, ""),
+    ERROR_FILL_ENTITY_RESULTSET(0, ""),
     ERROR_CANNOT_BE_NULL(0, ""),
     ERROR_DATA_REQUEST_IS_NULL(0, ""),
     ERROR_LOG_CONFIGURATION(0, ""),
     WARN_UNAVAILABLE_MODULE(0, ""),
     FATAL(0, ""),
-    FATAL_SYSTEM(0, ""),
-    FATAL_GET_ALL_MESSAGES(0, "");
+    FATAL_SYSTEM(0, "");
 
     private int code;
     private String description;
@@ -64,7 +62,7 @@ public enum Messages {
     public String toString() {
         return String.format("Code=%s; Description=%s; ", code, description);
     }
-    
+
     public String toString(String cause) {
         return String.format("Code=%s; Description=%s; Cause=%s; ", code, description, cause);
     }

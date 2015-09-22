@@ -19,12 +19,12 @@ function getModules(callbackSuccess) {
     $.ajax({
         dataType: "json", // Tipo de dados esperado de retorno do servidor.
         type: "GET",
-        url: '/modules/main/util/modules.json',
+        url: '/modules/main/util/resources/viewmodule/list/all',
         success: function (data, textStatus, jqXHR) {
             console.log('data: ' + JSON.stringify(data));
             console.log('textStatus: ' + textStatus);
             console.log('jqXHR: ' + jqXHR);
-            callbackSuccess(data);
+            callbackSuccess(data.moduleList);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('jqXHR: ' + jqXHR);
@@ -41,16 +41,16 @@ function mountSideBar(modules) {
 
     if (modules.length > 0) {
         modules.forEach(function (module) {
-            if (module.type === "module") {
+            if (module.type === 2) {
                 elementModule = generateElementModule(module);
                 $('#side-menu').append(elementModule);
-            } else if (module.type === "group") {
+            } else if (module.type === 1) {
                 elementGroup = generateElementGroup(module);
                 
                 if (elementGroup !== null) {
                     $('#side-menu').append(elementGroup);                
                 }
-                
+
             }
         });
     }
@@ -96,7 +96,7 @@ function generateElementGroup(group) {
         aTag.append(' ' + group.name);
         aTag.append(spanTag);
 
-        group.moduleList.forEach(function (module) {
+        group.childrenList.forEach(function (module) {
             elementModule = generateElementModule(module);
             ulTag.append(elementModule);
         });
