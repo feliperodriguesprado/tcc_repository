@@ -19,7 +19,7 @@ function getModules(callbackSuccess) {
     $.ajax({
         dataType: "json", // Tipo de dados esperado de retorno do servidor.
         type: "GET",
-        url: '/modules/main/util/resources/viewmodule/list/all',
+        url: '/modules/main/util/resources/rest/viewmodule/list/all',
         success: function (data, textStatus, jqXHR) {
             console.log('data: ' + JSON.stringify(data));
             console.log('textStatus: ' + textStatus);
@@ -110,9 +110,9 @@ function generateElementGroup(group) {
 }
 
 function loadScripts() {
-    appendScript('/modules/main/util/plugins/startbootstrap/bower_components/metisMenu/dist/metisMenu.min.js').
+    appendScript('/modules/main/util/resources/web/plugins/startbootstrap/bower_components/metisMenu/dist/metisMenu.min.js').
             onload = function () {
-                appendScript('/modules/main/util/plugins/startbootstrap/dist/js/sb-admin-2.js');
+                appendScript('/modules/main/util/resources/web/plugins/startbootstrap/dist/js/sb-admin-2.js');
             };
 }
 

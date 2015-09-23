@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>br.com.smom.user</groupId>
-    <artifactId>br.com.smom.user.view</artifactId>
+    <artifactId>br.com.smom.user.login.view</artifactId>
     <version>1.0.0</version>
     <name>Login View ${project.version}</name>
     <packaging>war</packaging>

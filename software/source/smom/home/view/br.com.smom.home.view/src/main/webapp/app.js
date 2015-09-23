@@ -22,11 +22,11 @@ app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
                 when('/', {
                     controller: 'homeCtrl',
-                    templateUrl: '_home.html'
+                    templateUrl: 'partials/_home.html'
                 }).
                 when('/dashboard', {
                     controller: 'homeCtrl',
-                    templateUrl: '_home.html'
+                    templateUrl: 'partials/_home.html'
                 }).
                 otherwise({
                     redirectTo: '/'

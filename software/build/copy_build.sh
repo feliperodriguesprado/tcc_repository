@@ -32,6 +32,6 @@ cp ../source/smom/main/util/core/v1/br.com.smom.main.util.core/target/br.com.smo
 
 
 # User
-cp ../source/smom/user/view/br.com.smom.user.login.view/target/br.com.smom.user.view-1.0.0.war .
+cp ../source/smom/user/view/br.com.smom.user.login.view/target/br.com.smom.user.login.view-1.0.0.war .
 
 echo 'Arquivos copiados...'

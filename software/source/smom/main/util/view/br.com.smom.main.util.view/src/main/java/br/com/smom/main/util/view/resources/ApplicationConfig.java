@@ -18,7 +18,7 @@ package br.com.smom.main.util.view.resources;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("resources")
+@javax.ws.rs.ApplicationPath("resources/rest")
 public class ApplicationConfig extends Application {
 
     @Override

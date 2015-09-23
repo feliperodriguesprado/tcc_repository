@@ -30,7 +30,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * REST Web Service
  *
- * http://localhost:8080/modules/main/util/resources/viewmodule
+ * http://localhost:8080/modules/main/util/resources/rest/viewmodule
  *
  */
 @Path("viewmodule")
