@@ -17,7 +17,7 @@ package br.com.smom.main.util.core.repositories;
 
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.services.PostgreSQL;
-import br.com.smom.main.util.api.enums.Messages;
+import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ServiceProvider;
@@ -54,10 +54,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(Messages.WARN_UNAVAILABLE_MODULE.toString("PostgreSQL Service is null"));
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UtilException(Messages.WARN_UNAVAILABLE_MODULE.getCode(),
-                    Messages.WARN_UNAVAILABLE_MODULE.getDescription() + ": Data Source");
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 

@@ -16,10 +16,10 @@
 package br.com.smom.main.datasource.core.services;
 
 import br.com.smom.log.api.services.Log;
+import br.com.smom.main.datasource.api.enums.DataSourceMessages;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
-import br.com.smom.main.datasource.core.dao.PostgreSQLDataSource;
+import br.com.smom.main.datasource.core.config.PostgreSQLConfig;
 import br.com.smom.main.datasource.api.services.PostgreSQL;
-import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -30,23 +30,33 @@ import javax.inject.Inject;
 public class PostgreSQLService implements PostgreSQL {
 
     @Inject
-    private PostgreSQLDataSource postgreSQLDataSource;
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private PostgreSQLConfig postgreSQLConfig;
 
     @Override
     public Connection getConnection() throws DataSourceException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        Connection connection;
+
         try {
-            return postgreSQLDataSource.getConnection();
+            connection = postgreSQLConfig.getConnection();
+            if (logService != null) {
+                logService.info(DataSourceMessages.INFO_GET_CONNECTION_POSTGRES.getMessage());
+            }
+            return connection;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_GET_CONNECTION_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_GET_CONNECTION_POSTGRES.getMessage(), e);
             }
-            throw new DataSourceException(Messages.ERROR_GET_CONNECTION_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_GET_CONNECTION_POSTGRES, e);
         }
     }
 
     @Override
     public void commit(Connection connection) throws DataSourceException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.commit();
@@ -54,14 +64,17 @@ public class PostgreSQLService implements PostgreSQL {
             }
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES.getMessage(), e);
             }
-            throw new DataSourceException(Messages.ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES, e);
         }
     }
 
     @Override
     public void rollback(Connection connection) throws DataSourceException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.rollback();
@@ -69,9 +82,9 @@ public class PostgreSQLService implements PostgreSQL {
             }
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES.getMessage(), e);
             }
-            throw new DataSourceException(Messages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES, e);
         }
 
     }

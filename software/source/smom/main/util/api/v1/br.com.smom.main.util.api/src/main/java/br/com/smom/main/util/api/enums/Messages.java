@@ -15,60 +15,24 @@
  */
 package br.com.smom.main.util.api.enums;
 
-public enum Messages {
+public interface Messages {
 
-    INFO(0, ""),
-    INFO_INITIALIZED_REQUEST_REST(0, ""),
-    INFO_FINISH_REQUEST_REST(0, ""),
-    WARN(0, ""),
-    ERROR(0, ""),
-    ERROR_GET_CONNECTION_POSTGRES(0, ""),
-    ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES(0, ""),
-    ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES(0, ""),
-    ERROR_EXECUTE_QUERY_POSTGRES(0, ""),
-    ERROR_FILL_ENTITY_RESULTSET(0, ""),
-    ERROR_CANNOT_BE_NULL(0, ""),
-    ERROR_DATA_REQUEST_IS_NULL(0, ""),
-    ERROR_LOG_CONFIGURATION(0, ""),
-    WARN_UNAVAILABLE_MODULE(0, ""),
-    FATAL(0, ""),
-    FATAL_SYSTEM(0, "");
+    public int getCode();
 
-    private int code;
-    private String description;
+    public void setCode(int code);
 
-    private Messages(int code, String message) {
-        this.code = code;
-        this.description = message;
-    }
+    public String getDescription();
 
-    public int getCode() {
-        return code;
-    }
+    public void setDescription(String description);
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+    public String getMessage();
 
-    public String getDescription() {
-        return description;
-    }
+    public String getMessage(String cause);
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Code=%s; Description=%s; ", code, description);
-    }
-
-    public String toString(String cause) {
-        return String.format("Code=%s; Description=%s; Cause=%s; ", code, description, cause);
-    }
-
-    public String toString(Throwable cause) {
-        return String.format("Code=%s; Description=%s; Cause=%s; ", code, description, cause.getMessage());
-    }
-
+    public String getMessage(Throwable cause);
+    
+    public Messages[] getValue();
+    
+    public String getName();
+    
 }

@@ -39,23 +39,23 @@ public class UtilException extends Exception {
     }
 
     public UtilException(Messages message) {
-        super(message.toString());
+        super(message.getMessage());
         this.code = message.getCode();
         this.description = message.getDescription();
     }
 
     public UtilException(Messages message, String cause) {
-        super(message.toString() + String.format("Cause=%s; ", cause));
+        super(message.getMessage() + String.format("Cause=%s; ", cause));
         this.code = message.getCode();
         this.description = message.getDescription();
     }
 
     public UtilException(Messages message, Throwable cause) {
-        super(String.format("%s Cause=%s;", message.toString(), cause.getMessage()));
+        super(String.format("%s Cause=%s;", message.getMessage(), cause.getMessage()));
         this.code = message.getCode();
         this.description = message.getDescription();
     }
-    
+
     public UtilException(Throwable cause) {
         super(cause);
     }

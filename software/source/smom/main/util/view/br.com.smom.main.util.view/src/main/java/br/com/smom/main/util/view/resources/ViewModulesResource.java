@@ -16,8 +16,9 @@
 package br.com.smom.main.util.view.resources;
 
 import br.com.smom.log.api.services.Log;
-import br.com.smom.main.util.api.enums.Messages;
+import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.main.util.api.model.to.ResponseResourceTO;
 import br.com.smom.main.util.api.model.to.ViewModuleListTO;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import br.com.smom.main.util.api.services.ViewModules;
@@ -29,7 +30,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * REST Web Service
  *
- * http://localhost:8080/modules/main/util/resources/viewmodules
+ * http://localhost:8080/modules/main/util/resources/viewmodule
  *
  */
 @Path("viewmodule")
@@ -43,23 +44,28 @@ public class ViewModulesResource {
     @Produces(MediaType.APPLICATION_JSON)
     public ViewModuleListTO viewModulesListAll() {
 
+        ResponseResourceTO responseResource = new ResponseResourceTO();
         ViewModuleListTO viewModuleListTO = new ViewModuleListTO();
 
         try {
             if (logService != null) {
-                logService.info(Messages.INFO_INITIALIZED_REQUEST_REST.getDescription() + " /modules/main/util/resources/viewmodule/list/all");
+                logService.info(UtilMessages.INFO_INITIALIZED_REQUEST_REST.getDescription() + " /modules/main/util/resources/viewmodule/list/all");
             }
 
             if (viewModulesService != null) {
                 viewModuleListTO.setViewModuleEntityList(viewModulesService.getViewModuleListAll());
+                responseResource.setMessage(UtilMessages.INFO_GET_VIEW_MODULES);
+                viewModuleListTO.setResponseResource(responseResource);
             }
         } catch (UtilException e) {
-            if (logService != null) {
-                logService.error(Messages.ERROR.toString(), e);
-            }
+            responseResource.setCode(e.getCode());
+            responseResource.setDescription(e.getDescription());
+            viewModuleListTO.setResponseResource(responseResource);
         }
 
-        logService.info(Messages.INFO_FINISH_REQUEST_REST.getDescription() + " /modules/main/util/resources/viewmodule/list/all");
+        if (logService != null) {
+            logService.info(UtilMessages.INFO_FINISH_REQUEST_REST.getDescription() + " /modules/main/util/resources/viewmodule/list/all");
+        }
         return viewModuleListTO;
     }
 

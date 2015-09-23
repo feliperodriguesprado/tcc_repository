@@ -15,9 +15,11 @@
  */
 package br.com.smom.log.core.initialize;
 
+import br.com.smom.log.api.enums.LogMessages;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.log.core.services.LogService;
 import br.com.smom.main.util.api.services.InternalLog;
+import br.com.smom.main.util.api.services.ServerMessages;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -31,6 +33,7 @@ public class Activator implements BundleActivator {
         InternalLog.info(String.format("Start bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
         registry = context.registerService(Log.class.getName(), new LogService(), null);
         InternalLog.info(String.format("Registered service %s", Log.class.getName()));
+        ServerMessages.load(LogMessages.values());
     }
 
     @Override

@@ -17,7 +17,7 @@ package br.com.smom.main.util.core.dao;
 
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
-import br.com.smom.main.util.api.enums.Messages;
+import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ServiceProvider;
@@ -66,9 +66,9 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
             return viewModuleModelList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new UtilException(Messages.ERROR_FILL_ENTITY_RESULTSET, e);
+            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

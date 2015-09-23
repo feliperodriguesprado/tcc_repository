@@ -15,9 +15,9 @@
  */
 package br.com.smom.log.core.services;
 
+import br.com.smom.log.api.enums.LogMessages;
 import br.com.smom.log.api.exceptions.LogException;
 import br.com.smom.log.api.services.Log;
-import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.services.InternalLog;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -153,8 +153,8 @@ public class LogService implements Log {
             fileAppender.setName(sdf.format(new Date()));
             return fileAppender;
         } catch (IOException e) {
-            InternalLog.warning(Messages.ERROR_LOG_CONFIGURATION + String.format("Cause=%s.", e.getMessage()));
-            throw new LogException(Messages.ERROR_LOG_CONFIGURATION, e);
+            InternalLog.warning(LogMessages.ERROR_LOG_CONFIGURATION + String.format("Cause=%s.", e.getMessage()));
+            throw new LogException(LogMessages.ERROR_LOG_CONFIGURATION, e);
         }
     }
 

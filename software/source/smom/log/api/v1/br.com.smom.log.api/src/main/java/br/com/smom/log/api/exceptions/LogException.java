@@ -16,6 +16,7 @@
 package br.com.smom.log.api.exceptions;
 
 import br.com.smom.main.util.api.enums.Messages;
+import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 
 public class LogException extends UtilException {
@@ -33,7 +34,7 @@ public class LogException extends UtilException {
     }
 
     public LogException(Messages message) {
-        super(message);
+        super(message.getMessage());
     }
 
     public LogException(Messages message, String cause) {

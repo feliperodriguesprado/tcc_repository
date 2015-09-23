@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.util.api.initialize;
+package br.com.smom.main.util.api.services;
 
 import br.com.smom.main.util.api.enums.Messages;
-import br.com.smom.main.util.api.services.InternalLog;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,7 +25,7 @@ import java.util.Properties;
 
 public class ServerMessages {
 
-    public static void load() {
+    public static void load(Messages[] messages) {
 
         try {
             Properties properties = new Properties();
@@ -34,14 +33,16 @@ public class ServerMessages {
             Reader reader = new InputStreamReader(file, "UTF-8");
             properties.load(reader);
 
-            for (Messages message : Messages.values()) {
-                String valuePropertie = properties.getProperty(message.name());
+            for (Messages message : messages) {
+                String valuePropertie = properties.getProperty(message.getName());
 
                 if (valuePropertie != null) {
                     message.setCode(Integer.parseInt(valuePropertie.split(";")[0]));
                     message.setDescription(valuePropertie.split(";")[1]);
                 }
             }
+
+            InternalLog.info("Success load file properties with server messages;");
         } catch (FileNotFoundException e) {
             InternalLog.severe(String.format("Error load file properties with server messages. Cause: %s;", e.getMessage()));
         } catch (IOException e) {

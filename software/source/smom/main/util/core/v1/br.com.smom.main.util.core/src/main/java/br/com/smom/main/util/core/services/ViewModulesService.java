@@ -15,6 +15,7 @@
  */
 package br.com.smom.main.util.core.services;
 
+import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ViewModules;
@@ -33,29 +34,33 @@ public class ViewModulesService implements ViewModules {
     @Override
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
 
-        List<ViewModuleEntity> viewModuleListParent = new ArrayList<>();
-        List<ViewModuleEntity> viewModuleListChildren = new ArrayList<>();
+        try {
+            List<ViewModuleEntity> viewModuleListParent = new ArrayList<>();
+            List<ViewModuleEntity> viewModuleListChildren = new ArrayList<>();
 
-        List<ViewModuleEntity> viewModuleListAll = viewModuleRepository.getVielModuleListAll();
+            List<ViewModuleEntity> viewModuleListAll = viewModuleRepository.getVielModuleListAll();
 
-        for (ViewModuleEntity viewModuleModel : viewModuleListAll) {
+            for (ViewModuleEntity viewModuleModel : viewModuleListAll) {
 
-            if (viewModuleModel.getParent() == 0) {
-                viewModuleListParent.add(viewModuleModel);
-            } else {
-                viewModuleListChildren.add(viewModuleModel);
-            }
-        }
-
-        for (ViewModuleEntity viewModuleModelParent : viewModuleListParent) {
-            for (ViewModuleEntity viewModuleModelChildren : viewModuleListChildren) {
-                if (viewModuleModelParent.getId() == viewModuleModelChildren.getParent()) {
-                    viewModuleModelParent.addViewModuleModelList(viewModuleModelChildren);
+                if (viewModuleModel.getParent() == 0) {
+                    viewModuleListParent.add(viewModuleModel);
+                } else {
+                    viewModuleListChildren.add(viewModuleModel);
                 }
             }
-        }
 
-        return viewModuleListParent;
+            for (ViewModuleEntity viewModuleModelParent : viewModuleListParent) {
+                for (ViewModuleEntity viewModuleModelChildren : viewModuleListChildren) {
+                    if (viewModuleModelParent.getId() == viewModuleModelChildren.getParent()) {
+                        viewModuleModelParent.addViewModuleModelList(viewModuleModelChildren);
+                    }
+                }
+            }
+
+            return viewModuleListParent;
+        } catch (UtilException e) {
+            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+        }
 
     }
 

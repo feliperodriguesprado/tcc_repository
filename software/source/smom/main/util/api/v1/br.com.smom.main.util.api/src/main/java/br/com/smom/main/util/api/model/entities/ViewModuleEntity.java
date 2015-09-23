@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "viewModule")
+@XmlRootElement
 @XmlType(propOrder = {"id", "type", "symbolicName", "active", "name", "contextPath", "icon", "position", "parent", "viewModuleModelList"})
 public class ViewModuleEntity {
 

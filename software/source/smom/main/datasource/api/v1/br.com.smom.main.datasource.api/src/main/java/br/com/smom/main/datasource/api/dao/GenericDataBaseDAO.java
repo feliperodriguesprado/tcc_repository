@@ -16,8 +16,8 @@
 package br.com.smom.main.datasource.api.dao;
 
 import br.com.smom.log.api.services.Log;
+import br.com.smom.main.datasource.api.enums.DataSourceMessages;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
-import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,16 +57,16 @@ public class GenericDataBaseDAO {
                 return generatedKey;
             } else {
                 if (logService != null) {
-                    logService.error(Messages.ERROR_EXECUTE_QUERY_POSTGRES + "Cause=none rows affected.");
+                    logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES + "Cause=none rows affected.");
                 }
-                throw new DataSourceException(Messages.ERROR_EXECUTE_QUERY_POSTGRES, "Cause=none rows affected.");
+                throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, "Cause=none rows affected.");
             }
 
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
             }
-            throw new DataSourceException(Messages.ERROR_EXECUTE_QUERY_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
     }
 
@@ -79,9 +79,9 @@ public class GenericDataBaseDAO {
             return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
             }
-            throw new DataSourceException(Messages.ERROR_EXECUTE_QUERY_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
     }
 
@@ -94,9 +94,9 @@ public class GenericDataBaseDAO {
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
             }
-            throw new DataSourceException(Messages.ERROR_EXECUTE_QUERY_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
     }
 
@@ -106,9 +106,9 @@ public class GenericDataBaseDAO {
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(Messages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
             }
-            throw new DataSourceException(Messages.ERROR_EXECUTE_QUERY_POSTGRES, e);
+            throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
     }
 

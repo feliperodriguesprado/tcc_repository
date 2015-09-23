@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.main.datasource.core.dao;
+package br.com.smom.main.datasource.core.config;
 
 import javax.inject.Singleton;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 @Singleton
-public class PostgreSQLDataSource extends BasicDataSource {
+public class PostgreSQLConfig extends BasicDataSource {
 
-    public PostgreSQLDataSource() {
+    public PostgreSQLConfig() {
         super.setDriverClassName("org.postgresql.Driver");
         super.setUrl("jdbc:postgresql://localhost:5432/smom");
         super.setUsername("postgres");

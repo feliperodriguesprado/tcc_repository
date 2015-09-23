@@ -21,11 +21,12 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "viewModuleList")
+@XmlRootElement
 public class ViewModuleListTO {
 
     @XmlElement(name = "moduleList")
     private List<ViewModuleEntity> viewModuleEntityList = new ArrayList<>();
+    private ResponseResourceTO responseResource;
 
     public List<ViewModuleEntity> getViewModuleEntityList() {
         return viewModuleEntityList;
@@ -37,6 +38,14 @@ public class ViewModuleListTO {
 
     public void setViewModuleEntityList(List<ViewModuleEntity> viewModuleEntityList) {
         this.viewModuleEntityList = viewModuleEntityList;
+    }
+
+    public ResponseResourceTO getResponseResource() {
+        return responseResource;
+    }
+
+    public void setResponseResource(ResponseResourceTO responseResource) {
+        this.responseResource = responseResource;
     }
 
 }
