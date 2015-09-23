@@ -166,7 +166,7 @@ public class LogService implements Log {
     }
 
     private PatternLayout getPatternLayout() {
-        return new PatternLayout("%d{dd/MM/yy HH:mm:ss} %5p: %m%n");
+        return new PatternLayout("%d{dd/MM/yyyy HH:mm:ss} %5p: %m%n");
     }
 
 }
