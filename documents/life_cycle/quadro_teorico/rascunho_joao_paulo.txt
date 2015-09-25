@@ -45,15 +45,28 @@ Bundle-ActivationPolicy - Configuração que permite definir se o framework OSGi i
 Bundle-ClassPath - O Bundle-ClassPath especifica o diretório de onde será carregado as classes do bundle. O padrão é '' pois permite que classes possam ser carregadas a partir da raiz do pacote.
 
 Web-ContextPath - Caminho que especifica qual o caminho da URL que o cliente deverá usar para acessar os serviços do bundle. Ressaltando que essa tag deverá estar presente em arquivos de pacote do tipo WAR.
-Export-EJB: explicar, mas isso é especifico do glassifish
-import-package
-export-package
+Export-EJB: Define os EJBs que suas funcionalidades vão ser disponibilizadas via serviços do OSGi. Onde quando se utiliza o valor "ALL" se exporta como serviços todos os EJBs presentes, usa-se "NONE" para não disponibilizar nenhum e havendo a necessidade de disponibilizar apenas alguns EJB como serviços, coloca-se o Bundle-SymbolicName separado por vírgulas, caso haja mais de um EJB, como o exemplo a seguir: Export-EJB: com.acme.FooEJB, com.acme.BarEJB
+import-package: Lista dos pacotes requeridos pelo módulo para o seu funcionamento com a sua devida versão especificada.
+export-package: Lista dos pacotes visíveis e utilizáveis pelos módulos externos.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-falar dentro de especificação OSGi sobre como funciona o versionamento dentro do manifest dentro de osgi>documentation
+
 
 
 VOGEL, Lars. OSGi Modularity - Tutorial. 2015. Disponível em
-http://www.vogella.com/tutorials/OSGi/article.html. Acesso em 18 de abril, 2015. 
+http://www.vogella.com/tutorials/OSGi/article.html. Acesso em 18 de abril, 2015.
 
 MODULARIZAÇÃO
+Para se determinar o quão independentes são os módulos em um sistema, utiliza-se a verificação de dois critérios: coesão e acoplamento.
 
+
+O quanto os módulos são independentes é determinado levando em consideração dois critérios: coesão e acoplamento. A coesão é a relação existente entre as responsabilidades e as unidades dos módulos. Onde um módulo coeso tem responsabilidades e propósitos claros e bem definidos. O acoplamento é o grau em que um módulo depende de outros, com isso o acoplamento surge em função do relacionamento existente entre os módulos e é caracterizado pelo uso se serviços entre eles (STAA, 2000).
+
+Em engenharia de software, acoplamento ou dependência é o grau em que um módulo depende de outros módulos de programação.
+
+Resultado de imagem para o que é coesão e acoplamento
+Coesão e Acoplamento são princípios de engenharia de software muito utilizados. Quando queremos ter uma arquitetura madura e sustentável, temos que levar em conta estes dois princípios, pois cada um deles tem um propósito específico que visa melhorar o design do software
+
+
+
+
+Leia mais em: Artigo Java Magazine 77 - Coesão e Acoplamento em Sistemas Orientados a Objetos http://www.devmedia.com.br/artigo-java-magazine-77-coesao-e-acoplamento-em-sistemas-orientados-a-objetos/16167#ixzz3mhROeGMh
