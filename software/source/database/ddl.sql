@@ -114,7 +114,8 @@ CREATE TABLE smom.public.view_modules (
                 position INTEGER NOT NULL,
                 parent INTEGER,
                 CONSTRAINT pk_view_modules_id PRIMARY KEY (id),
-		CONSTRAINT uk_view_modules_symbolic_name UNIQUE (symbolic_name)
+		CONSTRAINT uk_view_modules_symbolic_name UNIQUE (symbolic_name),
+		CONSTRAINT fk_view_modules_id_parent FOREIGN KEY (parent) REFERENCES smom.public.view_modules (id)
 );
 
 

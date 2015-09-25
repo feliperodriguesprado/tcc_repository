@@ -16,5 +16,7 @@
     <modules>
         <module>api/v1/br.com.smom.log.api</module>
         <module>core/v1/br.com.smom.log.core</module>
+        <module>api/v2/br.com.smom.log.api</module>
+        <module>core/v2/br.com.smom.log.core</module>
     </modules>
 </project>

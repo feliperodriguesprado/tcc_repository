@@ -3,24 +3,23 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>br.com.smom.main</groupId>
-        <artifactId>main</artifactId>
+        <artifactId>log</artifactId>
+        <groupId>br.com.smom.log</groupId>
         <version>none</version>
-        <relativePath>../../../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
-    <groupId>br.com.smom.main</groupId>
-    <artifactId>br.com.smom.main.datasource.core</artifactId>
-    <version>1.0.0</version>
-    <name>Main Data Source Core ${project.version}</name>
-    <packaging>ejb</packaging>
+    <groupId>br.com.smom.log</groupId>
+    <artifactId>br.com.smom.log.core</artifactId>
+    <version>2.0.0</version>
+    <name>Log Core ${project.version}</name>
+    <packaging>bundle</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        
         <dependency>
             <groupId>br.com.smom.log</groupId>
             <artifactId>br.com.smom.log.api</artifactId>
@@ -29,29 +28,13 @@
         
         <dependency>
             <groupId>br.com.smom.main</groupId>
-            <artifactId>br.com.smom.main.datasource.api</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>br.com.smom.main</groupId>
             <artifactId>br.com.smom.main.util.api</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
-        
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-        </dependency>
-        
     </dependencies>
 
 </project>

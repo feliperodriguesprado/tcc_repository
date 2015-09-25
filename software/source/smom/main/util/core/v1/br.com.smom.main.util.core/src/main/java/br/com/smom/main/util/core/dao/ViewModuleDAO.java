@@ -31,39 +31,103 @@ import javax.enterprise.context.RequestScoped;
 public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO {
 
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-    private String query;
-    private ResultSet resultSet;
+
+    @Override
+    public int create(ViewModuleEntity viewModuleEntity) throws UtilException {
+
+        String query = "insert into view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) "
+                + "values (?, ?, ?, ?, ?, ?, ?, ?)";
+        int generatedKey = executeInsert(query,
+                viewModuleEntity.getType(),
+                viewModuleEntity.getSymbolicName(),
+                viewModuleEntity.isActive(),
+                viewModuleEntity.getName(),
+                viewModuleEntity.getContextPath(),
+                viewModuleEntity.getIcon(),
+                viewModuleEntity.getPosition(),
+                viewModuleEntity.getParent());
+        return generatedKey;
+    }
+
+    @Override
+    public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
+        return null;
+    }
+
+    @Override
+    public ViewModuleEntity get(int id) throws UtilException {
+        String query = "select "
+                + "* "
+                + "from view_modules v "
+                + "where v.id = ?";
+        ResultSet resultSet = executeQuery(query, id);
+        return fillViewModuleEntity(resultSet);
+    }
+
+    @Override
+    public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException {
+        String query = "select "
+                + "* "
+                + "from view_modules v "
+                + "where v.symbolic_name = ?";
+        ResultSet resultSet = executeQuery(query, symbolicName);
+        return fillViewModuleEntity(resultSet);
+    }
 
     @Override
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
 
-        query = "select "
+        String query = "select "
                 + "* "
                 + "from view_modules v "
                 + "order by v.position";
-        resultSet = executeQuery(query);
-        return fillViewModuleModelList();
+        ResultSet resultSet = executeQuery(query);
+        return fillViewModuleModelList(resultSet);
     }
 
-    private List<ViewModuleEntity> fillViewModuleModelList() throws UtilException {
+    private ViewModuleEntity fillViewModuleEntity(ResultSet resultSet) throws UtilException {
+        try {
+            ViewModuleEntity viewModuleEntity = null;
+            while (resultSet.next()) {
+                viewModuleEntity = setViewModuleEntity(resultSet);
+            }
+            return viewModuleEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
 
+    private List<ViewModuleEntity> fillViewModuleModelList(ResultSet resultSet) throws UtilException {
         try {
             List<ViewModuleEntity> viewModuleModelList = new ArrayList<>();
-
             while (resultSet.next()) {
-                ViewModuleEntity viewModuleModel = new ViewModuleEntity(
-                        resultSet.getInt("id"),
-                        resultSet.getInt("type"),
-                        resultSet.getString("symbolic_name"),
-                        resultSet.getBoolean("active"),
-                        resultSet.getString("name"),
-                        resultSet.getString("context_path"),
-                        resultSet.getString("icon"),
-                        resultSet.getInt("position"),
-                        resultSet.getInt("parent"));
-                viewModuleModelList.add(viewModuleModel);
+                viewModuleModelList.add(setViewModuleEntity(resultSet));
             }
             return viewModuleModelList;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
+
+    private ViewModuleEntity setViewModuleEntity(ResultSet resultSet) throws UtilException {
+        try {
+            ViewModuleEntity viewModuleModel = new ViewModuleEntity(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("type"),
+                    resultSet.getString("symbolic_name"),
+                    resultSet.getBoolean("active"),
+                    resultSet.getString("name"),
+                    resultSet.getString("context_path"),
+                    resultSet.getString("icon"),
+                    resultSet.getInt("position"),
+                    resultSet.getInt("parent"));
+            return viewModuleModel;
         } catch (SQLException e) {
             if (logService != null) {
                 logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);

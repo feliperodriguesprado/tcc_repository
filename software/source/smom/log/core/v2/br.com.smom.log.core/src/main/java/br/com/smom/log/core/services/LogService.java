@@ -22,19 +22,19 @@ import br.com.smom.main.util.api.services.InternalLog;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.apache.log4j.Appender;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+import java.util.Random;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class LogService implements Log {
 
     @Override
     public void debug(String message) {
         try {
-            getLogger().debug(message);
+            getLogger().fine(message);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -43,7 +43,7 @@ public class LogService implements Log {
     @Override
     public void debug(String message, Throwable cause) {
         try {
-            getLogger().debug(message, cause);
+            getLogger().log(Level.FINE, message, cause);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -61,7 +61,7 @@ public class LogService implements Log {
     @Override
     public void warn(String message) {
         try {
-            getLogger().warn(message);
+            getLogger().warning(message);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -70,7 +70,7 @@ public class LogService implements Log {
     @Override
     public void warn(String message, Throwable cause) {
         try {
-            getLogger().warn(message, cause);
+            getLogger().log(Level.WARNING, message, cause);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -79,7 +79,7 @@ public class LogService implements Log {
     @Override
     public void error(String message) {
         try {
-            getLogger().error(message);
+            getLogger().severe(message);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -88,7 +88,7 @@ public class LogService implements Log {
     @Override
     public void error(String message, Throwable cause) {
         try {
-            getLogger().error(message, cause);
+            getLogger().log(Level.SEVERE, message, cause);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -97,7 +97,7 @@ public class LogService implements Log {
     @Override
     public void fatal(String message) {
         try {
-            getLogger().fatal(message);
+            getLogger().severe(message);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -106,7 +106,7 @@ public class LogService implements Log {
     @Override
     public void fatal(String message, Throwable cause) {
         try {
-            getLogger().fatal(message, cause);
+            getLogger().log(Level.SEVERE, message, cause);
         } catch (LogException e) {
             InternalLog.warning(e.getMessage());
         }
@@ -114,59 +114,34 @@ public class LogService implements Log {
 
     private Logger getLogger() throws LogException {
 
-        Logger logger;
-        Appender fileAppender;
-        String fileAppenderName = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        boolean doAppender = false;
+        Logger logger = Logger.getLogger(new SimpleDateFormat("yyyyMMdd").format(new Date()));
+        Handler[] handlerList = logger.getHandlers();
 
-        logger = Logger.getLogger(LogService.class);
-        fileAppender = logger.getAppender(fileAppenderName);
-
-        if (fileAppender != null) {
-            if (!fileAppender.getName().equals(fileAppenderName)) {
-                doAppender = true;
-            }
-        } else {
-            doAppender = true;
-        }
-
-        if (doAppender) {
-            logger.removeAllAppenders();
-            logger.addAppender(getFileAppender());
-            logger.addAppender(getConsoleAppender());
-            logger.setLevel(Level.DEBUG);
+        if (handlerList.length == 0) {
+            logger.addHandler(getFileHandler());
+            logger.setLevel(Level.FINE);
         }
 
         return logger;
     }
 
-    private FileAppender getFileAppender() throws LogException {
+    private FileHandler getFileHandler() throws LogException {
 
         SimpleDateFormat sdf;
         String path;
-        FileAppender fileAppender;
+        FileHandler fileHandler;
+        int id = Math.abs(new Random().nextInt());
 
         try {
             sdf = new SimpleDateFormat("yyyyMMdd");
-            path = System.getenv().get("SMOM_HOME") + "/logs/" + sdf.format(new Date()) + ".log4j";
-            fileAppender = new FileAppender(getPatternLayout(), path);
-            fileAppender.setName(sdf.format(new Date()));
-            return fileAppender;
+            path = System.getenv().get("SMOM_HOME") + "/logs/" + sdf.format(new Date()) + "_" + id + ".logging";
+            fileHandler = new FileHandler(path);
+            fileHandler.setFormatter(new SimpleFormatter());
+            return fileHandler;
         } catch (IOException e) {
             InternalLog.warning(LogMessages.ERROR_LOG_CONFIGURATION + String.format("Cause=%s.", e.getMessage()));
             throw new LogException(LogMessages.ERROR_LOG_CONFIGURATION, e);
         }
-    }
-
-    private ConsoleAppender getConsoleAppender() throws LogException {
-        ConsoleAppender consoleAppender;
-        consoleAppender = new ConsoleAppender(getPatternLayout());
-        consoleAppender.setName("console");
-        return consoleAppender;
-    }
-
-    private PatternLayout getPatternLayout() {
-        return new PatternLayout("%d{dd/MM/yyyy HH:mm:ss} %5p: %m%n");
     }
 
 }

@@ -18,6 +18,8 @@ cp ../source/smom/home/view/br.com.smom.home.view/target/br.com.smom.home.view-1
 # Log
 cp ../source/smom/log/api/v1/br.com.smom.log.api/target/br.com.smom.log.api-1.0.0.jar .
 cp ../source/smom/log/core/v1/br.com.smom.log.core/target/br.com.smom.log.core-1.0.0.jar .
+cp ../source/smom/log/api/v2/br.com.smom.log.api/target/br.com.smom.log.api-2.0.0.jar .
+cp ../source/smom/log/core/v2/br.com.smom.log.core/target/br.com.smom.log.core-2.0.0.jar .
 
 
 # Main Data Source

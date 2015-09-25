@@ -32,6 +32,34 @@ public class ViewModulesService implements ViewModules {
     private IViewModuleRepository viewModuleRepository;
 
     @Override
+    public void startViewModule(ViewModuleEntity viewModuleEntity, String symbolicNameParent) throws UtilException {
+        try {
+            ViewModuleEntity viewModuleParent;
+
+            if (viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName()) == null) {
+                viewModuleParent = viewModuleRepository.getBySymbolicName(symbolicNameParent);
+                viewModuleEntity.setParent(viewModuleParent.getId());
+                viewModuleRepository.create(viewModuleEntity);
+            } else {
+                viewModuleEntity.setActive(true);
+                viewModuleRepository.update(viewModuleEntity);
+            }
+        } catch (UtilException e) {
+            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+        }
+    }
+
+    @Override
+    public void stopViewModule(ViewModuleEntity viewModuleEntity) throws UtilException {
+        try {
+            viewModuleEntity.setActive(false);
+            viewModuleRepository.update(viewModuleEntity);
+        } catch (UtilException e) {
+            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+        }
+    }
+
+    @Override
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
 
         try {

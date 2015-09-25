@@ -36,6 +36,105 @@ public class ViewModuleRepository implements IViewModuleRepository {
     private IViewModuleDAO viewModuleDAO;
 
     @Override
+    public ViewModuleEntity create(ViewModuleEntity viewModuleEntity) throws UtilException {
+
+        ViewModuleEntity viewModuleCreated = null;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                viewModuleDAO.setConnection(connection);
+                int generatedKey = viewModuleDAO.create(viewModuleEntity);
+
+                if (generatedKey == 1) {
+                    viewModuleCreated = viewModuleDAO.get(generatedKey);
+                } else {
+                    if (logService != null) {
+                        logService.error(UtilMessages.ERROR_CREATE_ENTITY.getMessage("Generate key view module entity diferent of 1."));
+                    }
+                    throw new UtilException(UtilMessages.ERROR_CREATE_ENTITY.getMessage("Generate key view module entity diferent of 1."));
+                }
+
+                posgreSQLService.commit(connection);
+
+                if (logService != null) {
+                    logService.info("View module created: " + (viewModuleCreated != null ? viewModuleCreated.toString() : "is null"));
+                }
+                return viewModuleCreated;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+
+    @Override
+    public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
+        return null;
+    }
+
+    @Override
+    public ViewModuleEntity get(int id) throws UtilException {
+
+        ViewModuleEntity viewModuleEntity;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                viewModuleDAO.setConnection(connection);
+                viewModuleEntity = viewModuleDAO.get(id);
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module getting: " + (viewModuleEntity != null ? viewModuleEntity.toString() : "is null"));
+                }
+                return viewModuleEntity;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+
+    @Override
+    public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException {
+        ViewModuleEntity viewModuleEntity;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                viewModuleDAO.setConnection(connection);
+                viewModuleEntity = viewModuleDAO.getBySymbolicName(symbolicName);
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module getting: " + (viewModuleEntity != null ? viewModuleEntity.toString() : "is null"));
+                }
+                return viewModuleEntity;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+
+    @Override
     public List<ViewModuleEntity> getVielModuleListAll() throws UtilException {
 
         List<ViewModuleEntity> viewModuleList;

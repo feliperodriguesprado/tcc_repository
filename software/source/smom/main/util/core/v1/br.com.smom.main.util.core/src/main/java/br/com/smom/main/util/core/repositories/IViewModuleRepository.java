@@ -21,6 +21,14 @@ import java.util.List;
 
 public interface IViewModuleRepository {
 
+    public ViewModuleEntity create(ViewModuleEntity viewModuleEntity) throws UtilException;
+
+    public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException;
+
+    public ViewModuleEntity get(int id) throws UtilException;
+
+    public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException;
+
     public List<ViewModuleEntity> getVielModuleListAll() throws UtilException;
 
 }

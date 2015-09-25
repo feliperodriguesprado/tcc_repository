@@ -15,19 +15,27 @@
  */
 package br.com.smom.main.datasource.core.config;
 
-import javax.inject.Singleton;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.enterprise.context.ApplicationScoped;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-@Singleton
-public class PostgreSQLConfig extends BasicDataSource {
+@ApplicationScoped
+public class PostgreSQLConfig {
+
+    private static final BasicDataSource basicDataSource = new BasicDataSource();
 
     public PostgreSQLConfig() {
-        super.setDriverClassName("org.postgresql.Driver");
-        super.setUrl("jdbc:postgresql://localhost:5432/smom");
-        super.setUsername("postgres");
-        super.setPassword("Pa$$w0rd");
-        super.setDefaultAutoCommit(Boolean.FALSE);
-        super.setInitialSize(10);
+        basicDataSource.setDriverClassName("org.postgresql.Driver");
+        basicDataSource.setUrl("jdbc:postgresql://localhost:5432/smom");
+        basicDataSource.setUsername("postgres");
+        basicDataSource.setPassword("Pa$$w0rd");
+        basicDataSource.setDefaultAutoCommit(Boolean.FALSE);
+        basicDataSource.setInitialSize(5);
+    }
+
+    public Connection getConnection() throws SQLException {
+        return basicDataSource.getConnection();
     }
 
 }

@@ -18,7 +18,8 @@ copy ..\source\smom\home\view\br.com.smom.home.view\target\br.com.smom.home.view
 rem Log
 copy ..\source\smom\log\api\v1\br.com.smom.log.api\target\br.com.smom.log.api-1.0.0.jar .
 copy ..\source\smom\log\core\v1\br.com.smom.log.core\target\br.com.smom.log.core-1.0.0.jar .
-
+copy ..\source\smom\log\api\v2\br.com.smom.log.api\target\br.com.smom.log.api-2.0.0.jar .
+copy ..\source\smom\log\core\v2\br.com.smom.log.core\target\br.com.smom.log.core-2.0.0.jar .
 
 rem Main Data Source
 copy ..\source\smom\main\datasource\api\v1\br.com.smom.main.datasource.api\target\br.com.smom.main.datasource.api-1.0.0.jar .

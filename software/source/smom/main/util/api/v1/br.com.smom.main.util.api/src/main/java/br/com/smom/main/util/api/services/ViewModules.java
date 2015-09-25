@@ -21,6 +21,10 @@ import java.util.List;
 
 public interface ViewModules {
 
+    public void startViewModule(ViewModuleEntity viewModuleEntity, String symbolicNameParent) throws UtilException;
+
+    public void stopViewModule(ViewModuleEntity viewModuleEntity) throws UtilException;
+
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException;
 
 }
