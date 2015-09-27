@@ -8,14 +8,14 @@
         <version>none</version>
     </parent>
     
-    <groupId>br.com.smom.user</groupId>
-    <artifactId>user</artifactId>
-    <name>User</name>
+    <groupId>br.com.smom.financial</groupId>
+    <artifactId>financial</artifactId>
+    <name>Financial</name>
     <packaging>pom</packaging>
-    
+
     <modules>
-        <module>view/br.com.smom.user.login.view</module>
-        <module>api/v1/br.com.smom.user.api</module>
-        <module>core/v1/br.com.smom.user.core</module>
+        <module>view/br.com.smom.financial.releases.view</module>
+        <module>api/v1/br.com.smom.financial.api</module>
+        <module>core/v1/br.com.smom.financial.core</module>
     </modules>
 </project>

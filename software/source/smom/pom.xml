@@ -18,10 +18,28 @@
         <module>customer</module>
         <module>user</module>
         <module>home</module>
+        <module>financial</module>
     </modules>
     
     <dependencyManagement>
         <dependencies>
+            
+            <!-- User API -->
+            <dependency>
+                <groupId>br.com.smom.user</groupId>
+                <artifactId>br.com.smom.user.api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Financial API -->
+            <dependency>
+                <groupId>br.com.smom.financial</groupId>
+                <artifactId>br.com.smom.financial.api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
             <!-- Customer API -->
             <dependency>
                 <groupId>br.com.smom.customer</groupId>

@@ -47,7 +47,7 @@ public class ViewModuleRepository implements IViewModuleRepository {
                 viewModuleDAO.setConnection(connection);
                 int generatedKey = viewModuleDAO.create(viewModuleEntity);
 
-                if (generatedKey == 1) {
+                if (generatedKey > 0) {
                     viewModuleCreated = viewModuleDAO.get(generatedKey);
                 } else {
                     if (logService != null) {
