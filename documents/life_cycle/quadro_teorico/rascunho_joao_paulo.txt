@@ -68,5 +68,4 @@ Coesão e Acoplamento são princípios de engenharia de software muito utilizados. 
 
 
 
-
-Leia mais em: Artigo Java Magazine 77 - Coesão e Acoplamento em Sistemas Orientados a Objetos http://www.devmedia.com.br/artigo-java-magazine-77-coesao-e-acoplamento-em-sistemas-orientados-a-objetos/16167#ixzz3mhROeGMh
+GAMA, Kiev. Uma visão geral sobre a plataforma OSGi. 2008. Disponível em https://kievgama.wordpress.com/2008/11/24/um-pouco-de-osgi-em-portugues/. Acesso em 09 de março, 2015.
