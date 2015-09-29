@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.home.view.initialize;
+package br.com.smom.user.register.view.initialize;
 
 import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.InternalLog;
@@ -32,14 +32,14 @@ public class Activator implements BundleActivator {
         if (viewModulesService != null) {
             ViewModuleEntity viewModule = new ViewModuleEntity();
             viewModule.setType(2);
-            viewModule.setSymbolicName("br.com.smom.home.view");
-            viewModule.setName("Início");
-            viewModule.setContextPath("/modules/home/#/");
-            viewModule.setIcon("fa fa-home");
+            viewModule.setSymbolicName("br.com.smom.user.register.view");
+            viewModule.setName("Cadastros");
+            viewModule.setContextPath("/modules/user/register/#/");
+            viewModule.setIcon("fa fa-pencil");
             viewModule.setPosition(1);
-            viewModulesService.startViewModule(viewModule, null);
+            viewModulesService.startViewModule(viewModule, "br.com.smom.user");
         }
-        
+
         InternalLog.info(String.format("Start bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
     }
 
@@ -51,14 +51,14 @@ public class Activator implements BundleActivator {
         if (viewModulesService != null) {
             ViewModuleEntity viewModule = new ViewModuleEntity();
             viewModule.setType(2);
-            viewModule.setSymbolicName("br.com.smom.home.view");
-            viewModule.setName("Início");
-            viewModule.setContextPath("/modules/home/#/");
-            viewModule.setIcon("fa fa-home");
+            viewModule.setSymbolicName("br.com.smom.user.register.view");
+            viewModule.setName("Cadastros");
+            viewModule.setContextPath("/modules/user/register/#/");
+            viewModule.setIcon("fa fa-pencil");
             viewModule.setPosition(1);
             viewModulesService.stopViewModule(viewModule);
         }
-        
+
         InternalLog.info(String.format("Stop bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
     }
 

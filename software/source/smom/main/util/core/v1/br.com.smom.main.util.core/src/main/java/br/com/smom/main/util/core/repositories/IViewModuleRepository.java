@@ -29,6 +29,7 @@ public interface IViewModuleRepository {
 
     public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException;
 
-    public List<ViewModuleEntity> getVielModuleListAll() throws UtilException;
+    public List<ViewModuleEntity> getViewModuleListAll() throws UtilException;
 
+    public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException;
 }

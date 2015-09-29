@@ -17,5 +17,6 @@
         <module>view/br.com.smom.user.login.view</module>
         <module>api/v1/br.com.smom.user.api</module>
         <module>core/v1/br.com.smom.user.core</module>
+        <module>view/br.com.smom.user.register.view</module>
     </modules>
 </project>

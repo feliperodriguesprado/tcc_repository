@@ -151,7 +151,7 @@ public class ViewModuleRepository implements IViewModuleRepository {
     }
 
     @Override
-    public List<ViewModuleEntity> getVielModuleListAll() throws UtilException {
+    public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
 
         List<ViewModuleEntity> viewModuleList;
         Connection connection;
@@ -162,6 +162,37 @@ public class ViewModuleRepository implements IViewModuleRepository {
                 viewModuleDAO.setConnection(connection);
                 viewModuleList = viewModuleDAO.getViewModuleListAll();
                 posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module list getting: " + (viewModuleList != null ? viewModuleList.toString() : "is null"));
+                }
+                return viewModuleList;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+
+    @Override
+    public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException {
+
+        List<ViewModuleEntity> viewModuleList;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                viewModuleDAO.setConnection(connection);
+                viewModuleList = viewModuleDAO.getViewModuleListByParent(parentId);
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module list getting: " + (viewModuleList != null ? viewModuleList.toString() : "is null"));
+                }
                 return viewModuleList;
             } catch (UtilException e) {
                 posgreSQLService.rollback(connection);

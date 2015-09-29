@@ -34,6 +34,7 @@ public class ViewModulesService implements ViewModules {
     @Override
     public void startViewModule(ViewModuleEntity viewModuleEntity, String symbolicNameParent) throws UtilException {
         try {
+
             if (symbolicNameParent != null) {
                 ViewModuleEntity viewModuleParent = viewModuleRepository.getBySymbolicName(symbolicNameParent);
 
@@ -49,12 +50,14 @@ public class ViewModulesService implements ViewModules {
             }
 
             if (viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName()) == null) {
+                viewModuleEntity.setActive(true);
                 viewModuleRepository.create(viewModuleEntity);
             } else {
                 viewModuleEntity = viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName());
                 viewModuleEntity.setActive(true);
                 viewModuleRepository.update(viewModuleEntity);
             }
+
         } catch (UtilException e) {
             throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
         }
@@ -63,32 +66,31 @@ public class ViewModulesService implements ViewModules {
     @Override
     public void stopViewModule(ViewModuleEntity viewModuleEntity) throws UtilException {
 
-        List<ViewModuleEntity> viewModuleList;
-        int countModuleChildren = 0;
-        ViewModuleEntity viewModuleParent;
-
+//        List<ViewModuleEntity> viewModuleList;
+//        int countModuleChildren = 0;
+//        ViewModuleEntity viewModuleParent;
         try {
             viewModuleEntity = viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName());
 
             if (viewModuleEntity != null) {
                 viewModuleEntity.setActive(false);
                 viewModuleRepository.update(viewModuleEntity);
-            }
 
-            viewModuleList = viewModuleRepository.getVielModuleListAll();
-
-            if (viewModuleList.size() > 0) {
-                for (ViewModuleEntity viewModule : viewModuleList) {
-                    if (!viewModule.isActive()) {
-                        countModuleChildren++;
-                    }
-                }
-            }
-
-            if (countModuleChildren == viewModuleList.size()) {
-                viewModuleParent = viewModuleRepository.get(viewModuleEntity.getParent());
-                viewModuleParent.setActive(false);
-                viewModuleRepository.update(viewModuleParent);
+//                viewModuleList = viewModuleRepository.getViewModuleListByParent(viewModuleEntity.getParent());
+//
+//                if (viewModuleList.size() > 0) {
+//                    for (ViewModuleEntity viewModule : viewModuleList) {
+//                        if (!viewModule.isActive()) {
+//                            countModuleChildren++;
+//                        }
+//                    }
+//                }
+//
+//                if (countModuleChildren == viewModuleList.size()) {
+//                    viewModuleParent = viewModuleRepository.get(viewModuleEntity.getParent());
+//                    viewModuleParent.setActive(false);
+//                    viewModuleRepository.update(viewModuleParent);
+//                }
             }
 
         } catch (UtilException e) {
@@ -103,7 +105,7 @@ public class ViewModulesService implements ViewModules {
             List<ViewModuleEntity> viewModuleListParent = new ArrayList<>();
             List<ViewModuleEntity> viewModuleListChildren = new ArrayList<>();
 
-            List<ViewModuleEntity> viewModuleListAll = viewModuleRepository.getVielModuleListAll();
+            List<ViewModuleEntity> viewModuleListAll = viewModuleRepository.getViewModuleListAll();
 
             for (ViewModuleEntity viewModuleModel : viewModuleListAll) {
 

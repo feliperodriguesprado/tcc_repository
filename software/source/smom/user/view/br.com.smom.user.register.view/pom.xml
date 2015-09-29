@@ -3,16 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <artifactId>user</artifactId>
         <groupId>br.com.smom.user</groupId>
+        <artifactId>user</artifactId>
         <version>none</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <groupId>br.com.smom.user</groupId>
-    <artifactId>br.com.smom.user.login.view</artifactId>
+    <artifactId>br.com.smom.user.register.view</artifactId>
     <version>1.0.0</version>
-    <name>User Login View ${project.version}</name>
+    <name>User Register View ${project.version}</name>
     <packaging>war</packaging>
 
     <properties>
@@ -41,5 +41,5 @@
             <artifactId>javaee-web-api</artifactId>
         </dependency>
     </dependencies>
-
+    
 </project>

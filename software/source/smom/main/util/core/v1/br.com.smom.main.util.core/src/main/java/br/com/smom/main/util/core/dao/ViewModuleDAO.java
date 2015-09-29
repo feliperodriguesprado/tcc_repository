@@ -96,6 +96,17 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
         return fillViewModuleModelList(resultSet);
     }
 
+    @Override
+    public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException {
+        String query = "select "
+                + "* "
+                + "from view_modules v "
+                + "where v.parent = ?"
+                + "order by v.position";
+        ResultSet resultSet = executeQuery(query, parentId);
+        return fillViewModuleModelList(resultSet);
+    }
+
     private ViewModuleEntity fillViewModuleEntity(ResultSet resultSet) throws UtilException {
         try {
             ViewModuleEntity viewModuleEntity = null;
