@@ -37,7 +37,7 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
 
         String query = "insert into view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) "
                 + "values (?, ?, ?, ?, ?, ?, ?, ?)";
-        int generatedKey = executeInsert(query,
+        return executeInsert(query,
                 viewModuleEntity.getType(),
                 viewModuleEntity.getSymbolicName(),
                 viewModuleEntity.isActive(),
@@ -45,13 +45,24 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
                 viewModuleEntity.getContextPath(),
                 viewModuleEntity.getIcon(),
                 viewModuleEntity.getPosition(),
-                viewModuleEntity.getParent());
-        return generatedKey;
+                viewModuleEntity.getParent() == 0 ? null : viewModuleEntity.getParent());
     }
 
     @Override
-    public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
-        return null;
+    public void update(ViewModuleEntity viewModuleEntity) throws UtilException {
+
+        String query = "update view_modules set type = ?, symbolic_name = ?, active = ?, "
+                + "name = ?, context_path = ?, icon = ?, position = ?, parent = ? where id = ?";
+        executeUpdate(query,
+                viewModuleEntity.getType(),
+                viewModuleEntity.getSymbolicName(),
+                viewModuleEntity.isActive(),
+                viewModuleEntity.getName(),
+                viewModuleEntity.getContextPath(),
+                viewModuleEntity.getIcon(),
+                viewModuleEntity.getPosition(),
+                viewModuleEntity.getParent() == 0 ? null : viewModuleEntity.getParent(),
+                viewModuleEntity.getId());
     }
 
     @Override

@@ -24,7 +24,9 @@ public enum DataSourceMessages implements Messages {
     ERROR_GET_CONNECTION_POSTGRES(0, ""),
     ERROR_COMMIT_CLOSE_CONNECTION_POSTGRES(0, ""),
     ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES(0, ""),
-    ERROR_EXECUTE_QUERY_POSTGRES(0, "");
+    ERROR_EXECUTE_QUERY_POSTGRES(0, ""),
+    ERROR_CREATE_ENTITY(0, ""),
+    ERROR_UPDATE_ENTITY(0, "");
 
     private int code;
     private String description;

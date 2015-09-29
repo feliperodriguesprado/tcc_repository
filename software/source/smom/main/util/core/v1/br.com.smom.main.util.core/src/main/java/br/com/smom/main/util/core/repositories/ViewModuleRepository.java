@@ -38,7 +38,7 @@ public class ViewModuleRepository implements IViewModuleRepository {
     @Override
     public ViewModuleEntity create(ViewModuleEntity viewModuleEntity) throws UtilException {
 
-        ViewModuleEntity viewModuleCreated = null;
+        ViewModuleEntity viewModuleCreated;
         Connection connection;
 
         if (posgreSQLService != null) {
@@ -46,16 +46,7 @@ public class ViewModuleRepository implements IViewModuleRepository {
             try {
                 viewModuleDAO.setConnection(connection);
                 int generatedKey = viewModuleDAO.create(viewModuleEntity);
-
-                if (generatedKey > 0) {
-                    viewModuleCreated = viewModuleDAO.get(generatedKey);
-                } else {
-                    if (logService != null) {
-                        logService.error(UtilMessages.ERROR_CREATE_ENTITY.getMessage("Generate key view module entity diferent of 1."));
-                    }
-                    throw new UtilException(UtilMessages.ERROR_CREATE_ENTITY.getMessage("Generate key view module entity diferent of 1."));
-                }
-
+                viewModuleCreated = viewModuleDAO.get(generatedKey);
                 posgreSQLService.commit(connection);
 
                 if (logService != null) {
@@ -76,7 +67,32 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
-        return null;
+
+        ViewModuleEntity viewModuleUpdated;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                viewModuleDAO.setConnection(connection);
+                viewModuleDAO.update(viewModuleEntity);
+                viewModuleUpdated = viewModuleDAO.get(viewModuleEntity.getId());
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module updated: " + (viewModuleUpdated != null ? viewModuleUpdated.toString() : "is null"));
+                }
+                return viewModuleUpdated;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
+
     }
 
     @Override

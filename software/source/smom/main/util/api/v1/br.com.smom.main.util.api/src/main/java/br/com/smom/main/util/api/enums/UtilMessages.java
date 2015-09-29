@@ -24,7 +24,6 @@ public enum UtilMessages implements Messages {
     INFO_GET_VIEW_MODULES(0, ""),
     WARN_UNAVAILABLE_MODULE(0, ""),
     ERROR_FILL_ENTITY_RESULTSET(0, ""),
-    ERROR_CREATE_ENTITY(0, ""),
     FATAL_FAILURE_SYSTEM(0, "");
 
     private int code;

@@ -57,29 +57,40 @@ public class GenericDataBaseDAO {
                 return generatedKey;
             } else {
                 if (logService != null) {
-                    logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES + "Cause=none rows affected.");
+                    logService.error(DataSourceMessages.ERROR_CREATE_ENTITY.getMessage("Cause=none rows affected."));
                 }
-                throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, "Cause=none rows affected.");
+                throw new DataSourceException(DataSourceMessages.ERROR_CREATE_ENTITY.getMessage("Cause=none rows affected."));
             }
 
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.getMessage(), e);
             }
             throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
     }
 
-    protected int executeUpdate(String query, Object... params) throws DataSourceException {
+    protected void executeUpdate(String query, Object... params) throws DataSourceException {
+
+        int rowsAffected;
+
         try {
             preparedStatement = connection.prepareStatement(query);
             for (int i = 0; i < params.length; i++) {
                 preparedStatement.setObject(i + 1, params[i]);
             }
-            return preparedStatement.executeUpdate();
+            rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected == 2) {
+                if (logService != null) {
+                    logService.error(DataSourceMessages.ERROR_UPDATE_ENTITY.getMessage("Cause=none rows affected."));
+                }
+                throw new DataSourceException(DataSourceMessages.ERROR_UPDATE_ENTITY.getMessage("Cause=none rows affected."));
+            }
+
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.getMessage(), e);
             }
             throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
@@ -94,7 +105,7 @@ public class GenericDataBaseDAO {
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.getMessage(), e);
             }
             throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }
@@ -106,7 +117,7 @@ public class GenericDataBaseDAO {
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.toString(), e);
+                logService.error(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES.getMessage(), e);
             }
             throw new DataSourceException(DataSourceMessages.ERROR_EXECUTE_QUERY_POSTGRES, e);
         }

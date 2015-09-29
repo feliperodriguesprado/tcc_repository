@@ -34,13 +34,24 @@ public class ViewModulesService implements ViewModules {
     @Override
     public void startViewModule(ViewModuleEntity viewModuleEntity, String symbolicNameParent) throws UtilException {
         try {
-            ViewModuleEntity viewModuleParent;
+            if (symbolicNameParent != null) {
+                ViewModuleEntity viewModuleParent = viewModuleRepository.getBySymbolicName(symbolicNameParent);
+
+                if (viewModuleParent != null) {
+                    if (!viewModuleParent.isActive()) {
+                        viewModuleParent.setActive(true);
+                        viewModuleRepository.update(viewModuleParent);
+                    }
+                    viewModuleEntity.setParent(viewModuleParent.getId());
+                }
+            } else {
+                viewModuleEntity.setParent(0);
+            }
 
             if (viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName()) == null) {
-                viewModuleParent = viewModuleRepository.getBySymbolicName(symbolicNameParent);
-                viewModuleEntity.setParent(viewModuleParent.getId());
                 viewModuleRepository.create(viewModuleEntity);
             } else {
+                viewModuleEntity = viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName());
                 viewModuleEntity.setActive(true);
                 viewModuleRepository.update(viewModuleEntity);
             }
@@ -51,9 +62,35 @@ public class ViewModulesService implements ViewModules {
 
     @Override
     public void stopViewModule(ViewModuleEntity viewModuleEntity) throws UtilException {
+
+        List<ViewModuleEntity> viewModuleList;
+        int countModuleChildren = 0;
+        ViewModuleEntity viewModuleParent;
+
         try {
-            viewModuleEntity.setActive(false);
-            viewModuleRepository.update(viewModuleEntity);
+            viewModuleEntity = viewModuleRepository.getBySymbolicName(viewModuleEntity.getSymbolicName());
+
+            if (viewModuleEntity != null) {
+                viewModuleEntity.setActive(false);
+                viewModuleRepository.update(viewModuleEntity);
+            }
+
+            viewModuleList = viewModuleRepository.getVielModuleListAll();
+
+            if (viewModuleList.size() > 0) {
+                for (ViewModuleEntity viewModule : viewModuleList) {
+                    if (!viewModule.isActive()) {
+                        countModuleChildren++;
+                    }
+                }
+            }
+
+            if (countModuleChildren == viewModuleList.size()) {
+                viewModuleParent = viewModuleRepository.get(viewModuleEntity.getParent());
+                viewModuleParent.setActive(false);
+                viewModuleRepository.update(viewModuleParent);
+            }
+
         } catch (UtilException e) {
             throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
         }

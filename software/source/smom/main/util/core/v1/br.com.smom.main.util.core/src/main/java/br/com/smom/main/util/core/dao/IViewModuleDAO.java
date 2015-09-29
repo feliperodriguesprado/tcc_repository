@@ -26,7 +26,7 @@ public interface IViewModuleDAO {
 
     public int create(ViewModuleEntity viewModuleEntity) throws UtilException;
 
-    public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException;
+    public void update(ViewModuleEntity viewModuleEntity) throws UtilException;
 
     public ViewModuleEntity get(int id) throws UtilException;
 
