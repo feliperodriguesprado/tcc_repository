@@ -68,6 +68,7 @@ CREATE TABLE smom.public.peoples (
                 name VARCHAR(100) NOT NULL,
                 cpf_cnpj VARCHAR(18) NOT NULL,
                 active BOOLEAN NOT NULL,
+				date_create TIMESTAMP NOT NULL,
                 CONSTRAINT pk_peoples_id PRIMARY KEY (id)
 );
 
