@@ -15,11 +15,12 @@
  */
 package br.com.smom.customer.core.dao;
 
+import br.com.smom.customer.api.enums.CustomerMessages;
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.AddressEntity;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
-import br.com.smom.main.util.api.enums.UtilMessages;
-import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.main.datasource.api.exceptions.DataSourceException;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,53 +34,73 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     @Override
-    public int create(AddressEntity addressEntity) throws UtilException {
-        String query = "insert into address (people_id, cep, city, uf, district, street)"
-                + "values (?, ?, ?, ?, ?, ?)";
-        return executeInsert(query,
-                addressEntity.getPeople_id(),
-                addressEntity.getCep(),
-                addressEntity.getCity(),
-                addressEntity.getUf(),
-                addressEntity.getDistrict(),
-                addressEntity.getStreet());
+    public int create(AddressEntity addressEntity) throws CustomerException {
+        try {
+            String query = "insert into address (people_id, cep, city, uf, district, street)"
+                    + "values (?, ?, ?, ?, ?, ?)";
+            return executeInsert(query,
+                    addressEntity.getPeople_id(),
+                    addressEntity.getCep(),
+                    addressEntity.getCity(),
+                    addressEntity.getUf(),
+                    addressEntity.getDistrict(),
+                    addressEntity.getStreet());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public void update(AddressEntity addressEntity) throws UtilException {
-        String query = "update address set people_id = ?, cep = ?, city = ?, uf = ?, district = ?, street = ? where id = ?";
-        executeUpdate(query,
-                addressEntity.getPeople_id(),
-                addressEntity.getCep(),
-                addressEntity.getCity(),
-                addressEntity.getUf(),
-                addressEntity.getDistrict(),
-                addressEntity.getStreet(),
-                addressEntity.getId());
+    public void update(AddressEntity addressEntity) throws CustomerException {
+        try {
+            String query = "update address set people_id = ?, cep = ?, city = ?, uf = ?, district = ?, street = ? where id = ?";
+            executeUpdate(query,
+                    addressEntity.getPeople_id(),
+                    addressEntity.getCep(),
+                    addressEntity.getCity(),
+                    addressEntity.getUf(),
+                    addressEntity.getDistrict(),
+                    addressEntity.getStreet(),
+                    addressEntity.getId());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public void delete(AddressEntity addressEntity) throws UtilException {
-        String query = "delete from address a where a.id = ?";
-        executeUpdate(query,
-                addressEntity.getId());
+    public void delete(AddressEntity addressEntity) throws CustomerException {
+        try {
+            String query = "delete from address a where a.id = ?";
+            executeUpdate(query,
+                    addressEntity.getId());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public AddressEntity getById(int id) throws UtilException {
-        String query = "select * from address a where a.id = ?";
-        ResultSet resultSet = executeQuery(query, id);
-        return setAddressEntity(resultSet);
+    public AddressEntity getById(int id) throws CustomerException {
+        try {
+            String query = "select * from address a where a.id = ?";
+            ResultSet resultSet = executeQuery(query, id);
+            return setAddressEntity(resultSet);
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public List<AddressEntity> getByCustomerId(int customerId) throws UtilException {
-        String query = "select * from address a where a.people_id = ?";
-        ResultSet resultSet = executeQuery(query, customerId);
-        return fillAddressList(resultSet);
+    public List<AddressEntity> getByCustomerId(int customerId) throws CustomerException {
+        try {
+            String query = "select * from address a where a.people_id = ?";
+            ResultSet resultSet = executeQuery(query, customerId);
+            return fillAddressList(resultSet);
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
-    private List<AddressEntity> fillAddressList(ResultSet resultSet) throws UtilException {
+    private List<AddressEntity> fillAddressList(ResultSet resultSet) throws CustomerException {
         try {
             List<AddressEntity> addressEntityList = new ArrayList<>();
             while (resultSet.next()) {
@@ -88,13 +109,13 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
             return addressEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
             }
-            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
 
-    private AddressEntity setAddressEntity(ResultSet resultSet) throws UtilException {
+    private AddressEntity setAddressEntity(ResultSet resultSet) throws CustomerException {
         try {
             AddressEntity addressEntityModel = new AddressEntity(
                     resultSet.getInt("id"),
@@ -107,9 +128,9 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
             return addressEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
             }
-            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
 

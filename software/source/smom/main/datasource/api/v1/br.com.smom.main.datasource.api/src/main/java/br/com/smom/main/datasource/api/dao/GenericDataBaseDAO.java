@@ -18,6 +18,7 @@ package br.com.smom.main.datasource.api.dao;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.enums.DataSourceMessages;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
+import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

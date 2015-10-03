@@ -15,11 +15,12 @@
  */
 package br.com.smom.customer.core.dao;
 
+import br.com.smom.customer.api.enums.CustomerMessages;
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.PhoneEntity;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
-import br.com.smom.main.util.api.enums.UtilMessages;
-import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.main.datasource.api.exceptions.DataSourceException;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,46 +34,66 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     @Override
-    public int create(PhoneEntity phoneEntity) throws UtilException {
-        String query = "insert into phones (people_id, number)"
-                + "values (?, ?)";
-        return executeInsert(query,
-                phoneEntity.getPeople_id(),
-                phoneEntity.getNumber());
+    public int create(PhoneEntity phoneEntity) throws CustomerException {
+        try {
+            String query = "insert into phones (people_id, number)"
+                    + "values (?, ?)";
+            return executeInsert(query,
+                    phoneEntity.getPeople_id(),
+                    phoneEntity.getNumber());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public void update(PhoneEntity phoneEntity) throws UtilException {
-        String query = "update phones set people_id = ?, number = ? where id = ?";
-        executeUpdate(query,
-                phoneEntity.getPeople_id(),
-                phoneEntity.getNumber(),
-                phoneEntity.getId());
+    public void update(PhoneEntity phoneEntity) throws CustomerException {
+        try {
+            String query = "update phones set people_id = ?, number = ? where id = ?";
+            executeUpdate(query,
+                    phoneEntity.getPeople_id(),
+                    phoneEntity.getNumber(),
+                    phoneEntity.getId());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public void delete(PhoneEntity phoneEntity) throws UtilException {
-        String query = "delete from phones p where p.id = ?";
-        executeUpdate(query,
-                phoneEntity.getId());
+    public void delete(PhoneEntity phoneEntity) throws CustomerException {
+        try {
+            String query = "delete from phones p where p.id = ?";
+            executeUpdate(query,
+                    phoneEntity.getId());
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public PhoneEntity getById(int id) throws UtilException {
-        String query = "select * from phones p where p.id = ?";
-        ResultSet resultSet = executeQuery(query, id);
-        return setPhoneEntity(resultSet);
+    public PhoneEntity getById(int id) throws CustomerException {
+        try {
+            String query = "select * from phones p where p.id = ?";
+            ResultSet resultSet = executeQuery(query, id);
+            return setPhoneEntity(resultSet);
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
 
     @Override
-    public List<PhoneEntity> getByCustomerId(int customerId) throws UtilException {
-        String query = "select * from phones p where p.people_id = ?";
-        ResultSet resultSet = executeQuery(query, customerId);
-        return fillPhoneList(resultSet);
+    public List<PhoneEntity> getByCustomerId(int customerId) throws CustomerException {
+        try {
+            String query = "select * from phones p where p.people_id = ?";
+            ResultSet resultSet = executeQuery(query, customerId);
+            return fillPhoneList(resultSet);
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
     }
     
 
-    private PhoneEntity setPhoneEntity(ResultSet resultSet) throws UtilException {
+    private PhoneEntity setPhoneEntity(ResultSet resultSet) throws CustomerException {
         try {
             PhoneEntity phoneEntityModel = new PhoneEntity(
                     resultSet.getInt("id"),
@@ -81,13 +102,13 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             return phoneEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
             }
-            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
     
-     private List<PhoneEntity> fillPhoneList(ResultSet resultSet) throws UtilException {
+     private List<PhoneEntity> fillPhoneList(ResultSet resultSet) throws CustomerException {
         try {
             List<PhoneEntity> addressEntityList = new ArrayList<>();
             while (resultSet.next()) {
@@ -96,9 +117,9 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             return addressEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UtilMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
             }
-            throw new UtilException(UtilMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
 

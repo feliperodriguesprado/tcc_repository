@@ -15,8 +15,8 @@
  */
 package br.com.smom.customer.core.dao;
 
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.AddressEntity;
-import br.com.smom.main.util.api.exceptions.UtilException;
 import java.sql.Connection;
 import java.util.List;
 
@@ -24,14 +24,14 @@ public interface IAddressDAO {
     
     public void setConnection(Connection connection);
 
-    public int create(AddressEntity addressEntity) throws UtilException;
+    public int create(AddressEntity addressEntity) throws CustomerException;
 
-    public void update(AddressEntity addressEntity) throws UtilException;
+    public void update(AddressEntity addressEntity) throws CustomerException;
 
-    public void delete(AddressEntity addressEntity) throws UtilException;
+    public void delete(AddressEntity addressEntity) throws CustomerException;
 
-    public AddressEntity getById(int id) throws UtilException;
+    public AddressEntity getById(int id) throws CustomerException;
     
-    public List<AddressEntity> getByCustomerId(int customerId) throws UtilException;
+    public List<AddressEntity> getByCustomerId(int customerId) throws CustomerException;
     
 }

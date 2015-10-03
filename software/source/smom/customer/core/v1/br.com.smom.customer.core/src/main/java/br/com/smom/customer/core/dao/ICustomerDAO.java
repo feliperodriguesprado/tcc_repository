@@ -15,8 +15,8 @@
  */
 package br.com.smom.customer.core.dao;
 
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
-import br.com.smom.main.util.api.exceptions.UtilException;
 import java.sql.Connection;
 import java.util.List;
 
@@ -24,18 +24,18 @@ public interface ICustomerDAO {
 
     public void setConnection(Connection connection);
 
-    public int create(PeopleEntity peopleEntity) throws UtilException;
+    public int create(PeopleEntity peopleEntity) throws CustomerException;
 
-    public void update(PeopleEntity peopleEntity) throws UtilException;
+    public void update(PeopleEntity peopleEntity) throws CustomerException;
 
-    public void delete(PeopleEntity peopleEntity) throws UtilException;
+    public void delete(PeopleEntity peopleEntity) throws CustomerException;
 
-    public PeopleEntity getById(int id) throws UtilException;
+    public PeopleEntity getById(int id) throws CustomerException;
 
-    public List<PeopleEntity> getByName(String name) throws UtilException;
+    public List<PeopleEntity> getByName(String name) throws CustomerException;
 
-    public List<PeopleEntity> getAll() throws UtilException;
+    public List<PeopleEntity> getAll() throws CustomerException;
 
-    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException;
+    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException;
 
 }

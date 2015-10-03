@@ -20,7 +20,8 @@ import br.com.smom.main.util.api.services.FormatterMessages;
 
 public enum CustomerMessages implements Messages {
     
-    FATAL_FAILURE_SYSTEM(0, "");
+    FATAL_FAILURE_SYSTEM(0, ""),    
+    ERROR_PERFORM_OPERATION_SERVER(0, "");
     //TODO: implementar as mensagens de retorno do sistema para salvar em logs ou retornar para a view
     
 

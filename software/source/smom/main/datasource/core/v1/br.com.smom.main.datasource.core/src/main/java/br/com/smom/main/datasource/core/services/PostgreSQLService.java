@@ -71,7 +71,7 @@ public class PostgreSQLService implements PostgreSQL {
     }
 
     @Override
-    public void rollback(Connection connection) throws DataSourceException {
+    public void rollback(Connection connection) {
         
         Log logService = (Log) ServiceProvider.getBundleService(Log.class);
         
@@ -84,7 +84,6 @@ public class PostgreSQLService implements PostgreSQL {
             if (logService != null) {
                 logService.error(DataSourceMessages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES.getMessage(), e);
             }
-            throw new DataSourceException(DataSourceMessages.ERROR_ROLLBACK_CLOSE_CONNECTION_POSTGRES, e);
         }
 
     }

@@ -24,6 +24,6 @@ public interface PostgreSQL {
     
     public void commit(Connection connection) throws DataSourceException;
     
-    public void rollback(Connection connection) throws DataSourceException;
+    public void rollback(Connection connection);
     
 }

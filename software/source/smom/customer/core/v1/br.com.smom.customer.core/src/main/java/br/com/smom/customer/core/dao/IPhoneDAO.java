@@ -15,8 +15,8 @@
  */
 package br.com.smom.customer.core.dao;
 
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.PhoneEntity;
-import br.com.smom.main.util.api.exceptions.UtilException;
 import java.sql.Connection;
 import java.util.List;
 
@@ -24,14 +24,14 @@ public interface IPhoneDAO {
     
     public void setConnection(Connection connection);
 
-    public int create(PhoneEntity phoneEntity) throws UtilException;
+    public int create(PhoneEntity phoneEntity) throws CustomerException;
 
-    public void update(PhoneEntity phoneEntity) throws UtilException;
+    public void update(PhoneEntity phoneEntity) throws CustomerException;
 
-    public void delete(PhoneEntity phoneEntity) throws UtilException;
+    public void delete(PhoneEntity phoneEntity) throws CustomerException;
 
-    public PhoneEntity getById(int id) throws UtilException;
+    public PhoneEntity getById(int id) throws CustomerException;
     
-    public List<PhoneEntity> getByCustomerId(int customerId) throws UtilException;
+    public List<PhoneEntity> getByCustomerId(int customerId) throws CustomerException;
     
 }

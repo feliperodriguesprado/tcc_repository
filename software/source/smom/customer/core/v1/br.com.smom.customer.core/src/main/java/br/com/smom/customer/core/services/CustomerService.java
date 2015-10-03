@@ -15,49 +15,85 @@
  */
 package br.com.smom.customer.core.services;
 
+import br.com.smom.customer.api.enums.CustomerMessages;
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.customer.api.services.Customer;
-import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.customer.core.repositories.ICustomerRepository;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 @Stateless
 public class CustomerService implements Customer {
 
+    @Inject
+    private ICustomerRepository customerRepository;
+
     @Override
-    public PeopleEntity create(PeopleEntity peopleEntity) throws UtilException {
-        return null;
+    public PeopleEntity create(PeopleEntity peopleEntity) throws CustomerException {
+        try {
+            return customerRepository.create(peopleEntity);
+
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public PeopleEntity update(PeopleEntity peopleEntity) throws UtilException {
-        return null;
+    public PeopleEntity update(PeopleEntity peopleEntity) throws CustomerException {
+        try {
+            return customerRepository.update(peopleEntity);
+        } catch (Exception e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+
     }
 
     @Override
-    public void delete(PeopleEntity peopleEntity) throws UtilException {
-        
+    public void delete(PeopleEntity peopleEntity) throws CustomerException {
+
+        try {
+            customerRepository.delete(peopleEntity);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public PeopleEntity getById(int id) throws UtilException {
-        return null;
+    public PeopleEntity getById(int id) throws CustomerException {
+        try {
+            return customerRepository.getById(id);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public List<PeopleEntity> getByName(String name) throws UtilException {
-        return null;
+    public List<PeopleEntity> getByName(String name) throws CustomerException {
+        try {
+            return customerRepository.getByName(name);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public List<PeopleEntity> getAll() throws UtilException {
-        return null;
+    public List<PeopleEntity> getAll() throws CustomerException {
+        try {
+            return customerRepository.getAll();
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException {
-        return null;
+    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException {
+        try {
+            return customerRepository.getCreatedCustomersRanking(positions);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
-   
 }
