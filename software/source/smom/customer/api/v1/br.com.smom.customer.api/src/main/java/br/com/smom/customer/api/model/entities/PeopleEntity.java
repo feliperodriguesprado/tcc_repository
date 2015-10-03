@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,5 +106,12 @@ public class PeopleEntity {
     public void setAddressList(List <AddressEntity> addressList) {
         this.addressList = addressList;
     }
+
+    @Override
+    public String toString() {
+        return "PeopleEntity{" + "id=" + id + ", type=" + type + ", name=" + name + ", cpf_cnpj=" + cpf_cnpj + ", active=" + active + ", date_create=" + date_create + '}';
+    }
+    
+    
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,12 @@ public class PhoneEntity {
     private int people_id;
     private String number;
 
+    public PhoneEntity(int id, int people_id, String number) {
+        this.id = id;
+        this.people_id = people_id;
+        this.number = number;
+    }
+
     public int getId() {
         return id;
     }
@@ -48,6 +54,11 @@ public class PhoneEntity {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneEntity{" + "id=" + id + ", people_id=" + people_id + ", number=" + number + '}';
     }
 
 }

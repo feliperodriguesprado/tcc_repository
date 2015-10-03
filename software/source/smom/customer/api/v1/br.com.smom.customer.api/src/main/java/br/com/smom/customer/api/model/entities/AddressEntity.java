@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,16 @@ public class AddressEntity {
     private String uf;
     private String district;
     private String street;
+
+    public AddressEntity(int id, int people_id, String cep, String city, String uf, String district, String street) {
+        this.id = id;
+        this.people_id = people_id;
+        this.cep = cep;
+        this.city = city;
+        this.uf = uf;
+        this.district = district;
+        this.street = street;
+    }
 
     public int getId() {
         return id;
@@ -84,6 +94,11 @@ public class AddressEntity {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressEntity{" + "id=" + id + ", people_id=" + people_id + ", cep=" + cep + ", city=" + city + ", uf=" + uf + ", district=" + district + ", street=" + street + '}';
     }
 
 }

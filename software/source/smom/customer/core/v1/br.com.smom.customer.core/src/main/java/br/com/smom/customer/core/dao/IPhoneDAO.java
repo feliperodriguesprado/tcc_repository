@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.customer.core.repositories;
+package br.com.smom.customer.core.dao;
 
-import br.com.smom.customer.api.model.entities.PeopleEntity;
+import br.com.smom.customer.api.model.entities.PhoneEntity;
 import br.com.smom.main.util.api.exceptions.UtilException;
+import java.sql.Connection;
 import java.util.List;
 
-public interface ICustomerRepository {
+public interface IPhoneDAO {
     
-    public PeopleEntity create(PeopleEntity peopleEntity) throws UtilException;
+    public void setConnection(Connection connection);
 
-    public PeopleEntity update(PeopleEntity peopleEntity) throws UtilException;
+    public int create(PhoneEntity phoneEntity) throws UtilException;
 
-    public void delete(PeopleEntity peopleEntity) throws UtilException;
+    public void update(PhoneEntity phoneEntity) throws UtilException;
 
-    public PeopleEntity getById(int id) throws UtilException;
+    public void delete(PhoneEntity phoneEntity) throws UtilException;
 
-    public List<PeopleEntity> getByName(String name) throws UtilException;
-
-    public List<PeopleEntity> getAll() throws UtilException;
-
-    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException;
+    public PhoneEntity getById(int id) throws UtilException;
+    
+    public List<PhoneEntity> getByCustomerId(int customerId) throws UtilException;
     
 }

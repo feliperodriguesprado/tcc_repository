@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,33 @@
  */
 package br.com.smom.customer.core.repositories;
 
+import br.com.smom.customer.api.model.entities.AddressEntity;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
+import br.com.smom.customer.api.model.entities.PhoneEntity;
+import br.com.smom.customer.core.dao.IAddressDAO;
 import br.com.smom.customer.core.dao.ICustomerDAO;
+import br.com.smom.customer.core.dao.IPhoneDAO;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.services.PostgreSQL;
 import br.com.smom.main.util.api.enums.UtilMessages;
 import br.com.smom.main.util.api.exceptions.UtilException;
-import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-// Teste
 @RequestScoped
-public class CustomerRepository implements ICustomerRepository{
-    
+public class CustomerRepository implements ICustomerRepository {
+
     private final PostgreSQL posgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
     @Inject
-    private ICustomerDAO customerDAO;    
+    private ICustomerDAO customerDAO;
+    @Inject
+    private IPhoneDAO phoneDAO;
+    @Inject
+    private IAddressDAO addressDAO;
 
     @Override
     public PeopleEntity create(PeopleEntity peopleEntity) throws UtilException {
@@ -44,14 +50,25 @@ public class CustomerRepository implements ICustomerRepository{
 
         if (posgreSQLService != null) {
             connection = posgreSQLService.getConnection();
+            int generatedKey;
+
             try {
                 customerDAO.setConnection(connection);
-                int generatedKey = customerDAO.create(peopleEntity);
+                generatedKey = customerDAO.create(peopleEntity);
                 customerCreated = customerDAO.getById(generatedKey);
+                for (AddressEntity address : peopleEntity.getAddressList()) {
+                    addressDAO.create(address);
+                }
+                for (PhoneEntity phone : peopleEntity.getPhoneList()) {
+                    phoneDAO.create(phone);
+                }
                 posgreSQLService.commit(connection);
 
+                customerCreated.setPhoneList(phoneDAO.getByCustomerId(generatedKey));
+                customerCreated.setAddressList(addressDAO.getByCustomerId(generatedKey));
+
                 if (logService != null) {
-                    logService.info("View module created: " + (customerCreated != null ? customerCreated.toString() : "is null"));
+                    logService.info("Customer created: " + customerCreated.toString());
                 }
                 return customerCreated;
             } catch (UtilException e) {
@@ -73,13 +90,28 @@ public class CustomerRepository implements ICustomerRepository{
 
         if (posgreSQLService != null) {
             connection = posgreSQLService.getConnection();
+            int customerId;
+
             try {
+                customerId = peopleEntity.getId();
                 customerDAO.setConnection(connection);
                 customerDAO.update(peopleEntity);
-                customerUpdated = customerDAO.getById(peopleEntity.getId());
+                customerUpdated = customerDAO.getById(customerId);
+
+                for (AddressEntity address : peopleEntity.getAddressList()) {
+                    addressDAO.update(address);
+                }
+                for (PhoneEntity phone : peopleEntity.getPhoneList()) {
+                    phoneDAO.update(phone);
+                }
+
                 posgreSQLService.commit(connection);
+
+                customerUpdated.setAddressList(addressDAO.getByCustomerId(customerId));
+                customerUpdated.setPhoneList(phoneDAO.getByCustomerId(customerId));
+
                 if (logService != null) {
-                    logService.info("View module updated: " + (customerUpdated != null ? customerUpdated.toString() : "is null"));
+                    logService.info("Customer updated: " + customerUpdated.toString());
                 }
                 return customerUpdated;
             } catch (UtilException e) {
@@ -96,7 +128,29 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public void delete(PeopleEntity peopleEntity) throws UtilException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+
+            try {
+                customerDAO.setConnection(connection);
+                customerDAO.delete(peopleEntity);
+                posgreSQLService.commit(connection);
+
+                if (logService != null) {
+                    logService.info("Customer deleted: " + peopleEntity.toString());
+                }
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
     }
 
     @Override
@@ -111,7 +165,7 @@ public class CustomerRepository implements ICustomerRepository{
                 customerEntity = customerDAO.getById(id);
                 posgreSQLService.commit(connection);
                 if (logService != null) {
-                    logService.info("View module getting: " + (customerEntity != null ? customerEntity.toString() : "is null"));
+                    logService.info("Customer getting: " + (customerEntity != null ? customerEntity.toString() : "is null"));
                 }
                 return customerEntity;
             } catch (UtilException e) {
@@ -138,7 +192,7 @@ public class CustomerRepository implements ICustomerRepository{
                 customerEntityList = customerDAO.getByName(name);
                 posgreSQLService.commit(connection);
                 if (logService != null) {
-                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                    logService.info("Customer getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
                 }
                 return customerEntityList;
             } catch (UtilException e) {
@@ -165,7 +219,7 @@ public class CustomerRepository implements ICustomerRepository{
                 customerEntityList = customerDAO.getAll();
                 posgreSQLService.commit(connection);
                 if (logService != null) {
-                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                    logService.info("Customer getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
                 }
                 return customerEntityList;
             } catch (UtilException e) {
@@ -192,7 +246,7 @@ public class CustomerRepository implements ICustomerRepository{
                 customerEntityList = customerDAO.getAll();
                 posgreSQLService.commit(connection);
                 if (logService != null) {
-                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                    logService.info("Customer getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
                 }
                 return customerEntityList;
             } catch (UtilException e) {

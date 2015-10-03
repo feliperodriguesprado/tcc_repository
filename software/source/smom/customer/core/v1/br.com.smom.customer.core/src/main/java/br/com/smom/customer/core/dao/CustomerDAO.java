@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,35 +59,35 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
 
     @Override
     public void delete(PeopleEntity peopleEntity) throws UtilException {
-        String query = "delete from peoples where id = ?";
+        String query = "update peoples set active = FALSE where id = ?";
         executeUpdate(query,
                 peopleEntity.getId());
     }
 
     @Override
     public PeopleEntity getById(int id) throws UtilException {
-        String query = "select * from peoples p where p.id = ?";
+        String query = "select * from peoples p where p.id = ? and p.active = TRUE";
         ResultSet resultSet = executeQuery(query, id);
         return fillCustomerEntity(resultSet);
     }
 
     @Override
     public List<PeopleEntity> getByName(String name) throws UtilException {
-        String query = "select * from peoples p where p.id = ?";
+        String query = "select * from peoples p where p.id = ? and p.active = TRUE";
         ResultSet resultSet = executeQuery(query, name);
         return fillCustomerList(resultSet);
     }
 
     @Override
     public List<PeopleEntity> getAll() throws UtilException {
-        String query = "select * from peoples";
+        String query = "select * from peoples where p.active = TRUE";
         ResultSet resultSet = executeQuery(query);
         return fillCustomerList(resultSet);
     }
 
     @Override
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException {
-        String query = "select * from peoples p order by p.date_create limit ?";
+        String query = "select * from peoples p where p.active = TRUE order by p.date_create limit ?";
         ResultSet resultSet = executeQuery(query, positions);
         return fillCustomerList(resultSet);
 
