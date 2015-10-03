@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.smom.user.login.view.initialize;
+package br.com.smom.user.core.initialize;
 
 import br.com.smom.main.util.api.services.InternalLog;
 import br.com.smom.main.util.api.services.ServerMessages;

@@ -15,5 +15,5 @@
  */
 
 serverResponse = {
-    INFO_SUCCESS_USER_LOGIN: 0005
+    INFO_SUCCESS_USER_LOGIN: 1005
 };

@@ -16,7 +16,7 @@
 
 window.angular.module('userLoginModule').factory('resourceUserLogin',
         function ($resource) {
-            return $resource("resources/rest/user/login");
+            return $resource("modules/user/resources/rest/user/login");
         });
 
 

@@ -102,7 +102,7 @@ utilModule.factory('notification', function () {
     };
 
     var notification = {
-        messageView: function (message) {
+        showMessage: function (message) {
             if (message.code >= 0 && message.code < 1000) {
                 window.toastr["success"](message.description);
             } else if (message.code >= 1000 && message.code < 1999) {
@@ -110,17 +110,6 @@ utilModule.factory('notification', function () {
             } else if (message.code >= 2000 && message.code < 2999) {
                 window.toastr["warning"](message.description);
             } else if (message.code >= 3000 && message.code < 3999) {
-                window.toastr["error"](message.description);
-            }
-        },
-        messageServer: function (code, message) {
-            if (code >= 3000 && code < 4000) {
-                window.toastr["success"](message);
-            } else if (code >= 4000 && code < 4999) {
-                window.toastr["warning"](message);
-            } else if (code >= 5000 && code < 5999) {
-                window.toastr["error"](message);
-            } else if (message.code >= 6000 && message.code < 6999) {
                 window.toastr["error"](message.description);
             }
         },

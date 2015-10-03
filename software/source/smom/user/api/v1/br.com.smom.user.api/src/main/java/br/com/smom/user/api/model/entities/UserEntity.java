@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,11 @@
 package br.com.smom.user.api.model.entities;
 
 import br.com.smom.main.util.api.model.to.ResponseResourceTO;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement
+@XmlType(propOrder = {"id", "name", "password", "userName", "active", "responseResource"})
 public class UserEntity {
 
     private int id; // Column DB

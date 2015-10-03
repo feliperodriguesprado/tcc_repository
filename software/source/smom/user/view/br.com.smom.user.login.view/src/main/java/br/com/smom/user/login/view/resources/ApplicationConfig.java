@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package br.com.smom.user.login.view.resources;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("resources/rest")
+@javax.ws.rs.ApplicationPath("modules/user/resources/rest")
 public class ApplicationConfig extends Application {
 
     @Override

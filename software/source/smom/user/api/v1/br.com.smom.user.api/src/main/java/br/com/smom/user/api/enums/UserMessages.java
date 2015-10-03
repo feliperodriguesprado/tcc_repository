@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,13 @@ import br.com.smom.main.util.api.services.FormatterMessages;
 
 public enum UserMessages implements Messages {
 
-    INFO_SUCCESS_USER_LOGIN(0, "");
+    INFO_SUCCESS_USER_LOGIN(0, ""),
+    INFO_INITIALIZED_REQUEST_REST(0, ""),
+    INFO_FINISH_REQUEST_REST(0, ""),
+    WARN_INCORRECT_USER_LOGIN(0, ""),
+    WARN_UNAVAILABLE_MODULE(0, ""),
+    ERROR_PERFORM_OPERATION_SERVER(0, "");
+    
 
     private int code;
     private String description;

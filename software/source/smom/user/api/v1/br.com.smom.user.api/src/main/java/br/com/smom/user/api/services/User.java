@@ -1,5 +1,5 @@
 /* 
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package br.com.smom.user.api.services;
 
-var messages = {
-    SUCCESS: {code: 0, description: "Sucesso"},
-    INFO: {code: 1000, description: "Informação"},
-    WARN: {code: 2000, description: "Aviso"},
-    ERROR: {code: 3000, description: "Erro"},
-    ERROR_PERFORM_OPERATION_SYSTEM: {code: 3001, description: "Erro ao realizar operação no sistema"}
-};
+import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.user.api.model.entities.UserEntity;
+
+public interface User {
+
+    public UserEntity create(UserEntity user) throws UtilException;
+
+    public void update(UserEntity user) throws UtilException;
+
+    public void delete(UserEntity user) throws UtilException;
+
+    public UserEntity getById(int id) throws UtilException;
+
+    public boolean authenticateLogin(UserEntity user) throws UtilException;
+
+}

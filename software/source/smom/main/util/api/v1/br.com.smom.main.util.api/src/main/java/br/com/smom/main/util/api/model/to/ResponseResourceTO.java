@@ -18,8 +18,10 @@ package br.com.smom.main.util.api.model.to;
 import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
+@XmlType(propOrder = {"code", "description"})
 public class ResponseResourceTO {
 
     private int code;
