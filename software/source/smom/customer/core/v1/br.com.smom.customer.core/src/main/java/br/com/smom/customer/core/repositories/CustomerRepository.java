@@ -28,6 +28,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+// Teste
 @RequestScoped
 public class CustomerRepository implements ICustomerRepository{
     
@@ -137,6 +138,6 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 }
