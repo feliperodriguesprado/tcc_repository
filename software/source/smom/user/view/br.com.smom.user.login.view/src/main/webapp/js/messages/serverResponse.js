@@ -13,14 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var app = window.angular.module('app', ['ngRoute', 'ngResource', 'angular-md5']);
 
-app.controller('loginCtrl', function ($scope, notification, messages, md5) {
-
-    $scope.submit = function (user) {
-        user.password = md5.createHash($scope.password);
-        console.log(user);
-        notification.warning("Indisponível");
-    };
-
-});
+serverResponse = {
+    INFO_SUCCESS_USER_LOGIN: 0005
+};

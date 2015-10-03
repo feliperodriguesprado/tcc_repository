@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-window.app.factory('util', function () {
-    var util = {
+var utilModule = window.angular.module('utilModule', ['ngRoute', 'ngResource', 'angular-md5']);
+
+utilModule.factory('document', function () {
+    var document = {
         formatDocument: function (document) {
 
             var i = 0, cpf = '', cnpj = '';
@@ -49,22 +51,38 @@ window.app.factory('util', function () {
             }
         }
     };
-    return util;
+    return document;
 });
 
-window.app.factory('messages', function () {
+utilModule.factory('messages', function () {
     return window.messages;
 });
 
-window.app.factory('serverResponse', function () {
-    var serverResponse = {
-        INFO_SUCCESS_USER_REGISTERED: 3001,
-        WARN_EMAIL_ALREADY_EXISTS: 4001
-    };
-    return serverResponse;
+utilModule.factory('serverResponse', function () {
+    return window.serverResponse;
 });
 
-window.app.factory('notification', function () {
+utilModule.factory('log', function () {
+
+    var getDate = function () {
+        return window.moment().format("DD/MM/YYYY HH:mm:ss");
+    };
+
+    var log = {
+        info: function (message) {
+            console.info('Date=' + getDate() + 'Code=' + message.code + '; Description=' + message.description);
+        },
+        error: function (message, exception) {
+            console.error('Date=' + getDate() + '; Code=' + message.code + '; Description=' + message.description + '; Exception=' + exception.message);
+        },
+        debug: function (object) {
+            console.log(object);
+        }
+    };
+    return log;
+});
+
+utilModule.factory('notification', function () {
     window.toastr.options = {
         "closeButton": true,
         "debug": false,
@@ -112,7 +130,7 @@ window.app.factory('notification', function () {
         info: function (text) {
             window.toastr["info"](text);
         },
-        warning: function (text) {
+        warn: function (text) {
             window.toastr["warning"](text);
         },
         error: function (text) {
@@ -121,4 +139,14 @@ window.app.factory('notification', function () {
     };
 
     return notification;
+});
+
+utilModule.factory('encryption', function (md5) {
+    var encryption = {
+        parseMD5: function (string) {
+            var hash = md5.createHash(string);
+            return hash;
+        }
+    };
+    return encryption;
 });

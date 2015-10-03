@@ -16,6 +16,8 @@
 package br.com.smom.user.login.view.initialize;
 
 import br.com.smom.main.util.api.services.InternalLog;
+import br.com.smom.main.util.api.services.ServerMessages;
+import br.com.smom.user.api.enums.UserMessages;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -24,6 +26,7 @@ public class Activator implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
         InternalLog.info(String.format("Start bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
+        ServerMessages.load(UserMessages.values());
     }
 
     @Override
