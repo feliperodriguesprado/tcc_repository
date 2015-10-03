@@ -18,7 +18,7 @@ package br.com.smom.customer.core.repositories;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import java.util.List;
-
+//teste
 public interface ICustomerRepository {
     
     public PeopleEntity create(PeopleEntity peopleEntity) throws UtilException;

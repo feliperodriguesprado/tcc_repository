@@ -28,6 +28,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+// Teste
 @RequestScoped
 public class CustomerRepository implements ICustomerRepository{
     
