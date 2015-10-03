@@ -28,9 +28,9 @@ public class PeopleEntity {
     private int id;
     private int type;
     private String name;
-    private String cpf_cnpj;
+    private String cpfCnpj;
     private boolean active;
-    private Date date_create;
+    private Date dateCreate;
     private List <PhoneEntity> phoneList = new ArrayList<>();
     private List <AddressEntity> addressList = new ArrayList<>();
 
@@ -38,9 +38,9 @@ public class PeopleEntity {
         this.id = id;
         this.type = type;
         this.name = name;
-        this.cpf_cnpj = cpf_cnpj;
+        this.cpfCnpj = cpf_cnpj;
         this.active = active;
-        this.date_create = date_create;
+        this.dateCreate = date_create;
     }
 
     public int getId() {
@@ -67,12 +67,12 @@ public class PeopleEntity {
         this.name = name;
     }
 
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public boolean isActive() {
@@ -83,12 +83,12 @@ public class PeopleEntity {
         this.active = active;
     }
     
-    public Date getDate_create() {
-        return date_create;
+    public Date getDateCreate() {
+        return dateCreate;
     }
 
-    public void setDate_create(Date date) {
-        this.date_create = date;
+    public void setDateCreate(Date date) {
+        this.dateCreate = date;
     }
 
     public List <PhoneEntity> getPhoneList() {
@@ -109,7 +109,7 @@ public class PeopleEntity {
 
     @Override
     public String toString() {
-        return "PeopleEntity{" + "id=" + id + ", type=" + type + ", name=" + name + ", cpf_cnpj=" + cpf_cnpj + ", active=" + active + ", date_create=" + date_create + '}';
+        return "PeopleEntity{" + "id=" + id + ", type=" + type + ", name=" + name + ", cpf_cnpj=" + cpfCnpj + ", active=" + active + ", date_create=" + dateCreate + '}';
     }
     
     

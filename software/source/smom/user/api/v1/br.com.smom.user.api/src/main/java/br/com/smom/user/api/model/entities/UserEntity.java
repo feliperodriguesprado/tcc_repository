@@ -30,6 +30,16 @@ public class UserEntity {
     private boolean active; // Column DB
     private ResponseResourceTO responseResource;
 
+    public UserEntity(int id, String name, String password, String userName, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.userName = userName;
+        this.active = active;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

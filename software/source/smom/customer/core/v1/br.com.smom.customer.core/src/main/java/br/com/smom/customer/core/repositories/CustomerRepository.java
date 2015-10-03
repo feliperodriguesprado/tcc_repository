@@ -29,8 +29,6 @@ import br.com.smom.main.datasource.api.services.PostgreSQL;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -56,6 +54,8 @@ public class CustomerRepository implements ICustomerRepository {
             try {
                 connection = posgreSQLService.getConnection();
                 customerDAO.setConnection(connection);
+                phoneDAO.setConnection(connection);
+                addressDAO.setConnection(connection);
                 generatedKey = customerDAO.create(peopleEntity);
                 customerCreated = customerDAO.getById(generatedKey);
 
@@ -99,6 +99,8 @@ public class CustomerRepository implements ICustomerRepository {
                 connection = posgreSQLService.getConnection();
                 customerId = peopleEntity.getId();
                 customerDAO.setConnection(connection);
+                phoneDAO.setConnection(connection);
+                addressDAO.setConnection(connection);
                 customerDAO.update(peopleEntity);
                 customerUpdated = customerDAO.getById(customerId);
 

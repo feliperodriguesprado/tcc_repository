@@ -42,9 +42,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
             return executeInsert(query,
                     peopleEntity.getType(),
                     peopleEntity.getName(),
-                    peopleEntity.getCpf_cnpj(),
+                    peopleEntity.getCpfCnpj(),
                     peopleEntity.isActive(),
-                    peopleEntity.getDate_create());
+                    peopleEntity.getDateCreate());
         } catch (DataSourceException e) {
             throw new CustomerException(e);
         }
@@ -57,9 +57,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
             executeUpdate(query,
                     peopleEntity.getType(),
                     peopleEntity.getName(),
-                    peopleEntity.getCpf_cnpj(),
+                    peopleEntity.getCpfCnpj(),
                     peopleEntity.isActive(),
-                    peopleEntity.getDate_create(),
+                    peopleEntity.getDateCreate(),
                     peopleEntity.getId());
         } catch (DataSourceException e) {
             throw new CustomerException(e);
@@ -68,13 +68,8 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
 
     @Override
     public void delete(PeopleEntity peopleEntity) throws CustomerException {
-        try {
-            String query = "update peoples set active = FALSE where id = ?";
-            executeUpdate(query,
-                    peopleEntity.getId());
-        } catch (DataSourceException e) {
-            throw new CustomerException(e);
-        }
+        peopleEntity.setActive(false);
+        update(peopleEntity);
     }
 
     @Override
@@ -91,7 +86,7 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     @Override
     public List<PeopleEntity> getByName(String name) throws CustomerException {
         try {
-            String query = "select * from peoples p where p.id = ? and p.active = TRUE";
+            String query = "select * from peoples p where p.name like '%?%' and p.active = TRUE";
             ResultSet resultSet = executeQuery(query, name);
             return fillCustomerList(resultSet);
         } catch (DataSourceException e) {

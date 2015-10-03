@@ -15,35 +15,63 @@
  */
 package br.com.smom.user.core.services;
 
-import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.user.api.enums.UserMessages;
+import br.com.smom.user.api.exceptions.UserException;
 import br.com.smom.user.api.model.entities.UserEntity;
 import br.com.smom.user.api.services.User;
+import br.com.smom.user.core.repositories.IUserRepository;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 @Stateless
 public class UserService implements User {
 
+    @Inject
+    private IUserRepository userRepository;
+
     @Override
-    public UserEntity create(UserEntity user) throws UtilException {
-        return null;
+    public UserEntity create(UserEntity user) throws UserException {
+        try {
+            return userRepository.create(user);
+
+        } catch (UserException e) {
+            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public void update(UserEntity user) throws UtilException {
+    public void update(UserEntity user) throws UserException {
+        try {
+            userRepository.update(user);
+
+        } catch (UserException e) {
+            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public void delete(UserEntity user) throws UtilException {
+    public void delete(UserEntity user) throws UserException {
+        try {
+            userRepository.delete(user);
+            
+        } catch (UserException e) {
+            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public UserEntity getById(int id) throws UtilException {
-        return null;
+    public UserEntity getById(int id) throws UserException {
+        try {
+            return userRepository.getById(id);
+            
+        } catch (UserException e) {
+            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
     }
 
     @Override
-    public boolean authenticateLogin(UserEntity user) throws UtilException {
-        return true;
+    public boolean authenticateLogin(UserEntity user) throws UserException {
+        return userRepository.getByUsername(user).getPassword().equals(user.getPassword());
     }
 
 }
