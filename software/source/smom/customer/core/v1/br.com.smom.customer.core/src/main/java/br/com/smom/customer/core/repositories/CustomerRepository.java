@@ -127,16 +127,82 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public List<PeopleEntity> getByName(String name) throws UtilException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<PeopleEntity> customerEntityList;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                customerDAO.setConnection(connection);
+                customerEntityList = customerDAO.getByName(name);
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                }
+                return customerEntityList;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
     }
 
     @Override
     public List<PeopleEntity> getAll() throws UtilException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<PeopleEntity> customerEntityList;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                customerDAO.setConnection(connection);
+                customerEntityList = customerDAO.getAll();
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                }
+                return customerEntityList;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
     }
 
     @Override
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<PeopleEntity> customerEntityList;
+        Connection connection;
+
+        if (posgreSQLService != null) {
+            connection = posgreSQLService.getConnection();
+            try {
+                customerDAO.setConnection(connection);
+                customerEntityList = customerDAO.getAll();
+                posgreSQLService.commit(connection);
+                if (logService != null) {
+                    logService.info("View module getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                }
+                return customerEntityList;
+            } catch (UtilException e) {
+                posgreSQLService.rollback(connection);
+                throw e;
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(UtilMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new UtilException(UtilMessages.WARN_UNAVAILABLE_MODULE);
+        }
     }
 }
