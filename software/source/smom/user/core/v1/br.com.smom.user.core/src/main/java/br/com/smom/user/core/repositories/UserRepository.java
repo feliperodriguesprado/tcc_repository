@@ -55,13 +55,16 @@ public class UserRepository implements IUserRepository {
                 return userCreated;
             } catch (DataSourceException e) {
                 posgreSQLService.rollback(connection);
+                if(e.getMessage().contains("uk_users_username")){
+                    throw new UserException(UserMessages.WARN_USER_EXISTS);
+                }
                 throw new UserException(e);
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -86,13 +89,16 @@ public class UserRepository implements IUserRepository {
                 }
             } catch (DataSourceException e) {
                 posgreSQLService.rollback(connection);
+                if(e.getMessage().contains("uk_users_username")){
+                    throw new UserException(UserMessages.WARN_USER_EXISTS);
+                }
                 throw new UserException(e);
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -116,9 +122,9 @@ public class UserRepository implements IUserRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -143,9 +149,9 @@ public class UserRepository implements IUserRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -170,9 +176,9 @@ public class UserRepository implements IUserRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -199,9 +205,9 @@ public class UserRepository implements IUserRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(UserMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(UserMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new UserException(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 

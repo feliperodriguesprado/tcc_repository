@@ -78,13 +78,16 @@ public class CustomerRepository implements ICustomerRepository {
                 return customerCreated;
             } catch (DataSourceException e) {
                 posgreSQLService.rollback(connection);
+                if(e.getMessage().contains("uk_phones_people_id_number")){
+                    throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
+                }
                 throw new CustomerException(e);
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -123,13 +126,16 @@ public class CustomerRepository implements ICustomerRepository {
                 return customerUpdated;
             } catch (DataSourceException e) {
                 posgreSQLService.rollback(connection);
+                if(e.getMessage().contains("uk_phones_people_id_number")){
+                    throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
+                }
                 throw new CustomerException(e);
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -153,9 +159,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -180,9 +186,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -208,9 +214,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -236,9 +242,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -263,9 +269,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -283,7 +289,7 @@ public class CustomerRepository implements ICustomerRepository {
                 
                 entity = addressDAO.getById(addressEntity.getId());
                 if (logService != null) {
-                    logService.info("Customer getting: " + (addressEntity != null ? addressEntity.toString() : "is null"));
+                    logService.info("Customer getting: " + addressEntity.toString());
                 }
                 return entity;
             } catch (DataSourceException e) {
@@ -292,9 +298,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -321,9 +327,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } else {
             if (logService != null) {
-                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 }

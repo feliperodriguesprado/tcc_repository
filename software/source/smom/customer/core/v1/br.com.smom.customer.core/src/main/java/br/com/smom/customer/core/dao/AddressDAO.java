@@ -18,6 +18,7 @@ package br.com.smom.customer.core.dao;
 import br.com.smom.customer.api.enums.CustomerMessages;
 import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.AddressEntity;
+import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
@@ -83,7 +84,7 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
         try {
             String query = "select * from address a where a.id = ?";
             ResultSet resultSet = executeQuery(query, id);
-            return setAddressEntity(resultSet);
+            return fillAddressEntity(resultSet);
         } catch (DataSourceException e) {
             throw new CustomerException(e);
         }
@@ -109,9 +110,24 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
             return addressEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
+
+    private AddressEntity fillAddressEntity(ResultSet resultSet) throws CustomerException {
+        try {
+            AddressEntity addressEntity = null;
+            while (resultSet.next()) {
+                addressEntity = setAddressEntity(resultSet);
+            }
+            return addressEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -128,9 +144,9 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
             return addressEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

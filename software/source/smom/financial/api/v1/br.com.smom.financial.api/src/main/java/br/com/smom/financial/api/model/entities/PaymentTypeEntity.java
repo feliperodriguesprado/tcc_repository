@@ -30,6 +30,9 @@ public class PaymentTypeEntity {
         this.description = description;
     }
 
+    public PaymentTypeEntity() {
+    }
+    
     public int getId() {
         return id;
     }

@@ -60,9 +60,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -92,9 +92,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -118,9 +118,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -145,9 +145,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -173,9 +173,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -201,9 +201,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
 
@@ -229,9 +229,9 @@ public class FinancialRepository implements IFinancialRepository{
             }
         } else {
             if (logService != null) {
-                logService.warn(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER);
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
     

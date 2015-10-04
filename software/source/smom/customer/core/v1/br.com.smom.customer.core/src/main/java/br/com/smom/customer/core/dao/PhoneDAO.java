@@ -75,7 +75,7 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
         try {
             String query = "select * from phones p where p.id = ?";
             ResultSet resultSet = executeQuery(query, id);
-            return setPhoneEntity(resultSet);
+            return fillPhoneEntity(resultSet);
         } catch (DataSourceException e) {
             throw new CustomerException(e);
         }
@@ -92,6 +92,20 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
         }
     }
     
+        private PhoneEntity fillPhoneEntity(ResultSet resultSet) throws CustomerException {
+        try {
+            PhoneEntity phoneEntity = null;
+            while (resultSet.next()) {
+                phoneEntity = setPhoneEntity(resultSet);
+            }
+            return phoneEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
 
     private PhoneEntity setPhoneEntity(ResultSet resultSet) throws CustomerException {
         try {
@@ -102,9 +116,9 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             return phoneEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
     
@@ -117,9 +131,9 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             return addressEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

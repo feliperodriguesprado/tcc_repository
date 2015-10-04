@@ -30,6 +30,9 @@ public class AccountEntity {
         this.description = description;
     }
 
+    public AccountEntity() {
+    }
+    
     public int getId() {
         return id;
     }

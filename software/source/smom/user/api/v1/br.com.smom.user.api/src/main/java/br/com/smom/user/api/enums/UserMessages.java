@@ -25,6 +25,7 @@ public enum UserMessages implements Messages {
     INFO_FINISH_REQUEST_REST(0, ""),
     WARN_INCORRECT_USER_LOGIN(0, ""),
     WARN_UNAVAILABLE_MODULE(0, ""),
+    WARN_USER_EXISTS(0, ""),
     ERROR_FILL_ENTITY_RESULTSET(0, ""),
     ERROR_PERFORM_OPERATION_SERVER(0, "");
     

@@ -125,9 +125,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
             return peopleEntity;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -143,9 +143,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
             return peopleEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -158,9 +158,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
             return peopleEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

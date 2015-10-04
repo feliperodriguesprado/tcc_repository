@@ -134,9 +134,9 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
             return financialEntity;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -157,9 +157,9 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
             return peopleEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -172,9 +172,9 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
             return financialEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 }

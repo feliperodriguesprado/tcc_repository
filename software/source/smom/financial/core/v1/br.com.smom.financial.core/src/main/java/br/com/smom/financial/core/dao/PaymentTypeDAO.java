@@ -69,6 +69,17 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
     }
 
     @Override
+    public PaymentTypeEntity getById(int id) throws FinancialException {
+        try {
+            String query = "select * from payment_types p where p.id = ?";
+            ResultSet resultSet = executeQuery(query, id);
+            return fillPaymentTypeEntity(resultSet);
+        } catch (DataSourceException e) {
+            throw new FinancialException(e);
+        }
+    }
+
+    @Override
     public List<PaymentTypeEntity> getAll() throws FinancialException {
         try {
             String query = "select * from payment_types";
@@ -76,6 +87,21 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
             return fillPaymentTypeList(resultSet);
         } catch (DataSourceException e) {
             throw new FinancialException(e);
+        }
+    }
+
+    private PaymentTypeEntity fillPaymentTypeEntity(ResultSet resultSet) throws FinancialException {
+        try {
+            PaymentTypeEntity paymentTypeEntity = null;
+            while (resultSet.next()) {
+                paymentTypeEntity = setPaymentTypeEntity(resultSet);
+            }
+            return paymentTypeEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -105,17 +131,6 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
                 logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
             }
             throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
-        }
-    }
-
-    @Override
-    public PaymentTypeEntity getById(int id) throws FinancialException {
-        try {
-            String query = "select * from payment_types p where p.id = ?";
-            ResultSet resultSet = executeQuery(query, id);
-            return setPaymentTypeEntity(resultSet);
-        } catch (DataSourceException e) {
-            throw new FinancialException(e);
         }
     }
 }

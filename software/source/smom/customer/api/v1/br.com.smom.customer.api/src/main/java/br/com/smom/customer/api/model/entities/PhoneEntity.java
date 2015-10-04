@@ -32,6 +32,9 @@ public class PhoneEntity {
         this.number = number;
     }
 
+    public PhoneEntity() {
+    }
+    
     public int getId() {
         return id;
     }

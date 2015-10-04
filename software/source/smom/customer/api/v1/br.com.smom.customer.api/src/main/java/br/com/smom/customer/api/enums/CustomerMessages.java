@@ -19,10 +19,11 @@ import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.services.FormatterMessages;
 
 public enum CustomerMessages implements Messages {
-    
-    FATAL_FAILURE_SYSTEM(0, ""),    
-    ERROR_PERFORM_OPERATION_SERVER(0, "");
-    //TODO: implementar as mensagens de retorno do sistema para salvar em logs ou retornar para a view
+      
+    ERROR_PERFORM_OPERATION_SERVER(0, ""),
+    WARN_UNAVAILABLE_MODULE(0, ""),
+    WARN_PHONE_EXISTS(0, ""),
+    ERROR_FILL_ENTITY_RESULTSET(0, "");
     
 
     private int code;

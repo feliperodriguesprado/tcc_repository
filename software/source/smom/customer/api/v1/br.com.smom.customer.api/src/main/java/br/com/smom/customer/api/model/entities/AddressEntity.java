@@ -40,6 +40,11 @@ public class AddressEntity {
         this.street = street;
     }
 
+    public AddressEntity() {
+    }
+    
+    
+
     public int getId() {
         return id;
     }

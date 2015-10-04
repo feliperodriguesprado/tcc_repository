@@ -43,6 +43,9 @@ public class PeopleEntity {
         this.dateCreate = date_create;
     }
 
+    public PeopleEntity() {
+    }
+
     public int getId() {
         return id;
     }

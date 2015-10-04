@@ -15,7 +15,6 @@
  */
 package br.com.smom.financial.api.model.entities;
 
-import br.com.smom.customer.api.model.entities.PeopleEntity;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -27,7 +26,7 @@ public class FinancialEntity {
     private int id;
     private int type;
     private int accountEntity;
-    private int peopleEntity;    
+    private int peopleEntity;
     private int paymentTypeEntity;
     private Date createDate;
     private Date dueDate;
@@ -49,9 +48,9 @@ public class FinancialEntity {
         this.description = description;
         this.value = value;
     }
-    
 
-    
+    public FinancialEntity() {
+    }
 
     public int getId() {
         return id;
@@ -145,7 +144,5 @@ public class FinancialEntity {
     public String toString() {
         return "FinancialEntity{" + "id=" + id + ", type=" + type + ", accountEntity=" + accountEntity + ", peopleEntity=" + peopleEntity + ", paymentTypeEntity=" + paymentTypeEntity + ", createDate=" + createDate + ", dueDate=" + dueDate + ", paymentDate=" + paymentDate + ", isPaid=" + isPaid + ", description=" + description + ", value=" + value + '}';
     }
-
-   
 
 }

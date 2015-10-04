@@ -73,7 +73,7 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
         try {
             String query = "select * from accounts a where a.id = ?";
             ResultSet resultSet = executeQuery(query, id);
-            return setAccountEntity(resultSet);
+            return fillAccountEntity(resultSet);
         } catch (DataSourceException e) {
             throw new FinancialException(e);
         }
@@ -90,6 +90,21 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
         }
     }
 
+    private AccountEntity fillAccountEntity(ResultSet resultSet) throws FinancialException {
+        try {
+            AccountEntity accountEntity = null;
+            while (resultSet.next()) {
+                accountEntity = setAccountEntity(resultSet);
+            }
+            return accountEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
+
     private AccountEntity setAccountEntity(ResultSet resultSet) throws FinancialException {
         try {
             AccountEntity accountEntityModel = new AccountEntity(
@@ -98,9 +113,9 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
             return accountEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -113,9 +128,9 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
             return accountEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 }

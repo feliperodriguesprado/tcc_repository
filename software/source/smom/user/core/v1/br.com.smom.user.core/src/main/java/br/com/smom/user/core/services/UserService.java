@@ -35,6 +35,9 @@ public class UserService implements User {
             return userRepository.create(user);
 
         } catch (UserException e) {
+            if (e.getMessage().contains("uk_users_username")) {
+                throw new UserException(UserMessages.WARN_USER_EXISTS);
+            }
             throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
@@ -45,6 +48,9 @@ public class UserService implements User {
             userRepository.update(user);
 
         } catch (UserException e) {
+            if (e.getMessage().contains("uk_users_username")) {
+                throw new UserException(UserMessages.WARN_USER_EXISTS);
+            }
             throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
@@ -53,7 +59,7 @@ public class UserService implements User {
     public void delete(UserEntity user) throws UserException {
         try {
             userRepository.delete(user);
-            
+
         } catch (UserException e) {
             throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
@@ -63,7 +69,7 @@ public class UserService implements User {
     public UserEntity getById(int id) throws UserException {
         try {
             return userRepository.getById(id);
-            
+
         } catch (UserException e) {
             throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
@@ -72,9 +78,9 @@ public class UserService implements User {
     @Override
     public boolean authenticateLogin(UserEntity user) throws UserException {
         UserEntity entity = userRepository.getByUsername(user);
-        if(entity != null){
+        if (entity != null) {
             return entity.getPassword().equals(user.getPassword());
-        } 
+        }
         return false;
     }
 
