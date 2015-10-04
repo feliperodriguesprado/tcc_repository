@@ -25,12 +25,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "type", "name", "active", "cpf_cnpj", "active", "dateCreate", "phoneList", "addressList"})
 public class PeopleEntity {
 
-    private int id;
-    private int type;
-    private String name;
-    private String cpfCnpj;
-    private boolean active;
-    private Date dateCreate;
+    private int id;           //ColumnDB
+    private int type;         //ColumnDB
+    private String name;      //ColumnDB
+    private String cpfCnpj;   //ColumnDB
+    private boolean active;   //ColumnDB
+    private Date dateCreate;  //ColumnDB
     private List <PhoneEntity> phoneList = new ArrayList<>();
     private List <AddressEntity> addressList = new ArrayList<>();
 

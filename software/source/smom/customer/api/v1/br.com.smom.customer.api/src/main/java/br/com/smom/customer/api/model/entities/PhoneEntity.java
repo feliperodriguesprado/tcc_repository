@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "people_id", "number"})
 public class PhoneEntity {
 
-    private int id;
-    private int people_id;
-    private String number;
+    private int id;         //ColumnDB
+    private int people_id;  //ColumnDB
+    private String number;  //ColumnDB
 
     public PhoneEntity(int id, int people_id, String number) {
         this.id = id;

@@ -28,7 +28,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 
+@RequestScoped
 public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
     
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);

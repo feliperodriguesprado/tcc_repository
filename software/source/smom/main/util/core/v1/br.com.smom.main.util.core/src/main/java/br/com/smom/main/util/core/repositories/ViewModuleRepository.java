@@ -30,31 +30,33 @@ import javax.inject.Inject;
 @RequestScoped
 public class ViewModuleRepository implements IViewModuleRepository {
 
-    private final PostgreSQL posgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private PostgreSQL postgreSQLService = null;
+    private Log logService = null;
     @Inject
     private IViewModuleDAO viewModuleDAO;
 
     @Override
     public ViewModuleEntity create(ViewModuleEntity viewModuleEntity) throws UtilException {
-
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         ViewModuleEntity viewModuleCreated;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 int generatedKey = viewModuleDAO.create(viewModuleEntity);
                 viewModuleCreated = viewModuleDAO.get(generatedKey);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("View module created: " + (viewModuleCreated != null ? viewModuleCreated.toString() : "is null"));
                 }
                 return viewModuleCreated;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {
@@ -67,23 +69,25 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
-
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         ViewModuleEntity viewModuleUpdated;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 viewModuleDAO.update(viewModuleEntity);
                 viewModuleUpdated = viewModuleDAO.get(viewModuleEntity.getId());
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("View module updated: " + (viewModuleUpdated != null ? viewModuleUpdated.toString() : "is null"));
                 }
                 return viewModuleUpdated;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {
@@ -97,22 +101,24 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity get(int id) throws UtilException {
-
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         ViewModuleEntity viewModuleEntity;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 viewModuleEntity = viewModuleDAO.get(id);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("View module getting: " + (viewModuleEntity != null ? viewModuleEntity.toString() : "is null"));
                 }
                 return viewModuleEntity;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {
@@ -125,21 +131,24 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         ViewModuleEntity viewModuleEntity;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 viewModuleEntity = viewModuleDAO.getBySymbolicName(symbolicName);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("View module getting: " + (viewModuleEntity != null ? viewModuleEntity.toString() : "is null"));
                 }
                 return viewModuleEntity;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {
@@ -152,22 +161,24 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
-
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         List<ViewModuleEntity> viewModuleList;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 viewModuleList = viewModuleDAO.getViewModuleListAll();
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("View module list getting: " + (viewModuleList != null ? viewModuleList.toString() : "is null"));
                 }
                 return viewModuleList;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {
@@ -180,22 +191,24 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException {
-
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         List<ViewModuleEntity> viewModuleList;
         Connection connection;
 
-        if (posgreSQLService != null) {
-            connection = posgreSQLService.getConnection();
+        if (postgreSQLService != null) {
+            connection = postgreSQLService.getConnection();
             try {
                 viewModuleDAO.setConnection(connection);
                 viewModuleList = viewModuleDAO.getViewModuleListByParent(parentId);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("View module list getting: " + (viewModuleList != null ? viewModuleList.toString() : "is null"));
                 }
                 return viewModuleList;
             } catch (UtilException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw e;
             }
         } else {

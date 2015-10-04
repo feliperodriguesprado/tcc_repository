@@ -23,11 +23,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "name", "password", "userName", "active", "responseResource"})
 public class UserEntity {
 
-    private int id; // Column DB
-    private String name; // Column DB
-    private String password; // Column DB
-    private String userName; // Column DB
-    private boolean active; // Column DB
+    private int id;           // Column DB
+    private String name;      // Column DB
+    private String password;  // Column DB
+    private String userName;  // Column DB
+    private boolean active;   // Column DB
     private ResponseResourceTO responseResource;
 
     public UserEntity() {

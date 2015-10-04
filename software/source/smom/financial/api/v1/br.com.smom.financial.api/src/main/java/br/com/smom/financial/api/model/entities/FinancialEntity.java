@@ -15,32 +15,36 @@
  */
 package br.com.smom.financial.api.model.entities;
 
+import br.com.smom.customer.api.model.entities.PeopleEntity;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "type", "createDate", "dueDate", "paymentDate", "isActive", "description", "value", "peopleEntity", "accountEntity", "paymentTypeEntity"})
+@XmlType(propOrder = {"id", "type", "accountId", "peopleId", "paymentTypeId", "createDate", "dueDate", "paymentDate", "isPaid", "description", "value", "account", "paymentType", "people"})
 public class FinancialEntity {
 
-    private int id;
-    private int type;
-    private int accountEntity;
-    private int peopleEntity;
-    private int paymentTypeEntity;
-    private Date createDate;
-    private Date dueDate;
-    private Date paymentDate;
-    private boolean isPaid;
-    private String description;
-    private double value;
+    private int id;              //ColumnDB
+    private int type;            //ColumnDB
+    private int accountId;       //ColumnDB
+    private int peopleId;        //ColumnDB
+    private int paymentTypeId;   //ColumnDB
+    private Date createDate;     //ColumnDB
+    private Date dueDate;        //ColumnDB
+    private Date paymentDate;    //ColumnDB
+    private boolean isPaid;      //ColumnDB
+    private String description;  //ColumnDB
+    private double value;        //ColumnDB
+    private AccountEntity account;
+    private PaymentTypeEntity paymentType;
+    private PeopleEntity people;
 
-    public FinancialEntity(int id, int type, int accountEntity, int peopleEntity, int paymentTypeEntity, Date createDate, Date dueDate, Date paymentDate, boolean isPaid, String description, double value) {
+    public FinancialEntity(int id, int type, int accountId, int peopleId, int paymentTypeId, Date createDate, Date dueDate, Date paymentDate, boolean isPaid, String description, double value) {
         this.id = id;
         this.type = type;
-        this.accountEntity = accountEntity;
-        this.peopleEntity = peopleEntity;
-        this.paymentTypeEntity = paymentTypeEntity;
+        this.accountId = accountId;
+        this.peopleId = peopleId;
+        this.paymentTypeId = paymentTypeId;
         this.createDate = createDate;
         this.dueDate = dueDate;
         this.paymentDate = paymentDate;
@@ -116,33 +120,65 @@ public class FinancialEntity {
         this.value = value;
     }
 
-    public int getAccountEntity() {
-        return accountEntity;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccountEntity(int accountEntity) {
-        this.accountEntity = accountEntity;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public int getPeopleEntity() {
-        return peopleEntity;
+        return peopleId;
     }
 
     public void setPeopleEntity(int peopleEntity) {
-        this.peopleEntity = peopleEntity;
+        this.peopleId = peopleEntity;
     }
 
     public int getPaymentTypeEntity() {
-        return paymentTypeEntity;
+        return paymentTypeId;
     }
 
     public void setPaymentTypeEntity(int paymentTypeEntity) {
-        this.paymentTypeEntity = paymentTypeEntity;
+        this.paymentTypeId = paymentTypeEntity;
+    }
+
+    public int getPeopleId() {
+        return peopleId;
+    }
+
+    public void setPeopleId(int peopleId) {
+        this.peopleId = peopleId;
+    }
+
+    public int getPaymentTypeId() {
+        return paymentTypeId;
+    }
+
+    public void setPaymentTypeId(int paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
+    }
+
+    public AccountEntity getAccount() {
+        return account;
+    }
+
+    public void setAccount(AccountEntity account) {
+        this.account = account;
+    }
+
+    public void setPaymentType(PaymentTypeEntity paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public void setPeople(PeopleEntity people) {
+        this.people = people;
     }
 
     @Override
     public String toString() {
-        return "FinancialEntity{" + "id=" + id + ", type=" + type + ", accountEntity=" + accountEntity + ", peopleEntity=" + peopleEntity + ", paymentTypeEntity=" + paymentTypeEntity + ", createDate=" + createDate + ", dueDate=" + dueDate + ", paymentDate=" + paymentDate + ", isPaid=" + isPaid + ", description=" + description + ", value=" + value + '}';
+        return "FinancialEntity{" + "id=" + id + ", type=" + type + ", accountId=" + accountId + ", peopleId=" + peopleId + ", paymentTypeId=" + paymentTypeId + ", createDate=" + createDate + ", dueDate=" + dueDate + ", paymentDate=" + paymentDate + ", isPaid=" + isPaid + ", description=" + description + ", value=" + value + '}';
     }
 
 }

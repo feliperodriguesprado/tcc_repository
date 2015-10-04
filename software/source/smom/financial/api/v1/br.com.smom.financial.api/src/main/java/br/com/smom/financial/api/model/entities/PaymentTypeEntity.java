@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "description"})
 public class PaymentTypeEntity {
 
-    private int id;
-    private String description;
+    private int id;              //ColumnDB
+    private String description;  //ColumnDB
 
     public PaymentTypeEntity(int id, String description) {
         this.id = id;

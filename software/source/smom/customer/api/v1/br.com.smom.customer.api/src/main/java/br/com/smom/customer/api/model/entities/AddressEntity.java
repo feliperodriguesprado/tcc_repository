@@ -22,13 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "people_id", "cep", "city", "uf", "district", "street"})
 public class AddressEntity {
 
-    private int id;
-    private int people_id;
-    private String cep;
-    private String city;
-    private String uf;
-    private String district;
-    private String street;
+    private int id;           //ColumnDB
+    private int people_id;    //ColumnDB
+    private String cep;       //ColumnDB
+    private String city;      //ColumnDB
+    private String uf;        //ColumnDB
+    private String district;  //ColumnDB
+    private String street;    //ColumnDB
 
     public AddressEntity(int id, int people_id, String cep, String city, String uf, String district, String street) {
         this.id = id;

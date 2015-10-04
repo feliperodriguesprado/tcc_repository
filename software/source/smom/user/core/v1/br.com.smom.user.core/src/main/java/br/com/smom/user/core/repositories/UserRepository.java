@@ -31,30 +31,33 @@ import javax.inject.Inject;
 @RequestScoped
 public class UserRepository implements IUserRepository {
 
-    private final PostgreSQL posgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private PostgreSQL postgreSQLService = null;
+    private Log logService = null;
     @Inject
     private IUserDAO userDAO;
 
     @Override
     public UserEntity create(UserEntity user) throws UserException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         UserEntity userCreated;
         Connection connection = null;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
                 userDAO.setConnection(connection);
                 userCreated = userDAO.create(user);
 
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("User created: " + userCreated.toString());
                 }
                 return userCreated;
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 if(e.getMessage().contains("uk_users_username")){
                     throw new UserException(UserMessages.WARN_USER_EXISTS);
                 }
@@ -70,25 +73,28 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void update(UserEntity user) throws UserException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         UserEntity userUpdated;
         Connection connection = null;
         int customerId;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
                 customerId = user.getId();
                 userDAO.setConnection(connection);
                 userDAO.update(user);
                 userUpdated = userDAO.getById(customerId);
                 
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("User updated: " + userUpdated.toString());
                 }
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 if(e.getMessage().contains("uk_users_username")){
                     throw new UserException(UserMessages.WARN_USER_EXISTS);
                 }
@@ -104,20 +110,23 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void delete(UserEntity user) throws UserException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         Connection connection = null;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
                 userDAO.setConnection(connection);
                 userDAO.delete(user);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("User deleted: " + user.toString());
                 }
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw new UserException(e);
             }
         } else {
@@ -130,21 +139,24 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public UserEntity getById(int id) throws UserException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         UserEntity userEntity;
         Connection connection = null;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
                 userDAO.setConnection(connection);
                 userEntity = userDAO.getById(id);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("User getting: " + (userEntity != null ? userEntity.toString() : "is null"));
                 }
                 return userEntity;
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw new UserException(e);
             }
         } else {
@@ -157,21 +169,24 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public UserEntity getByUsername(UserEntity user) throws UserException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         UserEntity userEntity;
         Connection connection = null;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
                 userDAO.setConnection(connection);
                 userEntity = userDAO.getByUsername(user);
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("User getting: " + (userEntity != null ? userEntity.toString() : "is null"));
                 }
                 return userEntity;
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw new UserException(e);
             }
         } else {
@@ -185,22 +200,25 @@ public class UserRepository implements IUserRepository {
     
     @Override
     public List<UserEntity> getAll() throws UserException {
-         List<UserEntity> userEntityList;
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
+        List<UserEntity> userEntityList;
         Connection connection = null;
 
-        if (posgreSQLService != null) {
+        if (postgreSQLService != null) {
             try {
-                connection = posgreSQLService.getConnection();
+                connection = postgreSQLService.getConnection();
 
                 userDAO.setConnection(connection);
                 userEntityList = userDAO.getAll();
-                posgreSQLService.commit(connection);
+                postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("User getting: " + (userEntityList != null ? userEntityList.toString() : "is null"));
                 }
                 return userEntityList;
             } catch (DataSourceException e) {
-                posgreSQLService.rollback(connection);
+                postgreSQLService.rollback(connection);
                 throw new UserException(e);
             }
         } else {
