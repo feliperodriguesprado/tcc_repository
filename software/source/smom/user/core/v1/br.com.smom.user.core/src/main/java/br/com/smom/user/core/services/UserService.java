@@ -71,7 +71,11 @@ public class UserService implements User {
 
     @Override
     public boolean authenticateLogin(UserEntity user) throws UserException {
-        return userRepository.getByUsername(user).getPassword().equals(user.getPassword());
+        UserEntity entity = userRepository.getByUsername(user);
+        if(entity != null){
+            return entity.getPassword().equals(user.getPassword());
+        } 
+        return false;
     }
 
 }

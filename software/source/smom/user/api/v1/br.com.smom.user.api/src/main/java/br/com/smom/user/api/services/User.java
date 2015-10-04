@@ -15,19 +15,19 @@
  */
 package br.com.smom.user.api.services;
 
-import br.com.smom.main.util.api.exceptions.UtilException;
+import br.com.smom.user.api.exceptions.UserException;
 import br.com.smom.user.api.model.entities.UserEntity;
 
 public interface User {
 
-    public UserEntity create(UserEntity user) throws UtilException;
+    public UserEntity create(UserEntity user) throws UserException;
 
-    public void update(UserEntity user) throws UtilException;
+    public void update(UserEntity user) throws UserException;
 
-    public void delete(UserEntity user) throws UtilException;
+    public void delete(UserEntity user) throws UserException;
 
-    public UserEntity getById(int id) throws UtilException;
+    public UserEntity getById(int id) throws UserException;
 
-    public boolean authenticateLogin(UserEntity user) throws UtilException;
+    public boolean authenticateLogin(UserEntity user) throws UserException;
 
 }

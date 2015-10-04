@@ -16,11 +16,11 @@
 package br.com.smom.user.login.view.resources;
 
 import br.com.smom.log.api.services.Log;
-import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.model.to.ResponseResourceTO;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import br.com.smom.user.api.enums.UserMessages;
+import br.com.smom.user.api.exceptions.UserException;
 import br.com.smom.user.api.model.entities.UserEntity;
 import br.com.smom.user.api.services.User;
 import javax.servlet.http.HttpServletRequest;
@@ -34,14 +34,13 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBElement;
 
 /**
- *
- * @author felipeprado
+ * Class that provides resources RESTful to user.
  */
 @Path("user")
 public class UserResource {
 
     /**
-     * RESTful POST http://localhost:8080/resources/rest/user
+     * RESTful POST http://domain/modules/user/resources/rest/user/login
      *
      * @param user JSON converted to {@link UserEntity}
      * @param request HttpServletRequest
@@ -60,7 +59,7 @@ public class UserResource {
         UserEntity userEntity = user.getValue();
 
         if (logService != null) {
-            logService.info(UserMessages.INFO_INITIALIZED_REQUEST_REST.getMessage());
+            logService.info(UserMessages.INFO_INITIALIZED_REQUEST_REST.getMessage("modules/user/resources/rest/user/login"));
         }
 
         if (userService != null) {
@@ -71,7 +70,7 @@ public class UserResource {
                 } else {
                     responseResource.setMessage(UserMessages.WARN_INCORRECT_USER_LOGIN);
                 }
-            } catch (UtilException e) {
+            } catch (UserException e) {
                 responseResource.setMessage(e);
             }
 
@@ -87,7 +86,7 @@ public class UserResource {
         userEntity.setResponseResource(responseResource);
 
         if (logService != null) {
-            logService.info(UserMessages.INFO_FINISH_REQUEST_REST.getMessage());
+            logService.info(UserMessages.INFO_FINISH_REQUEST_REST.getMessage("modules/user/resources/rest/user/login"));
         }
 
         return userEntity;

@@ -74,7 +74,7 @@ public class UserDAO extends GenericDataBaseDAO implements IUserDAO {
         try {
             String query = "select * from users u where u.id = ?";
             ResultSet resultSet = executeQuery(query, id);
-            return setUserEntity(resultSet);
+            return fillUserEntity(resultSet);
         } catch (DataSourceException e) {
             throw new UserException(e);
         }
@@ -83,15 +83,13 @@ public class UserDAO extends GenericDataBaseDAO implements IUserDAO {
     @Override
     public UserEntity getByUsername(UserEntity user) throws UserException {
         try {
-            String query = "select * from users u where u.username = '?'";
+            String query = "select * from users u where u.username = ?";
             ResultSet resultSet = executeQuery(query, user.getUserName());
-            return setUserEntity(resultSet);
+            return fillUserEntity(resultSet);
         } catch (DataSourceException e) {
             throw new UserException(e);
         }
     }
-    
-    
 
     @Override
     public List<UserEntity> getAll() throws UserException {
@@ -115,9 +113,24 @@ public class UserDAO extends GenericDataBaseDAO implements IUserDAO {
             return phoneEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UserMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(UserMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new UserException(UserMessages.ERROR_FILL_ENTITY_RESULTSET, e);
+        }
+    }
+
+    private UserEntity fillUserEntity(ResultSet resultSet) throws UserException {
+        try {
+            UserEntity userEntity = null;
+            while (resultSet.next()) {
+                userEntity = setUserEntity(resultSet);
+            }
+            return userEntity;
+        } catch (SQLException e) {
+            if (logService != null) {
+                logService.error(UserMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
+            }
+            throw new UserException(UserMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
@@ -130,9 +143,9 @@ public class UserDAO extends GenericDataBaseDAO implements IUserDAO {
             return userEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(UserMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(UserMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new UserException(UserMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new UserException(UserMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 

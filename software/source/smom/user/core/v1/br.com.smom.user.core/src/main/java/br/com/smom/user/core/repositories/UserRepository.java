@@ -25,8 +25,10 @@ import br.com.smom.user.api.model.entities.UserEntity;
 import br.com.smom.user.core.dao.IUserDAO;
 import java.sql.Connection;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+@RequestScoped
 public class UserRepository implements IUserRepository {
 
     private final PostgreSQL posgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
