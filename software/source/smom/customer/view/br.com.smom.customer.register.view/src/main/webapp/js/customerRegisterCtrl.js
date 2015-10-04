@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-function customerRegisterCtrl($scope, $window, $routeParams, notification, messages, encryption, serverResponse, log, uiGridConstants) {
+function customerRegisterCtrl($scope, $window, $routeParams, notification, messages, serverResponse, log, uiGridConstants) {
 
     $scope.customer = {};
 
-    if ($routeParams.requestId !== "novo") {
+    if ($routeParams.customerId !== "novo") {
         $scope.customer = {
             id: "15",
             type: "1",

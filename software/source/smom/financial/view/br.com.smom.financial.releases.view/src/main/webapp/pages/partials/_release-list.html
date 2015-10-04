@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Lançamentos financeiros</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Filtrar lista de clientes" 
+                    ng-click="filter()"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-warning" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Mais filtros"
+                    ng-click="showFilterList()"><i class="fa fa-plus"></i> Filtros</button>
+            <a href="#/release-register/novo-receber" class="btn btn-success" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Adicionar conta a pagar">
+                <i class="fa fa-plus"></i> Contas a receber
+            </a>
+            <a href="#/release-register/novo-pagar" class="btn btn-danger" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Adicionar conta a receber">
+                <i class="fa fa-plus"></i> Contas a pagar
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="collapse" id="filterList">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        Filtros
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-lg-2">
+                                <label>Data inicial</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Data final</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Cliente</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4" style="margin-top: 25px;">
+                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Aplicar busca"
+                                        ng-click="search()"><i class="fa fa-search"></i> Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div ui-grid="grid" class="grid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pagination ui-grid-selection></div>
+    </div>
+</div>
