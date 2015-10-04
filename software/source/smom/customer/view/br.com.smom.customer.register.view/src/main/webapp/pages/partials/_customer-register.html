@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Cadastro de clientes</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    Cadastro
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div class="row col-lg-12">
+                    <form>
+                        <div class="form-group col-lg-4">
+                            <label>Nome</label>
+                            <input class="form-control" ng-model="customer.name">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>CPF/CNPJ</label>
+                            <input class="form-control" ng-model="customer.cpfCnpj">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row col-lg-12">
+                    <hr>
+                </div>
+
+                <div class="row col-lg-12">
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success btn-xs" style="margin-bottom: -5px;" data-toggle="tooltip" data-placement="top" title="Adicionar telefone"
+                                            ng-click="addPhone()"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="gridPhone" ui-grid="gridPhone" ui-grid-selection></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success btn-xs" style="margin-bottom: -5px;" data-toggle="tooltip" data-placement="top" title="Adicionar endereço"
+                                            ng-click="addAddress()"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="gridAddress" ui-grid="gridAddress" class="grid" ui-grid-resize-columns ui-grid-move-columns ui-grid-selection></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row col-lg-12">
+                    <hr>
+                </div>
+
+                <div class="row col-lg-12">
+                    <div class="form-group" style="float: right;">
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir cadastro"
+                                ng-click="listAll()"><i class="fa fa-times"></i> Excluir</button>
+                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Salvar cadastro"
+                                ng-click="search()"><i class="fa fa-check"></i> Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalPhone">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Cadastro de telefone</h4>
+            </div>
+            <div class="modal-body" style="height: 100px;">
+                <div class="row col-lg-6">
+                    <form>
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input class="form-control" ng-model="phone.number">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" ng-click="closeModal('modalPhone')">Cancelar</a>
+                <a class="btn btn-primary" ng-click="savePhone(phone)">Salvar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalAddress">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Cadastro de endereço</h4>
+            </div>
+            <div class="modal-body" style="height: 320px;">
+                <div class="col-lg-12">
+                    <form>
+                        <div class="row col-lg-12">
+                            <div class="form-group">
+                                <label>Rua</label>
+                                <input class="form-control" ng-model="address.street">
+                            </div>
+                        </div>
+                        <div class="row col-lg-12">
+                            <div class="form-group">
+                                <label>Bairro</label>
+                                <input class="form-control" ng-model="address.district">
+                            </div>
+                        </div>
+                        <div class="row col-lg-12">
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input class="form-control" ng-model="address.city">
+                            </div>
+                        </div>
+                        <div class="row col-lg-6">
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input class="form-control" ng-model="address.cep">
+                            </div>
+                        </div>
+                        <div class="row col-lg-2" style="margin-left: 10px;">
+                            <div class="form-group">
+                                <label>UF</label>
+                                <input class="form-control" ng-model="address.uf">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" ng-click="closeModal('modalAddress')">Cancelar</a>
+                <a class="btn btn-primary" ng-click="saveAddress(address)">Salvar</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -65,7 +65,7 @@ function generateElementModule(module) {
     if (module.active) {
         liTag = $('<li></li>');
         liTag.click(function () {
-            alert("Redirect to module " + module.symbolicName);
+            // Add event to the menu of module
         });
         aTag = $('<a href="' + module.contextPath + '"></a>');
     } else {

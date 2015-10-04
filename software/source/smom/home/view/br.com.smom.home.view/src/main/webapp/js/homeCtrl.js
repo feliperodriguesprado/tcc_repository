@@ -1,5 +1,5 @@
 /* 
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var app = window.angular.module('app', ['ngRoute', 'ngResource', 'angular-md5']);
 
-app.config(['$routeProvider', function ($routeProvider) {
-
-        'use strict';
-
-        $routeProvider.
-                when('/', {
-                    controller: 'homeCtrl',
-                    templateUrl: 'partials/_home.html'
-                }).
-                when('/dashboard', {
-                    controller: 'homeCtrl',
-                    templateUrl: 'partials/_home.html'
-                }).
-                otherwise({
-                    redirectTo: '/'
-                });
-    }]);
-
-app.controller('homeCtrl', function ($scope, notification, messages, md5) {
+function homeCtrl($scope, $window, notification, messages, encryption, serverResponse, log) {
 
     var ctxChartTotalByAccount = document.getElementById("chartTotalByAccount").getContext("2d");
     var data = [
@@ -91,5 +72,5 @@ app.controller('homeCtrl', function ($scope, notification, messages, md5) {
 
     new Chart(ctxChartTotalByPayment).Pie(data, options);
 
+}
 
-});

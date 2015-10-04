@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="homeModule">
     <head>
         <meta charset="utf-8">
         <title>Smom</title>
@@ -25,6 +25,9 @@ limitations under the License.
         <link href="/modules/main/util/resources/web/plugins/startbootstrap/dist/css/timeline.css" rel="stylesheet">
         <link href="/modules/main/util/resources/web/plugins/startbootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
         <link href="/modules/main/util/resources/web/plugins/startbootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Toastr -->
+        <link href="/modules/main/util/resources/web/plugins/toastr/toastr.css" rel="stylesheet">
     </head>
     <body>
         <div id="wrapper">
@@ -88,17 +91,23 @@ limitations under the License.
         <!-- Toastr -->
         <script type="text/javascript" src="/modules/main/util/resources/web/plugins/toastr/toastr.js"></script>
 
+        <!-- Moment -->
+        <script type="text/javascript" src="/modules/main/util/resources/web/plugins/moment/moment.js"></script>
+
         <!-- Startbootstrap -->
         <script type="text/javascript" src="/modules/main/util/resources/web/plugins/startbootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        
+
         <!-- Chartjs -->
         <script type="text/javascript" src="/modules/main/util/resources/web/plugins/chartjs/Chart.js"></script>
 
-        <!-- Smom -->
+        <!-- Util module -->
+        <script type="text/javascript" src="/modules/main/util/resources/web/js/utilModule.js"></script>
         <script type="text/javascript" src="/modules/main/util/resources/web/js/core.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-        <script type="text/javascript" src="/modules/main/util/resources/web/js/messages/pt_br.js"></script>
-        <script type="text/javascript" src="/modules/main/util/resources/web/js/services.js"></script>
 
+        <!-- Home module -->
+        <script type="text/javascript" src="js/homeModule.js"></script>
+        <script type="text/javascript" src="js/homeCtrl.js"></script>
+        <script type="text/javascript" src="js/messages/pt_br.js"></script>
+        <script type="text/javascript" src="js/messages/serverResponse.js"></script>
     </body>
 </html>

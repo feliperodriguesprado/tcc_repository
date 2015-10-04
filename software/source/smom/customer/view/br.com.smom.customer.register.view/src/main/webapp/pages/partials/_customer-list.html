@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Lista de clientes</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <a href="#/customer-register/novo" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Adicionar cliente">
+                <i class="fa fa-plus"></i>
+            </a>
+            <button type="button" class="btn btn-primary" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Filtrar lista de clientes" 
+                    ng-click="filter()"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-warning" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Mais filtros"
+                    ng-click="showFilterList()"><i class="fa fa-plus"></i> Filtros</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="collapse" id="filterList">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        Filtros
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>Nome</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>CPF/CNPJ</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4" style="margin-top: 25px;">
+                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Aplicar busca"
+                                        ng-click="search()"><i class="fa fa-search"></i> Buscar</button>
+                                <button type="button" class="btn btn-default" style="margin-left: 30px;" data-toggle="tooltip" data-placement="top" title="Listar todos os clientes cadastrados"
+                                        ng-click="listAll()">Listar todos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div ui-grid="grid" class="grid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pagination ui-grid-selection></div>
+    </div>
+</div>
+

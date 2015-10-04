@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-var messages = {
-    SUCCESS: {code: 0, description: "Sucesso"},
-    INFO: {code: 1000, description: "Informação"},
-    WARN: {code: 2000, description: "Aviso"},
-    WARN_UNAVAILABLE_USER_MODULE: {code: 2001, description: "Módulo de usuário indisponível no momento"},
-    ERROR: {code: 3000, description: "Erro"},
-    ERROR_PERFORM_OPERATION_SYSTEM: {code: 3001, description: "Erro ao realizar operação no sistema"}
+serverResponse = {
+    WARN_UNAVAILABLE_MODULE: 2001
 };

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 function loginCtrl($scope, $window, notification, messages, encryption, resourceUserLogin, serverResponse, log) {
 
     $scope.validateFieldEmail = function (form) {
@@ -55,6 +56,10 @@ function loginCtrl($scope, $window, notification, messages, encryption, resource
             try {
                 if (data.responseResource.code === serverResponse.INFO_SUCCESS_USER_LOGIN) {
                     $window.location.href = "modules/home";
+                } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
+                    notification.showMessage(messages.WARN_UNAVAILABLE_USER_MODULE);
+                } else {
+                    notification.showMessage(data.responseResource);
                 }
             } catch (e) {
                 log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);

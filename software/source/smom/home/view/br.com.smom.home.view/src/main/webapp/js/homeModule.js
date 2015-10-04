@@ -13,28 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var app = window.angular.module('app', ['ngRoute', 'ngResource']);
+var homeModule = window.angular.module('homeModule', ['utilModule', 'ngRoute', 'ngResource']);
 
-app.config(['$routeProvider', function ($routeProvider) {
+homeModule.config(['$routeProvider', function ($routeProvider) {
 
         'use strict';
 
         $routeProvider.
                 when('/', {
-                    controller: 'SearchCustomerCtrl',
-                    templateUrl: 'partials/_searchCustomer.html'
+                    controller: window.homeCtrl,
+                    templateUrl: 'pages/partials/_home.html'
                 }).
                 when('/dashboard', {
-                    controller: 'SearchCustomerCtrl',
-                    templateUrl: 'partials/_searchCustomer.html'
+                    controller: window.homeCtrl,
+                    templateUrl: 'pages/partials/_home.html'
                 }).
                 otherwise({
                     redirectTo: '/'
                 });
     }]);
-
-app.controller('SearchCustomerCtrl', function ($scope) {
-
-    console.log("Start controller app module Customer Register");
-
-});
