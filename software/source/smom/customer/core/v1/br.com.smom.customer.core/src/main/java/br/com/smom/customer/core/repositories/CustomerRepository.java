@@ -268,4 +268,62 @@ public class CustomerRepository implements ICustomerRepository {
             throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
         }
     }
+
+    @Override
+    public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException {
+        Connection connection = null;
+        AddressEntity entity;
+
+        if (posgreSQLService != null) {
+            try {
+                connection = posgreSQLService.getConnection();
+                addressDAO.setConnection(connection);
+                addressDAO.update(addressEntity);
+                posgreSQLService.commit(connection);
+                
+                entity = addressDAO.getById(addressEntity.getId());
+                if (logService != null) {
+                    logService.info("Customer getting: " + (addressEntity != null ? addressEntity.toString() : "is null"));
+                }
+                return entity;
+            } catch (DataSourceException e) {
+                posgreSQLService.rollback(connection);
+                throw new CustomerException(e);
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+            }
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+        }
+    }
+
+    @Override
+    public PhoneEntity updatePhone(PhoneEntity phoneEntity) throws CustomerException {
+        Connection connection = null;
+        PhoneEntity entity;
+
+        if (posgreSQLService != null) {
+            try {
+                connection = posgreSQLService.getConnection();
+                phoneDAO.setConnection(connection);
+                phoneDAO.update(phoneEntity);
+                posgreSQLService.commit(connection);
+                
+                entity = phoneDAO.getById(phoneEntity.getId());
+                if (logService != null) {
+                    logService.info("Customer getting: " + phoneEntity.toString());
+                }
+                return entity;
+            } catch (DataSourceException e) {
+                posgreSQLService.rollback(connection);
+                throw new CustomerException(e);
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER.getMessage("PostgreSQL Service is null"));
+            }
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER);
+        }
+    }
 }

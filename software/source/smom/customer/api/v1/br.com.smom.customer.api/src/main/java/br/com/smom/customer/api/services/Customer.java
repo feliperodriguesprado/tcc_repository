@@ -16,7 +16,9 @@
 package br.com.smom.customer.api.services;
 
 import br.com.smom.customer.api.exceptions.CustomerException;
+import br.com.smom.customer.api.model.entities.AddressEntity;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
+import br.com.smom.customer.api.model.entities.PhoneEntity;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import java.util.List;
 
@@ -24,16 +26,20 @@ public interface Customer {
 
     public PeopleEntity create(PeopleEntity peopleEntity) throws CustomerException;
 
-    public PeopleEntity update(PeopleEntity peopleEntity) throws UtilException;
+    public PeopleEntity update(PeopleEntity peopleEntity) throws CustomerException;
 
-    public void delete(PeopleEntity peopleEntity) throws UtilException;
+    public void delete(PeopleEntity peopleEntity) throws CustomerException;
 
-    public PeopleEntity getById(int id) throws UtilException;
+    public PeopleEntity getById(int id) throws CustomerException;
 
-    public List<PeopleEntity> getByName(String name) throws UtilException;
+    public List<PeopleEntity> getByName(String name) throws CustomerException;
 
-    public List<PeopleEntity> getAll() throws UtilException;
-    
-    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws UtilException;
+    public List<PeopleEntity> getAll() throws CustomerException;
+
+    public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException;
+
+    public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException;
+
+    public PhoneEntity updatePhone(PhoneEntity addressEntity) throws CustomerException;
 
 }

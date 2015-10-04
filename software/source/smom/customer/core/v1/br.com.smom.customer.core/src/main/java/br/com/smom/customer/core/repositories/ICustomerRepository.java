@@ -16,7 +16,9 @@
 package br.com.smom.customer.core.repositories;
 
 import br.com.smom.customer.api.exceptions.CustomerException;
+import br.com.smom.customer.api.model.entities.AddressEntity;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
+import br.com.smom.customer.api.model.entities.PhoneEntity;
 import java.util.List;
 
 public interface ICustomerRepository {
@@ -34,5 +36,9 @@ public interface ICustomerRepository {
     public List<PeopleEntity> getAll() throws CustomerException;
 
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException;
+    
+    public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException;
+    
+    public PhoneEntity updatePhone(PhoneEntity addressEntity) throws CustomerException;
     
 }

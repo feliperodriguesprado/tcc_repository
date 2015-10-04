@@ -17,7 +17,9 @@ package br.com.smom.customer.core.services;
 
 import br.com.smom.customer.api.enums.CustomerMessages;
 import br.com.smom.customer.api.exceptions.CustomerException;
+import br.com.smom.customer.api.model.entities.AddressEntity;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
+import br.com.smom.customer.api.model.entities.PhoneEntity;
 import br.com.smom.customer.api.services.Customer;
 import br.com.smom.customer.core.repositories.ICustomerRepository;
 import java.util.List;
@@ -91,6 +93,24 @@ public class CustomerService implements Customer {
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException {
         try {
             return customerRepository.getCreatedCustomersRanking(positions);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+    }
+
+    @Override
+    public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException {
+        try {
+            return customerRepository.updateAddress(addressEntity);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+    }
+
+    @Override
+    public PhoneEntity updatePhone(PhoneEntity phoneEntity) throws CustomerException {
+        try {
+            return customerRepository.updatePhone(phoneEntity);
         } catch (CustomerException e) {
             throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
