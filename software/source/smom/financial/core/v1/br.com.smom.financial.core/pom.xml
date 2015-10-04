@@ -30,6 +30,16 @@
             <groupId>br.com.smom.financial</groupId>
             <artifactId>br.com.smom.financial.api</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>br.com.smom.log</groupId>
+            <artifactId>br.com.smom.log.api</artifactId>
+        </dependency>        
+        
+        <dependency>
+            <groupId>br.com.smom.main</groupId>
+            <artifactId>br.com.smom.main.datasource.api</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.osgi</groupId>

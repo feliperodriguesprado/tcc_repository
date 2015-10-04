@@ -15,13 +15,14 @@
  */
 package br.com.smom.customer.api.services;
 
+import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.main.util.api.exceptions.UtilException;
 import java.util.List;
 
 public interface Customer {
 
-    public PeopleEntity create(PeopleEntity peopleEntity) throws UtilException;
+    public PeopleEntity create(PeopleEntity peopleEntity) throws CustomerException;
 
     public PeopleEntity update(PeopleEntity peopleEntity) throws UtilException;
 
