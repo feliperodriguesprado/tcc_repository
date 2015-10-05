@@ -35,8 +35,6 @@ import javax.inject.Inject;
 @RequestScoped
 public class CustomerRepository implements ICustomerRepository {
 
-    private PostgreSQL postgreSQLService = null;
-    private Log logService = null;
     @Inject
     private ICustomerDAO customerDAO;
     @Inject
@@ -46,9 +44,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public PeopleEntity create(PeopleEntity peopleEntity) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         PeopleEntity customerCreated;
         Connection connection = null;
         int generatedKey;
@@ -81,7 +80,7 @@ public class CustomerRepository implements ICustomerRepository {
                 return customerCreated;
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
-                if(e.getMessage().contains("uk_phones_people_id_number")){
+                if (e.getMessage().contains("uk_phones_people_id_number")) {
                     throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
                 }
                 throw new CustomerException(e);
@@ -96,9 +95,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public PeopleEntity update(PeopleEntity peopleEntity) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         PeopleEntity customerUpdated;
         Connection connection = null;
         int customerId;
@@ -132,7 +132,7 @@ public class CustomerRepository implements ICustomerRepository {
                 return customerUpdated;
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
-                if(e.getMessage().contains("uk_phones_people_id_number")){
+                if (e.getMessage().contains("uk_phones_people_id_number")) {
                     throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
                 }
                 throw new CustomerException(e);
@@ -147,9 +147,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public void delete(PeopleEntity peopleEntity) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         Connection connection = null;
 
         if (postgreSQLService != null) {
@@ -176,9 +177,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public PeopleEntity getById(int id) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         PeopleEntity customerEntity;
         Connection connection = null;
 
@@ -206,9 +208,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<PeopleEntity> getByName(String name) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         List<PeopleEntity> customerEntityList;
         Connection connection = null;
 
@@ -237,9 +240,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<PeopleEntity> getAll() throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         List<PeopleEntity> customerEntityList;
         Connection connection = null;
 
@@ -268,9 +272,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         List<PeopleEntity> customerEntityList;
         Connection connection = null;
 
@@ -298,9 +303,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         Connection connection = null;
         AddressEntity entity;
 
@@ -310,7 +316,7 @@ public class CustomerRepository implements ICustomerRepository {
                 addressDAO.setConnection(connection);
                 addressDAO.update(addressEntity);
                 postgreSQLService.commit(connection);
-                
+
                 entity = addressDAO.getById(addressEntity.getId());
                 if (logService != null) {
                     logService.info("Customer getting: " + addressEntity.toString());
@@ -330,9 +336,10 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public PhoneEntity updatePhone(PhoneEntity phoneEntity) throws CustomerException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         Connection connection = null;
         PhoneEntity entity;
 
@@ -342,7 +349,7 @@ public class CustomerRepository implements ICustomerRepository {
                 phoneDAO.setConnection(connection);
                 phoneDAO.update(phoneEntity);
                 postgreSQLService.commit(connection);
-                
+
                 entity = phoneDAO.getById(phoneEntity.getId());
                 if (logService != null) {
                     logService.info("Customer getting: " + phoneEntity.toString());

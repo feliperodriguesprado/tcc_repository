@@ -18,7 +18,6 @@ package br.com.smom.customer.core.dao;
 import br.com.smom.customer.api.enums.CustomerMessages;
 import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.model.entities.AddressEntity;
-import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
@@ -31,8 +30,6 @@ import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
 public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
-
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     @Override
     public int create(AddressEntity addressEntity) throws CustomerException {
@@ -102,6 +99,9 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
     }
 
     private List<AddressEntity> fillAddressList(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             List<AddressEntity> addressEntityList = new ArrayList<>();
             while (resultSet.next()) {
@@ -117,6 +117,9 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
     }
 
     private AddressEntity fillAddressEntity(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             AddressEntity addressEntity = null;
             while (resultSet.next()) {
@@ -132,6 +135,9 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
     }
 
     private AddressEntity setAddressEntity(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             AddressEntity addressEntityModel = new AddressEntity(
                     resultSet.getInt("id"),

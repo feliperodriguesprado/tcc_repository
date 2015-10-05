@@ -25,6 +25,9 @@ public class PhoneEntity {
     private int id;         //ColumnDB
     private int people_id;  //ColumnDB
     private String number;  //ColumnDB
+    
+    public PhoneEntity() {
+    }
 
     public PhoneEntity(int id, int people_id, String number) {
         this.id = id;
@@ -32,8 +35,6 @@ public class PhoneEntity {
         this.number = number;
     }
 
-    public PhoneEntity() {
-    }
     
     public int getId() {
         return id;

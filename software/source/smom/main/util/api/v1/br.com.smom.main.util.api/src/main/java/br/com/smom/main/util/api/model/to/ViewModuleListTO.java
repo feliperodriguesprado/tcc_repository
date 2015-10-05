@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ViewModuleListTO {
 
+    public ViewModuleListTO() {
+    }
+
     @XmlElement(name = "moduleList")
     private List<ViewModuleEntity> viewModuleEntityList = new ArrayList<>();
     private ResponseResourceTO responseResource;

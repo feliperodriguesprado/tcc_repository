@@ -21,6 +21,11 @@
     
     <dependencies>
         <dependency>
+            <groupId>br.com.smom.customer</groupId>
+            <artifactId>br.com.smom.customer.api</artifactId>
+        </dependency>
+        
+        <dependency>
             <groupId>br.com.smom.log</groupId>
             <artifactId>br.com.smom.log.api</artifactId>
         </dependency>

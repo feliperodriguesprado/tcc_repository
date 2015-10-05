@@ -31,8 +31,6 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
 
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-
     @Override
     public int create(PeopleEntity peopleEntity) throws CustomerException {
 
@@ -97,7 +95,7 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     @Override
     public List<PeopleEntity> getAll() throws CustomerException {
         try {
-            String query = "select * from peoples where p.active = TRUE";
+            String query = "select * from peoples p where p.active = TRUE";
             ResultSet resultSet = executeQuery(query);
             return fillCustomerList(resultSet);
         } catch (DataSourceException e) {
@@ -117,6 +115,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private PeopleEntity fillCustomerEntity(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             PeopleEntity peopleEntity = null;
             while (resultSet.next()) {
@@ -132,6 +133,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private PeopleEntity setCustomerEntity(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             PeopleEntity peopleEntityModel = new PeopleEntity(
                     resultSet.getInt("id"),
@@ -150,6 +154,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private List<PeopleEntity> fillCustomerList(ResultSet resultSet) throws CustomerException {
+        
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+        
         try {
             List<PeopleEntity> peopleEntityList = new ArrayList<>();
             while (resultSet.next()) {
