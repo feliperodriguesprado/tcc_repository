@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class ViewModulesService implements ViewModules {
             }
 
         } catch (UtilException e) {
-            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+            throw new UtilException(UtilMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
 
@@ -94,7 +94,7 @@ public class ViewModulesService implements ViewModules {
             }
 
         } catch (UtilException e) {
-            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+            throw new UtilException(UtilMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
 
@@ -126,7 +126,7 @@ public class ViewModulesService implements ViewModules {
 
             return viewModuleListParent;
         } catch (UtilException e) {
-            throw new UtilException(UtilMessages.FATAL_FAILURE_SYSTEM, e);
+            throw new UtilException(UtilMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
 
     }

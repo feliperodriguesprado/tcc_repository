@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,16 +30,14 @@ import javax.inject.Inject;
 @RequestScoped
 public class ViewModuleRepository implements IViewModuleRepository {
 
-    private PostgreSQL postgreSQLService = null;
-    private Log logService = null;
     @Inject
     private IViewModuleDAO viewModuleDAO;
 
     @Override
     public ViewModuleEntity create(ViewModuleEntity viewModuleEntity) throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         ViewModuleEntity viewModuleCreated;
         Connection connection;
 
@@ -69,9 +67,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity update(ViewModuleEntity viewModuleEntity) throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         ViewModuleEntity viewModuleUpdated;
         Connection connection;
 
@@ -101,9 +99,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity get(int id) throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         ViewModuleEntity viewModuleEntity;
         Connection connection;
 
@@ -131,9 +129,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         ViewModuleEntity viewModuleEntity;
         Connection connection;
 
@@ -161,9 +159,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         List<ViewModuleEntity> viewModuleList;
         Connection connection;
 
@@ -191,9 +189,9 @@ public class ViewModuleRepository implements IViewModuleRepository {
 
     @Override
     public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException {
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+        PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         List<ViewModuleEntity> viewModuleList;
         Connection connection;
 

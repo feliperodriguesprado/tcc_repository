@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,6 @@ import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
 public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO {
-
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     @Override
     public int create(ViewModuleEntity viewModuleEntity) throws UtilException {
@@ -108,6 +106,9 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
     }
 
     private ViewModuleEntity fillViewModuleEntity(ResultSet resultSet) throws UtilException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             ViewModuleEntity viewModuleEntity = null;
             while (resultSet.next()) {
@@ -123,6 +124,9 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
     }
 
     private List<ViewModuleEntity> fillViewModuleModelList(ResultSet resultSet) throws UtilException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             List<ViewModuleEntity> viewModuleModelList = new ArrayList<>();
             while (resultSet.next()) {
@@ -138,6 +142,9 @@ public class ViewModuleDAO extends GenericDataBaseDAO implements IViewModuleDAO 
     }
 
     private ViewModuleEntity setViewModuleEntity(ResultSet resultSet) throws UtilException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             ViewModuleEntity viewModuleModel = new ViewModuleEntity(
                     resultSet.getInt("id"),

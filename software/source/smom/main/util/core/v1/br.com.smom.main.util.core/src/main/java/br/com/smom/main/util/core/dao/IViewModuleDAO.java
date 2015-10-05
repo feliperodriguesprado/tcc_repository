@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ public interface IViewModuleDAO {
     public ViewModuleEntity getBySymbolicName(String symbolicName) throws UtilException;
 
     public List<ViewModuleEntity> getViewModuleListAll() throws UtilException;
-    
+
     public List<ViewModuleEntity> getViewModuleListByParent(int parentId) throws UtilException;
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package br.com.smom.main.util.api.services;
 
+import br.com.smom.main.util.api.enums.UtilMessages;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
@@ -33,10 +34,11 @@ public class ServiceProvider {
             bundleContext = BundleProvider.getBundle(classFromBundleService).getBundleContext();
             serviceReference = bundleContext.getServiceReference(classFromBundleService.getName());
             bundleService = bundleContext.getService(serviceReference);
-            InternalLog.info(String.format("Bundle service found: %s.", classFromBundleService.getName()));
+            InternalLog.info(UtilMessages.INFO_BUNDLE_SERVICE_FOUND.getDescription() + ": " + classFromBundleService.getName());
             return bundleService;
         } catch (Exception e) {
-            InternalLog.warning(String.format("Code=4003 Description=Bundle service not found: %s. Cause: %s", classFromBundleService.getName(), e.getMessage()));
+            InternalLog.warning(UtilMessages.WARN_BUNDLE_SERVICE_NOT_FOUND.getMessage(
+                    "Class not found with service: " + classFromBundleService.getName() + ". " + e.getMessage()));
             return null;
         }
 

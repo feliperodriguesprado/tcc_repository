@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,14 +36,13 @@ import javax.ws.rs.core.MediaType;
 @Path("viewmodule")
 public class ViewModulesResource {
 
-    private final ViewModules viewModulesService = (ViewModules) ServiceProvider.getBundleService(ViewModules.class);
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-
     @Path("/list/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ViewModuleListTO viewModulesListAll() {
 
+        ViewModules viewModulesService = (ViewModules) ServiceProvider.getBundleService(ViewModules.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
         ResponseResourceTO responseResource = new ResponseResourceTO();
         ViewModuleListTO viewModuleListTO = new ViewModuleListTO();
 

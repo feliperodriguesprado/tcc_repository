@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,9 @@ public class FormatterMessages {
     public static String log(Messages messages, String cause) {
         return String.format("Code=%s; Description=%s; Cause=%s; ", messages.getCode(), messages.getDescription(), cause);
     }
-    
+
     public static String log(Messages messages, Throwable cause) {
         return String.format("Code=%s; Description=%s; Cause=%s; ", messages.getCode(), messages.getDescription(), cause.getMessage());
     }
-    
-    
 
 }

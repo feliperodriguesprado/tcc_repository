@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,15 +25,16 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"id", "type", "symbolicName", "active", "name", "contextPath", "icon", "position", "parent", "viewModuleModelList"})
 public class ViewModuleEntity {
 
-    private int id;
-    private int type;
-    private String symbolicName;
-    private boolean active;
-    private String name;
-    private String contextPath;
-    private String icon;
-    private int position;
-    private int parent;
+    private int id; // Column DB
+    private int type; // Column DB
+    private String symbolicName; // Column DB
+    private boolean active; // Column DB
+    private String name; // Column DB
+    private String contextPath; // Column DB
+    private String icon; // Column DB
+    private int position; // Column DB
+    private int parent; // Column DB
+
     @XmlElement(name = "childrenList")
     private List<ViewModuleEntity> viewModuleModelList = new ArrayList<>();
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,17 @@ import br.com.smom.main.util.api.services.FormatterMessages;
 
 public enum UtilMessages implements Messages {
 
+    INFO_BUNDLE_FOUND(0, ""),
+    INFO_BUNDLE_SERVICE_FOUND(0, ""),
     INFO_INITIALIZED_REQUEST_REST(0, ""),
     INFO_FINISH_REQUEST_REST(0, ""),
     INFO_GET_VIEW_MODULES(0, ""),
+    WARN_BUNDLE_NOT_FOUND(0, ""),
+    WARN_BUNDLE_SERVICE_NOT_FOUND(0, ""),
     WARN_UNAVAILABLE_MODULE(0, ""),
-    ERROR_FILL_ENTITY_RESULTSET(0, ""),
-    FATAL_FAILURE_SYSTEM(0, "");
+    ERROR_GET_BUNDLE_LIST(0, ""),
+    ERROR_PERFORM_OPERATION_SERVER(0, ""),
+    ERROR_FILL_ENTITY_RESULTSET(0, "");
 
     private int code;
     private String description;

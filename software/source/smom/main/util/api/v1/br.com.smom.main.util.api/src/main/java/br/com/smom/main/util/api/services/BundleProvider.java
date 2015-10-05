@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package br.com.smom.main.util.api.services;
 
+import br.com.smom.main.util.api.enums.UtilMessages;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
@@ -28,11 +29,11 @@ public class BundleProvider {
         Bundle bundle = FrameworkUtil.getBundle(classFromBundle);
 
         if (bundle != null) {
-            InternalLog.info(String.format("Bundle found: %s.", bundle.getSymbolicName()));
+            InternalLog.info(UtilMessages.INFO_BUNDLE_FOUND.getDescription() + ": " + bundle.getSymbolicName());
+            InternalLog.info(String.format(UtilMessages.INFO_BUNDLE_FOUND.getDescription() + ": %s.", bundle.getSymbolicName()));
             return bundle;
         } else {
-            InternalLog.warning(String.format("Code=4001 Description=Bundle not found. Cause: class %s was not found as a bundle.",
-                    classFromBundle.getName()));
+            InternalLog.warning(UtilMessages.WARN_BUNDLE_NOT_FOUND.getMessage("Class " + classFromBundle.getName() + " was not found as a bundle"));
             return null;
         }
     }
@@ -45,7 +46,7 @@ public class BundleProvider {
             bundleContext = getBundle(BundleProvider.class).getBundleContext();
             return bundleContext.getBundles();
         } catch (Exception e) {
-            InternalLog.warning(String.format("Code=4002 Description=Error get bundle list. Cause: %s", e.getMessage()));
+            InternalLog.warning(UtilMessages.ERROR_GET_BUNDLE_LIST.getMessage(e.getMessage()));
             return null;
         }
     }

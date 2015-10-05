@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import java.sql.Connection;
 public interface PostgreSQL {
 
     public Connection getConnection() throws DataSourceException;
-    
+
     public void commit(Connection connection) throws DataSourceException;
-    
+
     public void rollback(Connection connection);
-    
+
 }

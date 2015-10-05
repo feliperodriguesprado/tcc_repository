@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smom - Software Module Management.
+ * Smom - Software Module Management.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package br.com.smom.main.datasource.api.dao;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.enums.DataSourceMessages;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
-import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,8 +28,6 @@ import java.sql.Statement;
 public class GenericDataBaseDAO {
 
     protected Connection connection;
-    private PreparedStatement preparedStatement;
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     public void setConnection(Connection connection) {
         this.connection = connection;
@@ -40,7 +37,9 @@ public class GenericDataBaseDAO {
 
         int rowsAffected;
         int generatedKey = 0;
+        PreparedStatement preparedStatement;
         ResultSet resultSet;
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
         try {
             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -74,6 +73,8 @@ public class GenericDataBaseDAO {
     protected void executeUpdate(String query, Object... params) throws DataSourceException {
 
         int rowsAffected;
+        PreparedStatement preparedStatement;
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -98,6 +99,10 @@ public class GenericDataBaseDAO {
     }
 
     protected ResultSet executeQuery(String query, Object... params) throws DataSourceException {
+
+        PreparedStatement preparedStatement;
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             preparedStatement = connection.prepareStatement(query);
             for (int i = 0; i < params.length; i++) {
@@ -113,6 +118,10 @@ public class GenericDataBaseDAO {
     }
 
     protected ResultSet executeQuery(String query) throws DataSourceException {
+
+        PreparedStatement preparedStatement;
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             preparedStatement = connection.prepareStatement(query);
             return preparedStatement.executeQuery();
