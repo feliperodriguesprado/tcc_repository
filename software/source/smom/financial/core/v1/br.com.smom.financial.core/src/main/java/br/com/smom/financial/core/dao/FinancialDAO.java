@@ -15,9 +15,12 @@
  */
 package br.com.smom.financial.core.dao;
 
+import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.financial.api.enums.FinancialMessages;
 import br.com.smom.financial.api.exceptions.FinancialException;
+import br.com.smom.financial.api.model.entities.AccountEntity;
 import br.com.smom.financial.api.model.entities.FinancialEntity;
+import br.com.smom.financial.api.model.entities.PaymentTypeEntity;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.datasource.api.dao.GenericDataBaseDAO;
 import br.com.smom.main.datasource.api.exceptions.DataSourceException;
@@ -31,8 +34,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
-public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
-    
+public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
+
     private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
 
     @Override
@@ -85,10 +88,12 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
 
     @Override
     public FinancialEntity getById(int id) throws FinancialException {
+
         try {
-            String query = "select * from financial_releases f where f.id = ?";
+            String query = "select f.*, a.id as account_id, account_description from financial_releases f where f.id = ?";
             ResultSet resultSet = executeQuery(query, id);
             return fillFinancialEntity(resultSet);
+
         } catch (DataSourceException e) {
             throw new FinancialException(e);
         }
@@ -110,6 +115,7 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
         try {
             String query = "select * from financial_releases f join peoples p on p.id = f.people_id where p.active = TRUE and f.create_date between ? and ?";
             ResultSet resultSet = executeQuery(query, startDate, endDate);
+
             return fillFinancialList(resultSet);
         } catch (DataSourceException e) {
             throw new FinancialException(e);
@@ -143,8 +149,13 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
     }
 
     private FinancialEntity setFinancialEntity(ResultSet resultSet) throws FinancialException {
+
+        AccountEntity accountEntity;
+        PaymentTypeEntity paymentTypeEntity;
+        PeopleEntity customerEntity;
+
         try {
-            FinancialEntity peopleEntityModel = new FinancialEntity(
+            FinancialEntity release = new FinancialEntity(
                     resultSet.getInt("id"),
                     resultSet.getInt("type"),
                     resultSet.getInt("account_id"),
@@ -156,7 +167,19 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO{
                     resultSet.getBoolean("is_paid"),
                     resultSet.getString("description"),
                     resultSet.getDouble("value"));
-            return peopleEntityModel;
+
+            accountEntity = new AccountEntity();
+            accountEntity.setId(resultSet.getInt("account_id"));
+            accountEntity.setDescription(resultSet.getString("account_description"));
+
+            paymentTypeEntity = new PaymentTypeEntity();
+            paymentTypeEntity.setId(resultSet.getInt(""));
+            paymentTypeEntity.setDescription(resultSet.getString(""));
+            
+            release.setAccount(accountEntity);
+            release.setPaymentType(paymentTypeEntity);
+
+            return release;
         } catch (SQLException e) {
             if (logService != null) {
                 logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
