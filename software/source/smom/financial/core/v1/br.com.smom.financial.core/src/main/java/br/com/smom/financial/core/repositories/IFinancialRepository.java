@@ -16,7 +16,9 @@
 package br.com.smom.financial.core.repositories;
 
 import br.com.smom.financial.api.exceptions.FinancialException;
+import br.com.smom.financial.api.model.entities.AccountEntity;
 import br.com.smom.financial.api.model.entities.FinancialEntity;
+import br.com.smom.financial.api.model.entities.PaymentTypeEntity;
 import java.util.List;
 
 public interface IFinancialRepository {
@@ -34,5 +36,9 @@ public interface IFinancialRepository {
     public List<FinancialEntity> getByCreateDate(String startDate, String endDate) throws FinancialException;
 
     public List<FinancialEntity> getByDueDate(String startDate, String endDate) throws FinancialException;
+    
+    public List<AccountEntity> getAllAccounts() throws FinancialException;
+    
+    public List<PaymentTypeEntity> getAllPaymentTypes() throws FinancialException;
 
 }

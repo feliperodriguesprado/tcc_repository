@@ -18,7 +18,9 @@ package br.com.smom.financial.core.repositories;
 import br.com.smom.customer.api.services.Customer;
 import br.com.smom.financial.api.enums.FinancialMessages;
 import br.com.smom.financial.api.exceptions.FinancialException;
+import br.com.smom.financial.api.model.entities.AccountEntity;
 import br.com.smom.financial.api.model.entities.FinancialEntity;
+import br.com.smom.financial.api.model.entities.PaymentTypeEntity;
 import br.com.smom.financial.core.dao.IAccountDAO;
 import br.com.smom.financial.core.dao.IFinancialDAO;
 import br.com.smom.financial.core.dao.IPaymentTypeDAO;
@@ -256,6 +258,67 @@ public class FinancialRepository implements IFinancialRepository {
                     logService.info("Financial getting: " + (financialEntityList != null ? financialEntityList.toString() : "is null"));
                 }
                 return financialEntityList;
+            } catch (DataSourceException e) {
+                postgreSQLService.rollback(connection);
+                throw new FinancialException(e);
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+
+    @Override
+    public List<AccountEntity> getAllAccounts() throws FinancialException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        List<AccountEntity> accountList;
+
+        Connection connection = null;
+
+        if (postgreSQLService != null) {
+            try {
+                connection = postgreSQLService.getConnection();
+                accountDAO.setConnection(connection);
+                accountList = accountDAO.getAll();
+                postgreSQLService.commit(connection);
+
+                if (logService != null) {
+                    logService.info("Account getting: " + accountList.toString());
+                }
+                return accountList;
+            } catch (DataSourceException e) {
+                postgreSQLService.rollback(connection);
+                throw new FinancialException(e);
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
+    @Override
+    public List<PaymentTypeEntity> getAllPaymentTypes() throws FinancialException {
+        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
+        List<PaymentTypeEntity> paymentTypeList;
+
+        Connection connection = null;
+
+        if (postgreSQLService != null) {
+            try {
+                connection = postgreSQLService.getConnection();
+                paymentTypeDAO.setConnection(connection);
+                paymentTypeList = paymentTypeDAO.getAll();
+                postgreSQLService.commit(connection);
+
+                if (logService != null) {
+                    logService.info("Payment fType getting: " + paymentTypeList.toString());
+                }
+                return paymentTypeList;
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);

@@ -17,7 +17,9 @@ package br.com.smom.financial.core.services;
 
 import br.com.smom.financial.api.enums.FinancialMessages;
 import br.com.smom.financial.api.exceptions.FinancialException;
+import br.com.smom.financial.api.model.entities.AccountEntity;
 import br.com.smom.financial.api.model.entities.FinancialEntity;
+import br.com.smom.financial.api.model.entities.PaymentTypeEntity;
 import br.com.smom.financial.api.services.Financial;
 import br.com.smom.financial.core.repositories.IFinancialRepository;
 import java.util.List;
@@ -91,6 +93,26 @@ public class FinancialService implements Financial{
     public List<FinancialEntity> getByDueDate(String startDate, String endDate) throws FinancialException {
         try {
             return financialRepository.getByDueDate(startDate, endDate);
+
+        } catch (FinancialException e) {
+            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+    }
+
+    @Override
+    public List<AccountEntity> getAllAccounts() throws FinancialException {
+        try {
+            return financialRepository.getAllAccounts();
+
+        } catch (FinancialException e) {
+            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+    }
+
+    @Override
+    public List<PaymentTypeEntity> getAllPaymentTypes() throws FinancialException {
+        try {
+            return financialRepository.getAllPaymentTypes();
 
         } catch (FinancialException e) {
             throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
