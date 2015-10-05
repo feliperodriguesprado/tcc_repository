@@ -30,6 +30,9 @@ public class AddressEntity {
     private String district;  //ColumnDB
     private String street;    //ColumnDB
 
+    public AddressEntity() {
+    }
+    
     public AddressEntity(int id, int people_id, String cep, String city, String uf, String district, String street) {
         this.id = id;
         this.people_id = people_id;
@@ -39,11 +42,6 @@ public class AddressEntity {
         this.district = district;
         this.street = street;
     }
-
-    public AddressEntity() {
-    }
-    
-    
 
     public int getId() {
         return id;

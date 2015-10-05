@@ -19,12 +19,14 @@ import br.com.smom.main.util.api.enums.Messages;
 import br.com.smom.main.util.api.services.FormatterMessages;
 
 public enum CustomerMessages implements Messages {
-      
-    ERROR_PERFORM_OPERATION_SERVER(0, ""),
+
+    INFO_INITIALIZED_REQUEST_REST(0, ""),
+    INFO_FINISH_REQUEST_REST(0, ""),
+    INFO_GET_CUSTOMER_LIST(0, ""),
     WARN_UNAVAILABLE_MODULE(0, ""),
     WARN_PHONE_EXISTS(0, ""),
+    ERROR_PERFORM_OPERATION_SERVER(0, ""),
     ERROR_FILL_ENTITY_RESULTSET(0, "");
-    
 
     private int code;
     private String description;

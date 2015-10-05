@@ -29,9 +29,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
-public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
-    
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO {
 
     @Override
     public int create(PhoneEntity phoneEntity) throws CustomerException {
@@ -91,8 +89,11 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             throw new CustomerException(e);
         }
     }
-    
-        private PhoneEntity fillPhoneEntity(ResultSet resultSet) throws CustomerException {
+
+    private PhoneEntity fillPhoneEntity(ResultSet resultSet) throws CustomerException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             PhoneEntity phoneEntity = null;
             while (resultSet.next()) {
@@ -108,6 +109,9 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
     }
 
     private PhoneEntity setPhoneEntity(ResultSet resultSet) throws CustomerException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             PhoneEntity phoneEntityModel = new PhoneEntity(
                     resultSet.getInt("id"),
@@ -121,8 +125,11 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO{
             throw new CustomerException(CustomerMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
-    
-     private List<PhoneEntity> fillPhoneList(ResultSet resultSet) throws CustomerException {
+
+    private List<PhoneEntity> fillPhoneList(ResultSet resultSet) throws CustomerException {
+
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
         try {
             List<PhoneEntity> addressEntityList = new ArrayList<>();
             while (resultSet.next()) {

@@ -18,6 +18,7 @@ package br.com.smom.customer.api.model.entities;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -31,9 +32,15 @@ public class PeopleEntity {
     private String cpfCnpj;   //ColumnDB
     private boolean active;   //ColumnDB
     private Date dateCreate;  //ColumnDB
+    
+    @XmlElement
     private List <PhoneEntity> phoneList = new ArrayList<>();
+    @XmlElement
     private List <AddressEntity> addressList = new ArrayList<>();
 
+    public PeopleEntity() {
+    }
+    
     public PeopleEntity(int id, int type, String name, String cpf_cnpj, boolean active, Date date_create) {
         this.id = id;
         this.type = type;
@@ -41,9 +48,6 @@ public class PeopleEntity {
         this.cpfCnpj = cpf_cnpj;
         this.active = active;
         this.dateCreate = date_create;
-    }
-
-    public PeopleEntity() {
     }
 
     public int getId() {
