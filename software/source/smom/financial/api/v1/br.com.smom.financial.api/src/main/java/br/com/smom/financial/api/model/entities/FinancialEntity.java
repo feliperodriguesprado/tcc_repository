@@ -176,6 +176,19 @@ public class FinancialEntity {
         this.people = people;
     }
 
+    public boolean isIsPaid() {
+        return isPaid;
+    }
+
+    public PaymentTypeEntity getPaymentType() {
+        return paymentType;
+    }
+
+    public PeopleEntity getPeople() {
+        return people;
+    }
+    
+
     @Override
     public String toString() {
         return "FinancialEntity{" + "id=" + id + ", type=" + type + ", accountId=" + accountId + ", peopleId=" + peopleId + ", paymentTypeId=" + paymentTypeId + ", createDate=" + createDate + ", dueDate=" + dueDate + ", paymentDate=" + paymentDate + ", isPaid=" + isPaid + ", description=" + description + ", value=" + value + '}';

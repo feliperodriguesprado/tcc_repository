@@ -36,7 +36,7 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
 
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private Log logService = null;
 
     @Override
     public FinancialEntity create(FinancialEntity financialEntity) throws FinancialException {
@@ -113,7 +113,13 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     @Override
     public List<FinancialEntity> getByCreateDate(String startDate, String endDate) throws FinancialException {
         try {
-            String query = "select * from financial_releases f join peoples p on p.id = f.people_id where p.active = TRUE and f.create_date between ? and ?";
+            String query = "select "
+                    + "f.*,"
+                    + "p.id as id_peoples, p.type as type_peoples, p.name as name_peoples, p.cpf_cnpj as cpf_cnpj_peoples, p.active as active_peoples, p.date_create as date_create_peoples,"
+                    + "a.id as id_accounts, a.description as description_accounts,"
+                    + "pt.id as id_payment_types, pt.description as description_payment_types "
+                    + "from financial_releases f join peoples p on p.id = f.people_id join accounts a on a.id = f.account_id join payment_types pt on pt.id = f.payment_type_id "
+                    + "where p.active = TRUE and f.create_date between ? and ?";
             ResultSet resultSet = executeQuery(query, startDate, endDate);
 
             return fillFinancialList(resultSet);
@@ -125,7 +131,13 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     @Override
     public List<FinancialEntity> getByDueDate(String startDate, String endDate) throws FinancialException {
         try {
-            String query = "select * from financial_releases f join peoples p on p.id = f.people_id where p.active = TRUE and f.due_date between ? and ?";
+            String query = "select "
+                    + "f.*,"
+                    + "p.id as id_peoples, p.type as type_peoples, p.name as name_peoples, p.cpf_cnpj as cpf_cnpj_peoples, p.active as active_peoples, p.date_create as date_create_peoples,"
+                    + "a.id as id_accounts, a.description as description_accounts,"
+                    + "pt.id as id_payment_types, pt.description as description_payment_types "
+                    + "from financial_releases f join peoples p on p.id = f.people_id join accounts a on a.id = f.account_id join payment_types pt on pt.id = f.payment_type_id "
+                    + "where p.active = TRUE and f.due_date between ? and ?";
             ResultSet resultSet = executeQuery(query, startDate, endDate);
             return fillFinancialList(resultSet);
         } catch (DataSourceException e) {
@@ -134,6 +146,7 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     }
 
     private FinancialEntity fillFinancialEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             FinancialEntity financialEntity = null;
             while (resultSet.next()) {
@@ -149,6 +162,7 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     }
 
     private FinancialEntity setFinancialEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
 
         AccountEntity accountEntity;
         PaymentTypeEntity paymentTypeEntity;
@@ -169,15 +183,24 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
                     resultSet.getDouble("value"));
 
             accountEntity = new AccountEntity();
-            accountEntity.setId(resultSet.getInt("account_id"));
-            accountEntity.setDescription(resultSet.getString("account_description"));
+            accountEntity.setId(resultSet.getInt("id_account"));
+            accountEntity.setDescription(resultSet.getString("description_account"));
 
             paymentTypeEntity = new PaymentTypeEntity();
-            paymentTypeEntity.setId(resultSet.getInt(""));
-            paymentTypeEntity.setDescription(resultSet.getString(""));
-            
+            paymentTypeEntity.setId(resultSet.getInt("id_payment_types"));
+            paymentTypeEntity.setDescription(resultSet.getString("description_payment_types"));
+
+            customerEntity = new PeopleEntity();
+            customerEntity.setId(resultSet.getInt("id_peoples"));
+            customerEntity.setType(resultSet.getInt("type_peoples"));
+            customerEntity.setName(resultSet.getString("name_peoples"));
+            customerEntity.setCpfCnpj(resultSet.getString("cpf_cnpj_peoples"));
+            customerEntity.setActive(resultSet.getBoolean("active_peoples"));
+            customerEntity.setDateCreate(resultSet.getDate("date_peoples"));
+
             release.setAccount(accountEntity);
             release.setPaymentType(paymentTypeEntity);
+            release.setPeople(customerEntity);
 
             return release;
         } catch (SQLException e) {
@@ -189,6 +212,7 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     }
 
     private List<FinancialEntity> fillFinancialList(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             List<FinancialEntity> financialEntityList = new ArrayList<>();
             while (resultSet.next()) {

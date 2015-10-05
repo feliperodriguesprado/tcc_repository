@@ -15,7 +15,6 @@
  */
 package br.com.smom.financial.core.repositories;
 
-import br.com.smom.customer.api.exceptions.CustomerException;
 import br.com.smom.customer.api.services.Customer;
 import br.com.smom.financial.api.enums.FinancialMessages;
 import br.com.smom.financial.api.exceptions.FinancialException;
@@ -59,8 +58,7 @@ public class FinancialRepository implements IFinancialRepository {
                 connection = postgreSQLService.getConnection();
                 financialDAO.setConnection(connection);
                 financialCreated = financialDAO.create(financialEntity);
-                
-                financialCreated = fillFinancialRelease(financialCreated);
+
                 postgreSQLService.commit(connection);
 
                 if (logService != null) {
@@ -101,7 +99,6 @@ public class FinancialRepository implements IFinancialRepository {
                 if (logService != null) {
                     logService.info("Financial updated: " + financialUpdated.toString());
                 }
-                financialUpdated = fillFinancialRelease(financialUpdated);
                 return financialUpdated;
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
@@ -158,8 +155,7 @@ public class FinancialRepository implements IFinancialRepository {
                 financialDAO.setConnection(connection);
                 financialEntity = financialDAO.getById(id);
                 postgreSQLService.commit(connection);
-                
-                financialEntity = fillFinancialRelease(financialEntity);
+
                 if (logService != null) {
                     logService.info("Financial getting: " + (financialEntity != null ? financialEntity.toString() : "is null"));
                 }
@@ -190,7 +186,7 @@ public class FinancialRepository implements IFinancialRepository {
 
                 financialDAO.setConnection(connection);
                 financialEntityList = financialDAO.getByPeople(id);
-                
+
                 postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("Financial getting: " + (financialEntityList != null ? financialEntityList.toString() : "is null"));
@@ -223,11 +219,7 @@ public class FinancialRepository implements IFinancialRepository {
                 financialDAO.setConnection(connection);
                 financialEntityList = financialDAO.getByCreateDate(startDate, endDate);
                 postgreSQLService.commit(connection);
-                
-                for (FinancialEntity fe : financialEntityList) {
-                    fe = fillFinancialRelease(fe);
-                }
-                
+
                 if (logService != null) {
                     logService.info("Financial getting: " + (financialEntityList != null ? financialEntityList.toString() : "is null"));
                 }
@@ -259,11 +251,7 @@ public class FinancialRepository implements IFinancialRepository {
                 financialDAO.setConnection(connection);
                 financialEntityList = financialDAO.getByDueDate(startDate, endDate);
                 postgreSQLService.commit(connection);
-                
-                for (FinancialEntity fe : financialEntityList) {
-                    fe = fillFinancialRelease(fe);
-                }
-                
+
                 if (logService != null) {
                     logService.info("Financial getting: " + (financialEntityList != null ? financialEntityList.toString() : "is null"));
                 }
@@ -279,48 +267,4 @@ public class FinancialRepository implements IFinancialRepository {
             throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
-
-    private FinancialEntity fillFinancialRelease(FinancialEntity financialEntity) throws FinancialException{
-        Connection connection = null;
-        postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
-        logService = (Log) ServiceProvider.getBundleService(Log.class);
-        customerService = (Customer) ServiceProvider.getBundleService(Customer.class);
-
-        if (postgreSQLService != null) {
-            try {
-                connection = postgreSQLService.getConnection();
-
-                accountDAO.setConnection(connection);
-                financialEntity.setAccount(accountDAO.getById(financialEntity.getAccountId()));
-
-                paymentTypeDAO.setConnection(connection);
-                financialEntity.setPaymentType(paymentTypeDAO.getById(financialEntity.getPaymentTypeId()));
-
-                if (customerService != null) {
-                    financialEntity.setPeople(customerService.getById(financialEntity.getPeopleId()));
-                } else {
-                    if (logService != null) {
-                        logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("Customer Service is null"));
-                    }
-                }
-
-                if (logService != null) {
-                    logService.info("Financial created: " + financialEntity.toString());
-                }
-                return financialEntity;
-            } catch (DataSourceException e) {
-                postgreSQLService.rollback(connection);
-                throw new FinancialException(e);
-            } catch (CustomerException ex) {
-                throw new FinancialException(ex);
-            }
-        } else {
-            if (logService != null) {
-                logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
-            }
-            throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
-        }
-
-    }
-
 }

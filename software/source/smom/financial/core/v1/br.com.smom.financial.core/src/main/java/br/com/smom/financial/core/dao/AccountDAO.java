@@ -31,7 +31,7 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
 
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private Log logService = null;
 
     @Override
     public int create(AccountEntity accountEntity) throws FinancialException {
@@ -91,6 +91,7 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
     }
 
     private AccountEntity fillAccountEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             AccountEntity accountEntity = null;
             while (resultSet.next()) {
@@ -106,6 +107,7 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
     }
 
     private AccountEntity setAccountEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             AccountEntity accountEntityModel = new AccountEntity(
                     resultSet.getInt("id"),
@@ -120,6 +122,7 @@ public class AccountDAO extends GenericDataBaseDAO implements IAccountDAO {
     }
 
     private List<AccountEntity> fillAccountList(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             List<AccountEntity> accountEntityList = new ArrayList<>();
             while (resultSet.next()) {

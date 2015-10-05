@@ -31,7 +31,7 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDAO {
 
-    private final Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+    private Log logService = null;
 
     @Override
     public int create(PaymentTypeEntity financialEntity) throws FinancialException {
@@ -91,6 +91,7 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
     }
 
     private PaymentTypeEntity fillPaymentTypeEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             PaymentTypeEntity paymentTypeEntity = null;
             while (resultSet.next()) {
@@ -106,6 +107,7 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
     }
 
     private PaymentTypeEntity setPaymentTypeEntity(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             PaymentTypeEntity paymentEntityModel = new PaymentTypeEntity(
                     resultSet.getInt("id"),
@@ -113,13 +115,14 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
             return paymentEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 
     private List<PaymentTypeEntity> fillPaymentTypeList(ResultSet resultSet) throws FinancialException {
+        logService = (Log) ServiceProvider.getBundleService(Log.class);
         try {
             List<PaymentTypeEntity> addressEntityList = new ArrayList<>();
             while (resultSet.next()) {
@@ -128,9 +131,9 @@ public class PaymentTypeDAO extends GenericDataBaseDAO implements IPaymentTypeDA
             return addressEntityList;
         } catch (SQLException e) {
             if (logService != null) {
-                logService.error(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER.toString(), e);
+                logService.error(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET.toString(), e);
             }
-            throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+            throw new FinancialException(FinancialMessages.ERROR_FILL_ENTITY_RESULTSET, e);
         }
     }
 }
