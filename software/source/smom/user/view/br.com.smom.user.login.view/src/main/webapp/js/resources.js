@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-window.angular.module('userLoginModule').factory('resourceUserLogin',
-        function ($resource) {
-            return $resource("modules/user/resources/rest/user/login");
-        });
+window.angular.module('userLoginModule').factory('resourceUserLogin', function ($resource) {
+    return $resource("resources/rest/login");
+});
 
 

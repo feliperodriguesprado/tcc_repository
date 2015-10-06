@@ -16,7 +16,6 @@
 package br.com.smom.user.login.view.resources;
 
 import br.com.smom.log.api.services.Log;
-import br.com.smom.main.util.api.exceptions.UtilException;
 import br.com.smom.main.util.api.model.to.ResponseResourceTO;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import br.com.smom.user.api.enums.UserMessages;
@@ -36,7 +35,7 @@ import javax.xml.bind.JAXBElement;
 /**
  * Class that provides resources RESTful to user.
  */
-@Path("user")
+@Path("rest")
 public class UserResource {
 
     /**
@@ -83,12 +82,11 @@ public class UserResource {
             responseResource.setMessage(UserMessages.WARN_UNAVAILABLE_MODULE);
         }
 
-        userEntity.setResponseResource(responseResource);
-
         if (logService != null) {
             logService.info(UserMessages.INFO_FINISH_REQUEST_REST.getMessage("modules/user/resources/rest/user/login"));
         }
 
+        userEntity.setResponseResource(responseResource);
         return userEntity;
     }
 

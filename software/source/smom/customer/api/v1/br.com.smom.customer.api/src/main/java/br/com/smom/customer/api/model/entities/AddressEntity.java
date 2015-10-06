@@ -19,11 +19,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "people_id", "cep", "city", "uf", "district", "street"})
+@XmlType(propOrder = {"id", "peopleId", "cep", "city", "uf", "district", "street"})
 public class AddressEntity {
 
     private int id;           //ColumnDB
-    private int people_id;    //ColumnDB
+    private int peopleId;    //ColumnDB
     private String cep;       //ColumnDB
     private String city;      //ColumnDB
     private String uf;        //ColumnDB
@@ -35,7 +35,7 @@ public class AddressEntity {
     
     public AddressEntity(int id, int people_id, String cep, String city, String uf, String district, String street) {
         this.id = id;
-        this.people_id = people_id;
+        this.peopleId = people_id;
         this.cep = cep;
         this.city = city;
         this.uf = uf;
@@ -51,12 +51,12 @@ public class AddressEntity {
         this.id = id;
     }
 
-    public int getPeople_id() {
-        return people_id;
+    public int getPeopleId() {
+        return peopleId;
     }
 
-    public void setPeople_id(int people_id) {
-        this.people_id = people_id;
+    public void setPeopleId(int peopleId) {
+        this.peopleId = peopleId;
     }
 
     public String getCep() {
@@ -101,7 +101,7 @@ public class AddressEntity {
 
     @Override
     public String toString() {
-        return "AddressEntity{" + "id=" + id + ", people_id=" + people_id + ", cep=" + cep + ", city=" + city + ", uf=" + uf + ", district=" + district + ", street=" + street + '}';
+        return "AddressEntity{" + "id=" + id + ", people_id=" + peopleId + ", cep=" + cep + ", city=" + city + ", uf=" + uf + ", district=" + district + ", street=" + street + '}';
     }
 
 }

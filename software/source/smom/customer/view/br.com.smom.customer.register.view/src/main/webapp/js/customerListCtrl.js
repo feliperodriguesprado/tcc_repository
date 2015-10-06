@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-function customerListCtrl($scope, $window, notification, messages, encryption, serverResponse, log, uiGridConstants) {
+function customerListCtrl($scope, $window, notification, messages, encryption, serverResponse, log, uiGridConstants, resourceListCreatedRanking, resourceListAll) {
 
     var rowTemplate = "<div ng-dblclick=\"grid.appScope.dblClickRow(row)\" ng-repeat=\"(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name\" class=\"ui-grid-cell\" ng-class=\"{ 'ui-grid-row-header-cell': col.isRowHeader }\" ui-grid-cell></div>",
             filterList = 'show';
@@ -34,7 +34,7 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
     $scope.grid = {
         appScopeProvider: $scope.scopeCustomerList,
         columnDefs: getConfigColumns(),
-        paginationPageSizes: [10, 20, 30],
+        paginationPageSizes: [],
         paginationPageSize: 10,
         enableRowSelection: true,
         multiSelect: false,
@@ -78,7 +78,7 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
             {name: 'id', displayName: 'Código', width: "13%", enableColumnMenu: false},
             {name: 'name', displayName: 'Nome', width: "41%", enableColumnMenu: false},
             {name: 'cpfCnpj', displayName: 'CPF/CNPJ', width: "23%", enableColumnMenu: false},
-            {name: 'dateCreated', displayName: 'Data de criação', width: "23%", enableColumnMenu: false}
+            {name: 'dateCreate', displayName: 'Data de criação', width: "23%", enableColumnMenu: false}
         ];
     }
 
@@ -101,84 +101,76 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
             filterList = 'show';
         }
     };
-    
+
     $scope.addCustomer = function () {
         notification.info("Não implementado");
     };
-    
+
     $scope.search = function () {
         notification.info("Não implementado");
     };
-    
+
     $scope.listAll = function () {
-        notification.info("Não implementado");
+
+        resourceListAll.get({}, function (data) {
+            try {
+                if (data.responseResource.code === serverResponse.INFO_GET_CUSTOMER_LIST) {
+                    $scope.grid.data = data.customerList;
+
+                    var sizeItemList = data.customerList.length,
+                            pageSize = 0;
+
+                    for (var i = 0; i < sizeItemList / 10; i = i + 1) {
+                        $scope.grid.paginationPageSizes.push(pageSize + 10);
+                        pageSize = pageSize + 10;
+                    }
+
+                } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
+                    notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                } else {
+                    notification.showMessage(data.responseResource);
+                }
+            } catch (e) {
+                log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+                notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
+            }
+        }, function () {
+            try {
+                log.error(messages.ERROR_REQUEST_SERVER);
+                notification.error(messages.ERROR_REQUEST_SERVER);
+            } catch (e) {
+                log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+                notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
+            }
+        });
+
     };
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    $scope.grid.data = [
-        {
-            "id": "15",
-            "name": "João Paulo Nakajima",
-            "cpfCnpj": "128.888.986-08",
-            "dateCreated": "01/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Felipe Prado",
-            "cpfCnpj": "100.522.156-10",
-            "dateCreated": "05/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
-        },
-        {
-            "id": "20",
-            "name": "Lucas Pereira",
-            "cpfCnpj": "100.562.896-10",
-            "dateCreated": "20/09/2015"
+    resourceListCreatedRanking.get({position: "10"}, function (data) {
+        try {
+            if (data.responseResource.code === serverResponse.INFO_GET_CUSTOMER_LIST) {
+                $scope.grid.data = data.customerList;
+            } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
+                notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+            } else {
+                notification.showMessage(data.responseResource);
+            }
+        } catch (e) {
+            log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+            notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
         }
-    ];
+    }, function () {
+        try {
+            log.error(messages.ERROR_REQUEST_SERVER);
+            notification.error(messages.ERROR_REQUEST_SERVER);
+        } catch (e) {
+            log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+            notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
+        }
+    });
 
 }

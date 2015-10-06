@@ -18,7 +18,7 @@ package br.com.smom.customer.register.view.resources;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("resources/rest")
+@javax.ws.rs.ApplicationPath("resources")
 public class ApplicationConfig extends Application {
 
     @Override

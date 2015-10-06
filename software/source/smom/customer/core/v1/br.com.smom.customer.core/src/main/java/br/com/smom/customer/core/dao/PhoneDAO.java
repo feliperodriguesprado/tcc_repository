@@ -37,7 +37,7 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO {
             String query = "insert into phones (people_id, number)"
                     + "values (?, ?)";
             return executeInsert(query,
-                    phoneEntity.getPeople_id(),
+                    phoneEntity.getPeopleId(),
                     phoneEntity.getNumber());
         } catch (DataSourceException e) {
             throw new CustomerException(e);
@@ -49,7 +49,7 @@ public class PhoneDAO extends GenericDataBaseDAO implements IPhoneDAO {
         try {
             String query = "update phones set people_id = ?, number = ? where id = ?";
             executeUpdate(query,
-                    phoneEntity.getPeople_id(),
+                    phoneEntity.getPeopleId(),
                     phoneEntity.getNumber(),
                     phoneEntity.getId());
         } catch (DataSourceException e) {

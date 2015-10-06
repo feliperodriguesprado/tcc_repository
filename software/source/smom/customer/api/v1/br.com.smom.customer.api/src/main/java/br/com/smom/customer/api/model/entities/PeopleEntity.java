@@ -18,12 +18,11 @@ package br.com.smom.customer.api.model.entities;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "type", "name", "active", "cpf_cnpj", "active", "dateCreate", "phoneList", "addressList"})
+@XmlType(propOrder = {"id", "type", "name", "active", "cpfCnpj", "active", "dateCreate", "phoneList", "addressList"})
 public class PeopleEntity {
 
     private int id;           //ColumnDB
@@ -32,15 +31,13 @@ public class PeopleEntity {
     private String cpfCnpj;   //ColumnDB
     private boolean active;   //ColumnDB
     private Date dateCreate;  //ColumnDB
-    
-    @XmlElement
-    private List <PhoneEntity> phoneList = new ArrayList<>();
-    @XmlElement
-    private List <AddressEntity> addressList = new ArrayList<>();
+
+    private List<PhoneEntity> phoneList = new ArrayList<>();
+    private List<AddressEntity> addressList = new ArrayList<>();
 
     public PeopleEntity() {
     }
-    
+
     public PeopleEntity(int id, int type, String name, String cpf_cnpj, boolean active, Date date_create) {
         this.id = id;
         this.type = type;
@@ -89,7 +86,7 @@ public class PeopleEntity {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     public Date getDateCreate() {
         return dateCreate;
     }
@@ -98,27 +95,33 @@ public class PeopleEntity {
         this.dateCreate = date;
     }
 
-    public List <PhoneEntity> getPhoneList() {
+    public List<PhoneEntity> getPhoneList() {
         return phoneList;
     }
 
-    public void setPhoneList(List <PhoneEntity> phoneList) {
+    public void setPhoneList(List<PhoneEntity> phoneList) {
         this.phoneList = phoneList;
     }
 
-    public List <AddressEntity> getAddressList() {
+    public void addPhoneList(PhoneEntity phoneEntity) {
+        this.phoneList.add(phoneEntity);
+    }
+
+    public List<AddressEntity> getAddressList() {
         return addressList;
     }
 
-    public void setAddressList(List <AddressEntity> addressList) {
+    public void setAddressList(List<AddressEntity> addressList) {
         this.addressList = addressList;
+    }
+
+    public void addAddressList(AddressEntity addressEntity) {
+        this.addressList.add(addressEntity);
     }
 
     @Override
     public String toString() {
         return "PeopleEntity{" + "id=" + id + ", type=" + type + ", name=" + name + ", cpf_cnpj=" + cpfCnpj + ", active=" + active + ", date_create=" + dateCreate + '}';
     }
-    
-    
 
 }

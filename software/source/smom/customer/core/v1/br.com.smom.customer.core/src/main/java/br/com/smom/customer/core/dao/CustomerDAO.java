@@ -24,7 +24,9 @@ import br.com.smom.main.datasource.api.exceptions.DataSourceException;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 
@@ -36,13 +38,13 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
 
         try {
             String query = "insert into peoples (type, name, cpf_cnpj, active, date_create) "
-                    + "values (?, ?, ?, ?, ?, ?)";
+                    + "values (?, ?, ?, ?, ?)";
             return executeInsert(query,
                     peopleEntity.getType(),
                     peopleEntity.getName(),
                     peopleEntity.getCpfCnpj(),
                     peopleEntity.isActive(),
-                    peopleEntity.getDateCreate());
+                    new Timestamp(new Date(System.currentTimeMillis()).getTime()));
         } catch (DataSourceException e) {
             throw new CustomerException(e);
         }
@@ -51,13 +53,12 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     @Override
     public void update(PeopleEntity peopleEntity) throws CustomerException {
         try {
-            String query = "update peoples set type = ?, name = ?, cpf_cnpj = ?, active = ?, date_create = ? where id = ?";
+            String query = "update peoples set type = ?, name = ?, cpf_cnpj = ?, active = ? where id = ?";
             executeUpdate(query,
                     peopleEntity.getType(),
                     peopleEntity.getName(),
                     peopleEntity.getCpfCnpj(),
                     peopleEntity.isActive(),
-                    peopleEntity.getDateCreate(),
                     peopleEntity.getId());
         } catch (DataSourceException e) {
             throw new CustomerException(e);
@@ -73,7 +74,7 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     @Override
     public PeopleEntity getById(int id) throws CustomerException {
         try {
-            String query = "select * from peoples p where p.id = ? and p.active = TRUE";
+            String query = "select * from peoples p where p.id = ?";
             ResultSet resultSet = executeQuery(query, id);
             return fillCustomerEntity(resultSet);
         } catch (DataSourceException e) {
@@ -115,9 +116,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private PeopleEntity fillCustomerEntity(ResultSet resultSet) throws CustomerException {
-        
+
         Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
         try {
             PeopleEntity peopleEntity = null;
             while (resultSet.next()) {
@@ -133,17 +134,17 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private PeopleEntity setCustomerEntity(ResultSet resultSet) throws CustomerException {
-        
+
         Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
         try {
             PeopleEntity peopleEntityModel = new PeopleEntity(
                     resultSet.getInt("id"),
                     resultSet.getInt("type"),
                     resultSet.getString("name"),
-                    resultSet.getString("cpf_cnpf"),
+                    resultSet.getString("cpf_cnpj"),
                     resultSet.getBoolean("active"),
-                    resultSet.getDate("date_create"));
+                    resultSet.getTimestamp("date_create"));
             return peopleEntityModel;
         } catch (SQLException e) {
             if (logService != null) {
@@ -154,9 +155,9 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     private List<PeopleEntity> fillCustomerList(ResultSet resultSet) throws CustomerException {
-        
+
         Log logService = (Log) ServiceProvider.getBundleService(Log.class);
-        
+
         try {
             List<PeopleEntity> peopleEntityList = new ArrayList<>();
             while (resultSet.next()) {

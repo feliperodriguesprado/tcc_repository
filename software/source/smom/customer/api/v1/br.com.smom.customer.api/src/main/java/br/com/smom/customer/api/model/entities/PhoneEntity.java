@@ -19,11 +19,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "people_id", "number"})
+@XmlType(propOrder = {"id", "peopleId", "number"})
 public class PhoneEntity {
 
     private int id;         //ColumnDB
-    private int people_id;  //ColumnDB
+    private int peopleId;  //ColumnDB
     private String number;  //ColumnDB
     
     public PhoneEntity() {
@@ -31,7 +31,7 @@ public class PhoneEntity {
 
     public PhoneEntity(int id, int people_id, String number) {
         this.id = id;
-        this.people_id = people_id;
+        this.peopleId = people_id;
         this.number = number;
     }
 
@@ -44,12 +44,12 @@ public class PhoneEntity {
         this.id = id;
     }
 
-    public int getPeople_id() {
-        return people_id;
+    public int getPeopleId() {
+        return peopleId;
     }
 
-    public void setPeople_id(int people_id) {
-        this.people_id = people_id;
+    public void setPeopleId(int peopleId) {
+        this.peopleId = peopleId;
     }
 
     public String getNumber() {
@@ -62,7 +62,7 @@ public class PhoneEntity {
 
     @Override
     public String toString() {
-        return "PhoneEntity{" + "id=" + id + ", people_id=" + people_id + ", number=" + number + '}';
+        return "PhoneEntity{" + "id=" + id + ", people_id=" + peopleId + ", number=" + number + '}';
     }
 
 }

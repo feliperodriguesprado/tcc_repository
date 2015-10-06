@@ -17,28 +17,22 @@ package br.com.smom.customer.api.model.to;
 
 import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.main.util.api.model.to.ResponseResourceTO;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"customerList", "responseResource"})
-public class CustomerListTO {
+@XmlType(propOrder = {"customer", "responseResource"})
+public class CustomerTO {
 
-    private List<PeopleEntity> customerList = new ArrayList<>();
+    private PeopleEntity customer;
     private ResponseResourceTO responseResource;
 
-    public List<PeopleEntity> getCustomerList() {
-        return customerList;
+    public PeopleEntity getCustomer() {
+        return customer;
     }
 
-    public void setCustomerList(List<PeopleEntity> customerList) {
-        this.customerList = customerList;
-    }
-
-    public void addCustomerList(PeopleEntity customer) {
-        this.customerList.add(customer);
+    public void setCustomer(PeopleEntity customer) {
+        this.customer = customer;
     }
 
     public ResponseResourceTO getResponseResource() {

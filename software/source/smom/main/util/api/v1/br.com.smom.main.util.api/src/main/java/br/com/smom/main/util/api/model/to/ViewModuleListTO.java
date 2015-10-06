@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
+@XmlType(propOrder = {"viewModuleEntityList", "responseResource"})
 public class ViewModuleListTO {
 
     public ViewModuleListTO() {

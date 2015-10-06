@@ -62,17 +62,19 @@ public class CustomerRepository implements ICustomerRepository {
                 customerCreated = customerDAO.getById(generatedKey);
 
                 for (AddressEntity address : peopleEntity.getAddressList()) {
+                    address.setPeopleId(generatedKey);
                     addressDAO.create(address);
                 }
 
                 for (PhoneEntity phone : peopleEntity.getPhoneList()) {
+                    phone.setPeopleId(generatedKey);
                     phoneDAO.create(phone);
                 }
 
-                postgreSQLService.commit(connection);
-
                 customerCreated.setPhoneList(phoneDAO.getByCustomerId(generatedKey));
                 customerCreated.setAddressList(addressDAO.getByCustomerId(generatedKey));
+
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("Customer created: " + customerCreated.toString());
@@ -114,17 +116,51 @@ public class CustomerRepository implements ICustomerRepository {
                 customerUpdated = customerDAO.getById(customerId);
 
                 for (AddressEntity address : peopleEntity.getAddressList()) {
+                    if (address.getId() == 0) {
+                        address.setPeopleId(peopleEntity.getId());
+                        address.setId(addressDAO.create(address));
+                    }
+                }
+                for (AddressEntity addressDB : addressDAO.getByCustomerId(customerId)) {
+                    boolean addressExists = false;
+                    for (AddressEntity address : peopleEntity.getAddressList()) {
+                        if (address.getId() == addressDB.getId()) {
+                            addressExists = true;
+                        }
+                    }
+                    if (!addressExists) {
+                        addressDAO.delete(addressDB);
+                    }
+                }
+                for (AddressEntity address : peopleEntity.getAddressList()) {
                     addressDAO.update(address);
                 }
 
                 for (PhoneEntity phone : peopleEntity.getPhoneList()) {
+                    if (phone.getId() == 0) {
+                        phone.setPeopleId(peopleEntity.getId());
+                        phone.setId(phoneDAO.create(phone));
+                    }
+                }
+                for (PhoneEntity phoneDB : phoneDAO.getByCustomerId(customerId)) {
+                    boolean phoneExists = false;
+                    for (PhoneEntity phone : peopleEntity.getPhoneList()) {
+                        if (phone.getId() == phoneDB.getId()) {
+                            phoneExists = true;
+                        }
+                    }
+                    if (!phoneExists) {
+                        phoneDAO.delete(phoneDB);
+                    }
+                }
+                for (PhoneEntity phone : peopleEntity.getPhoneList()) {
                     phoneDAO.update(phone);
                 }
 
-                postgreSQLService.commit(connection);
-
                 customerUpdated.setAddressList(addressDAO.getByCustomerId(customerId));
                 customerUpdated.setPhoneList(phoneDAO.getByCustomerId(customerId));
+
+                postgreSQLService.commit(connection);
 
                 if (logService != null) {
                     logService.info("Customer updated: " + customerUpdated.toString());
@@ -189,6 +225,13 @@ public class CustomerRepository implements ICustomerRepository {
                 connection = postgreSQLService.getConnection();
                 customerDAO.setConnection(connection);
                 customerEntity = customerDAO.getById(id);
+
+                phoneDAO.setConnection(connection);
+                customerEntity.setPhoneList(phoneDAO.getByCustomerId(id));
+
+                addressDAO.setConnection(connection);
+                customerEntity.setAddressList(addressDAO.getByCustomerId(id));
+
                 postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("Customer getting: " + (customerEntity != null ? customerEntity.toString() : "is null"));
@@ -283,7 +326,7 @@ public class CustomerRepository implements ICustomerRepository {
             try {
                 connection = postgreSQLService.getConnection();
                 customerDAO.setConnection(connection);
-                customerEntityList = customerDAO.getAll();
+                customerEntityList = customerDAO.getCreatedCustomersRanking(positions);
                 postgreSQLService.commit(connection);
                 if (logService != null) {
                     logService.info("Customer getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));

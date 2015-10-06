@@ -37,7 +37,7 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
             String query = "insert into address (people_id, cep, city, uf, district, street)"
                     + "values (?, ?, ?, ?, ?, ?)";
             return executeInsert(query,
-                    addressEntity.getPeople_id(),
+                    addressEntity.getPeopleId(),
                     addressEntity.getCep(),
                     addressEntity.getCity(),
                     addressEntity.getUf(),
@@ -53,7 +53,7 @@ public class AddressDAO extends GenericDataBaseDAO implements IAddressDAO {
         try {
             String query = "update address set people_id = ?, cep = ?, city = ?, uf = ?, district = ?, street = ? where id = ?";
             executeUpdate(query,
-                    addressEntity.getPeople_id(),
+                    addressEntity.getPeopleId(),
                     addressEntity.getCep(),
                     addressEntity.getCity(),
                     addressEntity.getUf(),
