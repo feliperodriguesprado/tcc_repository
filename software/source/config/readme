@@ -16,4 +16,8 @@ Configurations > server-config > Virtual Servers > server e adicionar a seguinte
 Referência: http://stackoverflow.com/questions/3751566/how-to-change-default-error-pagestatus-404-not-found-in-glassfish-3-0-1-comm
 
 ---------------------------------------------------------------------------------------------------------------
+Alterar porta 8080 Glassfish:
 
+Entrar em server-config -> HTTP Service -> Http Listeners e alterar http-listener-1 para 80.
+
+---------------------------------------------------------------------------------------------------------------
