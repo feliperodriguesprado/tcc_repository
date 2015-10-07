@@ -1,0 +1,123 @@
+***OBJETIVO GERAL*** (FELIPE)
+
+Demonstrar o modelo de desenvolvimento modular para aplicações empresariais, utilizando o conjunto de especificações OSGi.
+
+
+***OBJETIVO ESPECIFÍCO*** (FELIPE)
+
+Iremos pesquisar práticas, ferramentas e frameworks que auxiliam no desenvolvimento modular.
+
+Iremos desenvolver uma aplicação que demonstre de forma simples e prática a modularização de software.
+
+E por fim, faremos uma conclusão sobre o desenvolvimento modular para aplicações empresariais.
+
+
+***JUSTIFICATIVA*** (JOÃO PAULO)
+
+Motivação: o que nos motivou a pesquisar o tema OSGi foi uma experiência profissional que ambos tivemos de trabalhar com um sistema não modularizado, onde a manutenção e a atualização do sistema se tornava trabalhoso.
+
+Conhecimento: Esse tema irá nos agregar mais conhecimento, além de ser um conteúdo não aprendido no curso.
+
+Documentação: Devido a dificuldade que estamos enfrentando para conseguir materiais, deixaremos como base uma documentação que servirá de base para estudos e outros TCCs.
+
+Consumidores e empresas: falar sobre exemplos de uma empresa qualquer com os setores de vendas, logísticas e financeiro.
+
+
+***INTRODUÇÃO*** (FELIPE)
+
+Sabemos que os software empresarias estão cada vez mais complexos, devido as regras de negócios, governo, ou tipo de ramo em que a empresa atua.
+
+Quanto mais complexo é o software, mais difícil se torna controlar o seu desenvolvimento.
+
+Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia para auxiliar o desenvolvimento.
+
+Uma solução para ajudar a gerenciar a complexidade das aplicações seria separar o software em partes ou módulos, o que traria alguns benefícios para o seu desenvolvimento.
+
+Fazer analogia ao satélite.
+
+
+Citar os dois trabalhos na área. (JOÃO PAULO)
+
+
+***QUADRO TEÓRICO***
+
+[MODULARIZAÇÃO]
+
+(FELIPE)
+- Design de camadas: é comum o desenvolvimento de aplicações utilizando o design de camadas, onde são criadas camadas para dividir funcionalmente as partes do sistema, citar alguns alguns exemplos (camada de apresentação, controle e acesso a dados).
+
+- Design modular: já a modularização propõe um design modular, onde as partes da aplicação ficam organizadas em módulos e se comunicam através de serviços.
+
+
+(JOÃO PAULO)
+- Módulos: Como podemos definir os módulos, o que seria um módulo? Um sistema pode ser separado por partes (jars), mas será que eles atendem ao conceito de módulos. Um módulo deve atender as seguintes características
+
+	- Instalável: o módulo tem que instalar;
+	- Gerenciável: o módulo deve parar, reiniciar, e ser desinstalado sem interromper o restante da aplicação;
+	- Reutilizável: utilizar em outros sistemas;
+	- Combinável: combinar com outros módulos sem gerar conflito;
+	- Não guardar estado: o módulo deve ter somente uma instância.
+	- Inteface clara: o módulo de ter um interface bem definida para fazer a comunicação.
+
+
+- Granularidade: ao desenvolvermos um software pensando de forma modularizada, temos uma preocupação da granularidade, que influência no uso e reuso dos módulos, explicar dando exemplo de um módulo de vendas já com checagem de estoque (maior granularidade) e um módulo de vendas e outro de estoque (menor granularidade). Quanto maior a granularidade, menos dependência, mais fácil o uso e mais difícil o reuso. Quanto menor a granularidade, mais dependência, mais difícil de usar e mais fácil o reuso.
+
+- Mudanças: o desenvolvimento modular nos dá uma visão diferente do impacto nas mudanças no software. ***Explicar imagem***
+
+
+[OSGi] ***procurar se é uma especificação Java***
+
+(FELIPE)
+A maneira mais simples de definir OSGi, é dizer que ele é uma camada sobre a plataforma Java que oferece suporte ao desenvolvimento modularizado.
+
+É mantido pela OSGi Alliance, que é um consórcio formado por várias empresas, entre elas, está Eclipse, IBM, ORACLE, LG, entre várias outras.
+
+(JOÃO PAULO)
+- Bundles: Em OSGi os módulos são denominados como bundles. Esses bundles tem um ciclo de vida com os seguintes estados: installed, resolved, starting, active, stopping e uninstall. ***explicar imagem***
+
+- Arquitetura: As camadas do OSGi são dispostas da seguinte maneira ***explicar imagem***
+	
+	- Execution Environment = Camada de implementação (Felix) do OSGi que está rodando sobre a plataforma Java;
+	- Modules = A camada que gerencia os códigos que são exportados e importados de cada módulo;
+	- Life Cycle = Camada que gerencia os estados dos módulos;
+	- Services = Camada onde fica registrado os serviços dos módulos e faz o gerenciamento;
+	- Bundle = são os módulos que são desenvolvidos, estão presentes em todos as camadas;
+	- Security = A camada que gerencia os aspectos de segurança.
+
+(FELIPE)
+- Versionamento: Dizer que o OSGi tem uma vantagem muito interessante, que é o versionamento, onde pode se ter um ou mais módulos iguais sendo executados juntos porém em versões diferentes. Dar exemplo do módulo financeiro, rh e vendas. Onde o rh precisa de uma nova funcionalidade do financeiro, mas o vendas está estável com essa versão do módulo, então pode criar outra versão do módulo financeiro com as novas funcionalidades e deixar as duas em funcionamento.
+
+- Implementações: Como o OSGi é um conjunto de especificações, existem algumas implementações, como por exemplo apache felix, equinox, knopflerfish, entre outras.
+
+***Explicar o restante das tecnologias***
+
+***METODOLOGIA***
+
+(JOÃO PAULO)
+[TIPO DE PESQUISA]
+
+Nossa pesquisa será do tipo aplicada, pois iremos de demonstrar um modelo de desenvolvimento através de um produto que pode ser aplicado em algum contexto.
+
+
+[CONTEXTO DE PESQUISA]
+
+Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
+
+(FELIPE)
+[PROCEDIMENTOS]
+
+- Definir o software que exemplifique a modularização e seu funcionamento de forma simples;
+- Prototypes;
+- Levantar os requisitos;
+- Modelar e mapear o banco de dados com JPA;
+- Estruturar os módulos;
+- Implementar a lógica de negócio;
+- Criar as telas do sistema;
+- Documentar.
+
+(JOÃO PAULO)
+[INSTRUMENTOS]
+
+- Pesquisas: livros, documentações e artigos.
+- Reuniões: reuniões entre os membros da equipe e o orientador. Além do Filipe Portes.
+- Palestras: estamos assistindo algumas palestras online.
