@@ -24,7 +24,7 @@ public interface IFinancialDAO {
     
     public void setConnection(Connection connection);
 
-    public FinancialEntity create(FinancialEntity financialEntity) throws FinancialException;
+    public int create(FinancialEntity financialEntity) throws FinancialException;
 
     public FinancialEntity update(FinancialEntity financialEntity) throws FinancialException;
 

@@ -39,18 +39,21 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     private Log logService = null;
 
     @Override
-    public FinancialEntity create(FinancialEntity financialEntity) throws FinancialException {
+    public int create(FinancialEntity financialEntity) throws FinancialException {
         try {
-            String query = "insert into financial_releases (type, create_date, due_date, payment_date, is_paid, description, value) "
-                    + "values (?, ?, ?, ?, ?, ?, ?)";
-            return getById(executeInsert(query,
+            String query = "insert into financial_releases (type, account_id, people_id, payment_type_id, create_date, due_date, payment_date, is_paid, description, value) "
+                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            return executeInsert(query,
                     financialEntity.getType(),
+                    financialEntity.getAccountId(),
+                    financialEntity.getPeopleId() == 0 ? null : financialEntity.getPeopleId(),
+                    financialEntity.getPaymentTypeId(),
                     new Timestamp(new Date(System.currentTimeMillis()).getTime()),
-                    financialEntity.getDueDate(),
-                    financialEntity.getPaymentDate(),
+                    new java.sql.Date(financialEntity.getDueDate().getTime()),
+                    financialEntity.getPaymentDate() == null ? null : new Timestamp(financialEntity.getPaymentDate().getTime()),
                     financialEntity.getIsPaid(),
                     financialEntity.getDescription(),
-                    financialEntity.getValue()));
+                    financialEntity.getValue());
         } catch (DataSourceException e) {
             throw new FinancialException(e);
         }
@@ -59,12 +62,14 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     @Override
     public FinancialEntity update(FinancialEntity financialEntity) throws FinancialException {
         try {
-            String query = "update financial_releases set type = ?, create_date = ?, due_date = ?, payment_date = ?, is_paid = ?, description = ?, value = ? where id = ?";
+            String query = "update financial_releases set type = ?, account_id = ?, people_id = ?, payment_type_id = ?, due_date = ?, payment_date = ?, is_paid = ?, description = ?, value = ? where id = ?";
             executeUpdate(query,
                     financialEntity.getType(),
-                    financialEntity.getCreateDate(),
-                    financialEntity.getDueDate(),
-                    financialEntity.getPaymentDate(),
+                    financialEntity.getAccountId(),
+                    financialEntity.getPeopleId() == 0 ? null : financialEntity.getPeopleId(),
+                    financialEntity.getPaymentTypeId(),
+                    new java.sql.Date(financialEntity.getDueDate().getTime()),
+                    financialEntity.getPaymentDate() == null ? null : new Timestamp(financialEntity.getPaymentDate().getTime()),
                     financialEntity.getIsPaid(),
                     financialEntity.getDescription(),
                     financialEntity.getValue(),
@@ -90,7 +95,23 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
     public FinancialEntity getById(int id) throws FinancialException {
 
         try {
-            String query = "select f.*, a.id as account_id, account_description from financial_releases f where f.id = ?";
+            String query = "select "
+                    + "f.*, "
+                    + "p.id as id_peoples, "
+                    + "p.type as type_peoples, "
+                    + "p.name as name_peoples, "
+                    + "p.cpf_cnpj as cpf_cnpj_peoples, "
+                    + "p.active as active_peoples, "
+                    + "p.date_create as date_create_peoples, "
+                    + "a.id as id_accounts, "
+                    + "a.description as description_accounts, "
+                    + "pt.id as id_payment_types, "
+                    + "pt.description as description_payment_types "
+                    + "from financial_releases f "
+                    + "left join peoples p on p.id = f.people_id "
+                    + "join accounts a on a.id = f.account_id "
+                    + "join payment_types pt on pt.id = f.payment_type_id "
+                    + "where f.id = ?";
             ResultSet resultSet = executeQuery(query, id);
             return fillFinancialEntity(resultSet);
 
@@ -126,11 +147,10 @@ public class FinancialDAO extends GenericDataBaseDAO implements IFinancialDAO {
                     + "pt.id as id_payment_types, "
                     + "pt.description as description_payment_types "
                     + "from financial_releases f "
-                    + "join peoples p on p.id = f.people_id "
+                    + "left join peoples p on p.id = f.people_id "
                     + "join accounts a on a.id = f.account_id "
                     + "join payment_types pt on pt.id = f.payment_type_id "
-                    + "where p.active = TRUE "
-                    + "and cast(f.create_date as text) between ? and ?";
+                    + "where cast(f.create_date as text) between ? and ? ";
             ResultSet resultSet = executeQuery(query, startDate, endDate);
 
             return fillFinancialList(resultSet);

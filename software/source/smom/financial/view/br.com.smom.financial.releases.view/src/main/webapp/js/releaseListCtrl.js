@@ -14,16 +14,62 @@
  * limitations under the License.
  */
 
-function releaseListCtrl($scope, $window, notification, messages, serverResponse, log, uiGridConstants) {
+function releaseListCtrl($scope, $window, notification, date, messages, serverResponse, log, uiGridConstants, resourceListByCreateDate) {
 
     var filterList = 'show';
+
+    $scope.releasesFilter = {
+        createDateStart: date.getDateTime().subtract(30, 'days').calendar(),
+        createDateEnd: date.getDateTime().format('L')
+    };
+
+    $scope.search = function (releasesFilter) {
+
+        filterOptions = {
+            createDateStart: date.formatDateToServer(releasesFilter.createDateStart),
+            createDateEnd: date.formatDateToServer(releasesFilter.createDateEnd)
+        };
+
+        resourceListByCreateDate.get(filterOptions, function (data) {
+            try {
+                if (data.responseResource.code === serverResponse.INFO_GET_FINANCIAL_RELEASE_LIST) {
+                    $scope.grid.data = data.releaseList;
+
+                    var sizeItemList = data.releaseList.length,
+                            pageSize = 0;
+
+                    for (var i = 0; i < sizeItemList / 10; i = i + 1) {
+                        $scope.grid.paginationPageSizes.push(pageSize + 10);
+                        pageSize = pageSize + 10;
+                    }
+
+                } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
+                    $('#modalUnavailableModule').modal('show');
+                } else {
+                    notification.showMessage(data.responseResource);
+                }
+            } catch (e) {
+                log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+                notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
+            }
+        }, function () {
+            try {
+                log.error(messages.ERROR_REQUEST_SERVER);
+                notification.error(messages.ERROR_REQUEST_SERVER);
+            } catch (e) {
+                log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
+                notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
+            }
+        });
+
+    };
 
     /*
      * Scope passed to grid for control events rows grid
      */
     $scope.scopeReleaseList = {
         dblClickRow: function (row) {
-            notification.info(JSON.stringify(row.entity));
+            $window.location.href = "#/release-register/" + row.entity.id;
         },
         viewRelease: function (row) {
             notification.info(JSON.stringify(row));
@@ -36,7 +82,7 @@ function releaseListCtrl($scope, $window, notification, messages, serverResponse
     $scope.grid = {
         appScopeProvider: $scope.scopeReleaseList,
         columnDefs: getConfigColumns(),
-        paginationPageSizes: [10, 20, 30],
+        paginationPageSizes: [],
         paginationPageSize: 10,
         enableRowSelection: true,
         multiSelect: false,
@@ -76,15 +122,16 @@ function releaseListCtrl($scope, $window, notification, messages, serverResponse
      * @returns {Array}
      */
     function getConfigColumns() {
-        
+
         var templateType = '<div class="btn-type-grid-release-list"><button type="button" ng-class="row.entity.type === 1 ? \'btn btn-success btn-xs\' : \'btn btn-danger btn-xs\'" ng-click="grid.appScope.viewRelease(row.entity)"><i ng-class="row.entity.type === 1 ? \'fa fa-arrow-left\' : \'fa fa-arrow-right\'"></i></button></div>';
-        
+
         return [
             {name: 'type', displayName: '', width: "4%", cellTemplate: templateType, enableColumnMenu: false, enableSorting: false, enableFiltering: false},
-            {name: 'description', displayName: 'Descrição', width: "37%", enableColumnMenu: false},
+            {name: 'description', displayName: 'Descrição', width: "29%", enableColumnMenu: false},
             {name: 'people.name', displayName: 'Cliente', width: "35%", enableColumnMenu: false},
             {name: 'value', displayName: 'Valor', width: "12%", enableColumnMenu: false},
-            {name: 'dueDate', displayName: 'Vencimento', width: "12%", enableColumnMenu: false}
+            {name: 'createDate', displayName: 'Data', width: "10%", enableColumnMenu: false},
+            {name: 'dueDate', displayName: 'Vencimento', width: "10%", enableColumnMenu: false}
         ];
     }
 
@@ -108,69 +155,18 @@ function releaseListCtrl($scope, $window, notification, messages, serverResponse
         }
     };
 
-    $scope.search = function () {
+    $scope.listAll = function () {
         notification.info("Não implementado");
     };
 
-    $scope.listAll = function () {
-        notification.info("Não implementado");
+    $scope.closeModal = function (element) {
+        $('#' + element).modal('hide');
     };
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
-
-    $scope.grid.data = [
-        {
-            "id": "15",
-            "type": 1,
-            "accountId": "2",
-            "peopleId": "10",
-            "paymentTypeId": "5",
-            "createDate": "01/09/2015",
-            "dueDate": "30/09/2015",
-            "paymentDate": "29/09/2015",
-            "isPaid": false,
-            "description": "Recebimento de conta",
-            "value": 1200.00,
-            "account": {
-                "id": 30,
-                "description": "Itaú"
-            },
-            "paymentType": {
-                "id": 10,
-                "description": "Cartão de crédito"
-            },
-            "people": {
-                "id": 15,
-                "name": "Felipe Prado"
-            }
-        },
-        {
-            "id": "15",
-            "type": 2,
-            "accountId": "2",
-            "peopleId": "10",
-            "paymentTypeId": "5",
-            "createDate": "01/09/2015",
-            "dueDate": "30/09/2015",
-            "paymentDate": "29/09/2015",
-            "isPaid": false,
-            "description": "Pagamento de conta",
-            "value": 1200.00,
-            "account": {
-                "id": 30,
-                "description": "Itaú"
-            },
-            "paymentType": {
-                "id": 10,
-                "description": "Cartão de crédito"
-            },
-            "people": {
-                "id": 15,
-                "name": "João Paulo"
-            }
-        }
-    ];
+    
+    $scope.search($scope.releasesFilter);
 }
 

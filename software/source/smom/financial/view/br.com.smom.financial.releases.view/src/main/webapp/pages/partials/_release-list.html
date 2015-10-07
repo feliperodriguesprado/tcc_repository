@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="form-group">
-            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Filtrar lista de clientes" 
+            <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Filtrar lista de clientes" 
                     ng-click="filter()"><i class="fa fa-search"></i></button>
             <button type="button" class="btn btn-warning" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="Mais filtros"
                     ng-click="showFilterList()"><i class="fa fa-plus"></i> Filtros</button>
@@ -34,19 +34,19 @@
                         <div class="row">
                             <div class="form-group col-lg-2">
                                 <label>Data inicial</label>
-                                <input type="date" class="form-control">
+                                <input type="text" class="form-control" ng-model="releasesFilter.createDateStart">
                             </div>
                             <div class="form-group col-lg-2">
                                 <label>Data final</label>
-                                <input type="date" class="form-control">
+                                <input type="text" class="form-control" ng-model="releasesFilter.createDateEnd">
                             </div>
-                            <div class="form-group col-lg-4">
+<!--                            <div class="form-group col-lg-4">
                                 <label>Cliente</label>
                                 <input type="date" class="form-control">
-                            </div>
+                            </div>-->
                             <div class="form-group col-lg-4" style="margin-top: 25px;">
                                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Aplicar busca"
-                                        ng-click="search()"><i class="fa fa-search"></i> Buscar</button>
+                                        ng-click="search(releasesFilter)"><i class="fa fa-search"></i> Buscar</button>
                             </div>
                         </div>
                     </form>
@@ -59,5 +59,27 @@
 <div class="row">
     <div class="col-lg-12">
         <div ui-grid="grid" class="grid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pagination ui-grid-selection></div>
+    </div>
+</div>
+
+<div class="modal" id="modalUnavailableModule">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lançamentos financeiros</h4>
+            </div>
+            <div class="modal-body">
+                <div class="page-header">
+                    <h3><i class="fa fa-exclamation-triangle fa-1x"></i> Módulo indisponível no momento</h3>
+                </div>
+                <div class="alert alert-warning" style="text-align: left; font-size: 18px;">
+                    Módulo indisponível no momento, contate o administrador do sistema ou tente mais tarde.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" ng-click="closeModal('modalUnavailableModule')">OK</a>
+            </div>
+        </div>
     </div>
 </div>
