@@ -21,9 +21,9 @@ function getModules(callbackSuccess) {
         type: "GET",
         url: '/modules/main/util/resources/rest/viewmodule/list/all',
         success: function (data, textStatus, jqXHR) {
-            console.log('data: ' + JSON.stringify(data));
-            console.log('textStatus: ' + textStatus);
-            console.log('jqXHR: ' + jqXHR);
+//            console.log('data: ' + JSON.stringify(data));
+//            console.log('textStatus: ' + textStatus);
+//            console.log('jqXHR: ' + jqXHR);
             callbackSuccess(data.moduleList);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -46,9 +46,9 @@ function mountSideBar(modules) {
                 $('#side-menu').append(elementModule);
             } else if (module.type === 1) {
                 elementGroup = generateElementGroup(module);
-                
+
                 if (elementGroup !== null) {
-                    $('#side-menu').append(elementGroup);                
+                    $('#side-menu').append(elementGroup);
                 }
 
             }

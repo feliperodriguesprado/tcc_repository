@@ -35,9 +35,10 @@ public class FinancialEntity {
     private boolean isPaid;      //ColumnDB
     private String description;  //ColumnDB
     private double value;        //ColumnDB
-    private AccountEntity account;
-    private PaymentTypeEntity paymentType;
-    private PeopleEntity people;
+
+    private AccountEntity account = new AccountEntity();
+    private PaymentTypeEntity paymentType = new PaymentTypeEntity();
+    private PeopleEntity people = new PeopleEntity();
 
     public FinancialEntity(int id, int type, int accountId, int peopleId, int paymentTypeId, Date createDate, Date dueDate, Date paymentDate, boolean isPaid, String description, double value) {
         this.id = id;
@@ -72,6 +73,30 @@ public class FinancialEntity {
         this.type = type;
     }
 
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public int getPeopleId() {
+        return peopleId;
+    }
+
+    public void setPeopleId(int peopleId) {
+        this.peopleId = peopleId;
+    }
+
+    public int getPaymentTypeId() {
+        return paymentTypeId;
+    }
+
+    public void setPaymentTypeId(int paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -96,7 +121,7 @@ public class FinancialEntity {
         this.paymentDate = paymentDate;
     }
 
-    public boolean isPaid() {
+    public boolean getIsPaid() {
         return isPaid;
     }
 
@@ -120,46 +145,6 @@ public class FinancialEntity {
         this.value = value;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
-
-    public int getPeopleEntity() {
-        return peopleId;
-    }
-
-    public void setPeopleEntity(int peopleEntity) {
-        this.peopleId = peopleEntity;
-    }
-
-    public int getPaymentTypeEntity() {
-        return paymentTypeId;
-    }
-
-    public void setPaymentTypeEntity(int paymentTypeEntity) {
-        this.paymentTypeId = paymentTypeEntity;
-    }
-
-    public int getPeopleId() {
-        return peopleId;
-    }
-
-    public void setPeopleId(int peopleId) {
-        this.peopleId = peopleId;
-    }
-
-    public int getPaymentTypeId() {
-        return paymentTypeId;
-    }
-
-    public void setPaymentTypeId(int paymentTypeId) {
-        this.paymentTypeId = paymentTypeId;
-    }
-
     public AccountEntity getAccount() {
         return account;
     }
@@ -168,30 +153,25 @@ public class FinancialEntity {
         this.account = account;
     }
 
+    public PaymentTypeEntity getPaymentType() {
+        return paymentType;
+    }
+
     public void setPaymentType(PaymentTypeEntity paymentType) {
         this.paymentType = paymentType;
+    }
+
+    public PeopleEntity getPeople() {
+        return people;
     }
 
     public void setPeople(PeopleEntity people) {
         this.people = people;
     }
 
-    public boolean isIsPaid() {
-        return isPaid;
-    }
-
-    public PaymentTypeEntity getPaymentType() {
-        return paymentType;
-    }
-
-    public PeopleEntity getPeople() {
-        return people;
-    }
-    
-
     @Override
     public String toString() {
-        return "FinancialEntity{" + "id=" + id + ", type=" + type + ", accountId=" + accountId + ", peopleId=" + peopleId + ", paymentTypeId=" + paymentTypeId + ", createDate=" + createDate + ", dueDate=" + dueDate + ", paymentDate=" + paymentDate + ", isPaid=" + isPaid + ", description=" + description + ", value=" + value + '}';
+        return "FinancialEntity{" + "id=" + getId() + ", type=" + getType() + ", accountId=" + getAccountId() + ", peopleId=" + getPeopleId() + ", paymentTypeId=" + getPaymentTypeId() + ", createDate=" + getCreateDate() + ", dueDate=" + getDueDate() + ", paymentDate=" + getPaymentDate() + ", isPaid=" + getIsPaid() + ", description=" + getDescription() + ", value=" + getValue() + '}';
     }
 
 }

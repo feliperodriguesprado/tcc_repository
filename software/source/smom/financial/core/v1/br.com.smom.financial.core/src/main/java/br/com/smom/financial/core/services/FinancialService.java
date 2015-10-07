@@ -23,12 +23,15 @@ import br.com.smom.financial.api.model.entities.PaymentTypeEntity;
 import br.com.smom.financial.api.services.Financial;
 import br.com.smom.financial.core.repositories.IFinancialRepository;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-public class FinancialService implements Financial{
+@Stateless
+public class FinancialService implements Financial {
 
     @Inject
     private IFinancialRepository financialRepository;
+
     @Override
     public FinancialEntity create(FinancialEntity financialEntity) throws FinancialException {
         try {
@@ -118,5 +121,5 @@ public class FinancialService implements Financial{
             throw new FinancialException(FinancialMessages.ERROR_PERFORM_OPERATION_SERVER, e);
         }
     }
-    
+
 }

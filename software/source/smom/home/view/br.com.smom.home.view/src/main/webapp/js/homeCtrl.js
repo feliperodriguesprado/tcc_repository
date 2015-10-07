@@ -16,61 +16,61 @@
 
 function homeCtrl($scope, $window, notification, messages, encryption, serverResponse, log) {
 
-    var ctxChartTotalByAccount = document.getElementById("chartTotalByAccount").getContext("2d");
-    var data = [
-        {
-            value: 750,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "Carteira"
-        },
-        {
-            value: 1150,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Itaú"
-        },
-        {
-            value: 1300,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Poupança"
-        }
-    ];
-
-    var options = {
-        animateRotate: false
-    };
-
-    new Chart(ctxChartTotalByAccount).Pie(data, options);
-
-    var ctxChartTotalByPayment = document.getElementById("chartTotalByPayment").getContext("2d");
-    var data = [
-        {
-            value: 380,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "Carteira"
-        },
-        {
-            value: 670,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Itaú"
-        },
-        {
-            value: 1200,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Poupança"
-        }
-    ];
-
-    var options = {
-        animateRotate: false
-    };
-
-    new Chart(ctxChartTotalByPayment).Pie(data, options);
+//    var ctxChartTotalByAccount = document.getElementById("chartTotalByAccount").getContext("2d");
+//    var data = [
+//        {
+//            value: 750,
+//            color: "#F7464A",
+//            highlight: "#FF5A5E",
+//            label: "Carteira"
+//        },
+//        {
+//            value: 1150,
+//            color: "#46BFBD",
+//            highlight: "#5AD3D1",
+//            label: "Itaú"
+//        },
+//        {
+//            value: 1300,
+//            color: "#FDB45C",
+//            highlight: "#FFC870",
+//            label: "Poupança"
+//        }
+//    ];
+//
+//    var options = {
+//        animateRotate: false
+//    };
+//
+//    new Chart(ctxChartTotalByAccount).Pie(data, options);
+//
+//    var ctxChartTotalByPayment = document.getElementById("chartTotalByPayment").getContext("2d");
+//    var data = [
+//        {
+//            value: 380,
+//            color: "#F7464A",
+//            highlight: "#FF5A5E",
+//            label: "Carteira"
+//        },
+//        {
+//            value: 670,
+//            color: "#46BFBD",
+//            highlight: "#5AD3D1",
+//            label: "Itaú"
+//        },
+//        {
+//            value: 1200,
+//            color: "#FDB45C",
+//            highlight: "#FFC870",
+//            label: "Poupança"
+//        }
+//    ];
+//
+//    var options = {
+//        animateRotate: false
+//    };
+//
+//    new Chart(ctxChartTotalByPayment).Pie(data, options);
 
 }
 

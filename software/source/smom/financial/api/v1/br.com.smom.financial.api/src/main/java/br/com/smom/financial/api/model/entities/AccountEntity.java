@@ -25,14 +25,14 @@ public class AccountEntity {
     private int id;              //ColumnDB
     private String description;  //ColumnDB
 
+    public AccountEntity() {
+    }
+    
     public AccountEntity(int id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public AccountEntity() {
-    }
-    
     public int getId() {
         return id;
     }

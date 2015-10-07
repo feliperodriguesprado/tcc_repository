@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "type", "name", "active", "cpfCnpj", "active", "dateCreate", "phoneList", "addressList"})
+@XmlType(propOrder = {"id", "type", "name", "cpfCnpj", "active", "dateCreate", "phoneList", "addressList"})
 public class PeopleEntity {
 
     private int id;           //ColumnDB

@@ -15,8 +15,10 @@
  */
 package br.com.smom.customer.register.view.initialize;
 
+import br.com.smom.customer.api.enums.CustomerMessages;
 import br.com.smom.main.util.api.model.entities.ViewModuleEntity;
 import br.com.smom.main.util.api.services.InternalLog;
+import br.com.smom.main.util.api.services.ServerMessages;
 import br.com.smom.main.util.api.services.ServiceProvider;
 import br.com.smom.main.util.api.services.ViewModules;
 import org.osgi.framework.BundleActivator;
@@ -28,6 +30,7 @@ public class Activator implements BundleActivator {
     public void start(BundleContext context) throws Exception {
 
         ViewModules viewModulesService = (ViewModules) ServiceProvider.getBundleService(ViewModules.class);
+        ServerMessages.load(CustomerMessages.values());
 
         if (viewModulesService != null) {
             ViewModuleEntity viewModule = new ViewModuleEntity();
@@ -39,7 +42,7 @@ public class Activator implements BundleActivator {
             viewModule.setPosition(1);
             viewModulesService.startViewModule(viewModule, "br.com.smom.customer");
         }
-        
+
         InternalLog.info(String.format("Start bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
     }
 
@@ -58,7 +61,7 @@ public class Activator implements BundleActivator {
             viewModule.setPosition(1);
             viewModulesService.stopViewModule(viewModule);
         }
-        
+
         InternalLog.info(String.format("Stop bundle %s %s", context.getBundle().getSymbolicName(), context.getBundle().getVersion()));
     }
 

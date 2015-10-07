@@ -25,14 +25,14 @@ public class PaymentTypeEntity {
     private int id;              //ColumnDB
     private String description;  //ColumnDB
 
+    public PaymentTypeEntity() {
+    }
+
     public PaymentTypeEntity(int id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public PaymentTypeEntity() {
-    }
-    
     public int getId() {
         return id;
     }

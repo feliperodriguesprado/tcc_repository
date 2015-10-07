@@ -27,6 +27,11 @@
         </dependency>
         
         <dependency>
+            <groupId>br.com.smom.user</groupId>
+            <artifactId>br.com.smom.user.api</artifactId>
+        </dependency>
+        
+        <dependency>
             <groupId>br.com.smom.main</groupId>
             <artifactId>br.com.smom.main.util.api</artifactId>
         </dependency>

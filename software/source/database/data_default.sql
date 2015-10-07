@@ -1,6 +1,6 @@
 ﻿-- Table view_modules:
 select * from view_modules;
-INSERT INTO view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) VALUES (2, 'br.com.smom.home.view', true, 'Início', '/modules/home/#/', 'fa fa-home', 1, null);
+-- INSERT INTO view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) VALUES (2, 'br.com.smom.home.view', true, 'Início', '/modules/home/#/', 'fa fa-home', 1, null);
 INSERT INTO view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) VALUES (1, 'br.com.smom.customer', true, 'Clientes', '#', 'fa fa-users', 2, NULL);
 INSERT INTO view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) VALUES (1, 'br.com.smom.financial', true, 'Financeiro', '#', 'glyphicon glyphicon-piggy-bank', 3, NULL);
 INSERT INTO view_modules (type, symbolic_name, active, name, context_path, icon, position, parent) VALUES (1, 'br.com.smom.user', true, 'Usuários', '#', 'fa fa-user', 4, NULL);
