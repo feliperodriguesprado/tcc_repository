@@ -39,7 +39,7 @@ CREATE TABLE smom.public.financial_releases (
                 payment_type_id INTEGER NOT NULL,
                 create_date DATE NOT NULL,
                 due_date DATE NOT NULL,
-                payment_date DATE NOT NULL,
+                payment_date TIMESTAMP,
                 is_paid BOOLEAN NOT NULL,
                 description VARCHAR(1000) NOT NULL,
                 value NUMERIC NOT NULL,
