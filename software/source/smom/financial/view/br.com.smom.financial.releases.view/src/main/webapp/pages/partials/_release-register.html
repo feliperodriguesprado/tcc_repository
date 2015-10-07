@@ -3,7 +3,6 @@
         <h3 class="page-header">{{title}}</h3>
     </div>
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -13,12 +12,11 @@
                 </h4>
             </div>
             <div class="panel-body">
-                {{release}}
                 <form>
                     <div class="row col-lg-12">
                         <div class="form-group col-lg-2">
                             <label>Vencimento</label>
-                            <input type="text" class="form-control" ng-model="release.date">
+                            <input type="text" class="form-control" ng-model="release.dueDate">
                         </div>
                         <div class="form-group col-lg-2">
                             <label>Valor</label>
@@ -31,9 +29,11 @@
                         <div class="form-group col-lg-4">
                             <label>Cliente</label>
                             <div class="form-group input-group">
-                                <input class="form-control" type="text" ng-model="queryPeople">
+                                <input class="form-control" type="text" ng-model="peopleSearch">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" ng-click="searchPeople(queryPeople)" type="button"><i class="fa fa-search"></i>
+                                    <button class="btn btn-default" type="button" 
+                                            ng-click="searchPeople(peopleSearch)" ng-disabled="validateButtonSearchPeople(peopleSearch)" >
+                                        <i class="fa fa-search"></i>
                                     </button>
                                 </span>
                             </div>
@@ -47,14 +47,75 @@
 
                 <div class="row col-lg-12">
                     <div class="form-group" style="float: right;">
-                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir cadastro"
-                                ng-click="delete(release)"><i class="fa fa-times"></i> Excluir</button>
-                        <a href="#/" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Excluir cadastro"><i class="fa fa-mail-reply"></i> Cancelar</a>
+<!--                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir cadastro"
+                                ng-click="delete(release)"><i class="fa fa-times"></i> Excluir</button>-->
+                        <a href="#/" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Voltar para lista de lançamentos"><i class="fa fa-mail-reply"></i> Voltar</a>
                         <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Salvar cadastro"
-                                ng-click="save(release)"><i class="fa fa-check"></i> Salvar</button>
+                                ng-click="saveFinancialRelease(release)"><i class="fa fa-check"></i> Salvar</button>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalInfoFinancialReleases">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lançamentos financeiros</h4>
+            </div>
+            <div class="modal-body">
+                {{message}}
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" ng-click="closeModal('modalInfoFinancialReleases')">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalUnavailableModule">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lançamentos financeiros</h4>
+            </div>
+            <div class="modal-body">
+                <div class="page-header">
+                    <h3><i class="fa fa-exclamation-triangle fa-1x"></i> Módulo indisponível no momento</h3>
+                </div>
+                <div class="alert alert-warning" style="text-align: left; font-size: 18px;">
+                    Módulo indisponível no momento, contate o administrador do sistema ou tente mais tarde.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" ng-click="closeModal('modalUnavailableModule')">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalUnavailableModuleExternal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lançamentos financeiros</h4>
+            </div>
+            <div class="modal-body">
+                <div class="page-header">
+                    <h3><i class="fa fa-exclamation-triangle fa-1x"></i> Módulo indisponível no momento</h3>
+                </div>
+                <div class="alert alert-warning" style="text-align: left; font-size: 18px;">
+                    {{messageModalModuleExternal}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" ng-click="closeModal('modalUnavailableModule')">OK</a>
             </div>
         </div>
     </div>

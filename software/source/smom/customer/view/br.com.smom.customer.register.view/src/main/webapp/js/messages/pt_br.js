@@ -19,8 +19,7 @@ var messages = {
     INFO: {code: 1000, description: "Informação"},
     INFO_DELETE_CUSTOMER: {code: 1001, description: "Cliente excluído com sucesso"},
     WARN: {code: 2000, description: "Aviso"},
-    WARN_UNAVAILABLE_CUSTOMER_MODULE: {code: 2001, description: "Módulo de Clientes indisponível no momento"},
-    WARN_PHONE_EXISTS: {code: 2002, description: "Telefone já existe"},
+    WARN_PHONE_EXISTS: {code: 2001, description: "Telefone já existe"},
     ERROR: {code: 3000, description: "Erro"},
     ERROR_PERFORM_OPERATION_SYSTEM: {code: 3001, description: "Erro ao realizar operação no sistema"}
 };

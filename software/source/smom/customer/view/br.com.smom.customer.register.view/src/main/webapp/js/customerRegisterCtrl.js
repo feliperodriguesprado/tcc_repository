@@ -39,7 +39,7 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
                     $scope.gridPhone.data = $scope.customer.phoneList;
                     $scope.gridAddress.data = $scope.customer.addressList;
                 } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                    notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                    $('#modalUnavailableModule').modal('show');
                 } else {
                     notification.showMessage(data.responseResource);
                 }
@@ -169,7 +169,7 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
         var templateDeletePhone = '<div class="btn-grid-phone"><button type="button" class="btn btn-danger btn-xs" ng-click="grid.appScope.deletePhone(row.entity)"><i class="fa fa-times"></i></button></div>';
 
         return [
-            {name: 'number', displayName: 'Número', width: "71%", enableColumnMenu: false},
+            {name: 'number', displayName: 'Telefone', width: "71%", enableColumnMenu: false},
             {name: 'update', displayName: '', width: "15%", cellTemplate: templateUpdatePhone, enableColumnMenu: false, enableSorting: false, enableFiltering: false},
             {name: 'delete', displayName: '', width: "15%", cellTemplate: templateDeletePhone, enableColumnMenu: false, enableSorting: false, enableFiltering: false}
         ];
@@ -295,7 +295,7 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
                         $scope.gridPhone.data = $scope.customer.phoneList;
                         $scope.gridAddress.data = $scope.customer.addressList;
                     } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                        notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                        $('#modalUnavailableModule').modal('show');
                     } else {
                         notification.showMessage(data.responseResource);
                     }
@@ -322,7 +322,7 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
                         $scope.gridPhone.data = $scope.customer.phoneList;
                         $scope.gridAddress.data = $scope.customer.addressList;
                     } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                        notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                        $('#modalUnavailableModule').modal('show');
                     } else {
                         notification.showMessage(data.responseResource);
                     }
@@ -358,7 +358,7 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
                         $scope.gridPhone.data = $scope.customer.phoneList;
                         $scope.gridAddress.data = $scope.customer.addressList;
                     } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                        notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                        $('#modalUnavailableModule').modal('show');
                     } else {
                         notification.showMessage(data.responseResource);
                     }
@@ -378,9 +378,17 @@ function customerRegisterCtrl($scope, $window, $routeParams, notification, messa
         }
 
     };
+    
+    $scope.validateButtonSaveCustomer = function (customer) {
+        if (customer.name !== '' && customer.cpfCnpj !== '') {
+            return false;
+        } else {
+            return true;
+        }
+    };
 
-    $scope.validateButtonDeleteCustomer = function () {
-        if ($scope.customer.id === undefined || $scope.customer.id === null || $scope.customer.id === '') {
+    $scope.validateButtonDeleteCustomer = function (customer) {
+        if (customer.id === undefined || customer.id === null || customer.id === '') {
             return true;
         } else {
             return false;

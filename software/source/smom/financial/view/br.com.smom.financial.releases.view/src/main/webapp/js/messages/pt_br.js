@@ -18,7 +18,7 @@ var messages = {
     SUCCESS: {code: 0, description: "Sucesso"},
     INFO: {code: 1000, description: "Informação"},
     WARN: {code: 2000, description: "Aviso"},
-    WARN_UNAVAILABLE_FINANCIAL_MODULE: {code: 2001, description: "Módulo Financeiro indisponível no momento"},
+    WARN_UNAVAILABLE_CUSTOMER_MODULE: {code: 2001, description: "Módulo de Clientes indisponível no momento, contate o administrador do sistema ou tente mais tarde."},
     ERROR: {code: 3000, description: "Erro"},
     ERROR_PERFORM_OPERATION_SYSTEM: {code: 3001, description: "Erro ao realizar operação no sistema"}
 };

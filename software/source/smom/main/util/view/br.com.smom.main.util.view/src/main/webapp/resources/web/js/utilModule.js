@@ -64,22 +64,60 @@ utilModule.factory('serverResponse', function () {
 
 utilModule.factory('log', function () {
 
-    var getDate = function () {
+    var getDateTime = function () {
         return window.moment().format("DD/MM/YYYY HH:mm:ss");
     };
 
     var log = {
         info: function (message) {
-            console.info('Date=' + getDate() + 'Code=' + message.code + '; Description=' + message.description);
+            console.info('Date=' + getDateTime() + 'Code=' + message.code + '; Description=' + message.description);
         },
         error: function (message, exception) {
-            console.error('Date=' + getDate() + '; Code=' + message.code + '; Description=' + message.description + '; Exception=' + exception.message);
+            console.error('Date=' + getDateTime() + '; Code=' + message.code + '; Description=' + message.description + '; Exception=' + exception.message);
         },
         debug: function (object) {
             console.log(object);
         }
     };
     return log;
+});
+
+utilModule.factory('date', function () {
+
+    var date = {
+        getDateTime: function (date) {
+            window.moment.locale("pt-br");
+            if (date === undefined) {
+                return window.moment();
+            }
+            return window.moment(date);
+        },
+        formatDateToServer: function (date) {
+            var dateFormatted = "";
+
+            if (date !== "") {
+                dateFormatted = dateFormatted + date.substring(6, 10) + '-';
+                dateFormatted = dateFormatted + date.substring(3, 5) + '-';
+                dateFormatted = dateFormatted + date.substring(0, 2);
+            }
+
+            return dateFormatted;
+        },
+        formatDateToView: function (date) {
+            var dateFormatted = "";
+
+            if (date !== "") {
+                dateFormatted = dateFormatted + date.substring(8, 10) + '/';
+                dateFormatted = dateFormatted + date.substring(5, 7) + '/';
+                dateFormatted = dateFormatted + date.substring(0,4);
+            }
+            
+            return dateFormatted;
+        }
+    };
+
+    return date;
+
 });
 
 utilModule.factory('notification', function () {

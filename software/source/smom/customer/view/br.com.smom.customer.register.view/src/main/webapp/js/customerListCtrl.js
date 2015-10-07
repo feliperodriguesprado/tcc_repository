@@ -126,7 +126,7 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
                     }
 
                 } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                    notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                    $('#modalUnavailableModule').modal('show');
                 } else {
                     notification.showMessage(data.responseResource);
                 }
@@ -155,7 +155,7 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
             if (data.responseResource.code === serverResponse.INFO_GET_CUSTOMER_LIST) {
                 $scope.grid.data = data.customerList;
             } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
-                notification.showMessage(messages.WARN_UNAVAILABLE_CUSTOMER_MODULE);
+                $('#modalUnavailableModule').modal('show');
             } else {
                 notification.showMessage(data.responseResource);
             }
@@ -172,5 +172,9 @@ function customerListCtrl($scope, $window, notification, messages, encryption, s
             notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
         }
     });
+
+    $scope.closeModal = function (element) {
+        $('#' + element).modal('hide');
+    };
 
 }

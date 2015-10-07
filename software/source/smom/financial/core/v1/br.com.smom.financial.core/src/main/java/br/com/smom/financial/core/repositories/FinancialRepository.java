@@ -15,7 +15,6 @@
  */
 package br.com.smom.financial.core.repositories;
 
-import br.com.smom.customer.api.services.Customer;
 import br.com.smom.financial.api.enums.FinancialMessages;
 import br.com.smom.financial.api.exceptions.FinancialException;
 import br.com.smom.financial.api.model.entities.AccountEntity;
@@ -38,7 +37,6 @@ public class FinancialRepository implements IFinancialRepository {
 
     private PostgreSQL postgreSQLService = null;
     private Log logService = null;
-    private Customer customerService = null;
 
     @Inject
     private IFinancialDAO financialDAO;
@@ -59,9 +57,12 @@ public class FinancialRepository implements IFinancialRepository {
             try {
                 connection = postgreSQLService.getConnection();
                 financialDAO.setConnection(connection);
-                financialCreated = financialDAO.create(financialEntity);
-
+                int generatedKey  = financialDAO.create(financialEntity);
                 postgreSQLService.commit(connection);
+                
+                connection = postgreSQLService.getConnection();
+                financialDAO.setConnection(connection);
+                financialCreated = financialDAO.getById(generatedKey);
 
                 if (logService != null) {
                     logService.info("Financial created: " + financialCreated.toString());
@@ -70,6 +71,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -105,6 +109,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -134,6 +141,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -165,6 +175,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -197,6 +210,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -229,6 +245,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -261,6 +280,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -292,6 +314,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -300,6 +325,7 @@ public class FinancialRepository implements IFinancialRepository {
             throw new FinancialException(FinancialMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
+
     @Override
     public List<PaymentTypeEntity> getAllPaymentTypes() throws FinancialException {
         postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
@@ -322,6 +348,9 @@ public class FinancialRepository implements IFinancialRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new FinancialException(e);
+            } catch (FinancialException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {

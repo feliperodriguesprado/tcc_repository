@@ -85,7 +85,8 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     @Override
     public List<PeopleEntity> getByName(String name) throws CustomerException {
         try {
-            String query = "select * from peoples p where p.name like '%?%' and p.active = TRUE";
+            name = "%" + name + "%";
+            String query = "select * from peoples p where p.name like ? and p.active = TRUE";
             ResultSet resultSet = executeQuery(query, name);
             return fillCustomerList(resultSet);
         } catch (DataSourceException e) {
