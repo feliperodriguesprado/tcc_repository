@@ -32,6 +32,8 @@ public interface Customer {
     public PeopleEntity getById(int id) throws CustomerException;
 
     public List<PeopleEntity> getByName(String name) throws CustomerException;
+    
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException;
 
     public List<PeopleEntity> getAll() throws CustomerException;
 

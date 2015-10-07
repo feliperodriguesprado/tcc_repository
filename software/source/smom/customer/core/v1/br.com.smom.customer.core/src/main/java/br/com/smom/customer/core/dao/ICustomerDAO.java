@@ -37,5 +37,7 @@ public interface ICustomerDAO {
     public List<PeopleEntity> getAll() throws CustomerException;
 
     public List<PeopleEntity> getCreatedCustomersRanking(int positions) throws CustomerException;
+    
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException;
 
 }

@@ -280,6 +280,37 @@ public class CustomerRepository implements ICustomerRepository {
             throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
+    
+    @Override
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException {
+         PostgreSQL postgreSQLService = (PostgreSQL) ServiceProvider.getBundleService(PostgreSQL.class);
+        Log logService = (Log) ServiceProvider.getBundleService(Log.class);
+
+        List<PeopleEntity> customerEntityList;
+        Connection connection = null;
+
+        if (postgreSQLService != null) {
+            try {
+                connection = postgreSQLService.getConnection();
+                customerDAO.setConnection(connection);
+                customerEntityList = customerDAO.getByCpfCnpj(cpfCnpj);
+                postgreSQLService.commit(connection);
+
+                if (logService != null) {
+                    logService.info("Customer getting: " + (customerEntityList != null ? customerEntityList.toString() : "is null"));
+                }
+                return customerEntityList;
+            } catch (DataSourceException e) {
+                postgreSQLService.rollback(connection);
+                throw new CustomerException(e);
+            }
+        } else {
+            if (logService != null) {
+                logService.warn(CustomerMessages.WARN_UNAVAILABLE_MODULE.getMessage("PostgreSQL Service is null"));
+            }
+            throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
+        }
+    }
 
     @Override
     public List<PeopleEntity> getAll() throws CustomerException {
@@ -409,4 +440,5 @@ public class CustomerRepository implements ICustomerRepository {
             throw new CustomerException(CustomerMessages.WARN_UNAVAILABLE_MODULE);
         }
     }
+
 }

@@ -40,5 +40,7 @@ public interface ICustomerRepository {
     public AddressEntity updateAddress(AddressEntity addressEntity) throws CustomerException;
     
     public PhoneEntity updatePhone(PhoneEntity addressEntity) throws CustomerException;
+
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException;
     
 }

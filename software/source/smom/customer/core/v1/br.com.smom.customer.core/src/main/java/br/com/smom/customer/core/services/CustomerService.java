@@ -81,6 +81,15 @@ public class CustomerService implements Customer {
     }
 
     @Override
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException {
+        try {
+            return customerRepository.getByCpfCnpj(cpfCnpj);
+        } catch (CustomerException e) {
+            throw new CustomerException(CustomerMessages.ERROR_PERFORM_OPERATION_SERVER, e);
+        }
+    }
+
+    @Override
     public List<PeopleEntity> getAll() throws CustomerException {
         try {
             return customerRepository.getAll();

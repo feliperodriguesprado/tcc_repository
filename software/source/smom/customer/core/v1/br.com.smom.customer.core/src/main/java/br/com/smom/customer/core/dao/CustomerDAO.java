@@ -94,6 +94,17 @@ public class CustomerDAO extends GenericDataBaseDAO implements ICustomerDAO {
     }
 
     @Override
+    public List<PeopleEntity> getByCpfCnpj(String cpfCnpj) throws CustomerException {
+        try {
+            String query = "select * from peoples p where p.cpf_cnpj like '%?%' and p.active = TRUE";
+            ResultSet resultSet = executeQuery(query, cpfCnpj);
+            return fillCustomerList(resultSet);
+        } catch (DataSourceException e) {
+            throw new CustomerException(e);
+        }
+    }
+
+    @Override
     public List<PeopleEntity> getAll() throws CustomerException {
         try {
             String query = "select * from peoples p where p.active = TRUE";
