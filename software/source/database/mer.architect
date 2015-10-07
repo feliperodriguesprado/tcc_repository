@@ -4,8 +4,8 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="TCC" />
    <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="Modelo de Dados" />
    <property key="JDBC URL" value="jdbc:postgresql://:5432/smom" />
    <property key="UID" value="postgres" />
    <property key="PWD" value="Pa$$w0rd" />
@@ -17,7 +17,7 @@
   </data-source>
   <data-source id="DS0">
    <property key="Connection Type" value="PostgreSQL" />
-   <property key="Logical" value="TCC" />
+   <property key="Logical" value="Modelo de Dados" />
    <property key="JDBC URL" value="jdbc:postgresql://:5432/smom" />
    <property key="UID" value="postgres" />
    <property key="PWD" value="Pa$$w0rd" />
@@ -29,7 +29,7 @@
   </data-source>
  </project-data-sources>
  <source-databases>
-  <database id="DB0" populated="true" UUID="b3e97425-cb0c-48e0-a365-92c524cf6bc5" dbcs-ref="DS0" name="TCC" physicalName="TCC" >
+  <database id="DB0" populated="true" UUID="b3e97425-cb0c-48e0-a365-92c524cf6bc5" dbcs-ref="DS0" name="Modelo de Dados" physicalName="TCC" >
    <catalog id="CAT1" populated="true" UUID="3882e050-fc3c-48e9-8612-f3c61cc58cdf" name="smom" nativeTerm="database" physicalName="smom" >
     <schema id="SCH2" populated="true" UUID="5dcbc245-839c-4dcf-95ce-39b370a8c82d" name="information_schema" nativeTerm="schema" physicalName="information_schema" >
     </schema>
@@ -186,7 +186,7 @@
     <column id="COL46" populated="true" UUID="06836c3c-710f-4207-a6dc-f6d182c0072a" autoIncrement="false" autoIncrementSequenceName="financial_releases_due_date_seq" defaultValue="" name="due_date" nullable="0" physicalName="due_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
-    <column id="COL47" populated="true" UUID="e4050a06-eeb5-4187-8ecf-531a4017b560" autoIncrement="false" autoIncrementSequenceName="financial_releases_payment_date_seq" defaultValue="" name="payment_date" nullable="0" physicalName="payment_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+    <column id="COL47" populated="true" UUID="e4050a06-eeb5-4187-8ecf-531a4017b560" autoIncrement="false" autoIncrementSequenceName="financial_releases_payment_date_seq" defaultValue="" name="payment_date" nullable="1" physicalName="payment_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
     <column id="COL48" populated="true" UUID="826ab552-368d-4c88-b4dc-a3b0c261d213" autoIncrement="false" autoIncrementSequenceName="financial_releases_is_paid_seq" defaultValue="" name="is_paid" nullable="0" physicalName="is_paid" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
@@ -311,7 +311,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <compare-dm-settings  ddlGenerator="ca.sqlpower.architect.ddl.PostgresDDLGenerator"  outputFormatAsString="SQL"  saveFlag="true" >
   <source-stuff   datastoreTypeAsString="DATABASE"   connectName="TCC"   filePath=""  />
