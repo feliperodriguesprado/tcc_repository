@@ -72,7 +72,7 @@ function releaseListCtrl($scope, $window, notification, date, messages, serverRe
             $window.location.href = "#/release-register/" + row.entity.id;
         },
         viewRelease: function (row) {
-            notification.info(JSON.stringify(row));
+            $window.location.href = "#/release-register/" + row.id;
         }
     };
 

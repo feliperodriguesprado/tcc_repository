@@ -62,6 +62,9 @@ public class UserRepository implements IUserRepository {
                     throw new UserException(UserMessages.WARN_USER_EXISTS);
                 }
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -99,6 +102,9 @@ public class UserRepository implements IUserRepository {
                     throw new UserException(UserMessages.WARN_USER_EXISTS);
                 }
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -128,6 +134,9 @@ public class UserRepository implements IUserRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -158,6 +167,9 @@ public class UserRepository implements IUserRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -188,6 +200,9 @@ public class UserRepository implements IUserRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -220,6 +235,9 @@ public class UserRepository implements IUserRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new UserException(e);
+            } catch (UserException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {

@@ -86,6 +86,9 @@ public class CustomerRepository implements ICustomerRepository {
                     throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
                 }
                 throw new CustomerException(e);
+            } catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -172,6 +175,9 @@ public class CustomerRepository implements ICustomerRepository {
                     throw new CustomerException(CustomerMessages.WARN_PHONE_EXISTS);
                 }
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -202,6 +208,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -240,6 +249,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -272,6 +284,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -303,6 +318,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -335,6 +353,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -366,6 +387,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -399,6 +423,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
@@ -432,6 +459,9 @@ public class CustomerRepository implements ICustomerRepository {
             } catch (DataSourceException e) {
                 postgreSQLService.rollback(connection);
                 throw new CustomerException(e);
+            }  catch (CustomerException e) {
+                postgreSQLService.rollback(connection);
+                throw e;
             }
         } else {
             if (logService != null) {
