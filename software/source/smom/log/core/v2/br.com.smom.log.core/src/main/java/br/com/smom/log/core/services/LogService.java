@@ -31,6 +31,8 @@ import java.util.logging.SimpleFormatter;
 
 public class LogService implements Log {
 
+    private Logger logger;
+
     @Override
     public void debug(String message) {
         try {
@@ -114,7 +116,16 @@ public class LogService implements Log {
 
     private Logger getLogger() throws LogException {
 
-        Logger logger = Logger.getLogger(new SimpleDateFormat("yyyyMMdd").format(new Date()));
+        String loggerName = new SimpleDateFormat("yyyyMMdd").format(new Date());
+
+        if (logger == null) {
+            logger = Logger.getLogger(loggerName);
+        } else {
+            if (!logger.getName().equals(loggerName)) {
+                logger = Logger.getLogger(loggerName);
+            }
+        }
+
         Handler[] handlerList = logger.getHandlers();
 
         if (handlerList.length == 0) {
