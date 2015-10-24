@@ -1,6 +1,6 @@
 ***OBJETIVO GERAL*** (FELIPE)
 
-Demonstrar o modelo de desenvolvimento modular para aplicações empresariais, utilizando o conjunto de especificações OSGi.
+Demonstrar o modelo de desenvolvimento modular utilizando a especificação OSGi com foco em aplicações empresariais
 
 
 ***OBJETIVO ESPECIFÍCO*** (FELIPE)
@@ -11,12 +11,11 @@ Iremos desenvolver uma aplicação que demonstre de forma simples e prática a m
 
 E por fim, faremos uma conclusão sobre o desenvolvimento modular para aplicações empresariais.
 
+E por fim, apresentaremos as vantagens obtidas utilizando esse modelo de desenvolvimento
 
-***JUSTIFICATIVA*** (JOÃO PAULO)
+***RELEVÂNCIA*** (JOÃO PAULO)
 
-Motivação: o que nos motivou a pesquisar o tema OSGi foi uma experiência profissional que ambos tivemos de trabalhar com um sistema não modularizado, onde a manutenção e a atualização do sistema se tornava trabalhoso.
-
-Conhecimento: Esse tema irá nos agregar mais conhecimento, além de ser um conteúdo não aprendido no curso.
+Conhecimento: Esse tema irá nos agregar mais conhecimento sobre um tema não aprendido no curso.
 
 Documentação: Devido a dificuldade que estamos enfrentando para conseguir materiais, deixaremos como base uma documentação que servirá de base para estudos e outros TCCs.
 
@@ -32,12 +31,6 @@ Quanto mais complexo é o software, mais difícil se torna controlar o seu desen
 Dessa maneira desenvolver um software depende de planejamento, metodologia, tecnologia e engenharia para auxiliar o desenvolvimento.
 
 Uma solução para ajudar a gerenciar a complexidade das aplicações seria separar o software em partes ou módulos, o que traria alguns benefícios para o seu desenvolvimento.
-
-Fazer analogia ao satélite.
-
-
-Citar os dois trabalhos na área. (JOÃO PAULO)
-
 
 ***QUADRO TEÓRICO***
 
@@ -121,3 +114,9 @@ Nosso contexto de pesquisa será o desenvolvimento de softwares empresariais.
 - Pesquisas: livros, documentações e artigos.
 - Reuniões: reuniões entre os membros da equipe e o orientador. Além do Filipe Portes.
 - Palestras: estamos assistindo algumas palestras online.
+
+
+DISCUSSÃO DOS RESULTADOS
+
+Conceitos de módulos
+mostrar no apache web console o módulo de view dos clientes parando e o sistema funcionando ainda(mostrar o financeiro) ainda funcionando - se possivel mostrar o financeiro usando clientes com a view dele parada
