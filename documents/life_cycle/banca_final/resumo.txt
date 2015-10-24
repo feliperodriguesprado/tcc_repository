@@ -1,0 +1,3 @@
+	Devido á complexidade dos softwares, a manutenção e expansão do mesmo se tornaram complicadas e custosas. Modularizar a aplicação, dividindo as funcionalidades e tarefas em partes menores nesse cenário se tornou se suma importância, e juntamente com o suporte oferecido pela tecnologia OSGi obteve-se uma alta reutilização de funcionalidades, desacoplamento, coesão, gerenciamento dos módulos e tudo isso sem comprometer o funcionamento do sistema. A partir de toda a pesquisa realizada foi possível além da compreensão de seu funcionamento, também a criação de uma aplicação que utilizasse esses conceitos e teorias. Para que, além de documentadas, elas fossem demonstradas.
+
+Palavras Chave: Modularização; Componentização; OSGi; Apache Felix; Arquitetura de software.
