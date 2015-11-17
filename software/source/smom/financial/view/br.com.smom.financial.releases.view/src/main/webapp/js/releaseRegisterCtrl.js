@@ -33,7 +33,7 @@ function releaseRegisterCtrl($scope, $window, $routeParams, notification, date, 
             try {
                 if (data.responseResource.code === serverResponse.INFO_GET_FINANCIAL_RELEASE) {
                     $scope.release = data.release;
-                    
+
                     if (data.release.peopleId !== undefined && data.release.peopleId !== null) {
                         $scope.peopleSearch = data.release.people.name;
                     }
@@ -73,25 +73,26 @@ function releaseRegisterCtrl($scope, $window, $routeParams, notification, date, 
                 if (data.responseResource.code === serverResponse.INFO_GET_CUSTOMER) {
                     $scope.release.people = data.customer;
                     $scope.release.peopleId = data.customer.id;
-                    
+
                     if (data.customer.id !== undefined && data.customer.id !== null) {
                         $scope.peopleSearch = data.customer.name;
                     }
-                    
+
                 } else if (data.responseResource.code === serverResponse.WARN_UNAVAILABLE_MODULE) {
+                    delete $scope.peopleSearch;
                     $scope.messageModalModuleExternal = messages.WARN_UNAVAILABLE_CUSTOMER_MODULE.description;
                     $('#modalUnavailableModule').modal('show');
-                    
-                    delete $scope.peopleSearch;
-                    
                 } else {
+                    delete $scope.peopleSearch;
                     notification.showMessage(data.responseResource);
                 }
             } catch (e) {
+                delete $scope.peopleSearch;
                 log.error(messages.ERROR_PERFORM_OPERATION_SYSTEM, e);
                 notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
             }
         }, function () {
+            delete $scope.peopleSearch;
             try {
                 log.error(messages.ERROR_REQUEST_SERVER);
                 notification.error(messages.ERROR_REQUEST_SERVER);
@@ -100,17 +101,12 @@ function releaseRegisterCtrl($scope, $window, $routeParams, notification, date, 
                 notification.showMessage(messages.ERROR_PERFORM_OPERATION_SYSTEM);
             }
         });
-
-
-
-        notification.info(queryPeople);
-        delete $scope.queryPeople;
     };
 
     $scope.saveFinancialRelease = function (release) {
 
         release.dueDate = date.getDateTime(date.formatDateToServer(release.dueDate));
-        
+
         if ($scope.peopleSearch === '' || $scope.peopleSearch === null || $scope.peopleSearch === undefined) {
             release.peopleId = 0;
         }
@@ -144,10 +140,10 @@ function releaseRegisterCtrl($scope, $window, $routeParams, notification, date, 
                 }
             });
         } else {
-            
+
             release.accountId = 1;
             release.paymentTypeId = 1;
-            
+
             resourceCreate.save({release: release}, function (data) {
                 try {
                     if (data.responseResource.code === serverResponse.INFO_CREATE_FINANCIAL_RELEASE) {
@@ -186,7 +182,7 @@ function releaseRegisterCtrl($scope, $window, $routeParams, notification, date, 
     $scope.closeModal = function (element) {
         $('#' + element).modal('hide');
     };
-    
+
     $scope.validateButtonSearchPeople = function (searchPeople) {
         if (searchPeople !== null && searchPeople !== undefined && searchPeople !== '') {
             return false;
