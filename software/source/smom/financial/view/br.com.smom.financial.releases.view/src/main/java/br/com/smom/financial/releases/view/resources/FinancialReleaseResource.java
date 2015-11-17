@@ -16,6 +16,7 @@
 package br.com.smom.financial.releases.view.resources;
 
 import br.com.smom.customer.api.exceptions.CustomerException;
+import br.com.smom.customer.api.model.entities.PeopleEntity;
 import br.com.smom.customer.api.model.to.CustomerTO;
 import br.com.smom.customer.api.services.Customer;
 import br.com.smom.financial.api.enums.FinancialMessages;
@@ -26,6 +27,7 @@ import br.com.smom.financial.api.services.Financial;
 import br.com.smom.log.api.services.Log;
 import br.com.smom.main.util.api.model.to.ResponseResourceTO;
 import br.com.smom.main.util.api.services.ServiceProvider;
+import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -243,6 +245,7 @@ public class FinancialReleaseResource {
         Customer customerService = (Customer) ServiceProvider.getBundleService(Customer.class);
         Log logService = (Log) ServiceProvider.getBundleService(Log.class);
         ResponseResourceTO responseResource = new ResponseResourceTO();
+        List<PeopleEntity> customerList;
         CustomerTO customerTO = new CustomerTO();
 
         try {
@@ -251,8 +254,17 @@ public class FinancialReleaseResource {
             }
 
             if (customerService != null) {
-                customerTO.setCustomer(customerService.getByName(customerName).get(0));
-                responseResource.setMessage(FinancialMessages.INFO_GET_CUSTOMER);
+
+                customerList = customerService.getByName(customerName);
+
+                if (!customerList.isEmpty()) {
+                    customerTO.setCustomer(customerList.get(0));
+                    responseResource.setMessage(FinancialMessages.INFO_GET_CUSTOMER);
+                } else {
+                    customerTO.setCustomer(null);
+                    responseResource.setMessage(FinancialMessages.WARN_CUSTOMER_NOT_FOUND);
+                }
+
             } else {
                 if (logService != null) {
                     logService.warn(FinancialMessages.WARN_UNAVAILABLE_MODULE.getMessage("Customer Service is null"));

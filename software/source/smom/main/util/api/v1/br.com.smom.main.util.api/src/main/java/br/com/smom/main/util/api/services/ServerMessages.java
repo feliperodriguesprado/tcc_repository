@@ -29,7 +29,8 @@ public class ServerMessages {
 
         try {
             Properties properties = new Properties();
-            FileInputStream file = new FileInputStream(System.getenv().get("SMOM_HOME") + "/messages/messages.properties");
+            String pathFile = System.getenv().get("SMOM_HOME");
+            FileInputStream file = new FileInputStream(pathFile + "/messages/messages.properties");
             Reader reader = new InputStreamReader(file, "UTF-8");
             properties.load(reader);
 
