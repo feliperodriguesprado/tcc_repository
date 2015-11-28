@@ -120,3 +120,13 @@ DISCUSSÃO DOS RESULTADOS
 
 Conceitos de módulos
 mostrar no apache web console o módulo de view dos clientes parando e o sistema funcionando ainda(mostrar o financeiro) ainda funcionando - se possivel mostrar o financeiro usando clientes com a view dele parada
+
+Novo:
+granularidade: explico que a divisao dos modulos do sistema se ocorreu daquele jeito devido á facilidade na manutenção e flexibilidade do funcionamento da aplicação
+
+Definição de módulos: um módulo tem certas caracteristicas, como poder instalar, atualizar, parar o funcionamento, etc
+e agora vamos mostrar o modulo core de clientes sendo parado e o sistema ainda continuar em funcionamento
+
+Expansão da aplicação: Iremos mostrar agora a instalação de um módulo no sistema, o módulo financeiro, mostrar a instalação do financeiro
+
+Versionamento:
