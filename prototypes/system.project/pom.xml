@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>groupid</groupId>
+    <artifactId>system.project</artifactId>
+    <version>version</version>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>system.module</module>
+    </modules>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>4.3.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.5.4</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <supportedProjectTypes>
+                            <supportedProjectTypes>bundle</supportedProjectTypes>
+                            <supportedProjectTypes>ejb</supportedProjectTypes>
+                            <supportedProjectTypes>jar</supportedProjectTypes>
+                            <supportedProjectTypes>war</supportedProjectTypes>
+                        </supportedProjectTypes>
+                        <instructions>
+                            <_include>osgi.properties</_include>
+                        </instructions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>bundle-manifest</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>manifest</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>bundle-install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>install</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <ejbVersion>3.1</ejbVersion>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                            <manifestEntries>
+                                <Export-EJB>ALL</Export-EJB>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                            <manifestEntries>
+                                <Bundle-ClassPath>WEB-INF/classes/</Bundle-ClassPath>
+                            </manifestEntries>
+                        </archive>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
